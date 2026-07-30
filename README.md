@@ -1,119 +1,121 @@
-```md
-# Hi there 👋, I'm Priyanshu Gupta
+# Hi, I'm Priyanshu Gupta 👋
 
-<img align="right" alt="Coding" width="380" src="https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif">
+> *Computer Science Student • Linux Enthusiast • Lifelong Learner*
 
-> **"Every expert was once a beginner. I'm documenting my journey to become one."**
+I'm a first-year Computer Science student who enjoys understanding how computers work—from algorithms and operating systems to building software one project at a time.
 
 ---
 
 ## 🚀 About Me
 
-🎓 First-year B.Tech Computer Science student at **ABES Engineering College, Ghaziabad**
-
-💻 Passionate about building things with code and understanding **how computers actually work**.
-
-🌱 Currently learning:
-- C++
-- Data Structures & Algorithms
-- Linux & Operating Systems
-- Git & GitHub
-- HTML, CSS & JavaScript
-- Software Development Fundamentals
-
-🎯 My long-term goal is to become a world-class software engineer with deep knowledge of:
-- Computer Science
-- Mathematics
-- Physics
-- System Design
-- Artificial Intelligence
-- Blockchain & Web3
-- Cybersecurity
+- 🎓 B.Tech Computer Science Student
+- 🐧 Ubuntu Linux user
+- 💻 Learning C++, Data Structures & Algorithms, Git, Linux and Web Development
+- 📚 Interested in Operating Systems, Computer Networks, Mathematics, Physics and System Design
+- 🌱 Building strong fundamentals before learning advanced technologies
+- 🎯 Working toward becoming a well-rounded software engineer
 
 ---
 
-## 🧠 Things I Love Learning
-
-- ⚙️ Operating Systems
-- 🐧 Linux
-- 💾 Computer Architecture
-- 🧩 Algorithms
-- 📐 Mathematics
-- ⚡ Physics
-- 🌐 Web Development
-- 🤖 AI
-- 🔒 Security
-- 📚 How technology works from the ground up
-
----
-
-## 💻 Tech Stack
+# 🛠️ Tech Stack
 
 ### Languages
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 
-### Currently Exploring
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github)
-![HTML5](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3)
+- C++
 
----
+### Tools & Technologies
 
-## 🎯 Current Goals (2026)
-
-- ✅ Master C++
-- ✅ Become confident in DSA
-- 🔄 Build real-world projects
-- 🔄 Master Linux
-- 🔄 Learn Backend Development
-- 🔄 Contribute to Open Source
-- 🔄 Strengthen Mathematics
-- 🔄 Understand Operating Systems deeply
+- Linux (Ubuntu)
+- Git & GitHub
+- HTML
+- CSS
+- VS Code
 
 ---
 
-## 📂 Projects
+# 📚 Currently Learning
 
-Projects coming soon...
-
-Each project will teach me something new and document my learning process.
-
----
-
-## 📈 GitHub Stats
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight)
+- C++
+- Data Structures & Algorithms
+- Linux Internals
+- Operating Systems
+- Git & GitHub
+- HTML
+- CSS
+- JavaScript
 
 ---
 
-## 🔥 Streak
+# 🎯 Interested In
 
-![GitHub Streak](https://streak-stats.demolab.com/?user=YOUR_USERNAME&theme=tokyonight)
+- 💻 Software Engineering
+- ⚙️ Operating Systems
+- 🐧 Linux
+- 🧠 Algorithms & Data Structures
+- 🌐 Web Development
+- 🤖 Artificial Intelligence
+- 🔒 Cybersecurity
+- 📐 Mathematics
+- ⚡ Physics
 
 ---
 
-## 🌐 Connect With Me
+# 📈 Current Goals
 
-- 🌍 Website: **https://priyanshustwt.in**
-- 💻 GitHub: https://github.com/YOUR_USERNAME
+- Build useful projects
+- Improve problem-solving skills
+- Contribute to Open Source
+- Learn Computer Science deeply
+- Keep improving every day
 
 ---
 
-## 📖 Philosophy
+# 📊 GitHub Statistics
 
-> "Knowledge compounds."
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyanshubuild&show_icons=true&theme=github_dark&hide_border=true)
 
-I believe learning is a lifelong process. Every day I try to understand computers a little deeper than yesterday.
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=priyanshubuild&layout=compact&theme=github_dark&hide_border=true)
 
-I'm not here to chase shortcuts.
+![GitHub Streak](https://streak-stats.demolab.com?user=priyanshubuild&theme=github-dark&hide_border=true)
 
-I'm here to build strong fundamentals.
+---
+
+# 💻 Coding Profiles
+
+## GitHub
+
+https://github.com/priyanshubuild
+
+## LeetCode
+
+https://leetcode.com/u/Priyanshuguptaleetcode/
+
+## Codeforces
+
+https://codeforces.com/profile/priyanshuguptacf
+
+## CodeChef
+
+https://www.codechef.com/users/priyanshucf
+
+## HackerRank
+
+https://www.hackerrank.com/profile/priyanshug1408
+
+---
+
+# 📖 Philosophy
+
+> **Understanding why something works is more valuable than simply knowing how to use it.**
+
+I'm documenting my journey as I learn Computer Science, solve problems, build projects, and improve a little every day.
+
+---
+
+## 📌 Quote
+
+> *"Every expert was once a beginner who refused to quit."*
 
 ---
 
 ⭐ Thanks for visiting my profile!
-```
