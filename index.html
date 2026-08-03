@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$whoami</title>
+<title>$whoami — Priyanshu Gupta</title>
 <meta name="description" content="Priyanshu Gupta — CS student. Algorithms, operating systems, Linux, mathematics.">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%237fa8ff' font-family='monospace'%3E%3E_%3C/text%3E%3C/svg%3E">
@@ -140,6 +140,9 @@ section:last-of-type{ border-bottom:none; margin-bottom:0; }
 .heatmap-legend .hm-cell{ width:11px; height:11px; }
 .gh-caption{ margin-top:14px; font-size:13.5px; color:var(--faint); }
 .gh-caption a{ color:var(--blue); font-weight:600; }
+.hm-fallback{ display:flex; gap:16px; align-items:flex-start; padding:6px 4px; }
+.hm-fallback svg{ width:26px; height:26px; color:var(--faint); flex-shrink:0; margin-top:2px; }
+.hm-fallback-title{ font-weight:700; font-size:14.5px; color:var(--ink); }
 
 /* ---- projects ---- */
 .proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
@@ -198,9 +201,40 @@ section:last-of-type{ border-bottom:none; margin-bottom:0; }
 .contact a.email{ color:var(--blue); font-weight:600; border-bottom:1px solid rgba(143,180,255,.4); }
 .contact a.email:hover{ border-color:var(--blue); }
 
-footer{ padding:32px 0 64px; font-size:12.5px; color:var(--faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; grid-column:1/-1; }
-footer a{ color:var(--faint); }
-footer a:hover{ color:var(--dim); }
+footer{
+  max-width:var(--maxw); margin:0 auto; padding:44px 32px 56px;
+  position:relative;
+}
+footer::before{
+  content:"";
+  display:block;
+  height:1px;
+  margin-bottom:36px;
+  background:linear-gradient(90deg, var(--line) 0%, #3a3a3a 50%, var(--line) 100%);
+}
+.footer-inner{
+  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+}
+.footer-left{ max-width:440px; }
+.footer-brand{ font-family:var(--font-mono); font-size:13px; color:var(--dim); margin-bottom:8px; }
+.footer-brand .prompt{ color:var(--green); }
+.footer-left p{ font-size:12.5px; color:var(--faint); line-height:1.6; }
+.footer-links{ display:flex; gap:20px; flex-wrap:wrap; }
+.footer-links a{ font-size:13px; font-weight:500; color:var(--dim); transition:color .2s ease; }
+.footer-links a:hover{ color:var(--blue); }
+.footer-top{
+  width:38px; height:38px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--line); background:var(--card);
+  color:var(--dim);
+  transition:transform .25s ease, border-color .25s ease, color .25s ease;
+}
+.footer-top:hover{ transform:translateY(-3px); border-color:var(--blue); color:var(--blue); }
+.footer-top svg{ width:16px; height:16px; }
+@media (max-width:640px){
+  .footer-inner{ flex-direction:column; align-items:flex-start; }
+  .footer-top{ align-self:flex-end; margin-top:-46px; }
+}
 
 /* ============================================================
    RESPONSIVE
@@ -356,12 +390,27 @@ footer a:hover{ color:var(--dim); }
 
   </main>
 
-  <footer>
-    <span>&copy; <span id="year"></span> Priyanshu Gupta</span>
-    <span><a href="#main">back to top ↑</a></span>
-  </footer>
-
 </div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand"><span class="prompt">$</span> whoami</div>
+      <p>&copy; <span id="year"></span> Priyanshu Gupta — built by hand with HTML, CSS &amp; JS. No frameworks.</p>
+    </div>
+    <nav class="footer-links" aria-label="Section links">
+      <a href="#github">Activity</a>
+      <a href="#projects">Projects</a>
+      <a href="#interests">Interests</a>
+      <a href="#terminal">Shell</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#main" class="footer-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+  </div>
+</footer>
+
 </div>
 
 <script>
@@ -454,7 +503,14 @@ async function loadHeatmap(){
 
     renderHeatmap(counts);
   } catch(err){
-    hmWrap.innerHTML = '<p class="gh-caption">Live activity couldn\'t load right now — view it directly on <a href="https://github.com/'+GH_USER+'" target="_blank" rel="noopener">GitHub</a>.</p>';
+    hmWrap.innerHTML = `
+      <div class="hm-fallback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        <div>
+          <p class="hm-fallback-title">Live activity feed unavailable here</p>
+          <p class="gh-caption" style="margin-top:4px;">This preview sandbox blocks outbound API calls — view the real thing on <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener">github.com/${GH_USER}</a>. Works automatically once this page is hosted.</p>
+        </div>
+      </div>`;
   }
 }
 
