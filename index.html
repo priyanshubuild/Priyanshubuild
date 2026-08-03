@@ -3,177 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$whoami</title>
+<title>$whoami — Priyanshu Gupta</title>
 <meta name="description" content="Priyanshu Gupta — CS student. Algorithms, operating systems, Linux, mathematics.">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%237fa8ff' font-family='monospace'%3E%3E_%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   TOKENS — tuned for high readability / high contrast
+   ============================================================ */
 :root{
   --bg:#0a0a0a;
-  --ink:#ededed;
-  --dim:#8a8a8a;
-  --faint:#5c5c5c;
-  --line:#1e1e1e;
-  --blue:#7fa8ff;
-  --green:#5fd97a;
-  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --maxw:1120px;
-  --side-w:280px;
+  --ink:#f5f5f6;        /* brighter than before for clarity */
+  --dim:#a3a3a6;        /* raised from #8a8a8a for contrast */
+  --faint:#7a7a7d;       /* raised from #5c5c5c — still hits AA on labels */
+  --line:#232323;
+  --card:#111113;
+  --blue:#8fb4ff;
+  --green:#68dd82;
+  --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --maxw:1160px;
+  --side-w:290px;
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 @media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
 body{
   background:var(--bg); color:var(--ink);
-  font-family:var(--mono);
-  font-size:15px;
-  line-height:1.7;
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 a{ color:inherit; text-decoration:none; }
 ::selection{ background:var(--blue); color:#0a0a0a; }
-::-webkit-scrollbar{ width:9px; }
+::-webkit-scrollbar{ width:10px; }
 ::-webkit-scrollbar-track{ background:var(--bg); }
-::-webkit-scrollbar-thumb{ background:#2a2a2a; border-radius:8px; }
-:focus-visible{ outline:1px solid var(--blue); outline-offset:3px; }
+::-webkit-scrollbar-thumb{ background:#2e2e2e; border-radius:8px; }
+:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:3px; }
+
+.mono{ font-family:var(--font-mono); }
 
 .page{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
 .skip-link{ position:absolute; left:-9999px; }
-.skip-link:focus{ left:24px; top:12px; background:var(--ink); color:#0a0a0a; padding:8px 14px; z-index:100; }
+.skip-link:focus{ left:24px; top:12px; background:var(--ink); color:#0a0a0a; padding:10px 16px; z-index:100; font-weight:600; }
 
 .reveal{ opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease; }
 .reveal.in{ opacity:1; transform:none; }
 
-/* ============ layout shell: sidebar + main ============ */
+/* ============================================================
+   LAYOUT: sidebar + main
+   ============================================================ */
 .shell{
   display:grid;
   grid-template-columns: var(--side-w) 1fr;
-  gap:64px;
+  gap:68px;
   padding-top:64px;
   align-items:start;
 }
-.sidebar{
-  position:sticky;
-  top:48px;
+.sidebar{ position:sticky; top:44px; }
+
+.avatar{
+  width:56px; height:56px;
+  border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(150deg, rgba(143,180,255,0.18), rgba(104,221,130,0.10));
+  border:1px solid var(--line);
+  font-family:var(--font-mono);
+  font-weight:700; font-size:18px; color:var(--ink);
+  margin-bottom:20px;
 }
-.tag{ color:var(--dim); font-size:13px; }
+.tag{ color:var(--dim); font-size:13.5px; font-family:var(--font-mono); }
 .tag .prompt{ color:var(--green); }
 h1{
-  font-size:28px;
+  font-family:var(--font-body);
+  font-size:29px;
   font-weight:800;
   letter-spacing:-0.02em;
-  margin:12px 0 18px;
+  margin:10px 0 16px;
   line-height:1.2;
 }
-.sidebar p.bio{ color:var(--dim); font-size:13.5px; line-height:1.65; margin-bottom:14px; }
+.sidebar p.bio{ color:var(--dim); font-size:14.5px; line-height:1.7; margin-bottom:14px; }
 .sidebar p.bio strong{ color:var(--ink); font-weight:600; }
+
 .status-line{
-  display:flex; align-items:flex-start; gap:8px;
-  margin:20px 0 30px;
-  font-size:12.5px;
+  display:flex; align-items:flex-start; gap:9px;
+  margin:22px 0 32px;
+  font-size:13px;
   color:var(--dim);
   line-height:1.6;
 }
-.dot{ width:7px; height:7px; margin-top:5px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(95,217,122,.5); animation:pulse 2.2s infinite; flex-shrink:0; }
-@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(95,217,122,.45);} 70%{box-shadow:0 0 0 7px rgba(95,217,122,0);} 100%{box-shadow:0 0 0 0 rgba(95,217,122,0);} }
-.status-line a{ color:var(--blue); border-bottom:1px solid rgba(127,168,255,.35); }
+.dot{ width:8px; height:8px; margin-top:5px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(104,221,130,.5); animation:pulse 2.2s infinite; flex-shrink:0; }
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(104,221,130,.45);} 70%{box-shadow:0 0 0 8px rgba(104,221,130,0);} 100%{box-shadow:0 0 0 0 rgba(104,221,130,0);} }
+.status-line a{ color:var(--blue); border-bottom:1px solid rgba(143,180,255,.4); font-weight:600; }
 .status-line a:hover{ border-color:var(--blue); }
 
-.side-block{ margin-top:30px; padding-top:22px; border-top:1px solid var(--line); }
-.side-block h4{ font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--faint); margin-bottom:12px; font-weight:600; }
+.side-block{ margin-top:28px; padding-top:22px; border-top:1px solid var(--line); }
+.side-block h4{ font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--faint); margin-bottom:12px; font-weight:700; }
 .side-block ul li{ list-style:none; }
-.side-block a{ display:flex; justify-content:space-between; font-size:13px; color:var(--dim); padding:6px 0; }
+.side-block a{ display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:500; color:var(--dim); padding:8px 0; transition:color .2s ease; }
 .side-block a:hover{ color:var(--blue); }
-.side-block a .arrow{ color:var(--faint); }
+.side-block a .arrow{ color:var(--faint); transition:transform .2s ease; }
+.side-block a:hover .arrow{ transform:translate(2px,-2px); color:var(--blue); }
 
-/* ============ main column ============ */
+/* ============================================================
+   MAIN
+   ============================================================ */
 .main{ min-width:0; }
-section{ padding:0 0 52px; border-bottom:1px solid var(--line); margin-bottom:52px; }
+section{ padding:0 0 56px; border-bottom:1px solid var(--line); margin-bottom:56px; }
 section:last-of-type{ border-bottom:none; margin-bottom:0; }
 
 .stitle{
   display:flex; align-items:baseline; gap:10px;
-  font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
-  color:var(--ink); margin-bottom:22px;
+  font-family:var(--font-mono);
+  font-size:13.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--ink); margin-bottom:24px;
 }
 .stitle::before{ content:"#"; color:var(--faint); font-weight:400; }
-.stitle .count{ font-weight:400; text-transform:none; letter-spacing:0; color:var(--faint); font-size:12px; }
+.stitle .count{ font-weight:400; text-transform:none; letter-spacing:0; color:var(--faint); font-size:12.5px; }
 
 /* ---- heatmap ---- */
-.heatmap-wrap{ border:1px solid var(--line); border-radius:6px; padding:18px 20px; overflow-x:auto; }
+.heatmap-wrap{ border:1px solid var(--line); border-radius:8px; padding:20px 22px; overflow-x:auto; background:var(--card); }
 .heatmap-grid{
   display:grid;
   grid-auto-flow:column;
-  grid-template-rows:repeat(7, 12px);
+  grid-template-rows:repeat(7, 13px);
   gap:3px;
   width:max-content;
 }
-.hm-cell{ width:12px; height:12px; border-radius:3px; background:#171717; }
-.heatmap-legend{ display:flex; align-items:center; gap:6px; margin-top:14px; font-size:11px; color:var(--faint); }
-.heatmap-legend .hm-cell{ width:10px; height:10px; }
-.gh-caption{ margin-top:12px; font-size:12.5px; color:var(--faint); }
-.gh-caption a{ color:var(--blue); }
+.hm-cell{ width:13px; height:13px; border-radius:3px; background:#1a1a1a; }
+.heatmap-legend{ display:flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; color:var(--faint); font-family:var(--font-mono); }
+.heatmap-legend .hm-cell{ width:11px; height:11px; }
+.gh-caption{ margin-top:14px; font-size:13.5px; color:var(--faint); }
+.gh-caption a{ color:var(--blue); font-weight:600; }
 
 /* ---- projects ---- */
 .proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.proj{ display:flex; gap:16px; padding:20px; border:1px solid var(--line); border-radius:8px; transition:border-color .25s ease; }
-.proj:hover{ border-color:#333; }
-.proj-num{ color:var(--faint); font-size:12px; }
+.proj{ display:flex; gap:16px; padding:22px; border:1px solid var(--line); border-radius:10px; background:var(--card); transition:border-color .25s ease, transform .25s ease; }
+.proj:hover{ border-color:#3a3a3a; transform:translateY(-2px); }
+.proj-num{ color:var(--faint); font-size:12px; font-family:var(--font-mono); margin-bottom:2px; }
 .proj-thumb{
-  width:52px; height:52px; border-radius:8px; flex-shrink:0;
-  background:linear-gradient(135deg, rgba(127,168,255,0.14), rgba(95,217,122,0.08));
+  width:54px; height:54px; border-radius:9px; flex-shrink:0;
+  background:linear-gradient(135deg, rgba(143,180,255,0.16), rgba(104,221,130,0.09));
   border:1px solid var(--line);
   display:flex; align-items:center; justify-content:center;
 }
-.proj-thumb svg{ width:20px; height:20px; color:var(--dim); }
+.proj-thumb svg{ width:21px; height:21px; color:var(--dim); }
 .proj-body{ flex:1; min-width:0; }
-.proj-body h3{ font-size:15.5px; font-weight:700; margin-bottom:4px; }
-.proj-stack{ font-size:11.5px; color:var(--blue); margin-bottom:8px; }
-.proj-body p{ font-size:13px; color:var(--dim); line-height:1.6; margin-bottom:10px; }
-.proj-links{ display:flex; gap:14px; font-size:12px; }
+.proj-body h3{ font-size:16px; font-weight:700; margin-bottom:4px; }
+.proj-stack{ font-family:var(--font-mono); font-size:11.5px; color:var(--blue); margin-bottom:9px; font-weight:600; }
+.proj-body p{ font-size:13.5px; color:var(--dim); line-height:1.6; margin-bottom:12px; }
+.proj-links{ display:flex; gap:16px; font-size:12.5px; font-weight:600; }
 .proj-links a{ color:var(--ink); border-bottom:1px solid var(--faint); }
 .proj-links a:hover{ color:var(--blue); border-color:var(--blue); }
 
 /* ---- interests ---- */
-.tagline{ display:flex; flex-wrap:wrap; gap:8px 12px; }
-.tagline span{ font-size:13px; color:var(--dim); }
-.tagline span::before{ content:"#"; color:var(--faint); }
-.tagline span:hover{ color:var(--blue); }
+.tagline{ display:flex; flex-wrap:wrap; gap:10px 12px; }
+.tagline span{
+  font-family:var(--font-mono); font-size:13px; font-weight:500; color:var(--dim);
+  padding:6px 12px; border:1px solid var(--line); border-radius:999px; background:var(--card);
+  transition:color .2s ease, border-color .2s ease;
+}
+.tagline span:hover{ color:var(--blue); border-color:var(--blue); }
 
-/* ---- terminal ---- */
-.term{ border:1px solid var(--line); border-radius:6px; background:#0d0d0d; }
-.term-bar{ display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--line); }
-.term-dot{ width:9px; height:9px; border-radius:50%; }
-.term-dot.r{ background:#ff5f57; } .term-dot.y{ background:#febc2e; } .term-dot.g{ background:#28c840; }
-.term-body{ padding:18px 16px; font-size:13.5px; min-height:150px; }
-.term-line{ display:flex; gap:8px; white-space:pre-wrap; }
-.term-prompt{ color:var(--green); }
-.term-out{ color:var(--dim); }
-.term-cursor{ display:inline-block; width:7px; height:14px; background:var(--blue); animation:blink 1s step-end infinite; }
+/* ---- terminal (Ubuntu / GNOME Terminal style) ---- */
+.term{
+  border-radius:8px;
+  overflow:hidden;
+  background:#2c0e26;
+  box-shadow:0 20px 50px -15px rgba(0,0,0,0.6);
+}
+.term-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px;
+  background:#3a1930;
+}
+.term-dot{ width:12px; height:12px; border-radius:50%; }
+.term-dot.r{ background:#e0554a; } .term-dot.y{ background:#e0a84a; } .term-dot.g{ background:#5cb85c; }
+.term-title{ flex:1; text-align:center; font-family:var(--font-mono); font-size:12.5px; color:#d9c3d2; }
+.term-body{ padding:18px 18px 26px; font-family:var(--font-mono); font-size:14px; line-height:1.85; min-height:190px; color:#f2f2f2; }
+.term-line{ display:flex; flex-wrap:wrap; gap:0; white-space:pre-wrap; }
+.term-prompt-user{ color:#8ae234; font-weight:600; }
+.term-prompt-path{ color:#729fcf; font-weight:600; margin-right:6px; }
+.term-out{ color:#d7d0d5; }
+.term-cursor{ display:inline-block; width:7px; height:15px; background:#f2f2f2; animation:blink 1s step-end infinite; vertical-align:text-bottom; }
 @keyframes blink{ 50%{opacity:0;} }
 
 /* ---- contact ---- */
-.contact p{ color:var(--dim); font-size:14px; margin-bottom:6px; }
-.contact a.email{ color:var(--blue); border-bottom:1px solid rgba(127,168,255,.35); }
+.contact p{ color:var(--dim); font-size:15px; margin-bottom:8px; }
+.contact a.email{ color:var(--blue); font-weight:600; border-bottom:1px solid rgba(143,180,255,.4); }
+.contact a.email:hover{ border-color:var(--blue); }
 
-footer{ padding:28px 0 60px; font-size:12px; color:var(--faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; grid-column:1/-1; }
+footer{ padding:32px 0 64px; font-size:12.5px; color:var(--faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; grid-column:1/-1; }
 footer a{ color:var(--faint); }
 footer a:hover{ color:var(--dim); }
 
-/* ============ responsive ============ */
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width:900px){
   .shell{ grid-template-columns:1fr; gap:0; padding-top:48px; }
-  .sidebar{ position:static; margin-bottom:44px; padding-bottom:32px; border-bottom:1px solid var(--line); }
+  .sidebar{ position:static; margin-bottom:46px; padding-bottom:34px; border-bottom:1px solid var(--line); }
   .proj-grid{ grid-template-columns:1fr; }
 }
 @media (max-width:520px){
   .page{ padding:0 20px; }
-  section{ padding-bottom:40px; margin-bottom:40px; }
+  section{ padding-bottom:42px; margin-bottom:42px; }
   .proj{ flex-direction:column; }
-  .proj-thumb{ width:40px; height:40px; }
+  .proj-thumb{ width:42px; height:42px; }
+  body{ font-size:15.5px; }
 }
 </style>
 </head>
@@ -185,8 +227,9 @@ footer a:hover{ color:var(--dim); }
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
+    <div class="avatar">PG</div>
     <div class="tag"><span class="prompt">$</span> whoami</div>
-    <h1>Priyanshu<br>Gupta</h1>
+    <h1>Priyanshu Gupta</h1>
     <p class="bio">CS student. Focused on <strong>algorithms</strong>, <strong>operating systems</strong>, <strong>Linux</strong>, and <strong>mathematics</strong> — understanding how things work before using them.</p>
     <p class="bio">Daily DSA + C++ practice, learning Linux internals, building toward systems, AI, and cybersecurity.</p>
     <div class="status-line">
@@ -197,20 +240,20 @@ footer a:hover{ color:var(--dim); }
     <div class="side-block">
       <h4>Profiles</h4>
       <ul>
-        <li><a href="https://github.com/priyanshubuild" target="_blank" rel="noopener">github <span class="arrow">↗</span></a></li>
-        <li><a href="https://leetcode.com/u/Priyanshuguptaleetcode/" target="_blank" rel="noopener">leetcode <span class="arrow">↗</span></a></li>
-        <li><a href="https://codeforces.com/profile/priyanshuguptacf" target="_blank" rel="noopener">codeforces <span class="arrow">↗</span></a></li>
-        <li><a href="https://www.codechef.com/users/priyanshucf" target="_blank" rel="noopener">codechef <span class="arrow">↗</span></a></li>
-        <li><a href="https://www.hackerrank.com/profile/priyanshug1408" target="_blank" rel="noopener">hackerrank <span class="arrow">↗</span></a></li>
+        <li><a href="https://github.com/priyanshubuild" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a></li>
+        <li><a href="https://leetcode.com/u/Priyanshuguptaleetcode/" target="_blank" rel="noopener">LeetCode <span class="arrow">↗</span></a></li>
+        <li><a href="https://codeforces.com/profile/priyanshuguptacf" target="_blank" rel="noopener">Codeforces <span class="arrow">↗</span></a></li>
+        <li><a href="https://www.codechef.com/users/priyanshucf" target="_blank" rel="noopener">CodeChef <span class="arrow">↗</span></a></li>
+        <li><a href="https://www.hackerrank.com/profile/priyanshug1408" target="_blank" rel="noopener">HackerRank <span class="arrow">↗</span></a></li>
       </ul>
     </div>
 
     <div class="side-block">
       <h4>Follow</h4>
       <ul>
-        <li><a href="https://www.linkedin.com/in/priyanshubuild/" target="_blank" rel="noopener">linkedin <span class="arrow">↗</span></a></li>
-        <li><a href="https://x.com/priyanshustwt" target="_blank" rel="noopener">twitter / x <span class="arrow">↗</span></a></li>
-        <li><a href="mailto:priyanshug1408@gmail.com">email <span class="arrow">↗</span></a></li>
+        <li><a href="https://www.linkedin.com/in/priyanshubuild/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a></li>
+        <li><a href="https://x.com/priyanshustwt" target="_blank" rel="noopener">Twitter / X <span class="arrow">↗</span></a></li>
+        <li><a href="mailto:priyanshug1408@gmail.com">Email <span class="arrow">↗</span></a></li>
       </ul>
     </div>
   </aside>
@@ -225,11 +268,11 @@ footer a:hover{ color:var(--dim); }
           <div class="heatmap-grid" id="heatmap-grid"></div>
           <div class="heatmap-legend">
             <span>less</span>
-            <span class="hm-cell" style="background:#171717"></span>
-            <span class="hm-cell" style="background:#1f3d29"></span>
-            <span class="hm-cell" style="background:#2c6b3f"></span>
-            <span class="hm-cell" style="background:#3fa859"></span>
-            <span class="hm-cell" style="background:#5fd97a"></span>
+            <span class="hm-cell" style="background:#1a1a1a"></span>
+            <span class="hm-cell" style="background:#234a30"></span>
+            <span class="hm-cell" style="background:#2f7c45"></span>
+            <span class="hm-cell" style="background:#45b563"></span>
+            <span class="hm-cell" style="background:#68dd82"></span>
             <span>more</span>
           </div>
         </div>
@@ -295,7 +338,10 @@ footer a:hover{ color:var(--dim); }
     <section id="terminal">
       <div class="stitle reveal">shell</div>
       <div class="term reveal">
-        <div class="term-bar"><span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span></div>
+        <div class="term-bar">
+          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+          <span class="term-title">priyanshu@ubuntu: ~</span>
+        </div>
         <div class="term-body" id="term-body"></div>
       </div>
     </section>
@@ -304,7 +350,7 @@ footer a:hover{ color:var(--dim); }
       <div class="stitle reveal">get in touch</div>
       <div class="reveal">
         <p>Open to internships, collabs, or just talking CS and Linux.</p>
-        <p>Reach me at <a class="email" href="mailto:hello@priyanshugupta.example">priyanshug1408@gmail.com</a></p>
+        <p>Reach me at <a class="email" href="mailto:priyanshug1408@gmail.com">priyanshug1408@gmail.com</a></p>
       </div>
     </section>
 
@@ -326,7 +372,7 @@ const io = new IntersectionObserver((entries)=>{
 }, { threshold:0.12 });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* ================= TERMINAL ================= */
+/* ================= TERMINAL (Ubuntu bash prompt: user@host:~$) ================= */
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const termBody = document.getElementById('term-body');
 const script = [
@@ -339,6 +385,11 @@ const script = [
   { type:'cmd', text:'cat philosophy.txt' },
   { type:'out', text:'Understand first.\nBuild second.' }
 ];
+
+function promptHTML(){
+  return `<span class="term-prompt-user">priyanshu@ubuntu</span><span class="term-out">:</span><span class="term-prompt-path">~$</span>`;
+}
+
 let started = false;
 new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting && !started){ started = true; runTerm(); } });
@@ -347,7 +398,7 @@ new IntersectionObserver((entries)=>{
 function runTerm(){
   if(prefersReduced){
     termBody.innerHTML = script.map(l => l.type==='cmd'
-      ? `<div class="term-line"><span class="term-prompt">$</span><span>${l.text}</span></div>`
+      ? `<div class="term-line">${promptHTML()}&nbsp;${l.text}</div>`
       : `<div class="term-line"><span class="term-out">${l.text.replace(/\n/g,'<br>')}</span></div>`
     ).join('');
     return;
@@ -360,7 +411,8 @@ function runTerm(){
     line.className = 'term-line';
     termBody.appendChild(line);
     if(item.type === 'cmd'){
-      const prompt = document.createElement('span'); prompt.className='term-prompt'; prompt.textContent='$';
+      const prompt = document.createElement('span');
+      prompt.innerHTML = promptHTML() + '&nbsp;';
       const txt = document.createElement('span');
       const cur = document.createElement('span'); cur.className='term-cursor';
       line.append(prompt, txt, cur);
@@ -412,7 +464,6 @@ function renderHeatmap(counts){
   today.setHours(0,0,0,0);
   const start = new Date(today);
   start.setDate(start.getDate() - (days - 1));
-  // align to previous Sunday
   start.setDate(start.getDate() - start.getDay());
 
   const cells = [];
@@ -446,11 +497,11 @@ function renderHeatmap(counts){
 }
 
 function levelColor(count){
-  if(count <= 0) return '#171717';
-  if(count === 1) return '#1f3d29';
-  if(count <= 3) return '#2c6b3f';
-  if(count <= 6) return '#3fa859';
-  return '#5fd97a';
+  if(count <= 0) return '#1a1a1a';
+  if(count === 1) return '#234a30';
+  if(count <= 3) return '#2f7c45';
+  if(count <= 6) return '#45b563';
+  return '#68dd82';
 }
 
 loadHeatmap();
