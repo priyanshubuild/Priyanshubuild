@@ -1,6 +1,3 @@
-
-
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,14 +39,14 @@ a{ color:inherit; text-decoration:none; }
 ::-webkit-scrollbar-track{ background:var(--bg); }
 ::-webkit-scrollbar-thumb{ background:#2a2a2a; border-radius:8px; }
 :focus-visible{ outline:1px solid var(--blue); outline-offset:3px; }
- 
+
 .page{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
 .skip-link{ position:absolute; left:-9999px; }
 .skip-link:focus{ left:24px; top:12px; background:var(--ink); color:#0a0a0a; padding:8px 14px; z-index:100; }
- 
+
 .reveal{ opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease; }
 .reveal.in{ opacity:1; transform:none; }
- 
+
 /* ============ layout shell: sidebar + main ============ */
 .shell{
   display:grid;
@@ -84,19 +81,19 @@ h1{
 @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(95,217,122,.45);} 70%{box-shadow:0 0 0 7px rgba(95,217,122,0);} 100%{box-shadow:0 0 0 0 rgba(95,217,122,0);} }
 .status-line a{ color:var(--blue); border-bottom:1px solid rgba(127,168,255,.35); }
 .status-line a:hover{ border-color:var(--blue); }
- 
+
 .side-block{ margin-top:30px; padding-top:22px; border-top:1px solid var(--line); }
 .side-block h4{ font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--faint); margin-bottom:12px; font-weight:600; }
 .side-block ul li{ list-style:none; }
 .side-block a{ display:flex; justify-content:space-between; font-size:13px; color:var(--dim); padding:6px 0; }
 .side-block a:hover{ color:var(--blue); }
 .side-block a .arrow{ color:var(--faint); }
- 
+
 /* ============ main column ============ */
 .main{ min-width:0; }
 section{ padding:0 0 52px; border-bottom:1px solid var(--line); margin-bottom:52px; }
 section:last-of-type{ border-bottom:none; margin-bottom:0; }
- 
+
 .stitle{
   display:flex; align-items:baseline; gap:10px;
   font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
@@ -104,7 +101,7 @@ section:last-of-type{ border-bottom:none; margin-bottom:0; }
 }
 .stitle::before{ content:"#"; color:var(--faint); font-weight:400; }
 .stitle .count{ font-weight:400; text-transform:none; letter-spacing:0; color:var(--faint); font-size:12px; }
- 
+
 /* ---- heatmap ---- */
 .heatmap-wrap{ border:1px solid var(--line); border-radius:6px; padding:18px 20px; overflow-x:auto; }
 .heatmap-grid{
@@ -119,7 +116,7 @@ section:last-of-type{ border-bottom:none; margin-bottom:0; }
 .heatmap-legend .hm-cell{ width:10px; height:10px; }
 .gh-caption{ margin-top:12px; font-size:12.5px; color:var(--faint); }
 .gh-caption a{ color:var(--blue); }
- 
+
 /* ---- projects ---- */
 .proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 .proj{ display:flex; gap:16px; padding:20px; border:1px solid var(--line); border-radius:8px; transition:border-color .25s ease; }
@@ -139,13 +136,13 @@ section:last-of-type{ border-bottom:none; margin-bottom:0; }
 .proj-links{ display:flex; gap:14px; font-size:12px; }
 .proj-links a{ color:var(--ink); border-bottom:1px solid var(--faint); }
 .proj-links a:hover{ color:var(--blue); border-color:var(--blue); }
- 
+
 /* ---- interests ---- */
 .tagline{ display:flex; flex-wrap:wrap; gap:8px 12px; }
 .tagline span{ font-size:13px; color:var(--dim); }
 .tagline span::before{ content:"#"; color:var(--faint); }
 .tagline span:hover{ color:var(--blue); }
- 
+
 /* ---- terminal ---- */
 .term{ border:1px solid var(--line); border-radius:6px; background:#0d0d0d; }
 .term-bar{ display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--line); }
@@ -157,15 +154,15 @@ section:last-of-type{ border-bottom:none; margin-bottom:0; }
 .term-out{ color:var(--dim); }
 .term-cursor{ display:inline-block; width:7px; height:14px; background:var(--blue); animation:blink 1s step-end infinite; }
 @keyframes blink{ 50%{opacity:0;} }
- 
+
 /* ---- contact ---- */
 .contact p{ color:var(--dim); font-size:14px; margin-bottom:6px; }
 .contact a.email{ color:var(--blue); border-bottom:1px solid rgba(127,168,255,.35); }
- 
+
 footer{ padding:28px 0 60px; font-size:12px; color:var(--faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; grid-column:1/-1; }
 footer a{ color:var(--faint); }
 footer a:hover{ color:var(--dim); }
- 
+
 /* ============ responsive ============ */
 @media (max-width:900px){
   .shell{ grid-template-columns:1fr; gap:0; padding-top:48px; }
@@ -182,10 +179,10 @@ footer a:hover{ color:var(--dim); }
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
- 
+
 <div class="page">
 <div class="shell">
- 
+
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="tag"><span class="prompt">$</span> whoami</div>
@@ -196,7 +193,7 @@ footer a:hover{ color:var(--dim); }
       <span class="dot"></span>
       <span>Open to internships &amp; collabs — <a href="#contact">get in touch</a></span>
     </div>
- 
+
     <div class="side-block">
       <h4>Profiles</h4>
       <ul>
@@ -207,7 +204,7 @@ footer a:hover{ color:var(--dim); }
         <li><a href="https://www.hackerrank.com/profile/priyanshug1408" target="_blank" rel="noopener">hackerrank <span class="arrow">↗</span></a></li>
       </ul>
     </div>
- 
+
     <div class="side-block">
       <h4>Follow</h4>
       <ul>
@@ -217,10 +214,10 @@ footer a:hover{ color:var(--dim); }
       </ul>
     </div>
   </aside>
- 
+
   <!-- MAIN -->
   <main id="main" class="main">
- 
+
     <section id="github">
       <div class="stitle reveal">activity <span class="count" id="hm-count"></span></div>
       <div class="reveal">
@@ -239,7 +236,7 @@ footer a:hover{ color:var(--dim); }
         <p class="gh-caption">Recent public activity from <a href="https://github.com/priyanshubuild" target="_blank" rel="noopener">github.com/priyanshubuild</a> — full history on the profile itself.</p>
       </div>
     </section>
- 
+
     <section id="projects">
       <div class="stitle reveal">projects</div>
       <div class="proj-grid">
@@ -285,7 +282,7 @@ footer a:hover{ color:var(--dim); }
         </div>
       </div>
     </section>
- 
+
     <section id="interests">
       <div class="stitle reveal">interests</div>
       <div class="tagline reveal">
@@ -294,7 +291,7 @@ footer a:hover{ color:var(--dim); }
         <span>ai</span><span>cybersecurity</span><span>git</span><span>networks</span>
       </div>
     </section>
- 
+
     <section id="terminal">
       <div class="stitle reveal">shell</div>
       <div class="term reveal">
@@ -302,7 +299,7 @@ footer a:hover{ color:var(--dim); }
         <div class="term-body" id="term-body"></div>
       </div>
     </section>
- 
+
     <section id="contact">
       <div class="stitle reveal">get in touch</div>
       <div class="reveal">
@@ -310,25 +307,25 @@ footer a:hover{ color:var(--dim); }
         <p>Reach me at <a class="email" href="mailto:hello@priyanshugupta.example">hello@priyanshugupta.example</a></p>
       </div>
     </section>
- 
+
   </main>
- 
+
   <footer>
     <span>&copy; <span id="year"></span> Priyanshu Gupta</span>
     <span><a href="#main">back to top ↑</a></span>
   </footer>
- 
+
 </div>
 </div>
- 
+
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
- 
+
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold:0.12 });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
- 
+
 /* ================= TERMINAL ================= */
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const termBody = document.getElementById('term-body');
@@ -346,7 +343,7 @@ let started = false;
 new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting && !started){ started = true; runTerm(); } });
 }, { threshold:0.3 }).observe(document.querySelector('.term'));
- 
+
 function runTerm(){
   if(prefersReduced){
     termBody.innerHTML = script.map(l => l.type==='cmd'
@@ -380,19 +377,19 @@ function runTerm(){
   }
   next();
 }
- 
+
 /* ================= LIVE GITHUB HEATMAP ================= */
 const GH_USER = 'priyanshubuild';
 const hmGrid = document.getElementById('heatmap-grid');
 const hmCount = document.getElementById('hm-count');
 const hmWrap = document.getElementById('heatmap-wrap');
- 
+
 async function loadHeatmap(){
   try{
     const res = await fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=100`);
     if(!res.ok) throw new Error('bad response');
     const events = await res.json();
- 
+
     const counts = {};
     events.forEach(e=>{
       const date = e.created_at.slice(0,10);
@@ -402,13 +399,13 @@ async function loadHeatmap(){
       }
       counts[date] = (counts[date] || 0) + inc;
     });
- 
+
     renderHeatmap(counts);
   } catch(err){
     hmWrap.innerHTML = '<p class="gh-caption">Live activity couldn\'t load right now — view it directly on <a href="https://github.com/'+GH_USER+'" target="_blank" rel="noopener">GitHub</a>.</p>';
   }
 }
- 
+
 function renderHeatmap(counts){
   const days = 91;
   const today = new Date();
@@ -417,12 +414,12 @@ function renderHeatmap(counts){
   start.setDate(start.getDate() - (days - 1));
   // align to previous Sunday
   start.setDate(start.getDate() - start.getDay());
- 
+
   const cells = [];
   const cursor = new Date(start);
   const totalCells = Math.ceil((today - start) / 86400000) + 1;
   let total = 0;
- 
+
   for(let i=0; i<totalCells; i++){
     const key = cursor.toISOString().slice(0,10);
     const isFuture = cursor > today;
@@ -431,7 +428,7 @@ function renderHeatmap(counts){
     cells.push({ date:key, count: isFuture ? null : count });
     cursor.setDate(cursor.getDate() + 1);
   }
- 
+
   hmGrid.innerHTML = '';
   cells.forEach(c=>{
     const div = document.createElement('div');
@@ -444,10 +441,10 @@ function renderHeatmap(counts){
     }
     hmGrid.appendChild(div);
   });
- 
+
   hmCount.textContent = `${total} events, last 90 days`;
 }
- 
+
 function levelColor(count){
   if(count <= 0) return '#171717';
   if(count === 1) return '#1f3d29';
@@ -455,11 +452,8 @@ function levelColor(count){
   if(count <= 6) return '#3fa859';
   return '#5fd97a';
 }
- 
+
 loadHeatmap();
 </script>
 </body>
 </html>
- 
-
-
