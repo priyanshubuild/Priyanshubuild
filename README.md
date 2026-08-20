@@ -1,19 +1,20 @@
-# $whoami
+# $ whoami
 
-CS student. Focused on algorithms, operating systems, Linux, and mathematics — understanding how things work before using them.
+First-year CSE student focused on **DSA**, **C++**, **Linux**, and **mathematics** — building strong fundamentals and trying to understand how things work, not just how to use them.
 
-Daily DSA + C++ practice, learning Linux internals, building toward systems, AI, and cybersecurity.
+Currently practicing DSA and C++, learning Linux and Git, and exploring web development.
 
 ## Currently
 
 - `DSA` — daily practice, arrays to trees
-- `C++` — core language
-- `Linux` — internals, not just usage
-- `Git` — daily driver
+- `C++` — core programming and problem solving
+- `Linux` — learning the command line and system fundamentals
+- `Git` — version control and everyday development
+- `Web Development` — learning HTML, CSS & JavaScript
 
 ## Interests
 
-`dsa` `cpp` `linux` `operating-systems` `system-design` `mathematics` `physics` `ai` `cybersecurity` `networks`
+`dsa` `cpp` `linux` `operating-systems` `mathematics` `physics`
 
 ## Activity
 
@@ -28,7 +29,6 @@ Daily DSA + C++ practice, learning Linux internals, building toward systems, AI,
 | LeetCode | [Priyanshuguptaleetcode](https://leetcode.com/u/Priyanshuguptaleetcode/) |
 | Codeforces | [priyanshuguptacf](https://codeforces.com/profile/priyanshuguptacf) |
 | CodeChef | [priyanshucf](https://www.codechef.com/users/priyanshucf) |
-| HackerRank | [priyanshug1408](https://www.hackerrank.com/profile/priyanshug1408) |
 | LinkedIn | [priyanshubuild](https://www.linkedin.com/in/priyanshubuild/) |
 | X | [@priyanshustwt](https://x.com/priyanshustwt) |
 | Email | [priyanshug1408@gmail.com](mailto:priyanshug1408@gmail.com) |
