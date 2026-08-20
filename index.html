@@ -3,25 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$whoami — Priyanshu Gupta</title>
+<title>priyanshugupta.com — about.js</title>
 <meta name="description" content="Priyanshu Gupta — CS student focused on algorithms, operating systems, Linux, and mathematics. Portfolio, projects, and coding profiles.">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#1e1e1e">
 <link rel="canonical" href="https://priyanshugupta.com/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Priyanshu Gupta — CS Student">
 <meta property="og:description" content="CS student focused on algorithms, operating systems, Linux, and mathematics.">
 <meta property="og:url" content="https://priyanshugupta.com/">
 <meta property="og:site_name" content="Priyanshu Gupta">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Priyanshu Gupta — CS Student">
 <meta name="twitter:description" content="CS student focused on algorithms, operating systems, Linux, and mathematics.">
 <meta name="twitter:site" content="@priyanshustwt">
 
-<!-- Structured data: helps Google understand this page is a person's profile -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,474 +38,689 @@
   ]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%237fa8ff' font-family='monospace'%3E%3E_%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e1e1e'/%3E%3Ctext x='50' y='66' font-size='40' text-anchor='middle' fill='%23569cd6' font-family='monospace'%3E%3C/%3E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   TOKENS — tuned for high readability / high contrast
+   TOKENS — VS Code Dark+ inspired syntax theme
    ============================================================ */
 :root{
-  --bg:#0a0a0a;
-  --ink:#f5f5f6;        /* brighter than before for clarity */
-  --dim:#a3a3a6;        /* raised from #8a8a8a for contrast */
-  --faint:#7a7a7d;       /* raised from #5c5c5c — still hits AA on labels */
-  --line:#232323;
-  --card:#111113;
-  --blue:#8fb4ff;
-  --green:#68dd82;
-  --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --page-bg:#0d0d0d;
+  --win-bg:#1e1e1e;
+  --sidebar-bg:#1a1a1a;
+  --activity-bg:#242424;
+  --tab-bg:#1a1a1a;
+  --tab-active-bg:#1e1e1e;
+  --statusbar-bg:#0563aa;
+  --border:#2b2b2b;
+  --line:#2b2b2b;
+  --text:#d4d4d4;
+  --text-bright:#f2f2f2;
+  --text-dim:#8a8a8a;
+  --linenum:#5a5a5a;
+  --sel:#264f78;
+
+  --kw:#569cd6;      /* keywords: const, export, import */
+  --str:#ce9178;     /* strings */
+  --cmt:#6a9955;     /* comments */
+  --prop:#9cdcfe;    /* object keys / attributes */
+  --fn:#dcdcaa;      /* function / tag names */
+  --num:#b5cea8;     /* numbers */
+  --punc:#d4d4d4;
+  --accent:#3794ff;  /* interactive accent (links, active states) */
+  --accent2:#4ec9b0; /* teal — secondary accent (types) */
+  --warn:#e0a84a;
+
   --font-mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --maxw:1160px;
-  --side-w:290px;
+  --font-ui:'Inter', -apple-system, sans-serif;
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 @media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
 body{
-  background:var(--bg); color:var(--ink);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.65;
+  background:var(--page-bg);
+  color:var(--text);
+  font-family:var(--font-ui);
   -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
 }
 a{ color:inherit; text-decoration:none; }
-::selection{ background:var(--blue); color:#0a0a0a; }
-::-webkit-scrollbar{ width:10px; }
-::-webkit-scrollbar-track{ background:var(--bg); }
-::-webkit-scrollbar-thumb{ background:#2e2e2e; border-radius:8px; }
-:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:3px; }
+::selection{ background:var(--sel); color:#fff; }
+::-webkit-scrollbar{ width:11px; height:11px; }
+::-webkit-scrollbar-track{ background:transparent; }
+::-webkit-scrollbar-thumb{ background:#3c3c3c; border-radius:6px; border:2px solid var(--win-bg); }
+::-webkit-scrollbar-thumb:hover{ background:#4a4a4a; }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+.skip-link{ position:absolute; left:-9999px; }
+.skip-link:focus{ left:16px; top:12px; background:#fff; color:#000; padding:8px 14px; z-index:999; font-weight:700; border-radius:4px; }
 
 .mono{ font-family:var(--font-mono); }
 
-.page{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
-.skip-link{ position:absolute; left:-9999px; }
-.skip-link:focus{ left:24px; top:12px; background:var(--ink); color:#0a0a0a; padding:10px 16px; z-index:100; font-weight:600; }
-
-.reveal{ opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease; }
-.reveal.in{ opacity:1; transform:none; }
-
 /* ============================================================
-   LAYOUT: sidebar + main
+   PAGE WRAP + WINDOW CHROME
    ============================================================ */
-.shell{
-  display:grid;
-  grid-template-columns: var(--side-w) 1fr;
-  gap:68px;
-  padding-top:64px;
-  align-items:start;
-}
-.sidebar{ position:sticky; top:44px; }
+.page{ max-width:1320px; margin:0 auto; padding:26px 22px 60px; }
 
-.avatar{
-  width:56px; height:56px;
-  border-radius:14px;
-  display:flex; align-items:center; justify-content:center;
-  background:linear-gradient(150deg, rgba(143,180,255,0.18), rgba(104,221,130,0.10));
-  border:1px solid var(--line);
-  font-family:var(--font-mono);
-  font-weight:700; font-size:18px; color:var(--ink);
-  margin-bottom:20px;
-}
-.tag{ color:var(--dim); font-size:13.5px; font-family:var(--font-mono); }
-.tag .prompt{ color:var(--green); }
-h1{
-  font-family:var(--font-body);
-  font-size:clamp(24px, 6vw, 29px);
-  font-weight:800;
-  letter-spacing:-0.02em;
-  margin:10px 0 16px;
-  line-height:1.2;
-}
-.sidebar p.bio{ color:var(--dim); font-size:14.5px; line-height:1.7; margin-bottom:14px; }
-.sidebar p.bio strong{ color:var(--ink); font-weight:600; }
-
-.status-line{
-  display:flex; align-items:flex-start; gap:9px;
-  margin:22px 0 32px;
-  font-size:13px;
-  color:var(--dim);
-  line-height:1.6;
-}
-.dot{ width:8px; height:8px; margin-top:5px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(104,221,130,.5); animation:pulse 2.2s infinite; flex-shrink:0; }
-@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(104,221,130,.45);} 70%{box-shadow:0 0 0 8px rgba(104,221,130,0);} 100%{box-shadow:0 0 0 0 rgba(104,221,130,0);} }
-.status-line a{ color:var(--blue); border-bottom:1px solid rgba(143,180,255,.4); font-weight:600; }
-.status-line a:hover{ border-color:var(--blue); }
-
-.side-block{ margin-top:28px; padding-top:22px; border-top:1px solid var(--line); }
-.side-block h4{ font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--faint); margin-bottom:12px; font-weight:700; }
-.side-block ul li{ list-style:none; }
-.side-block a{ display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:500; color:var(--dim); padding:10px 0; min-height:24px; transition:color .2s ease; }
-.side-block a:hover{ color:var(--blue); }
-.side-block a .arrow{ color:var(--faint); transition:transform .2s ease; }
-.side-block a:hover .arrow{ transform:translate(2px,-2px); color:var(--blue); }
-
-/* ============================================================
-   MAIN
-   ============================================================ */
-.main{ min-width:0; }
-section{ padding:0 0 56px; border-bottom:1px solid var(--line); margin-bottom:56px; }
-section:last-of-type{ border-bottom:none; margin-bottom:0; }
-
-.stitle{
-  display:flex; align-items:baseline; gap:10px;
-  font-family:var(--font-mono);
-  font-size:13.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
-  color:var(--ink); margin-bottom:24px;
-}
-.stitle::before{ content:"#"; color:var(--faint); font-weight:400; }
-.stitle .count{ font-weight:400; text-transform:none; letter-spacing:0; color:var(--faint); font-size:12.5px; }
-
-/* ---- heatmap ---- */
-.heatmap-wrap{ border:1px solid var(--line); border-radius:8px; padding:20px 22px; overflow-x:auto; background:var(--card); }
-.heatmap-grid{
-  display:grid;
-  grid-auto-flow:column;
-  grid-template-rows:repeat(7, 13px);
-  gap:3px;
-  width:max-content;
-}
-.hm-cell{ width:13px; height:13px; border-radius:3px; background:#1a1a1a; }
-.heatmap-legend{ display:flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; color:var(--faint); font-family:var(--font-mono); }
-.heatmap-legend .hm-cell{ width:11px; height:11px; }
-.gh-caption{ margin-top:14px; font-size:13.5px; color:var(--faint); }
-.gh-caption a{ color:var(--blue); font-weight:600; }
-.hm-fallback{ display:flex; gap:16px; align-items:flex-start; padding:6px 4px; }
-.hm-fallback svg{ width:26px; height:26px; color:var(--faint); flex-shrink:0; margin-top:2px; }
-.hm-fallback-title{ font-weight:700; font-size:14.5px; color:var(--ink); }
-
-/* ---- projects ---- */
-.proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.proj{ display:flex; gap:16px; padding:22px; border:1px solid var(--line); border-radius:10px; background:var(--card); transition:border-color .25s ease, transform .25s ease; }
-.proj:hover{ border-color:#3a3a3a; transform:translateY(-2px); }
-.proj-num{ color:var(--faint); font-size:12px; font-family:var(--font-mono); margin-bottom:2px; }
-.proj-thumb{
-  width:54px; height:54px; border-radius:9px; flex-shrink:0;
-  background:linear-gradient(135deg, rgba(143,180,255,0.16), rgba(104,221,130,0.09));
-  border:1px solid var(--line);
-  display:flex; align-items:center; justify-content:center;
-}
-.proj-thumb svg{ width:21px; height:21px; color:var(--dim); }
-.proj-body{ flex:1; min-width:0; }
-.proj-body h3{ font-size:16px; font-weight:700; margin-bottom:4px; }
-.proj-stack{ font-family:var(--font-mono); font-size:11.5px; color:var(--blue); margin-bottom:9px; font-weight:600; }
-.proj-body p{ font-size:13.5px; color:var(--dim); line-height:1.6; margin-bottom:12px; }
-.proj-links{ display:flex; gap:16px; font-size:12.5px; font-weight:600; }
-.proj-links a{ color:var(--ink); border-bottom:1px solid var(--faint); }
-.proj-links a:hover{ color:var(--blue); border-color:var(--blue); }
-
-/* ---- interests ---- */
-.tagline{ display:flex; flex-wrap:wrap; gap:10px 12px; }
-.tagline span{
-  font-family:var(--font-mono); font-size:13px; font-weight:500; color:var(--dim);
-  padding:6px 12px; border:1px solid var(--line); border-radius:999px; background:var(--card);
-  transition:color .2s ease, border-color .2s ease;
-}
-.tagline span:hover{ color:var(--blue); border-color:var(--blue); }
-
-/* ---- terminal (Ubuntu / GNOME Terminal style) ---- */
-.term{
-  border-radius:8px;
+.ide-window{
+  background:var(--win-bg);
+  border:1px solid #303030;
+  border-radius:9px;
   overflow:hidden;
-  background:#2c0e26;
-  box-shadow:0 20px 50px -15px rgba(0,0,0,0.6);
+  box-shadow:0 40px 90px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.02);
 }
-.term-bar{
-  display:flex; align-items:center; gap:8px;
+
+.title-bar{
+  display:flex; align-items:center; gap:14px;
+  background:#242424;
   padding:10px 14px;
-  background:#3a1930;
+  border-bottom:1px solid var(--border);
 }
-.term-dot{ width:12px; height:12px; border-radius:50%; }
-.term-dot.r{ background:#e0554a; } .term-dot.y{ background:#e0a84a; } .term-dot.g{ background:#5cb85c; }
-.term-title{ flex:1; text-align:center; font-family:var(--font-mono); font-size:12.5px; color:#d9c3d2; }
-.term-body{ padding:18px 18px 26px; font-family:var(--font-mono); font-size:14px; line-height:1.85; min-height:190px; color:#f2f2f2; }
-.term-line{ display:flex; flex-wrap:wrap; gap:0; white-space:pre-wrap; }
-.term-prompt-user{ color:#8ae234; font-weight:600; }
-.term-prompt-path{ color:#729fcf; font-weight:600; margin-right:6px; }
-.term-out{ color:#d7d0d5; }
-.term-cursor{ display:inline-block; width:7px; height:15px; background:#f2f2f2; animation:blink 1s step-end infinite; vertical-align:text-bottom; }
-@keyframes blink{ 50%{opacity:0;} }
+.tl-dots{ display:flex; gap:7px; flex-shrink:0; }
+.tl-dot{ width:11px; height:11px; border-radius:50%; }
+.tl-dot.r{ background:#ec6a5e; } .tl-dot.y{ background:#f4bf4f; } .tl-dot.g{ background:#61c454; }
+.title-bar .win-title{
+  flex:1; text-align:center; font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim);
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.menu-toggle{
+  display:none; background:none; border:none; color:var(--text-dim); cursor:pointer; padding:4px;
+  flex-shrink:0;
+}
+.menu-toggle svg{ width:18px; height:18px; display:block; }
 
-/* ---- contact ---- */
-.contact p{ color:var(--dim); font-size:15px; margin-bottom:8px; }
-.contact a.email{ color:var(--blue); font-weight:600; border-bottom:1px solid rgba(143,180,255,.4); }
-.contact a.email:hover{ border-color:var(--blue); }
-
-footer{
-  max-width:var(--maxw); margin:0 auto; padding:44px 32px 56px;
+.ide-body{
+  display:flex;
+  height:min(74vh, 700px);
+  min-height:460px;
   position:relative;
 }
-footer::before{
-  content:"";
-  display:block;
-  height:1px;
-  margin-bottom:36px;
-  background:linear-gradient(90deg, var(--line) 0%, #3a3a3a 50%, var(--line) 100%);
+
+/* ---- activity bar ---- */
+.activity-bar{
+  width:48px; flex-shrink:0;
+  background:var(--activity-bg);
+  border-right:1px solid var(--border);
+  display:flex; flex-direction:column; align-items:center;
+  padding:12px 0; gap:4px;
 }
-.footer-inner{
-  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+.act-icon{
+  width:44px; height:40px; display:flex; align-items:center; justify-content:center;
+  color:var(--text-dim); border-left:2px solid transparent; cursor:pointer; position:relative;
 }
-.footer-left{ max-width:440px; }
-.footer-brand{ font-family:var(--font-mono); font-size:13px; color:var(--dim); margin-bottom:8px; }
-.footer-brand .prompt{ color:var(--green); }
-.footer-left p{ font-size:12.5px; color:var(--faint); line-height:1.6; }
-.footer-links{ display:flex; gap:20px; flex-wrap:wrap; }
-.footer-links a{ font-size:13px; font-weight:500; color:var(--dim); transition:color .2s ease; }
-.footer-links a:hover{ color:var(--blue); }
-.footer-top{
-  width:38px; height:38px; border-radius:50%; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  border:1px solid var(--line); background:var(--card);
-  color:var(--dim);
-  transition:transform .25s ease, border-color .25s ease, color .25s ease;
+.act-icon svg{ width:21px; height:21px; }
+.act-icon.active{ color:var(--text-bright); border-left-color:var(--accent); }
+.act-icon:hover{ color:var(--text-bright); }
+.act-spacer{ flex:1; }
+
+/* ---- sidebar / explorer ---- */
+.sidebar{
+  width:230px; flex-shrink:0;
+  background:var(--sidebar-bg);
+  border-right:1px solid var(--border);
+  overflow-y:auto;
+  padding:14px 0 20px;
 }
-.footer-top:hover{ transform:translateY(-3px); border-color:var(--blue); color:var(--blue); }
-.footer-top svg{ width:16px; height:16px; }
+.sb-title{ font-size:10.5px; font-weight:700; letter-spacing:.08em; color:var(--text-dim); padding:0 16px 10px; text-transform:uppercase; }
+.tree-folder{ margin-bottom:2px; }
+.tree-folder-label{
+  display:flex; align-items:center; gap:6px;
+  font-family:var(--font-mono); font-size:12.5px; font-weight:600; color:var(--text);
+  padding:5px 12px; cursor:pointer; user-select:none;
+}
+.tree-folder-label:hover{ background:#2a2a2a; }
+.tree-folder-label svg.chev{ width:13px; height:13px; color:var(--text-dim); transition:transform .15s ease; flex-shrink:0; }
+.tree-folder.collapsed .chev{ transform:rotate(-90deg); }
+.tree-folder-label svg.folder-icon{ width:15px; height:15px; color:var(--accent); flex-shrink:0; }
+.tree-children{ overflow:hidden; }
+.tree-folder.collapsed .tree-children{ display:none; }
+.tree-file{
+  display:flex; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim);
+  padding:5px 12px 5px 34px; cursor:pointer; border-left:2px solid transparent;
+  transition:color .15s ease;
+}
+.tree-file:hover{ background:#242424; color:var(--text); }
+.tree-file.active{ background:#04395e; color:var(--text-bright); border-left-color:var(--accent); }
+.tree-file .file-icon{ width:14px; height:14px; flex-shrink:0; }
+.tree-file .ext-js{ color:var(--warn); }
+.tree-file .ext-json{ color:var(--warn); }
+.tree-file .ext-yaml{ color:var(--accent2); }
+.tree-file .ext-md{ color:var(--accent); }
+.tree-file .ext-txt{ color:var(--text-dim); }
+.tree-file .link-arrow{ margin-left:auto; color:var(--text-dim); font-size:11px; flex-shrink:0; }
+.tree-file:hover .link-arrow{ color:var(--accent); }
+.tree-file .icon{ width:14px; height:14px; flex-shrink:0; color:var(--text-dim); }
+.tree-file:hover .icon{ color:var(--text); }
+
+/* ---- editor area ---- */
+.editor-area{ flex:1; min-width:0; display:flex; flex-direction:column; background:var(--win-bg); }
+
+.tab-bar{
+  display:flex; overflow-x:auto; background:var(--tab-bg); border-bottom:1px solid var(--border); flex-shrink:0;
+  scrollbar-width:none;
+}
+.tab-bar::-webkit-scrollbar{ display:none; }
+.tab{
+  display:flex; align-items:center; gap:8px;
+  padding:9px 14px; font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim);
+  background:var(--tab-bg); border-right:1px solid var(--border); cursor:pointer; white-space:nowrap;
+  border-top:2px solid transparent;
+}
+.tab.active{ background:var(--tab-active-bg); color:var(--text-bright); border-top-color:var(--accent); }
+.tab .dot-unsaved{ width:7px; height:7px; border-radius:50%; background:var(--text-dim); flex-shrink:0; }
+.tab .ext-js{ color:var(--warn); } .tab .ext-json{ color:var(--warn); } .tab .ext-yaml{ color:var(--accent2); } .tab .ext-md{ color:var(--accent); } .tab .ext-txt{ color:var(--text-dim); }
+
+.editor-scroll{ flex:1; overflow:auto; position:relative; }
+.editor-pane{ display:none; }
+.editor-pane.active{ display:block; }
+
+.code{
+  display:flex; font-family:var(--font-mono); font-size:13.5px; line-height:1.75; min-height:100%;
+}
+.code .gutter{
+  flex-shrink:0; width:46px; text-align:right; padding:18px 12px 18px 0;
+  color:var(--linenum); user-select:none; border-right:1px solid #262626;
+}
+.code .gutter div{ height:23.6px; }
+.code-body{ flex:1; padding:18px 22px; white-space:pre; overflow-x:auto; }
+.code-body .ln{ height:23.6px; display:block; }
+
+.tok-kw{ color:var(--kw); } .tok-str{ color:var(--str); } .tok-cmt{ color:var(--cmt); font-style:italic; }
+.tok-prop{ color:var(--prop); } .tok-fn{ color:var(--fn); } .tok-num{ color:var(--num); }
+.tok-punc{ color:var(--punc); } .tok-type{ color:var(--accent2); } .tok-plain{ color:var(--text); }
+
+/* ---- markdown preview pane (activity.md) ---- */
+.md-preview{ padding:26px 30px 40px; }
+.md-h1{ font-family:var(--font-ui); font-size:22px; font-weight:700; color:var(--text-bright); margin-bottom:6px; }
+.md-sub{ font-size:13px; color:var(--text-dim); margin-bottom:26px; font-family:var(--font-mono); }
+
+.stat-row{ display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:14px; }
+.stat-plate{ border:1px solid var(--border); border-radius:6px; padding:12px 14px; background:#181818; display:flex; align-items:flex-start; gap:9px; }
+.stat-plate svg{ width:16px; height:16px; color:var(--accent); flex-shrink:0; margin-top:2px; }
+.stat-plate .n{ font-family:var(--font-mono); font-size:17px; font-weight:700; color:var(--text-bright); line-height:1.1; }
+.stat-plate .n .unit{ font-size:10.5px; color:var(--text-dim); font-weight:500; margin-left:2px; }
+.stat-plate .l{ font-family:var(--font-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-dim); margin-top:4px; }
+
+.heatmap-wrap{ border:1px solid var(--border); border-radius:6px; padding:18px 20px; overflow-x:auto; background:#181818; margin-top:6px; }
+.heatmap-grid{ display:grid; grid-auto-flow:column; grid-template-rows:repeat(7, 11px); gap:3px; width:max-content; }
+.hm-cell{ width:11px; height:11px; border-radius:2px; background:#232323; }
+.heatmap-legend{ display:flex; align-items:center; gap:6px; margin-top:14px; font-size:11px; color:var(--text-dim); font-family:var(--font-mono); }
+.heatmap-legend .hm-cell{ width:10px; height:10px; }
+.gh-caption{ margin-top:12px; font-size:12.5px; color:var(--text-dim); font-family:var(--font-ui); }
+.gh-caption a{ color:var(--accent); font-weight:600; }
+.hm-fallback{ display:flex; gap:14px; align-items:flex-start; }
+.hm-fallback svg{ width:22px; height:22px; color:var(--text-dim); flex-shrink:0; margin-top:2px; }
+.hm-fallback-title{ font-weight:700; font-size:13.5px; color:var(--text-bright); font-family:var(--font-ui); }
+
+.proj-cards{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px; }
+.proj-card{ border:1px solid var(--border); border-radius:6px; padding:16px; background:#181818; transition:border-color .2s ease, transform .2s ease; }
+.proj-card:hover{ border-color:#3c3c3c; transform:translateY(-2px); }
+.proj-card h4{ font-family:var(--font-ui); font-size:14.5px; font-weight:700; color:var(--text-bright); margin-bottom:4px; }
+.proj-card .stack{ font-family:var(--font-mono); font-size:10.5px; color:var(--accent2); margin-bottom:8px; }
+.proj-card p{ font-size:12.5px; color:var(--text-dim); line-height:1.55; margin-bottom:10px; font-family:var(--font-ui); }
+.proj-card .links{ display:flex; gap:14px; font-size:11.5px; font-weight:600; font-family:var(--font-mono); }
+.proj-card .links a{ color:var(--text); border-bottom:1px solid #4a4a4a; }
+.proj-card .links a:hover{ color:var(--accent); border-color:var(--accent); }
+
+.skill-chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.skill-chip{ font-family:var(--font-mono); font-size:11.5px; color:var(--text); padding:5px 11px; border:1px solid var(--border); border-radius:4px; background:#181818; }
+
+/* ---- terminal panel ---- */
+.terminal-panel{
+  display:none; flex-direction:column;
+  height:200px; flex-shrink:0;
+  border-top:1px solid var(--border);
+  background:#181818;
+}
+.terminal-panel.open{ display:flex; }
+.term-tabbar{
+  display:flex; align-items:center; gap:10px;
+  padding:7px 14px; background:#1a1a1a; border-bottom:1px solid var(--border);
+  font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em;
+}
+.term-tabbar .active-tab{ color:var(--text-bright); border-bottom:2px solid var(--accent); padding-bottom:6px; margin-bottom:-8px; }
+.term-close{ margin-left:auto; cursor:pointer; color:var(--text-dim); }
+.term-close:hover{ color:var(--text-bright); }
+.terminal-body{ flex:1; overflow-y:auto; padding:10px 16px; font-family:var(--font-mono); font-size:13px; line-height:1.7; color:#d4d4d4; }
+.term-line{ white-space:pre-wrap; }
+.term-prompt-user{ color:#61c454; font-weight:600; }
+.term-prompt-path{ color:var(--accent); font-weight:600; margin-right:6px; }
+.term-out{ color:#c8c8c8; }
+.term-cursor{ display:inline-block; width:7px; height:14px; background:#d4d4d4; animation:blink 1s step-end infinite; vertical-align:text-bottom; }
+@keyframes blink{ 50%{opacity:0;} }
+
+/* ---- status bar ---- */
+.status-bar{
+  display:flex; align-items:center; gap:16px;
+  background:var(--statusbar-bg); color:#fff;
+  padding:5px 14px; font-family:var(--font-mono); font-size:11.5px;
+  flex-shrink:0;
+}
+.status-bar .sb-item{ display:flex; align-items:center; gap:5px; cursor:pointer; opacity:.95; }
+.status-bar .sb-item:hover{ opacity:1; text-decoration:underline; }
+.status-bar .sb-item svg{ width:13px; height:13px; }
+.status-bar .sb-dot{ width:7px; height:7px; border-radius:50%; background:#61c454; box-shadow:0 0 0 0 rgba(97,196,84,.6); animation:pulse 2.2s infinite; }
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(97,196,84,.5);} 70%{box-shadow:0 0 0 6px rgba(97,196,84,0);} 100%{box-shadow:0 0 0 0 rgba(97,196,84,0);} }
+.status-bar .sb-spacer{ flex:1; }
+.status-bar .sb-right{ display:flex; gap:16px; }
+
+/* ---- overlay for mobile drawer ---- */
+.sb-overlay{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:20; }
+.sb-overlay.show{ display:block; }
+
+footer.page-footer{
+  max-width:1320px; margin:0 auto; padding:26px 22px 10px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  font-family:var(--font-mono); font-size:12px; color:#5a5a5a;
+}
+footer.page-footer a{ color:#7a7a7a; }
+footer.page-footer a:hover{ color:var(--accent); }
+.footer-links{ display:flex; gap:16px; flex-wrap:wrap; }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width:900px){
-  .shell{ grid-template-columns:1fr; gap:0; padding-top:40px; }
-  .sidebar{ position:static; margin-bottom:38px; padding-bottom:30px; border-bottom:1px solid var(--line); }
-  .proj-grid{ grid-template-columns:1fr; }
+  .proj-cards{ grid-template-columns:1fr; }
+  .stat-row{ grid-template-columns:repeat(2, 1fr); }
 }
 
-/* ---- phones ---- */
-@media (max-width:600px){
-  html{ -webkit-text-size-adjust:100%; }
-  body{ font-size:15px; overflow-x:hidden; }
-  .page{ padding:0 18px; }
-
-  .shell{ padding-top:28px; }
-  .sidebar{ margin-bottom:32px; padding-bottom:26px; }
-  .avatar{ width:46px; height:46px; border-radius:12px; font-size:15px; margin-bottom:14px; }
-  .tag{ font-size:12.5px; }
-  h1{ margin:8px 0 12px; }
-  .sidebar p.bio{ font-size:14px; margin-bottom:12px; }
-  .status-line{ margin:18px 0 26px; }
-
-  .side-block{ margin-top:22px; padding-top:18px; }
-  .side-block a{ font-size:15px; padding:11px 0; }
-
-  section{ padding-bottom:34px; margin-bottom:34px; }
-  .stitle{ font-size:12.5px; margin-bottom:18px; }
-
-  /* heatmap: scrolls horizontally, add a visible edge fade as a scroll hint */
-  .heatmap-wrap{ padding:16px; margin:0 -2px; position:relative; }
-  .heatmap-wrap::after{
-    content:"";
-    position:absolute; top:0; right:0; bottom:0; width:24px;
-    background:linear-gradient(90deg, transparent, var(--card));
-    pointer-events:none;
-    border-radius:0 8px 8px 0;
+@media (max-width:820px){
+  .page{ padding:14px 10px 40px; }
+  .activity-bar{ display:none; }
+  .menu-toggle{ display:block; }
+  .sidebar{
+    position:absolute; top:0; bottom:0; left:0; z-index:30;
+    transform:translateX(-100%); transition:transform .22s ease;
+    box-shadow:8px 0 24px rgba(0,0,0,0.4);
   }
-  .heatmap-legend{ flex-wrap:wrap; }
-
-  .proj{ flex-direction:row; padding:16px; gap:12px; }
-  .proj-thumb{ width:40px; height:40px; border-radius:8px; }
-  .proj-thumb svg{ width:17px; height:17px; }
-  .proj-body h3{ font-size:15px; }
-  .proj-body p{ font-size:13px; }
-  .proj-links a{ padding:2px 0; } /* larger tappable line height */
-
-  .tagline span{ font-size:12.5px; padding:6px 11px; }
-
-  .term-bar{ padding:9px 12px; }
-  .term-dot{ width:10px; height:10px; }
-  .term-title{ font-size:11.5px; }
-  .term-body{ padding:15px 14px 20px; font-size:13px; line-height:1.75; min-height:auto; }
-
-  .contact p{ font-size:14px; }
-
-  footer{ padding:34px 18px 44px; }
-  .footer-inner{ flex-direction:column; align-items:flex-start; gap:20px; }
-  .footer-left{ max-width:none; padding-right:52px; }
-  .footer-links{ gap:14px 18px; }
-  .footer-top{ position:absolute; top:34px; right:18px; }
+  .sidebar.open{ transform:translateX(0); }
+  .ide-body{ height:min(80vh, 640px); }
 }
 
-@media (max-width:380px){
-  .page{ padding:0 14px; }
-  h1{ font-size:23px; }
-  .side-block h4{ font-size:11px; }
-  .tagline span{ font-size:12px; padding:5px 10px; }
-  footer{ padding:30px 14px 40px; }
-  .footer-top{ right:14px; }
+@media (max-width:600px){
+  .title-bar .win-title{ font-size:11px; }
+  .code{ font-size:12.5px; }
+  .code .gutter{ width:34px; padding:14px 8px 14px 0; }
+  .code .gutter div, .code-body .ln{ height:21.2px; }
+  .code-body{ padding:14px 14px; }
+  .md-preview{ padding:18px 16px 28px; }
+  .md-h1{ font-size:18px; }
+  .stat-row{ grid-template-columns:repeat(2, 1fr); gap:8px; }
+  .stat-plate{ padding:10px 11px; }
+  .stat-plate .n{ font-size:15px; }
+  .terminal-body{ font-size:12px; }
+  .status-bar{ font-size:10px; gap:10px; padding:5px 10px; overflow-x:auto; }
+  .status-bar .sb-item span.label{ display:none; }
+  footer.page-footer{ font-size:11px; padding:18px 10px 4px; }
 }
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#editor-content">Skip to content</a>
 
 <div class="page">
-<div class="shell">
+  <div class="ide-window">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="avatar">PG</div>
-    <div class="tag"><span class="prompt">$</span> whoami</div>
-    <h1>Priyanshu Gupta</h1>
-    <p class="bio">CS student. Focused on <strong>algorithms</strong>, <strong>operating systems</strong>, <strong>Linux</strong>, and <strong>mathematics</strong> — understanding how things work before using them.</p>
-    <p class="bio">Daily DSA + C++ practice, learning Linux internals, building toward systems, AI, and cybersecurity.</p>
-    <div class="status-line">
-      <span class="dot"></span>
-      <span>Open to internships &amp; collabs — <a href="#contact">get in touch</a></span>
+    <div class="title-bar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle explorer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="tl-dots"><span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span></div>
+      <div class="win-title">priyanshugupta.com — Portfolio.code-workspace</div>
+      <div style="width:60px" aria-hidden="true"></div>
     </div>
 
-    <div class="side-block">
-      <h4>Profiles</h4>
-      <ul>
-        <li><a href="https://github.com/priyanshubuild" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a></li>
-        <li><a href="https://leetcode.com/u/Priyanshuguptaleetcode/" target="_blank" rel="noopener">LeetCode <span class="arrow">↗</span></a></li>
-        <li><a href="https://codeforces.com/profile/priyanshuguptacf" target="_blank" rel="noopener">Codeforces <span class="arrow">↗</span></a></li>
-        <li><a href="https://www.codechef.com/users/priyanshucf" target="_blank" rel="noopener">CodeChef <span class="arrow">↗</span></a></li>
-        <li><a href="https://www.hackerrank.com/profile/priyanshug1408" target="_blank" rel="noopener">HackerRank <span class="arrow">↗</span></a></li>
-      </ul>
+    <div class="ide-body">
+
+      <!-- ACTIVITY BAR -->
+      <div class="activity-bar" aria-hidden="true">
+        <div class="act-icon active" title="Explorer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h6l2 2h8v12H4V4Z"/></svg></div>
+        <div class="act-icon" title="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <div class="act-icon" title="Source Control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="9" r="2.4"/><path d="M6 8.4V15.6M6 8.4C6 12 9.5 9 15.6 9"/></svg></div>
+        <div class="act-icon" title="Extensions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v4a1 1 0 0 0 1 1h4M9 21H5a2 2 0 0 1-2-2v-4M15 21h4a2 2 0 0 0 2-2v-4M9 3H5a2 2 0 0 0-2 2v4"/></svg></div>
+        <div class="act-spacer"></div>
+        <div class="act-icon" title="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+      </div>
+
+      <div class="sb-overlay" id="sbOverlay"></div>
+
+      <!-- SIDEBAR / EXPLORER -->
+      <nav class="sidebar" id="sidebar" aria-label="File explorer">
+        <div class="sb-title">Explorer</div>
+
+        <div class="tree-folder">
+          <div class="tree-folder-label" data-toggle="folder-portfolio">
+            <svg class="chev" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="folder-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Z"/></svg>
+            PORTFOLIO
+          </div>
+          <div class="tree-children" id="folder-portfolio">
+            <div class="tree-file active" data-tab="about">
+              <svg class="file-icon ext-js" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              about.js
+            </div>
+            <div class="tree-file" data-tab="projects">
+              <svg class="file-icon ext-json" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              projects.json
+            </div>
+            <div class="tree-file" data-tab="skills">
+              <svg class="file-icon ext-yaml" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              skills.yaml
+            </div>
+            <div class="tree-file" data-tab="activity">
+              <svg class="file-icon ext-md" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              activity.md
+            </div>
+            <div class="tree-file" data-tab="contact">
+              <svg class="file-icon ext-txt" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              contact.txt
+            </div>
+          </div>
+        </div>
+
+        <div class="tree-folder">
+          <div class="tree-folder-label" data-toggle="folder-profiles">
+            <svg class="chev" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="folder-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Z"/></svg>
+            PROFILES
+          </div>
+          <div class="tree-children" id="folder-profiles">
+            <a class="tree-file" href="https://github.com/priyanshubuild" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.604-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              github.link <span class="link-arrow">↗</span>
+            </a>
+            <a class="tree-file" href="https://leetcode.com/u/Priyanshuguptaleetcode/" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 3 5 10.5a4 4 0 0 0 0 5.5l4 4a4 4 0 0 0 5.5 0l1.7-1.7a1.5 1.5 0 1 0-2.1-2.1l-1.7 1.7a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4l6.7-6.7a1.5 1.5 0 1 0-2.1-2.1Z"/><path d="M9 13h9a1.5 1.5 0 1 0 0-3H9a1.5 1.5 0 1 0 0 3Z"/></svg>
+              leetcode.link <span class="link-arrow">↗</span>
+            </a>
+            <a class="tree-file" href="https://codeforces.com/profile/priyanshuguptacf" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="14" width="6" height="8" rx="1.5"/><rect x="9" y="8" width="6" height="14" rx="1.5"/><rect x="16" y="2" width="6" height="20" rx="1.5"/></svg>
+              codeforces.link <span class="link-arrow">↗</span>
+            </a>
+            <a class="tree-file" href="https://www.codechef.com/users/priyanshucf" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.2 0-4 1.8-4 4 0 .5.1 1 .3 1.4C6.8 7.9 6 9 6 10.3 6 12.4 7.6 14 9.7 14H10v6a2 2 0 0 0 2 2 2 2 0 0 0 2-2v-6h.3c2.1 0 3.7-1.6 3.7-3.7 0-1.3-.8-2.4-2.3-2.9.2-.4.3-.9.3-1.4 0-2.2-1.8-4-4-4Z"/></svg>
+              codechef.link <span class="link-arrow">↗</span>
+            </a>
+            <a class="tree-file" href="https://www.hackerrank.com/profile/priyanshug1408" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 2 7v10l10 5 10-5V7L12 2Z"/><path d="M8 8v8M16 8v8M8 12h8" stroke-linecap="round"/></svg>
+              hackerrank.link <span class="link-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="tree-folder">
+          <div class="tree-folder-label" data-toggle="folder-social">
+            <svg class="chev" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="folder-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Z"/></svg>
+            SOCIAL
+          </div>
+          <div class="tree-children" id="folder-social">
+            <a class="tree-file" href="https://www.linkedin.com/in/priyanshubuild/" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              linkedin.link <span class="link-arrow">↗</span>
+            </a>
+            <a class="tree-file" href="https://x.com/priyanshustwt" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              twitter.link <span class="link-arrow">↗</span>
+            </a>
+            <a class="tree-file" href="mailto:priyanshug1408@gmail.com">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2 .6v.2l8 6 8-6v-.2a.3.3 0 0 0-.3-.3H4.3a.3.3 0 0 0-.3.3ZM20 8.2l-7.4 5.55a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2Z"/></svg>
+              email.link <span class="link-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- EDITOR AREA -->
+      <div class="editor-area">
+        <div class="tab-bar" id="tabBar">
+          <div class="tab active" data-tab="about"><span class="dot-unsaved"></span>about<span class="ext-js">.js</span></div>
+          <div class="tab" data-tab="projects"><span class="dot-unsaved"></span>projects<span class="ext-json">.json</span></div>
+          <div class="tab" data-tab="skills"><span class="dot-unsaved"></span>skills<span class="ext-yaml">.yaml</span></div>
+          <div class="tab" data-tab="activity"><span class="dot-unsaved"></span>activity<span class="ext-md">.md</span></div>
+          <div class="tab" data-tab="contact"><span class="dot-unsaved"></span>contact<span class="ext-txt">.txt</span></div>
+        </div>
+
+        <div class="editor-scroll" id="editor-content">
+
+          <!-- about.js -->
+          <div class="editor-pane active" data-pane="about">
+            <div class="code">
+              <div class="gutter" id="gutter-about"></div>
+              <div class="code-body"><span class="ln"><span class="tok-cmt">// about.js</span></span><span class="ln"><span class="tok-kw">const</span> <span class="tok-plain">priyanshu</span> <span class="tok-punc">=</span> <span class="tok-punc">{</span></span><span class="ln">  <span class="tok-prop">name</span><span class="tok-punc">:</span> <span class="tok-str">"Priyanshu Gupta"</span><span class="tok-punc">,</span></span><span class="ln">  <span class="tok-prop">role</span><span class="tok-punc">:</span> <span class="tok-str">"CS Student"</span><span class="tok-punc">,</span></span><span class="ln">  <span class="tok-prop">focus</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"algorithms"</span><span class="tok-punc">,</span> <span class="tok-str">"operating-systems"</span><span class="tok-punc">,</span></span><span class="ln">          <span class="tok-str">"linux"</span><span class="tok-punc">,</span> <span class="tok-str">"mathematics"</span><span class="tok-punc">]</span><span class="tok-punc">,</span></span><span class="ln">  <span class="tok-prop">practice</span><span class="tok-punc">:</span> <span class="tok-str">"Daily DSA + C++, learning Linux internals"</span><span class="tok-punc">,</span></span><span class="ln">  <span class="tok-prop">status</span><span class="tok-punc">:</span> <span class="tok-str">"open to internships &amp; collabs"</span><span class="tok-punc">,</span></span><span class="ln">  <span class="tok-prop">philosophy</span><span class="tok-punc">:</span> <span class="tok-str">"understand first, build second"</span></span><span class="ln"><span class="tok-punc">};</span></span><span class="ln"></span><span class="ln"><span class="tok-kw">export default</span> <span class="tok-plain">priyanshu</span><span class="tok-punc">;</span></span></div>
+            </div>
+          </div>
+
+          <!-- projects.json -->
+          <div class="editor-pane" data-pane="projects">
+            <div class="code">
+              <div class="gutter" id="gutter-projects"></div>
+              <div class="code-body"><span class="ln"><span class="tok-punc">{</span></span><span class="ln">  <span class="tok-prop">"projects"</span><span class="tok-punc">:</span> <span class="tok-punc">[</span></span><span class="ln">    <span class="tok-punc">{</span></span><span class="ln">      <span class="tok-prop">"id"</span><span class="tok-punc">:</span> <span class="tok-num">1</span><span class="tok-punc">,</span> <span class="tok-prop">"name"</span><span class="tok-punc">:</span> <span class="tok-str">"Project One"</span><span class="tok-punc">,</span></span><span class="ln">      <span class="tok-prop">"stack"</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"C++"</span><span class="tok-punc">,</span> <span class="tok-str">"DSA"</span><span class="tok-punc">]</span><span class="tok-punc">,</span> <span class="tok-prop">"status"</span><span class="tok-punc">:</span> <span class="tok-str">"placeholder"</span></span><span class="ln">    <span class="tok-punc">},</span></span><span class="ln">    <span class="tok-punc">{</span></span><span class="ln">      <span class="tok-prop">"id"</span><span class="tok-punc">:</span> <span class="tok-num">2</span><span class="tok-punc">,</span> <span class="tok-prop">"name"</span><span class="tok-punc">:</span> <span class="tok-str">"Project Two"</span><span class="tok-punc">,</span></span><span class="ln">      <span class="tok-prop">"stack"</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"HTML"</span><span class="tok-punc">,</span> <span class="tok-str">"CSS"</span><span class="tok-punc">,</span> <span class="tok-str">"JS"</span><span class="tok-punc">]</span><span class="tok-punc">,</span> <span class="tok-prop">"status"</span><span class="tok-punc">:</span> <span class="tok-str">"placeholder"</span></span><span class="ln">    <span class="tok-punc">},</span></span><span class="ln">    <span class="tok-punc">{</span></span><span class="ln">      <span class="tok-prop">"id"</span><span class="tok-punc">:</span> <span class="tok-num">3</span><span class="tok-punc">,</span> <span class="tok-prop">"name"</span><span class="tok-punc">:</span> <span class="tok-str">"Project Three"</span><span class="tok-punc">,</span></span><span class="ln">      <span class="tok-prop">"stack"</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"Linux"</span><span class="tok-punc">,</span> <span class="tok-str">"Git"</span><span class="tok-punc">]</span><span class="tok-punc">,</span> <span class="tok-prop">"status"</span><span class="tok-punc">:</span> <span class="tok-str">"placeholder"</span></span><span class="ln">    <span class="tok-punc">},</span></span><span class="ln">    <span class="tok-punc">{</span></span><span class="ln">      <span class="tok-prop">"id"</span><span class="tok-punc">:</span> <span class="tok-num">4</span><span class="tok-punc">,</span> <span class="tok-prop">"name"</span><span class="tok-punc">:</span> <span class="tok-str">"Project Four"</span><span class="tok-punc">,</span></span><span class="ln">      <span class="tok-prop">"stack"</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"Python"</span><span class="tok-punc">]</span><span class="tok-punc">,</span> <span class="tok-prop">"status"</span><span class="tok-punc">:</span> <span class="tok-str">"placeholder"</span></span><span class="ln">    <span class="tok-punc">}</span></span><span class="ln">  <span class="tok-punc">]</span></span><span class="ln"><span class="tok-punc">}</span></span></div>
+            </div>
+            <div class="proj-cards" style="padding:0 22px 22px;">
+              <div class="proj-card">
+                <h4>Project One</h4>
+                <div class="stack">C++ · DSA</div>
+                <p>Placeholder — description goes here once this ships.</p>
+                <div class="links"><a href="#">GitHub</a><a href="#">Live</a></div>
+              </div>
+              <div class="proj-card">
+                <h4>Project Two</h4>
+                <div class="stack">HTML · CSS · JS</div>
+                <p>Placeholder — description goes here once this ships.</p>
+                <div class="links"><a href="#">GitHub</a><a href="#">Live</a></div>
+              </div>
+              <div class="proj-card">
+                <h4>Project Three</h4>
+                <div class="stack">Linux · Git</div>
+                <p>Placeholder — description goes here once this ships.</p>
+                <div class="links"><a href="#">GitHub</a><a href="#">Live</a></div>
+              </div>
+              <div class="proj-card">
+                <h4>Project Four</h4>
+                <div class="stack">Python</div>
+                <p>Placeholder — description goes here once this ships.</p>
+                <div class="links"><a href="#">GitHub</a><a href="#">Live</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- skills.yaml -->
+          <div class="editor-pane" data-pane="skills">
+            <div class="code">
+              <div class="gutter" id="gutter-skills"></div>
+              <div class="code-body"><span class="ln"><span class="tok-prop">languages</span><span class="tok-punc">:</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">C++</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">Python</span></span><span class="ln"></span><span class="ln"><span class="tok-prop">tools</span><span class="tok-punc">:</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">Git &amp; GitHub</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">Linux</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">VS Code</span></span><span class="ln"></span><span class="ln"><span class="tok-prop">interests</span><span class="tok-punc">:</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">system-design</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">operating-systems</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">mathematics</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">cybersecurity</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">networks</span></span><span class="ln">  <span class="tok-punc">-</span> <span class="tok-str">ai</span></span></div>
+            </div>
+            <div style="padding:2px 22px 24px;">
+              <div class="skill-chip-row">
+                <span class="skill-chip">dsa</span><span class="skill-chip">cpp</span><span class="skill-chip">linux</span>
+                <span class="skill-chip">operating-systems</span><span class="skill-chip">system-design</span>
+                <span class="skill-chip">mathematics</span><span class="skill-chip">physics</span><span class="skill-chip">ai</span>
+                <span class="skill-chip">cybersecurity</span><span class="skill-chip">git</span><span class="skill-chip">networks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- activity.md (rendered preview) -->
+          <div class="editor-pane" data-pane="activity">
+            <div class="md-preview">
+              <div class="md-h1">Activity</div>
+              <div class="md-sub">Preview — live contribution data from github.com/priyanshubuild</div>
+
+              <div class="stat-row" id="contrib-stat-row">
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>
+                  <div><div class="n" id="stat-total">—</div><div class="l">Contribs / yr</div></div>
+                </div>
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c1.5 3 4 4.5 4 8a4 4 0 0 1-8 0c0-1 .3-2 1-3 .2 1 1 1.5 1.5 1 .5-3 .5-4.5 1.5-6Z"/></svg>
+                  <div><div class="n" id="stat-current">—</div><div class="l">Current streak</div></div>
+                </div>
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 21h8M12 17v4M6 3h12v4a6 6 0 0 1-12 0V3ZM4 5H2v2a4 4 0 0 0 4 4M20 5h2v2a4 4 0 0 1-4 4"/></svg>
+                  <div><div class="n" id="stat-best">—</div><div class="l">Longest streak</div></div>
+                </div>
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.9 6.3L22 9.3l-5 5 1.2 7.2L12 18l-6.2 3.5L7 14.3l-5-5 7.1-1Z"/></svg>
+                  <div><div class="n" id="stat-peak">—</div><div class="l">Best day</div></div>
+                </div>
+              </div>
+
+              <div class="stat-row" id="profile-stat-row">
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3h13a3 3 0 0 1 3 3v15H7a3 3 0 0 1-3-3V3Z"/><path d="M4 17h16"/></svg>
+                  <div><div class="n" id="stat-repos">—</div><div class="l">Public repos</div></div>
+                </div>
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c1-3.5 3.7-5.5 6.5-5.5s5.5 2 6.5 5.5"/><path d="M16.5 6.5a3 3 0 0 1 0 5.8M20 20a5.5 5.5 0 0 0-3.8-5.2"/></svg>
+                  <div><div class="n" id="stat-followers">—</div><div class="l">Followers</div></div>
+                </div>
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.9 6.3L22 9.3l-5 5 1.2 7.2L12 18l-6.2 3.5L7 14.3l-5-5 7.1-1Z"/></svg>
+                  <div><div class="n" id="stat-stars">—</div><div class="l">Stars earned</div></div>
+                </div>
+                <div class="stat-plate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m8 9-5 3 5 3M16 9l5 3-5 3M13.5 5 10.5 19"/></svg>
+                  <div><div class="n" id="stat-lang">—</div><div class="l">Top language</div></div>
+                </div>
+              </div>
+
+              <div class="heatmap-wrap" id="heatmap-wrap">
+                <div class="heatmap-grid" id="heatmap-grid"></div>
+                <div class="heatmap-legend">
+                  <span>less</span>
+                  <span class="hm-cell" style="background:#232323"></span>
+                  <span class="hm-cell" style="background:#0e4429"></span>
+                  <span class="hm-cell" style="background:#166b34"></span>
+                  <span class="hm-cell" style="background:#26a641"></span>
+                  <span class="hm-cell" style="background:#39d353"></span>
+                  <span>more</span>
+                </div>
+              </div>
+              <p class="gh-caption">Live contribution history from <a href="https://github.com/priyanshubuild" target="_blank" rel="noopener">github.com/priyanshubuild</a>.</p>
+            </div>
+          </div>
+
+          <!-- contact.txt -->
+          <div class="editor-pane" data-pane="contact">
+            <div class="code">
+              <div class="gutter" id="gutter-contact"></div>
+              <div class="code-body"><span class="ln"><span class="tok-plain">Open to internships, collabs, or just talking CS and Linux.</span></span><span class="ln"></span><span class="ln"><span class="tok-plain">Reach me at </span><span class="tok-str">priyanshug1408@gmail.com</span></span><span class="ln"></span><span class="ln"><span class="tok-cmt"># see profiles.link and social.link in the explorer for everything else</span></span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TERMINAL PANEL -->
+        <div class="terminal-panel" id="terminalPanel">
+          <div class="term-tabbar">
+            <span class="active-tab">TERMINAL</span>
+            <span class="term-close" id="termClose" title="Close terminal">✕</span>
+          </div>
+          <div class="terminal-body" id="term-body"></div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="side-block">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/priyanshubuild/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a></li>
-        <li><a href="https://x.com/priyanshustwt" target="_blank" rel="noopener">Twitter / X <span class="arrow">↗</span></a></li>
-        <li><a href="mailto:priyanshug1408@gmail.com">Email <span class="arrow">↗</span></a></li>
-      </ul>
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <div class="sb-item" id="termToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 17 6-5-6-5M12 19h8"/></svg>
+        <span class="label">Terminal</span>
+      </div>
+      <div class="sb-item"><span class="sb-dot"></span><span class="label">Open to work</span></div>
+      <div class="sb-spacer"></div>
+      <div class="sb-right">
+        <a class="sb-item" href="https://github.com/priyanshubuild" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.604-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <span class="label">priyanshubuild</span>
+        </a>
+        <span class="sb-item">UTF-8</span>
+        <span class="sb-item">LF</span>
+        <span class="sb-item">{ } Prettier</span>
+      </div>
     </div>
-  </aside>
 
-  <!-- MAIN -->
-  <main id="main" class="main">
-
-    <section id="github">
-      <div class="stitle reveal">activity <span class="count" id="hm-count"></span></div>
-      <div class="reveal">
-        <div class="heatmap-wrap" id="heatmap-wrap">
-          <div class="heatmap-grid" id="heatmap-grid"></div>
-          <div class="heatmap-legend">
-            <span>less</span>
-            <span class="hm-cell" style="background:#1a1a1a"></span>
-            <span class="hm-cell" style="background:#234a30"></span>
-            <span class="hm-cell" style="background:#2f7c45"></span>
-            <span class="hm-cell" style="background:#45b563"></span>
-            <span class="hm-cell" style="background:#68dd82"></span>
-            <span>more</span>
-          </div>
-        </div>
-        <p class="gh-caption">Recent public activity from <a href="https://github.com/priyanshubuild" target="_blank" rel="noopener">github.com/priyanshubuild</a> — full history on the profile itself.</p>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="stitle reveal">projects</div>
-      <div class="proj-grid">
-        <div class="proj reveal">
-          <div class="proj-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <div class="proj-body">
-            <div class="proj-num">01</div>
-            <h3>Project One</h3>
-            <div class="proj-stack">C++ / DSA</div>
-            <p>Placeholder — description goes here once this ships.</p>
-            <div class="proj-links"><a href="#">GitHub</a><a href="#">Live</a></div>
-          </div>
-        </div>
-        <div class="proj reveal">
-          <div class="proj-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 17V7l6 5-6 5zM14 17V7l6 5-6 5z"/></svg></div>
-          <div class="proj-body">
-            <div class="proj-num">02</div>
-            <h3>Project Two</h3>
-            <div class="proj-stack">HTML / CSS / JS</div>
-            <p>Placeholder — description goes here once this ships.</p>
-            <div class="proj-links"><a href="#">GitHub</a><a href="#">Live</a></div>
-          </div>
-        </div>
-        <div class="proj reveal">
-          <div class="proj-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <div class="proj-body">
-            <div class="proj-num">03</div>
-            <h3>Project Three</h3>
-            <div class="proj-stack">Linux / Git</div>
-            <p>Placeholder — description goes here once this ships.</p>
-            <div class="proj-links"><a href="#">GitHub</a><a href="#">Live</a></div>
-          </div>
-        </div>
-        <div class="proj reveal">
-          <div class="proj-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg></div>
-          <div class="proj-body">
-            <div class="proj-num">04</div>
-            <h3>Project Four</h3>
-            <div class="proj-stack">Python</div>
-            <p>Placeholder — description goes here once this ships.</p>
-            <div class="proj-links"><a href="#">GitHub</a><a href="#">Live</a></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="interests">
-      <div class="stitle reveal">interests</div>
-      <div class="tagline reveal">
-        <span>dsa</span><span>cpp</span><span>linux</span><span>operating-systems</span>
-        <span>system-design</span><span>mathematics</span><span>physics</span>
-        <span>ai</span><span>cybersecurity</span><span>git</span><span>networks</span>
-      </div>
-    </section>
-
-    <section id="terminal">
-      <div class="stitle reveal">shell</div>
-      <div class="term reveal">
-        <div class="term-bar">
-          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-          <span class="term-title">priyanshu@ubuntu: ~</span>
-        </div>
-        <div class="term-body" id="term-body"></div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="stitle reveal">get in touch</div>
-      <div class="reveal">
-        <p>Open to internships, collabs, or just talking CS and Linux.</p>
-        <p>Reach me at <a class="email" href="mailto:priyanshug1408@gmail.com">priyanshug1408@gmail.com</a></p>
-      </div>
-    </section>
-
-  </main>
-
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-left">
-      <div class="footer-brand"><span class="prompt">$</span> whoami</div>
-      <p>&copy; <span id="year"></span> Priyanshu Gupta — built by hand with HTML, CSS &amp; JS. No frameworks.</p>
-    </div>
-    <nav class="footer-links" aria-label="Section links">
-      <a href="#github">Activity</a>
-      <a href="#projects">Projects</a>
-      <a href="#interests">Interests</a>
-      <a href="#terminal">Shell</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="#main" class="footer-top" aria-label="Back to top">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </a>
   </div>
-</footer>
 
+  <footer class="page-footer">
+    <div>© <span id="year"></span> Priyanshu Gupta</div>
+    <nav class="footer-links">
+      <a href="#" data-tab-link="about">about.js</a>
+      <a href="#" data-tab-link="projects">projects.json</a>
+      <a href="#" data-tab-link="skills">skills.yaml</a>
+      <a href="#" data-tab-link="activity">activity.md</a>
+      <a href="#" data-tab-link="contact">contact.txt</a>
+    </nav>
+  </footer>
 </div>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold:0.12 });
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ---------- line-number gutters ---------- */
+document.querySelectorAll('.code-body').forEach(body=>{
+  const gutter = body.parentElement.querySelector('.gutter');
+  if(!gutter) return;
+  const n = body.querySelectorAll('.ln').length;
+  let html = '';
+  for(let i=1;i<=n;i++) html += `<div>${i}</div>`;
+  gutter.innerHTML = html;
+});
 
-/* ================= TERMINAL (Ubuntu bash prompt: user@host:~$) ================= */
+/* ---------- folder collapse ---------- */
+document.querySelectorAll('.tree-folder-label').forEach(label=>{
+  label.addEventListener('click', ()=>{
+    label.parentElement.classList.toggle('collapsed');
+  });
+});
+
+/* ---------- tab switching ---------- */
+function activateTab(name){
+  document.querySelectorAll('.tab').forEach(t=> t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tree-file[data-tab]').forEach(t=> t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.editor-pane').forEach(p=> p.classList.toggle('active', p.dataset.pane === name));
+  document.getElementById('editor-content').scrollTop = 0;
+}
+document.querySelectorAll('.tab[data-tab]').forEach(t=>{
+  t.addEventListener('click', ()=> activateTab(t.dataset.tab));
+});
+document.querySelectorAll('.tree-file[data-tab]').forEach(t=>{
+  t.addEventListener('click', ()=>{
+    activateTab(t.dataset.tab);
+    closeSidebarOnMobile();
+  });
+});
+document.querySelectorAll('[data-tab-link]').forEach(a=>{
+  a.addEventListener('click', (e)=>{ e.preventDefault(); activateTab(a.dataset.tabLink); window.scrollTo({top:0, behavior:'smooth'}); });
+});
+
+/* ---------- mobile sidebar drawer ---------- */
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sbOverlay');
+const menuToggle = document.getElementById('menuToggle');
+function openSidebar(){ sidebar.classList.add('open'); overlay.classList.add('show'); }
+function closeSidebarOnMobile(){ if(window.innerWidth <= 820){ sidebar.classList.remove('open'); overlay.classList.remove('show'); } }
+menuToggle.addEventListener('click', ()=>{
+  sidebar.classList.contains('open') ? closeSidebarOnMobile() : openSidebar();
+});
+overlay.addEventListener('click', closeSidebarOnMobile);
+
+/* ---------- terminal toggle ---------- */
+const terminalPanel = document.getElementById('terminalPanel');
+const termToggle = document.getElementById('termToggle');
+const termClose = document.getElementById('termClose');
+let termStarted = false;
+termToggle.addEventListener('click', ()=>{
+  terminalPanel.classList.toggle('open');
+  if(terminalPanel.classList.contains('open') && !termStarted){ termStarted = true; runTerm(); }
+});
+termClose.addEventListener('click', ()=> terminalPanel.classList.remove('open'));
+
+/* ---------- integrated terminal script ---------- */
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const termBody = document.getElementById('term-body');
 const script = [
@@ -521,16 +733,7 @@ const script = [
   { type:'cmd', text:'cat philosophy.txt' },
   { type:'out', text:'Understand first.\nBuild second.' }
 ];
-
-function promptHTML(){
-  return `<span class="term-prompt-user">priyanshu@ubuntu</span><span class="term-out">:</span><span class="term-prompt-path">~$</span>`;
-}
-
-let started = false;
-new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting && !started){ started = true; runTerm(); } });
-}, { threshold:0.3 }).observe(document.querySelector('.term'));
-
+function promptHTML(){ return `<span class="term-prompt-user">priyanshu@ubuntu</span><span class="term-out">:</span><span class="term-prompt-path">~$</span>`; }
 function runTerm(){
   if(prefersReduced){
     termBody.innerHTML = script.map(l => l.type==='cmd'
@@ -547,8 +750,7 @@ function runTerm(){
     line.className = 'term-line';
     termBody.appendChild(line);
     if(item.type === 'cmd'){
-      const prompt = document.createElement('span');
-      prompt.innerHTML = promptHTML() + '&nbsp;';
+      const prompt = document.createElement('span'); prompt.innerHTML = promptHTML() + '&nbsp;';
       const txt = document.createElement('span');
       const cur = document.createElement('span'); cur.className='term-cursor';
       line.append(prompt, txt, cur);
@@ -556,98 +758,118 @@ function runTerm(){
       const t = setInterval(()=>{
         txt.textContent += item.text[c]; c++;
         if(c >= item.text.length){ clearInterval(t); cur.remove(); i++; setTimeout(next,220); }
-      }, 48);
+      }, 46);
     } else {
       const out = document.createElement('span'); out.className='term-out'; out.innerHTML = item.text.replace(/\n/g,'<br>');
       line.appendChild(out);
-      i++; setTimeout(next, 320);
+      i++; setTimeout(next, 300);
     }
+    termBody.scrollTop = termBody.scrollHeight;
   }
   next();
 }
 
-/* ================= LIVE GITHUB HEATMAP ================= */
+/* ================= LIVE GITHUB CONTRIBUTIONS + PROFILE STATS =================
+   Public, no-auth, read-only sources only — no tokens or credentials:
+   1. github-contributions-api.jogruber.de — real daily contribution calendar.
+   2. api.github.com REST — public profile + repo data (same as visiting
+      the profile in a browser). Unauthenticated calls are rate-limited
+      (~60/hr per IP), which is normal for personal-site traffic.
+*/
 const GH_USER = 'priyanshubuild';
 const hmGrid = document.getElementById('heatmap-grid');
-const hmCount = document.getElementById('hm-count');
 const hmWrap = document.getElementById('heatmap-wrap');
+const contribStatRow = document.getElementById('contrib-stat-row');
+const profileStatRow = document.getElementById('profile-stat-row');
 
-async function loadHeatmap(){
+async function loadContributions(){
   try{
-    const res = await fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=100`);
+    const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${GH_USER}?y=last`);
     if(!res.ok) throw new Error('bad response');
-    const events = await res.json();
-
-    const counts = {};
-    events.forEach(e=>{
-      const date = e.created_at.slice(0,10);
-      let inc = 1;
-      if(e.type === 'PushEvent' && e.payload && typeof e.payload.size === 'number'){
-        inc = Math.max(1, e.payload.size);
-      }
-      counts[date] = (counts[date] || 0) + inc;
-    });
-
-    renderHeatmap(counts);
-  } catch(err){
-    hmWrap.innerHTML = `
-      <div class="hm-fallback">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-        <div>
-          <p class="hm-fallback-title">Live activity feed unavailable here</p>
-          <p class="gh-caption" style="margin-top:4px;">This preview sandbox blocks outbound API calls — view the real thing on <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener">github.com/${GH_USER}</a>. Works automatically once this page is hosted.</p>
-        </div>
-      </div>`;
-  }
+    const data = await res.json();
+    if(!data || !Array.isArray(data.contributions) || !data.contributions.length) throw new Error('empty payload');
+    renderContributions(data.contributions);
+  } catch(err){ showHeatmapFallback(); }
 }
-
-function renderHeatmap(counts){
-  const days = 91;
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  const start = new Date(today);
-  start.setDate(start.getDate() - (days - 1));
-  start.setDate(start.getDate() - start.getDay());
-
+function showHeatmapFallback(){
+  contribStatRow.style.display = 'none';
+  hmWrap.innerHTML = `
+    <div class="hm-fallback">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+      <div>
+        <p class="hm-fallback-title">Live activity feed unavailable here</p>
+        <p class="gh-caption" style="margin-top:4px;">This preview sandbox blocks outbound API calls — view the real thing on <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener">github.com/${GH_USER}</a>. Works automatically once hosted.</p>
+      </div>
+    </div>`;
+}
+function renderContributions(days){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const first = new Date(days[0].date + 'T00:00:00');
+  const padCount = first.getDay();
   const cells = [];
-  const cursor = new Date(start);
-  const totalCells = Math.ceil((today - start) / 86400000) + 1;
-  let total = 0;
-
-  for(let i=0; i<totalCells; i++){
-    const key = cursor.toISOString().slice(0,10);
-    const isFuture = cursor > today;
-    const count = counts[key] || 0;
-    if(!isFuture) total += count;
-    cells.push({ date:key, count: isFuture ? null : count });
-    cursor.setDate(cursor.getDate() + 1);
-  }
+  for(let i=0;i<padCount;i++) cells.push(null);
+  days.forEach(d => cells.push(d));
 
   hmGrid.innerHTML = '';
-  cells.forEach(c=>{
+  cells.forEach(d=>{
     const div = document.createElement('div');
     div.className = 'hm-cell';
-    if(c.count === null){
-      div.style.background = 'transparent';
-    } else {
-      div.style.background = levelColor(c.count);
-      div.title = `${c.date}: ${c.count} activity`;
-    }
+    if(d === null){ div.style.background = 'transparent'; }
+    else{ div.style.background = levelColor(d.count); div.title = `${d.date}: ${d.count} contribution${d.count===1?'':'s'}`; }
     hmGrid.appendChild(div);
   });
 
-  hmCount.textContent = `${total} events, last 90 days`;
-}
+  const total = days.reduce((s,d)=>s+d.count,0);
+  let currentStreak = 0;
+  for(let i=days.length-1;i>=0;i--){
+    if(days[i].count > 0) currentStreak++;
+    else if(new Date(days[i].date+'T00:00:00').getTime() === today.getTime()) continue;
+    else break;
+  }
+  let longest = 0, running = 0;
+  days.forEach(d=>{ if(d.count>0){ running++; longest = Math.max(longest, running); } else running = 0; });
+  let peak = days[0];
+  days.forEach(d=>{ if(d.count > peak.count) peak = d; });
 
+  document.getElementById('stat-total').textContent = total.toLocaleString();
+  document.getElementById('stat-current').innerHTML = `${currentStreak}<span class="unit">d</span>`;
+  document.getElementById('stat-best').innerHTML = `${longest}<span class="unit">d</span>`;
+  document.getElementById('stat-peak').innerHTML = peak.count > 0
+    ? `${peak.count}<span class="unit">on ${new Date(peak.date+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span>`
+    : '—';
+}
 function levelColor(count){
-  if(count <= 0) return '#1a1a1a';
-  if(count === 1) return '#234a30';
-  if(count <= 3) return '#2f7c45';
-  if(count <= 6) return '#45b563';
-  return '#68dd82';
+  if(count <= 0) return '#232323';
+  if(count === 1) return '#0e4429';
+  if(count <= 3) return '#166b34';
+  if(count <= 6) return '#26a641';
+  return '#39d353';
 }
 
-loadHeatmap();
+async function loadProfileStats(){
+  try{
+    const [userRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${GH_USER}`),
+      fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100`)
+    ]);
+    if(!userRes.ok || !reposRes.ok) throw new Error('bad response');
+    const user = await userRes.json();
+    const repos = await reposRes.json();
+    if(!Array.isArray(repos)) throw new Error('bad repos payload');
+    const ownRepos = repos.filter(r => !r.fork);
+    const totalStars = ownRepos.reduce((s,r)=>s + (r.stargazers_count||0), 0);
+    const langCounts = {};
+    ownRepos.forEach(r=>{ if(r.language) langCounts[r.language] = (langCounts[r.language]||0) + 1; });
+    const topLang = Object.entries(langCounts).sort((a,b)=>b[1]-a[1])[0];
+    document.getElementById('stat-repos').textContent = user.public_repos ?? '—';
+    document.getElementById('stat-followers').textContent = user.followers ?? '—';
+    document.getElementById('stat-stars').textContent = totalStars;
+    document.getElementById('stat-lang').textContent = topLang ? topLang[0] : '—';
+  } catch(err){ profileStatRow.style.display = 'none'; }
+}
+
+loadContributions();
+loadProfileStats();
 </script>
 </body>
 </html>
