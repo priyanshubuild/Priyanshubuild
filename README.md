@@ -1,8 +1,8 @@
 # $ whoami
 
-First-year CSE student focused on **DSA**, **C++**, **Linux**, and **mathematics** — building strong fundamentals and trying to understand how things work, not just how to use them.
+Software developer focused on **DSA**, **C++**, **Linux**, and **full-stack web development** — building strong fundamentals and trying to understand how things work, not just how to use them.
 
-Currently practicing DSA and C++, learning Linux and Git, and exploring web development.
+Currently practicing DSA and C++, mastering Linux systems and Git, and engineering modern web applications.
 
 ## Currently
 
