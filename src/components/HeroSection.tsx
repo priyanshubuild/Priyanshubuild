@@ -12,7 +12,7 @@ const HeroSection = () => {
       <div className=" bg-[#09090B] md:px-[2%] pt-20">
         <div className="px-4 pt-4 sm:px-6 sm:pt-6 md:ml-4 md:px-0 md:pt-8">
           <div className="mb-7 md:mb-20 flex max-w-7xl flex-col items-start justify-center pt-10 text-white sm:mt-18 md:pt-0 lg:mt-6">
-            <div className="font-space-grotesk text-4xl tracking-tight leading-tight  font-semibold  sm:text-6xl md:text-7xl lg:text-8xl xl:text-[130px]">
+            <h1 className="font-space-grotesk text-4xl tracking-tight leading-tight font-semibold sm:text-6xl md:text-7xl lg:text-8xl xl:text-[130px]">
               <div className="flex items-center gap-4">
                 <span>Hi I&apos;m Priyanshu </span>
                 <span onClick={() => window.open("https://x.com/priyanshustwt", "_blank", "noopener,noreferrer")} className="text-[#27272A] hover:text-blue-500 hover:rotate-10 transform-fill transition-all duration-150 ease-in-out cursor-pointer" title="Follow @priyanshustwt on X">
@@ -22,7 +22,7 @@ const HeroSection = () => {
                   </svg>
                 </span>
               </div>
-            </div>
+            </h1>
             <p className="font-space-grotesk text-4xl tracking-tight leading-tight font-semibold sm:-mt-4 sm:text-6xl md:-mt-6 md:text-7xl lg:-mt-2 lg:text-8xl xl:-mt-10 xl:text-[130px]">
               I build &amp; solve.
             </p>
