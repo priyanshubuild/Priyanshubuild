@@ -16,21 +16,21 @@ export const metadata: Metadata = {
   },
 };
 
-const breadcrumbJsonLd = {
+const breadcrumbsJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
     {
       "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://priyanshugupta.com",
+      position: 1,
+      name: "Home",
+      item: "https://priyanshugupta.com",
     },
     {
       "@type": "ListItem",
-      "position": 2,
-      "name": "Projects Archive",
-      "item": "https://priyanshugupta.com/projectspage",
+      position: 2,
+      name: "Projects Archive",
+      item: "https://priyanshugupta.com/projectspage",
     },
   ],
 };
@@ -45,7 +45,7 @@ export default function ProjectsPageLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd),
+          __html: JSON.stringify(breadcrumbsJsonLd),
         }}
       />
       {children}
