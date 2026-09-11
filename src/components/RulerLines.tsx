@@ -11,6 +11,11 @@ const RulerLines = ({ variant = 'left' }: RulerLinesProps) => {
   const [height, setHeight] = useState(0)
 
   useEffect(() => {
+    // On mobile (<768px), ruler lines are hidden in CSS. Skip measurement & DOM tick creation.
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      return;
+    }
+
     const update = () => {
       if (ref.current?.parentElement) {
         setHeight(ref.current.parentElement.getBoundingClientRect().height)
@@ -55,6 +60,10 @@ const RulerLines = ({ variant = 'left' }: RulerLinesProps) => {
   }
 
   const baselineX = variant === 'left' ? width : 0
+
+  if (height === 0) {
+    return <div ref={ref} className="hidden md:block" style={{ position: 'absolute', top: 0, [variant]: 0, width }} />
+  }
 
   return (
     <div
