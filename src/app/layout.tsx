@@ -34,7 +34,12 @@ export const metadata: Metadata = {
   title: "Priyanshu Gupta — Software Developer & Systems Engineer",
   description: "Portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
   icons: {
-    icon: "/official/logo.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   keywords: [
     "Priyanshu Gupta",
@@ -103,8 +108,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-
-      <link rel="icon" href="/logo.ico" />
 
       <body className={` ${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} ${spaceGrotesk.variable} ${syne.variable} antialiased`}>
         <TooltipProvider>
