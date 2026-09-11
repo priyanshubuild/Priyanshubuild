@@ -17,7 +17,7 @@ const Graph = () => {
           blockMargin={4}
           fontSize={12}
           theme={{
-            dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+            dark: ["#2a2a2a", "#909090", "#b8b8b8", "#dedede", "#ffffff"],
           }}
           colorScheme="dark"
         />
