@@ -1,0 +1,31 @@
+# Priyanshu Gupta
+
+> Software Developer & Systems Engineer specializing in Data Structures, Algorithms, C++, Linux systems, and modern web applications. Understand first, build second.
+
+## Overview
+
+Priyanshu Gupta (@priyanshubuild) is a Software Developer focused on core computer science foundations, algorithmic problem solving in C++, low-level Linux systems, and high-performance full-stack web applications.
+
+## Key Pages
+
+- [Home](https://priyanshugupta.com/): Official portfolio, background, experience, interactive GitHub contribution grid, and contact links.
+- [Projects](https://priyanshugupta.com/projects): Directory of core software engineering projects, algorithms lab, Linux workbench, and full-stack web explorations.
+- [Projects Archive](https://priyanshugupta.com/projectspage): Active development updates, practice repositories, and projects in progress.
+- [Sitemap](https://priyanshugupta.com/sitemap.xml): Complete XML sitemap feed.
+
+## Core Technical Skills
+
+- **Languages & Systems**: C++20, Modern C++, Data Structures & Algorithms, STL, POSIX Shell, Linux Internals, Git.
+- **Frontend & Web**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion.
+- **Problem Solving**: LeetCode, Codeforces, CodeChef.
+- **Deployment & Cloud**: Vercel, Edge network, Web Vitals, Speed Insights.
+
+## Profiles & External Links
+
+- Portfolio: https://priyanshugupta.com
+- GitHub: https://github.com/priyanshubuild
+- LeetCode: https://leetcode.com/u/Priyanshuguptaleetcode/
+- Codeforces: https://codeforces.com/profile/priyanshuguptacf
+- LinkedIn: https://www.linkedin.com/in/priyanshubuild/
+- X / Twitter: https://x.com/priyanshustwt
+- Email: priyanshug1408@gmail.com

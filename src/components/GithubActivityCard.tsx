@@ -18,9 +18,9 @@ const DARK_TOKENS = {
 
 const ACCENT = ["#383838", "#5c5c5d", "#838383", "#868689", "#fafafa"]
 
-const Logo = ({ src }: { src: string }) => (
+const Logo = ({ src, alt = "" }: { src: string; alt?: string }) => (
   // eslint-disable-next-line @next/next/no-img-element
-  <img src={src} alt="" style={{ objectFit: "contain" }} />
+  <img src={src} alt={alt} width={16} height={16} style={{ objectFit: "contain" }} loading="lazy" />
 )
 
 const REPOS = [
@@ -28,7 +28,7 @@ const REPOS = [
     name: "priyanshubuild",
     count: 56,
     href: "https://github.com/priyanshubuild/priyanshubuild",
-    logo: <Logo src="/official/logo.png" />,
+    logo: <Logo src="/favicon.png" alt="priyanshubuild repo icon" />,
   },
   {
     name: "100xDSA",

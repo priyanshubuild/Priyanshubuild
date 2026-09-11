@@ -136,6 +136,8 @@ const ContactSection = () => {
       {/* giant clipped wordmark bleeding off the bottom edge */}
       <p
         aria-hidden="true"
+        role="presentation"
+        tabIndex={-1}
         className="pointer-events-none mt-16 -mb-[0.22em] text-center font-space-grotesk text-[clamp(2.5rem,24vw,30rem)] leading-[0.7] font-bold tracking-tighter text-[#141418] select-none"
       >
         PRIYANSHU

@@ -12,6 +12,7 @@ const Taskbar = () => {
           href={item.href}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={item.name}
           className="rounded-full bg-[#282828] p-2 transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:scale-105"
         >
           {item.icon}

@@ -189,6 +189,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://github-contributions-api.jogruber.de" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://github-contributions-api.jogruber.de" />
+        <link rel="preconnect" href="https://api.github.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://api.github.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

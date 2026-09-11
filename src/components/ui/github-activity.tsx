@@ -346,9 +346,9 @@ const ContributionGrid = ({
           initial={
             reduceMotion
               ? false
-              : { opacity: 0, filter: `blur(${LABEL_BLUR}px)` }
+              : { opacity: 0 }
           }
-          animate={{ opacity: 1, filter: "blur(0px)" }}
+          animate={{ opacity: 1 }}
           transition={{
             ...LABEL_REVEAL,
             delay: reduceMotion ? 0 : sweepEnd,
@@ -361,7 +361,7 @@ const ContributionGrid = ({
               style={{ width: cellSize }}
             >
               {month && (
-                <span className="absolute left-0 top-0 text-[10px] leading-none text-foreground/40">
+                <span className="absolute left-0 top-0 text-[10px] leading-none text-neutral-400">
                   {month}
                 </span>
               )}
