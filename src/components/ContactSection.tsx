@@ -66,7 +66,7 @@ const ContactSection = () => {
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="font-geist-pixel text-xs tracking-widest text-zinc-400 uppercase">
+              <h3 className="font-geist-pixel text-xs tracking-widest text-secondary uppercase">
                 {col.title}
               </h3>
               <ul className="mt-4 flex flex-col gap-2 font-geist-mono text-sm">
@@ -77,7 +77,7 @@ const ContactSection = () => {
                         href={item.href}
                         target={item.href.startsWith("http") ? "_blank" : undefined}
                         rel="noopener noreferrer"
-                        className={`truncate text-white transition-colors hover:text-zinc-300 ${item.underline ? "link-underline" : ""}`}
+                        className={`truncate text-white transition-colors hover:text-secondary ${item.underline ? "link-underline" : ""}`}
                       >
                         {item.text}
                       </a>
@@ -89,7 +89,7 @@ const ContactSection = () => {
                       <button
                         onClick={handleCopy}
                         aria-label="Copy email"
-                        className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden text-zinc-400 transition-colors hover:text-white"
+                        className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden text-gray-500 transition-colors hover:text-white"
                       >
                         <AnimatePresence mode="wait">
                           {copied ? (
@@ -128,34 +128,20 @@ const ContactSection = () => {
         </div>
 
         {/* slim bottom strip */}
-        <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#1C1C1F] pt-6 font-geist-mono text-xs text-zinc-400 sm:text-sm">
+        <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#1C1C1F] pt-6 font-geist-mono text-xs text-secondary sm:text-sm">
           <span>© {new Date().getFullYear()} Priyanshu Gupta</span>
         </div>
       </div>
 
-      {/* giant clipped wordmark bleeding off the bottom edge as decorative SVG vector */}
-      <div
+      {/* giant clipped wordmark bleeding off the bottom edge */}
+      <p
         aria-hidden="true"
-        className="pointer-events-none mt-16 -mb-[0.22em] flex select-none justify-center overflow-hidden"
+        role="presentation"
+        tabIndex={-1}
+        className="pointer-events-none mt-16 -mb-[0.22em] text-center font-space-grotesk text-[clamp(2.5rem,24vw,30rem)] leading-[0.7] font-bold tracking-tighter text-[#141418] select-none"
       >
-        <svg
-          viewBox="0 0 1200 180"
-          className="h-auto w-full max-w-[1400px]"
-          aria-hidden="true"
-        >
-          <text
-            x="50%"
-            y="72%"
-            textAnchor="middle"
-            fill="#141418"
-            className="font-space-grotesk font-bold tracking-tighter"
-            fontSize="210"
-            letterSpacing="-0.05em"
-          >
-            PRIYANSHU
-          </text>
-        </svg>
-      </div>
+        PRIYANSHU
+      </p>
     </section>
   );
 };

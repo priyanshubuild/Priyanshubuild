@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import About from "@/components/About";
 import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
@@ -9,17 +8,7 @@ import SectionHeading from "@/components/SectionHeading";
 import SkillSection from "@/components/SkillsSection/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection/Experience";
 import LoadingScreen from "@/components/InitialLoadShell";
-
-const GithubActivityCard = dynamic(
-  () => import("@/components/GithubActivityCard"),
-  {
-    loading: () => (
-      <div className="px-[3%] py-10">
-        <div className="h-44 w-full animate-pulse rounded-2xl bg-[#0e0e10]/60 border border-white/5" />
-      </div>
-    ),
-  }
-);
+import GithubActivityCard from "@/components/GithubActivityCard";
 
 const page = () => {
   return (

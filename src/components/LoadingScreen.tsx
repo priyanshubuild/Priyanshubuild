@@ -29,11 +29,11 @@ const WordPreloader = ({ onFinish }: { onFinish: () => void }) => {
     if (currentWordIndex < words.length - 1) {
       const timer = setTimeout(() => {
         setCurrentWordIndex((prev) => prev + 1);
-      }, 95);
+      }, 180);
       return () => clearTimeout(timer);
     } else {
-      const closingTimer = setTimeout(() => setClosing(true), 120);
-      const fallbackTimer = setTimeout(() => finish(), 120 + 550);
+      const closingTimer = setTimeout(() => setClosing(true), 200);
+      const fallbackTimer = setTimeout(() => finish(), 200 + 1200);
       return () => {
         clearTimeout(closingTimer);
         clearTimeout(fallbackTimer);
@@ -60,7 +60,7 @@ const WordPreloader = ({ onFinish }: { onFinish: () => void }) => {
         }
 
         .shutter-panel {
-          animation: shutterUp 0.45s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+          animation: shutterUp 1s cubic-bezier(0.8, 0, 0.2, 1) forwards;
         }
       `}</style>
 
@@ -68,13 +68,9 @@ const WordPreloader = ({ onFinish }: { onFinish: () => void }) => {
         className={`fixed inset-0 bg-[#09090B] z-9999999999 flex items-center justify-center ${closing ? "shutter-panel" : ""}`}
         onAnimationEnd={handleAnimationEnd}
       >
-        <p
-          role="status"
-          aria-live="polite"
-          className="text-white text-4xl md:text-6xl tracking-tight transition-opacity duration-300"
-        >
+        <h1 className="text-white text-4xl md:text-6xl tracking-tight transition-opacity duration-300">
           • {words[currentWordIndex]}
-        </p>
+        </h1>
       </div>
     </>
   );
