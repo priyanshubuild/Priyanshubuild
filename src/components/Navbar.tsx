@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import CommandMenu from "./CommandMenu";
 import { GitHubIcon } from "@/app/icons/Githubicon";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Tooltip,
@@ -77,12 +78,12 @@ const Navbar: React.FC = () => {
     <div className="relative">
       <div className="border-b-2 border-borderGrey px-[2%] py-2 fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-400 z-50 bg-transparent backdrop-blur-2xl">
         <div className="flex items-center justify-between px-4 py-3 sm:px-6">
-          <p
-            onClick={() => router.push("/")}
+          <Link
+            href="/"
             className="font-space-grotesk text-sm font-semibold text-white sm:text-xl cursor-pointer hover:text-white/80 transition-colors"
           >
             @code by PRIYANSHU
-          </p>
+          </Link>
 
           <div className="flex items-center gap-3 sm:gap-6 lg:gap-8">
             <div className="hidden items-center gap-6 md:flex lg:gap-6">
@@ -117,21 +118,18 @@ const Navbar: React.FC = () => {
               <div className="hidden md:flex items-center gap-6">
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <button
-                      onClick={() =>
-                        window.open(
-                          "https://github.com/priyanshubuild",
-                          "_blank",
-                          "noopener,noreferrer"
-                        )
-                      }
+                    <a
+                      href="https://github.com/priyanshubuild"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Priyanshu Gupta GitHub profile and repository stars"
                       className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-[#1C1C1F] transition-colors"
                     >
                       <GitHubIcon className="h-5 w-5 text-white/60 hover:text-white transition-colors" />
                       <span className="text-white/60 hover:text-white text-sm">
                         {stars ?? "--"}
                       </span>
-                    </button>
+                    </a>
                   </TooltipTrigger>
                   <TooltipContent className="rounded-lg bg-[#fafafa] px-[17px] py-[9px] text-[15px] leading-[18px] font-medium text-[#09090b] shadow-lg">
                     {stars?.toLocaleString() ?? "--"} star{stars === 1 ? "" : "s"}

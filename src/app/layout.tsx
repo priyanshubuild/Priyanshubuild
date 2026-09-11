@@ -79,6 +79,9 @@ export const metadata: Metadata = {
     "Full Stack Engineer",
     "Vercel Deployment",
   ],
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
   robots: {
     index: true,
     follow: true,
@@ -101,7 +104,7 @@ export const metadata: Metadata = {
         url: "/official/opengraphh.jpg",
         width: 1200,
         height: 630,
-        alt: "Priyanshu Gupta Portfolio",
+        alt: "Priyanshu Gupta — Software Developer & Systems Engineer",
       },
     ],
     locale: "en_US",
@@ -125,7 +128,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": "https://priyanshugupta.com/#person",
       name: "Priyanshu Gupta",
-      alternateName: "priyanshubuild",
+      alternateName: ["priyanshubuild", "Priyanshu"],
       url: "https://priyanshugupta.com",
       image: "https://priyanshugupta.com/official/logo.png",
       jobTitle: "Software Developer & Systems Engineer",
@@ -148,15 +151,19 @@ const jsonLd = {
         "React",
         "TypeScript",
         "Full Stack Web Development",
+        "Competitive Programming",
+        "System Architecture",
       ],
+      mainEntityOfPage: "https://priyanshugupta.com",
     },
     {
       "@type": "WebSite",
       "@id": "https://priyanshugupta.com/#website",
       url: "https://priyanshugupta.com",
-      name: "Priyanshu Gupta",
+      name: "Priyanshu Gupta — Software Developer & Systems Engineer",
       description:
-        "Portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+        "Official portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+      inLanguage: "en-US",
       publisher: {
         "@id": "https://priyanshugupta.com/#person",
       },
@@ -166,9 +173,25 @@ const jsonLd = {
       "@id": "https://priyanshugupta.com/#profilepage",
       url: "https://priyanshugupta.com",
       name: "Priyanshu Gupta — Software Developer & Systems Engineer",
+      inLanguage: "en-US",
+      isPartOf: {
+        "@id": "https://priyanshugupta.com/#website",
+      },
       mainEntity: {
         "@id": "https://priyanshugupta.com/#person",
       },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://priyanshugupta.com/#breadcrumb",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://priyanshugupta.com",
+        },
+      ],
     },
   ],
 };
