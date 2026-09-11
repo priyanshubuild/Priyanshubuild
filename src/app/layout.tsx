@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Space_Grotesk } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Syne } from "next/font/google";
-import { GeistPixelSquare, GeistPixelGrid, GeistPixelCircle, GeistPixelTriangle, GeistPixelLine } from 'geist/font/pixel';
+import { GeistPixelSquare } from "geist/font/pixel";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,9 +31,30 @@ const syne = Syne({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#09090B",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Priyanshu Gupta — Software Developer & Systems Engineer",
-  description: "Portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+  metadataBase: new URL("https://priyanshugupta.com"),
+  title: {
+    default: "Priyanshu Gupta — Software Developer & Systems Engineer",
+    template: "%s | Priyanshu Gupta",
+  },
+  description:
+    "Portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+  applicationName: "Priyanshu Gupta Portfolio",
+  authors: [{ name: "Priyanshu Gupta", url: "https://priyanshugupta.com" }],
+  creator: "Priyanshu Gupta",
+  publisher: "Priyanshu Gupta",
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -45,8 +67,8 @@ export const metadata: Metadata = {
     "Priyanshu Gupta",
     "priyanshubuild",
     "Software Developer",
-    "Software Engineer",
-    "Full Stack Developer",
+    "Systems Engineer",
+    "Data Structures & Algorithms",
     "DSA",
     "C++",
     "Linux Systems",
@@ -54,10 +76,24 @@ export const metadata: Metadata = {
     "Next.js Portfolio",
     "React Developer",
     "Tailwind CSS",
+    "Full Stack Engineer",
+    "Vercel Deployment",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Priyanshu Gupta — Software Developer & Systems Engineer",
-    description: "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+    description:
+      "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
     url: "https://priyanshugupta.com",
     siteName: "Priyanshu Gupta",
     images: [
@@ -74,47 +110,91 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Priyanshu Gupta — Software Developer & Systems Engineer",
-    description: "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+    description:
+      "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
     images: ["/official/opengraphh.jpg"],
     creator: "@priyanshustwt",
+    site: "@priyanshustwt",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://priyanshugupta.com/#person",
+      name: "Priyanshu Gupta",
+      alternateName: "priyanshubuild",
+      url: "https://priyanshugupta.com",
+      image: "https://priyanshugupta.com/official/logo.png",
+      jobTitle: "Software Developer & Systems Engineer",
+      description:
+        "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+      sameAs: [
+        "https://github.com/priyanshubuild",
+        "https://leetcode.com/u/Priyanshuguptaleetcode/",
+        "https://codeforces.com/profile/priyanshuguptacf",
+        "https://www.codechef.com/users/priyanshucf",
+        "https://www.linkedin.com/in/priyanshubuild/",
+        "https://x.com/priyanshustwt",
+      ],
+      knowsAbout: [
+        "C++",
+        "Data Structures and Algorithms",
+        "Linux",
+        "Operating Systems",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Full Stack Web Development",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://priyanshugupta.com/#website",
+      url: "https://priyanshugupta.com",
+      name: "Priyanshu Gupta",
+      description:
+        "Portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+      publisher: {
+        "@id": "https://priyanshugupta.com/#person",
+      },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://priyanshugupta.com/#profilepage",
+      url: "https://priyanshugupta.com",
+      name: "Priyanshu Gupta — Software Developer & Systems Engineer",
+      mainEntity: {
+        "@id": "https://priyanshugupta.com/#person",
+      },
+    },
+  ],
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://priyanshugupta.com" />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Priyanshu Gupta",
-              url: "https://priyanshugupta.com",
-              sameAs: [
-                "https://github.com/priyanshubuild",
-                "https://leetcode.com/u/Priyanshuguptaleetcode/",
-                "https://codeforces.com/profile/priyanshuguptacf",
-                "https://www.codechef.com/users/priyanshucf",
-                "https://www.linkedin.com/in/priyanshubuild/",
-                "https://x.com/priyanshustwt",
-              ],
-              jobTitle: "Software Developer & Engineer",
-              description: "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
-            }),
+            __html: JSON.stringify(jsonLd),
           }}
         />
       </head>
 
-      <body className={` ${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} ${spaceGrotesk.variable} ${syne.variable} antialiased`}>
-        <TooltipProvider>
-          {children}
-        </TooltipProvider>
+      <body
+        className={` ${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} ${spaceGrotesk.variable} ${syne.variable} antialiased`}
+      >
+        <TooltipProvider>{children}</TooltipProvider>
         <Analytics />
-        {/* <CustomCursor /> */}
+        <SpeedInsights />
       </body>
     </html>
   );
