@@ -16,7 +16,7 @@ const DARK_TOKENS = {
   "--color-neutral-200": "#0e0e10",
 } as React.CSSProperties
 
-const ACCENT = ["#383838", "#5c5c5d", "#838383", "#868689", "#fafafa"]
+const ACCENT = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
 
 const Logo = ({ src }: { src: string }) => (
   // eslint-disable-next-line @next/next/no-img-element
