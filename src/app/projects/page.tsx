@@ -79,12 +79,27 @@ const ProjectsPage = () => {
   };
 
   useEffect(() => {
-    projects.forEach(async (project) => {
-      if (project.github) {
-        const starCount = await fetchStars(project.github);
-        setStars((prev) => ({ ...prev, [project.github]: starCount }));
+    let isMounted = true;
+    const loadStars = async () => {
+      const results = await Promise.all(
+        projects.map(async (project) => {
+          if (!project.github) return null;
+          const count = await fetchStars(project.github);
+          return [project.github, count] as const;
+        })
+      );
+      if (isMounted) {
+        const counts: Record<string, number> = {};
+        results.forEach((entry) => {
+          if (entry) counts[entry[0]] = entry[1];
+        });
+        setStars(counts);
       }
-    });
+    };
+    loadStars();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const filteredProjects =
