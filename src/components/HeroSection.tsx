@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
-import { FileDown, Mail, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
-import { Button } from "./ui/button";
+import { Mail, ArrowUpRight } from "lucide-react";
 import RingButton from "./RingButton";
 import OpenToWorkNote from "./OpenToWorkNote";
 
