@@ -24,7 +24,7 @@ const ProjectsPage = () => {
       category: "systems",
       technologies: ["C++", "DSA", "Algorithms", "STL"],
       year: "2025",
-      image: "/mach.png",
+      image: "/Project/ProjectImages/mach.png",
       github: "priyanshubuild/priyanshubuild",
       live: "https://github.com/priyanshubuild",
     },
@@ -36,7 +36,7 @@ const ProjectsPage = () => {
       category: "systems",
       technologies: ["Linux", "Bash", "Shell", "Git"],
       year: "2025",
-      image: "/ghosttype.png",
+      image: "/Project/ProjectImages/ghosttype.png",
       github: "priyanshubuild/priyanshubuild",
       live: "https://github.com/priyanshubuild",
     },
@@ -48,7 +48,7 @@ const ProjectsPage = () => {
       category: "frontend",
       technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
       year: "2025",
-      image: "/layers.png",
+      image: "/Project/ProjectImages/layers.png",
       github: "priyanshubuild/priyanshubuild",
       live: "https://priyanshugupta.com",
     },
@@ -60,7 +60,7 @@ const ProjectsPage = () => {
       category: "fullstack",
       technologies: ["TypeScript", "React", "Node.js", "Tailwind CSS"],
       year: "2025",
-      image: "/anieditor.png",
+      image: "/Project/ProjectImages/vidstudio.png",
       github: "priyanshubuild/priyanshubuild",
       live: "https://priyanshugupta.com",
     },
@@ -139,11 +139,9 @@ const ProjectsPage = () => {
               >
                 <div className="relative aspect-[4/2] overflow-hidden bg-[#111]">
                   <img
-                    src={
-                      project.image ||
-                      "https://via.placeholder.com/400x300/111111/666666?text=Project"
-                    }
+                    src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
 
