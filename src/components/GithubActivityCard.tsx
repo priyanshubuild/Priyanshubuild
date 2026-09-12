@@ -23,6 +23,20 @@ const Logo = ({ src, alt = "" }: { src: string; alt?: string }) => (
   <img src={src} alt={alt} width={16} height={16} style={{ objectFit: "contain" }} loading="lazy" />
 )
 
+const CodeIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-300">
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>
+)
+
+const TerminalIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-300">
+    <polyline points="4 17 10 11 4 5" />
+    <line x1="12" y1="19" x2="20" y2="19" />
+  </svg>
+)
+
 const REPOS = [
   {
     name: "priyanshubuild",
@@ -34,13 +48,13 @@ const REPOS = [
     name: "100xDSA",
     count: 38,
     href: "https://github.com/priyanshubuild",
-    logo: <Logo src="/logos/Rareui.svg" />,
+    logo: <CodeIcon />,
   },
   {
     name: "College_cpp",
     count: 24,
     href: "https://github.com/priyanshubuild",
-    logo: <Logo src="/logos/databuddylogo.svg" />,
+    logo: <TerminalIcon />,
   },
 ]
 
