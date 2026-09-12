@@ -1,9 +1,12 @@
-import React from 'react'
-import Link from 'next/link'
-import { Undo2 } from 'lucide-react'
 import Container from '@/components/Container'
+import Navbar from '@/components/Navbar'
+import ProjectCard from '@/components/ProjectCard.tsx/ProjectCard'
 import RingButton from '@/components/RingButton'
 import { Button } from '@/components/ui/button'
+import { projects } from '@/helpers/constants'
+import { Redo2, Undo2 } from 'lucide-react'
+import Link from 'next/link'
+import React from 'react'
 
 const page = () => {
     return (

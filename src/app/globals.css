@@ -8,6 +8,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: Geist, sans-serif;
+  --font-syne: var(--font-syne);
   --font-mono: Geist Mono, monospace;
   --font-space-grotesk:
     var(--font-space-grotesk), sans-serif;
