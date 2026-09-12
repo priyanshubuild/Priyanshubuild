@@ -13,16 +13,20 @@ const Taskbar = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={item.name}
+          title={item.name}
           className="rounded-full bg-[#282828] p-2 transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:scale-105"
         >
           {item.icon}
         </a>
       ))}
 
-      <div
+      <button
+        type="button"
+        onClick={() => setHovered((prev) => !prev)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="mr-2 ml-1 flex items-center gap-2"
+        aria-label="Toggle open to work badge"
+        className="mr-2 ml-1 flex cursor-pointer items-center gap-2 bg-transparent border-none p-0 outline-none"
       >
         <div className="relative flex items-center justify-center">
           <span className="absolute inline-flex h-3 w-3 animate-ping rounded-full bg-green-500 opacity-75"></span>
@@ -30,12 +34,13 @@ const Taskbar = () => {
         </div>
 
         <span
-          className={`font-sans ml-1 overflow-hidden text-sm  font-medium whitespace-nowrap text-white transition-all duration-800 ease-in-out ${hovered ? "max-w-xs opacity-100" : "max-w-0 opacity-0"
-            }`}
+          className={`font-sans ml-1 overflow-hidden text-sm font-medium whitespace-nowrap text-white transition-all duration-500 ease-in-out ${
+            hovered ? "max-w-xs opacity-100" : "max-w-0 opacity-0"
+          }`}
         >
           Open to work
         </span>
-      </div>
+      </button>
     </div>
   );
 };
