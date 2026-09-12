@@ -1,15 +1,14 @@
 <div align="center">
 
-# `priyanshubuild`
+# priyanshubuild
 
-### Priyanshu Gupta — Software Developer & Systems Engineer
+**Priyanshu Gupta** — Software Developer & Systems Engineer  
+*Focused on Data Structures & Algorithms, C++, Linux Systems, and Modern Web Engineering.*
 
-<p>
-  <a href="https://priyanshugupta.com"><img src="https://img.shields.io/badge/Live_Site-priyanshugupta.com-09090B?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Portfolio" /></a>
-  <a href="https://vercel.com"><img src="https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Deployed on Vercel" /></a>
-  <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Built_with-Next.js_15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 15" /></a>
-  <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Styled_with-Tailwind_CSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" /></a>
-</p>
+[![Live Site](https://img.shields.io/badge/Live_Site-priyanshugupta.com-09090B?style=flat-square&logo=googlechrome&logoColor=white)](https://priyanshugupta.com)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com)
+[![Next.js 15](https://img.shields.io/badge/Framework-Next.js_15-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Styled_with-Tailwind_CSS_v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
 > *"Understand first. Build second."*
 
@@ -17,70 +16,56 @@
 
 ---
 
-## ⚡ Overview
+## ⚡ Focus & Tech Stack
 
-Welcome to my personal portfolio repository. This project is engineered with **Next.js 15**, **React 19**, **TypeScript**, and **Tailwind CSS v4**, deployed continuously to **[Vercel](https://vercel.com)** with integrated `@vercel/analytics` and `@vercel/speed-insights`.
-
-I am a Software Developer and Computer Science student focused on core systems, low-level fundamentals, and building high-performance, polished web applications.
-
----
-
-## 🛠️ Focus & Tech Stack
-
-```
-Systems & Problem Solving    ───►  C++20  ·  DSA  ·  Linux Internals  ·  POSIX Shell
-Frontend & UI Engineering    ───►  Next.js 15  ·  React 19  ·  TypeScript  ·  Tailwind CSS v4
-Animation & Interaction      ───►  Framer Motion  ·  Lucide Icons  ·  Geist Typography
-Deployment & Telemetry       ───►  Vercel  ·  Speed Insights  ·  Web Vitals  ·  Git
-```
-
-### Core Areas
-
-- **Data Structures & Algorithms (C++)**: Daily problem solving on LeetCode & Codeforces, focusing on algorithmic complexity, STL, memory layout, and optimization.
-- **Linux & Systems**: Terminal-driven development, custom shell automation, Linux system fundamentals, and developer tooling.
-- **Modern Web Engineering**: Clean architecture, accessible UI, fluid micro-interactions, responsive typography, and SEO-first static generation.
+- **Systems & Problem Solving:** C++20, STL, Data Structures & Algorithms, Linux Systems, POSIX Shell
+- **Frontend & Full Stack:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4
+- **Animation & Micro-interactions:** Framer Motion, Lucide Icons, Geist Typography
+- **Performance & Deployment:** Vercel, Speed Insights, Core Web Vitals (Sub-second FCP/LCP)
 
 ---
 
-## 🚀 Projects & Proof of Work
+## 🚀 Projects
 
-Explore the live directory at **[priyanshugupta.com/projects](https://priyanshugupta.com/projects)**:
-
-| Project | Domain | Stack | Source / Demo |
+| Project | Focus | Tech Stack | Link |
 | :--- | :--- | :--- | :--- |
-| **DSA & Algorithms Lab** | Systems & C++ | `C++` `DSA` `STL` `Algorithms` | [GitHub](https://github.com/priyanshubuild) |
-| **Linux & Systems Workbench** | Systems & CLI | `Linux` `Bash` `Shell` `Git` | [GitHub](https://github.com/priyanshubuild) |
-| **Interactive Portfolio** | Frontend & Design | `Next.js 15` `React 19` `Tailwind CSS v4` | [Live Site](https://priyanshugupta.com) · [Source](https://github.com/priyanshubuild/priyanshubuild) |
-| **Web Dev & UI Engineering** | Full Stack | `TypeScript` `React` `Node.js` `Tailwind` | [Live Site](https://priyanshugupta.com) |
+| **Interactive Portfolio** | Frontend & Micro-interactions | `Next.js 15` `React 19` `Tailwind v4` | [Live Site](https://priyanshugupta.com) · [Source](https://github.com/priyanshubuild/priyanshubuild) |
+| **DSA & Algorithms Lab** | Core Algorithms & Problem Solving | `C++20` `STL` `Competitive Programming` | [GitHub](https://github.com/priyanshubuild) |
+| **Linux & Systems Workbench** | Systems Exploration & Tooling | `Linux` `Bash` `POSIX Shell` | [GitHub](https://github.com/priyanshubuild) |
+| **Web Dev & UI Engineering** | Full Stack & Accessible Interfaces | `TypeScript` `React` `Tailwind CSS` | [Live Site](https://priyanshugupta.com) |
 
 ---
 
-## 📊 Activity
+## 💻 Local Development
 
-<div align="center">
+```bash
+# Clone the repository
+git clone https://github.com/priyanshubuild/priyanshubuild.git
 
-![Priyanshu's GitHub stats](https://github-readme-stats.vercel.app/api?username=priyanshubuild&show_icons=true&theme=transparent&hide_border=true&text_color=a3a3a6&icon_color=8fb4ff&title_color=f5f5f6)
+# Navigate into directory
+cd priyanshubuild
 
-</div>
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
 ## 🌐 Connect
 
-<div align="center">
-
-| Platform | Handle / Link |
-| :--- | :--- |
-| **Portfolio** | [priyanshugupta.com](https://priyanshugupta.com) |
-| **GitHub** | [@priyanshubuild](https://github.com/priyanshubuild) |
-| **LinkedIn** | [/in/priyanshubuild](https://www.linkedin.com/in/priyanshubuild/) |
-| **X / Twitter** | [@priyanshustwt](https://x.com/priyanshustwt) |
-| **LeetCode** | [@Priyanshuguptaleetcode](https://leetcode.com/u/Priyanshuguptaleetcode/) |
-| **Codeforces** | [@priyanshuguptacf](https://codeforces.com/profile/priyanshuguptacf) |
-| **CodeChef** | [@priyanshucf](https://www.codechef.com/users/priyanshucf) |
-| **Email** | [priyanshug1408@gmail.com](mailto:priyanshug1408@gmail.com) |
-
-</div>
+- **Portfolio:** [priyanshugupta.com](https://priyanshugupta.com)
+- **GitHub:** [@priyanshubuild](https://github.com/priyanshubuild)
+- **LinkedIn:** [Priyanshu Gupta](https://www.linkedin.com/in/priyanshubuild/)
+- **LeetCode:** [@Priyanshuguptaleetcode](https://leetcode.com/u/Priyanshuguptaleetcode/)
+- **Codeforces:** [@priyanshuguptacf](https://codeforces.com/profile/priyanshuguptacf)
+- **CodeChef:** [@priyanshucf](https://www.codechef.com/users/priyanshucf)
+- **X (Twitter):** [@priyanshustwt](https://x.com/priyanshustwt)
+- **Email:** [priyanshug1408@gmail.com](mailto:priyanshug1408@gmail.com)
 
 ---
 
