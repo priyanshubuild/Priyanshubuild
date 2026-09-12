@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import CommandMenu from "./CommandMenu";
 import { GitHubIcon } from "@/app/icons/Githubicon";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Tooltip,
   TooltipContent,
@@ -16,8 +15,6 @@ const Navbar: React.FC = () => {
   const [isCommandMenuOpen, setIsCommandMenuOpen] =
     useState<boolean>(false);
   const [stars, setStars] = useState<number | null>(null);
-
-  const router = useRouter();
 
   const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);

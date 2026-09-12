@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   Search,
   Folder,
-  Palette,
   LucideIcon,
   X,
 } from "lucide-react";

@@ -76,8 +76,9 @@ const RingButton = ({ text, href, icon: Icon, size = "lg" ,className, target, re
         asChild
         size={sizeStyles.buttonSize}
         className={cn(
-          "relative flex items-center gap-2 rounded-md border border-[#39393D] transition-colors  ",
-          sizeStyles.buttonPadding
+          "relative flex items-center gap-2 rounded-md border border-[#39393D] transition-colors",
+          sizeStyles.buttonPadding,
+          className
         )}
       >
         <Link href={href} target={target} rel={rel}>{content}</Link>
@@ -90,7 +91,8 @@ const RingButton = ({ text, href, icon: Icon, size = "lg" ,className, target, re
       size={sizeStyles.buttonSize}
       className={cn(
         "relative flex items-center gap-2 rounded-md border border-[#39393D] transition-colors hover:bg-[#1C1C1F]/50 scale-100 hover:scale-[0.99]",
-        sizeStyles.buttonPadding
+        sizeStyles.buttonPadding,
+        className
       )}
     >
       {content}
