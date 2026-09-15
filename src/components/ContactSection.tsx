@@ -32,6 +32,7 @@ const columns: FootColumn[] = [
       { text: "Next.js", href: "https://nextjs.org" },
       { text: "TypeScript", href: "https://www.typescriptlang.org" },
       { text: "Tailwind CSS", href: "https://tailwindcss.com" },
+      { text: "Design credit (Swami Malode)", href: "https://github.com/swamimalode07/swamii.me" },
       { text: "Deployed on Vercel", href: "https://vercel.com" },
     ],
   },
