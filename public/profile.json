@@ -1,0 +1,28 @@
+{
+  "name": "Priyanshu Gupta",
+  "url": "https://priyanshugupta.com",
+  "githubUsername": "priyanshubuild",
+  "role": "Software Developer & Systems Engineer",
+  "description": "Learning and building with C++, data structures and algorithms, Linux systems, and modern web applications. Open to internships and collaboration.",
+  "email": "priyanshug1408@gmail.com",
+  "profiles": {
+    "github": "https://github.com/priyanshubuild",
+    "linkedin": "https://www.linkedin.com/in/priyanshubuild/",
+    "leetcode": "https://leetcode.com/u/Priyanshuguptaleetcode/",
+    "codeforces": "https://codeforces.com/profile/priyanshuguptacf",
+    "codechef": "https://www.codechef.com/users/priyanshucf",
+    "x": "https://x.com/priyanshustwt"
+  },
+  "pages": {
+    "home": "https://priyanshugupta.com/",
+    "projects": "https://priyanshugupta.com/projects",
+    "projectUpdates": "https://priyanshugupta.com/projectspage"
+  },
+  "activity": {
+    "url": "https://priyanshugupta.com/api/github-activity",
+    "calendar": "Daily GitHub contributions, via GitHub Contributions API",
+    "repositoryRanking": "Public authored commits in the past 365 days, from GitHub commit search",
+    "cacheSeconds": 900
+  },
+  "contact": { "method": "email", "url": "mailto:priyanshug1408@gmail.com" }
+}

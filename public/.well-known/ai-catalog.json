@@ -1,0 +1,16 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "identifier": "urn:air:priyanshugupta.com:portfolio:read-profile",
+      "displayName": "Read Priyanshu Gupta's portfolio",
+      "description": "Read public profile facts, navigate portfolio sections, and interpret verified GitHub activity from Priyanshu Gupta's official website.",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://priyanshugupta.com/portfolio.skill.md",
+      "representativeQueries": [
+        "Where can I find Priyanshu Gupta's developer profile and contact information?",
+        "How can I read priyanshubuild's current public GitHub contributions?"
+      ]
+    }
+  ]
+}

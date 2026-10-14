@@ -13,6 +13,14 @@ export const metadata: Metadata = {
       "Active development updates, practice repositories, and projects in progress by Priyanshu Gupta.",
     url: "https://priyanshugupta.com/projectspage",
     type: "website",
+    images: [
+      {
+        url: "/opengraph.png",
+        width: 1200,
+        height: 630,
+        alt: "Priyanshu Gupta portfolio",
+      },
+    ],
   },
 };
 

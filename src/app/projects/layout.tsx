@@ -13,9 +13,18 @@ export const metadata: Metadata = {
       "Showcase of engineering projects, algorithms lab in C++, Linux systems workbench, and web applications built by Priyanshu Gupta.",
     url: "https://priyanshugupta.com/projects",
     type: "website",
+    images: [
+      {
+        url: "/opengraph.png",
+        width: 1200,
+        height: 630,
+        alt: "Priyanshu Gupta portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/opengraph.png"],
     title: "Projects | Priyanshu Gupta",
     description:
       "Showcase of engineering projects, algorithms lab in C++, Linux systems workbench, and web applications built by Priyanshu Gupta.",

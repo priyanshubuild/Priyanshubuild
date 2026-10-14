@@ -6,6 +6,7 @@ import { Space_Grotesk } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Syne } from "next/font/google";
 import { GeistPixelSquare } from "geist/font/pixel";
+import AgentTools from "@/components/AgentTools";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,8 +58,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/favicon.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
     ],
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -106,7 +108,7 @@ export const metadata: Metadata = {
     siteName: "Priyanshu Gupta",
     images: [
       {
-        url: "/official/opengraphh.jpg",
+        url: "/opengraph.png",
         width: 1200,
         height: 630,
         alt: "Priyanshu Gupta Portfolio",
@@ -120,7 +122,7 @@ export const metadata: Metadata = {
     title: "Priyanshu Gupta — Software Developer & Systems Engineer",
     description:
       "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
-    images: ["/official/opengraphh.jpg"],
+    images: ["/opengraph.png"],
     creator: "@priyanshustwt",
     site: "@priyanshustwt",
   },
@@ -135,7 +137,6 @@ const jsonLd = {
       name: "Priyanshu Gupta",
       alternateName: "priyanshubuild",
       url: "https://priyanshugupta.com",
-      image: "https://priyanshugupta.com/official/logo.png",
       jobTitle: "Software Developer & Systems Engineer",
       description:
         "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
@@ -169,15 +170,6 @@ const jsonLd = {
         "@id": "https://priyanshugupta.com/#person",
       },
     },
-    {
-      "@type": "ProfilePage",
-      "@id": "https://priyanshugupta.com/#profilepage",
-      url: "https://priyanshugupta.com",
-      name: "Priyanshu Gupta — Software Developer & Systems Engineer",
-      mainEntity: {
-        "@id": "https://priyanshugupta.com/#person",
-      },
-    },
   ],
 };
 
@@ -189,9 +181,31 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://github-contributions-api.jogruber.de" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://github-contributions-api.jogruber.de" />
-        <link rel="preconnect" href="https://api.github.com" crossOrigin="anonymous" />
+        <link
+          rel="ai-catalog"
+          href="/.well-known/ai-catalog.json"
+          type="application/json"
+        />
+        <link
+          rel="alternate"
+          href="/profile.json"
+          type="application/json"
+          title="Priyanshu Gupta — public profile"
+        />
+        <link
+          rel="preconnect"
+          href="https://github-contributions-api.jogruber.de"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://github-contributions-api.jogruber.de"
+        />
+        <link
+          rel="preconnect"
+          href="https://api.github.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://api.github.com" />
         <script
           type="application/ld+json"
@@ -204,9 +218,17 @@ export default function RootLayout({
       <body
         className={` ${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} ${spaceGrotesk.variable} ${syne.variable} antialiased`}
       >
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <TooltipProvider>{children}</TooltipProvider>
-        <Analytics />
-        <SpeedInsights />
+        <AgentTools />
+        {process.env.VERCEL === "1" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

@@ -1,31 +1,29 @@
 # Priyanshu Gupta
 
-> Software Developer & Systems Engineer specializing in Data Structures, Algorithms, C++, Linux systems, and modern web applications. Understand first, build second.
+> Personal developer portfolio of Priyanshu Gupta, known as priyanshubuild. Focus: C++, data structures and algorithms, Linux systems, and modern web applications. Open to internships and collaboration.
 
-## Overview
+## Main pages
 
-Priyanshu Gupta (@priyanshubuild) is a Software Developer focused on core computer science foundations, algorithmic problem solving in C++, low-level Linux systems, and high-performance full-stack web applications.
+- [Portfolio](https://priyanshugupta.com/): Introduction, skills, learning experience, GitHub activity, about, and contact.
+- [Projects](https://priyanshugupta.com/projects): Current project and practice descriptions.
+- [Project updates](https://priyanshugupta.com/projectspage): Development status and practice repositories.
 
-## Key Pages
+## Public structured data
 
-- [Home](https://priyanshugupta.com/): Official portfolio, background, experience, interactive GitHub contribution grid, and contact links.
-- [Projects](https://priyanshugupta.com/projects): Directory of core software engineering projects, algorithms lab, Linux workbench, and full-stack web explorations.
-- [Projects Archive](https://priyanshugupta.com/projectspage): Active development updates, practice repositories, and projects in progress.
-- [Sitemap](https://priyanshugupta.com/sitemap.xml): Complete XML sitemap feed.
+- [Public profile](https://priyanshugupta.com/profile.json): Identity, professional profiles, interests, and contact details.
+- [GitHub activity](https://priyanshugupta.com/api/github-activity): Daily contribution calendar and public authored commit rankings. Each successful source is cached for 15 minutes. Private activity is excluded from repository counts. The calendar and repository ranking measure different things. Requests may return partial data or an unavailable status.
+- [Agent resource catalog](https://priyanshugupta.com/.well-known/ai-catalog.json): Public resources available for discovery.
+- [Sitemap](https://priyanshugupta.com/sitemap.xml): Crawlable pages.
 
-## Core Technical Skills
+## Professional profiles
 
-- **Languages & Systems**: C++20, Modern C++, Data Structures & Algorithms, STL, POSIX Shell, Linux Internals, Git.
-- **Frontend & Web**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion.
-- **Problem Solving**: LeetCode, Codeforces, CodeChef.
-- **Deployment & Cloud**: Vercel, Edge network, Web Vitals, Speed Insights.
+- [GitHub](https://github.com/priyanshubuild)
+- [LinkedIn](https://www.linkedin.com/in/priyanshubuild/)
+- [LeetCode](https://leetcode.com/u/Priyanshuguptaleetcode/)
+- [Codeforces](https://codeforces.com/profile/priyanshuguptacf)
+- [CodeChef](https://www.codechef.com/users/priyanshucf)
+- [X / Twitter](https://x.com/priyanshustwt)
 
-## Profiles & External Links
+## Contact
 
-- Portfolio: https://priyanshugupta.com
-- GitHub: https://github.com/priyanshubuild
-- LeetCode: https://leetcode.com/u/Priyanshuguptaleetcode/
-- Codeforces: https://codeforces.com/profile/priyanshuguptacf
-- LinkedIn: https://www.linkedin.com/in/priyanshubuild/
-- X / Twitter: https://x.com/priyanshustwt
-- Email: priyanshug1408@gmail.com
+Public email: priyanshug1408@gmail.com. Use mailto:priyanshug1408@gmail.com to compose a message.

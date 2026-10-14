@@ -15,9 +15,21 @@ const page = () => {
     <LoadingScreen>
       <Container>
         <div className="w-full md:px-8">
-          <div className="text-white bg-[#09090B]">
+          <div className="bg-[#09090B] text-white">
             <Navbar />
             <main id="main-content">
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "ProfilePage",
+                    url: "https://priyanshugupta.com",
+                    name: "Priyanshu Gupta — Software Developer & Systems Engineer",
+                    mainEntity: { "@id": "https://priyanshugupta.com/#person" },
+                  }),
+                }}
+              />
               <section id="hero" data-section-label="Hero section">
                 <HeroSection />
               </section>
