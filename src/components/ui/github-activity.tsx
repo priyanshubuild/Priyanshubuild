@@ -8,6 +8,8 @@ import {
   useReducedMotion,
   type Transition,
 } from "motion/react";
+import { GitBranch } from "lucide-react";
+import { mergeSnapshot, type GitHubSnapshot } from "@/lib/github-data";
 import { cn } from "@/lib/utils";
 
 export type ContributionLevel = 0 | 1 | 2 | 3 | 4;
@@ -16,6 +18,7 @@ export type Contribution = {
   date: string;
   count: number;
   level: ContributionLevel;
+  placeholder?: boolean;
 };
 
 export type RepoContribution = {
@@ -53,7 +56,6 @@ const CELL_FADE = { duration: 0.2, ease: EASE_OUT } as const;
 const TOOLTIP_FADE = { duration: 0.14, ease: EASE_OUT } as const;
 const TOOLTIP_EDGE = 8;
 const COLUMN_STAGGER = 0.012;
-const LABEL_BLUR = 6;
 const LABEL_REVEAL = { duration: 0.45, ease: EASE_OUT } as const;
 
 const LEVELS = [0, 1, 2, 3, 4] as const;
@@ -113,93 +115,65 @@ function describeDay({ count, date }: Contribution) {
   return `${count} ${noun} on ${DATE_FORMAT.format(new Date(`${date}T00:00:00`))}`;
 }
 
-const CALENDAR_API = "https://github-contributions-api.jogruber.de/v4";
-const EVENTS_API = "https://api.github.com/users";
-
-type ApiDay = { date: string; count: number; level: number };
-type PushEvent = {
-  type: string;
-  repo?: { name: string };
-  payload?: { commits?: unknown[] };
-};
-
-async function fetchCalendar(login: string) {
-  const res = await fetch(`${CALENDAR_API}/${login}?y=last`);
-  if (!res.ok) return null;
-
-  const days: ApiDay[] = (await res.json())?.contributions ?? [];
-  if (!days.length) return null;
-
-  // columns are weeks, so the first day has to be a sunday or every column shears
-  const start = days.findIndex(
-    (day) => new Date(`${day.date}T00:00:00Z`).getUTCDay() === 0,
-  );
-
-  return days.slice(start < 0 ? 0 : start).map<Contribution>((day) => ({
-    date: day.date,
-    count: day.count,
-    level: Math.min(4, Math.max(0, day.level)) as ContributionLevel,
-  }));
-}
-
-async function fetchRepos(login: string): Promise<RepoContribution[]> {
-  const res = await fetch(`${EVENTS_API}/${login}/events/public?per_page=100`);
-  if (!res.ok) return [];
-
-  const events: PushEvent[] = await res.json();
-  const counts = new Map<string, number>();
-
-  for (const event of events) {
-    if (event.type !== "PushEvent" || !event.repo) continue;
-    const commits = event.payload?.commits?.length ?? 1;
-    counts.set(event.repo.name, (counts.get(event.repo.name) ?? 0) + commits);
-  }
-
-  return [...counts.entries()]
-    .sort(([, a], [, b]) => b - a)
-    .slice(0, STACK_LIMIT)
-    .map(([fullName, count]) => {
-      const [owner, name] = fullName.split("/");
-      return {
-        name,
-        count,
-        href: `https://github.com/${fullName}`,
-        // github has no repo logo, only an owner avatar, so own repos use the initial
-        logo:
-          owner.toLowerCase() === login.toLowerCase() ? undefined : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={`https://github.com/${owner}.png?size=64`} alt="" />
-          ),
-      };
-    });
-}
-
-function useGitHubUser(login?: string, skipRepos?: boolean) {
-  const [data, setData] = React.useState<{
-    contributions: Contribution[];
-    repos: RepoContribution[];
-  }>();
-
+function useGitHubUser(login?: string) {
+  const [data, setData] = React.useState<GitHubSnapshot>();
+  const [loading, setLoading] = React.useState(true);
+  const [failed, setFailed] = React.useState(false);
+  const [started, setStarted] = React.useState(false);
+  const element = React.useRef<HTMLDivElement>(null);
+  const controller = React.useRef<AbortController | null>(null);
+  const refresh = React.useCallback(async () => {
+    if (controller.current) return;
+    const request = new AbortController();
+    controller.current = request;
+    setLoading(true);
+    const timeout = setTimeout(() => request.abort(), 58000);
+    try {
+      const response = await fetch("/api/github-activity", {
+        signal: request.signal,
+      });
+      const next = (await response.json()) as GitHubSnapshot;
+      if (!next.errors || (!response.ok && response.status !== 503))
+        throw new Error("Unavailable");
+      setData((previous) => mergeSnapshot(previous, next));
+      setFailed(false);
+    } catch {
+      setFailed(true);
+    } finally {
+      clearTimeout(timeout);
+      controller.current = null;
+      setLoading(false);
+    }
+  }, []);
   React.useEffect(() => {
     if (!login) return;
-    let active = true;
-
-    // settled, not all: a failed repo lookup must not discard the calendar
-    Promise.all([
-      fetchCalendar(login).catch(() => null),
-      skipRepos ? [] : fetchRepos(login).catch(() => []),
-    ])
-      .then(([contributions, repos]) => {
-        if (active && contributions) setData({ contributions, repos });
-      })
-      .catch(() => {});
-
-    return () => {
-      active = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" },
+    );
+    if (element.current) observer.observe(element.current);
+    return () => observer.disconnect();
+  }, [login]);
+  React.useEffect(() => {
+    if (!started || !login) return;
+    void refresh();
+    const visible = () => {
+      if (document.visibilityState === "visible") void refresh();
     };
-  }, [login, skipRepos]);
-
-  return data;
+    const timer = setInterval(visible, 900000);
+    document.addEventListener("visibilitychange", visible);
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener("visibilitychange", visible);
+      controller.current?.abort();
+    };
+  }, [started, login, refresh]);
+  return { data, loading, failed, refresh, element };
 }
 
 function emptyDays(weeks: number): Contribution[] {
@@ -232,9 +206,19 @@ function toScale(accent: string | string[]): LevelStyle[] {
 
 function toWeeks(contributions: Contribution[]) {
   const weeks: Contribution[][] = [];
-  for (let i = 0; i < contributions.length; i += 7) {
-    weeks.push(contributions.slice(i, i + 7));
-  }
+  const offset = contributions[0]
+    ? new Date(`${contributions[0].date}T00:00:00Z`).getUTCDay()
+    : 0;
+  const padded = [
+    ...Array.from({ length: offset }, () => ({
+      ...contributions[0],
+      count: 0,
+      level: 0 as ContributionLevel,
+      placeholder: true,
+    })),
+    ...contributions,
+  ];
+  for (let i = 0; i < padded.length; i += 7) weeks.push(padded.slice(i, i + 7));
   return weeks;
 }
 
@@ -287,7 +271,7 @@ const Tooltip = ({
     >
       <motion.div
         ref={ref}
-        className="whitespace-nowrap rounded-lg bg-foreground px-2 py-1 text-[11px] font-medium text-background shadow-md"
+        className="bg-foreground text-background rounded-lg px-2 py-1 text-[11px] font-medium whitespace-nowrap shadow-md"
         initial={reduceMotion ? false : { opacity: 0, scale: 0.94 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}
@@ -343,11 +327,7 @@ const ContributionGrid = ({
         <motion.div
           className="flex justify-center"
           style={{ gap, marginBottom: gap }}
-          initial={
-            reduceMotion
-              ? false
-              : { opacity: 0 }
-          }
+          initial={reduceMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
             ...LABEL_REVEAL,
@@ -361,7 +341,7 @@ const ContributionGrid = ({
               style={{ width: cellSize }}
             >
               {month && (
-                <span className="absolute left-0 top-0 text-[10px] leading-none text-neutral-400">
+                <span className="absolute top-0 left-0 text-[10px] leading-none text-neutral-400">
                   {month}
                 </span>
               )}
@@ -379,10 +359,16 @@ const ContributionGrid = ({
           <div key={weekIndex} className="flex flex-col" style={{ gap }}>
             {week.map((day) => (
               <motion.div
-                key={day.date}
-                onPointerEnter={hover(day)}
-                className="shrink-0 rounded-[3px] bg-foreground/[0.08]"
-                style={{ width: cellSize, height: cellSize }}
+                key={`${day.date}-${day.placeholder ? "pad" : "day"}`}
+                aria-hidden={day.placeholder || undefined}
+                onPointerEnter={day.placeholder ? undefined : hover(day)}
+                title={day.placeholder ? undefined : describeDay(day)}
+                className="bg-foreground/[0.08] shrink-0 rounded-[3px]"
+                style={{
+                  width: cellSize,
+                  height: cellSize,
+                  visibility: day.placeholder ? "hidden" : undefined,
+                }}
                 initial={reduceMotion ? false : { opacity: 0, scale: 0.4 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
@@ -428,12 +414,12 @@ const Avatar = ({
     layoutId={layoutId}
     transition={transition}
     className={cn(
-      "grid size-7 shrink-0 place-items-center overflow-hidden rounded-full bg-neutral-200 text-[11px] font-medium uppercase text-foreground/70 ring-2 ring-background dark:bg-neutral-800",
+      "text-foreground/70 ring-background grid size-7 shrink-0 place-items-center overflow-hidden rounded-full bg-neutral-200 text-[11px] font-medium uppercase ring-2 dark:bg-neutral-800",
       "[&_img]:size-full [&_img]:object-cover [&_svg]:size-full",
       className,
     )}
   >
-    {repo.logo ?? repo.name.charAt(0)}
+    {repo.logo ?? <GitBranch aria-hidden="true" className="!size-4" />}
   </motion.span>
 );
 
@@ -452,10 +438,10 @@ const RepoRow = ({
   const content = (
     <>
       <Avatar repo={repo} layoutId={layoutId} transition={transition} />
-      <span className="flex-1 truncate text-sm text-foreground">
+      <span className="text-foreground flex-1 truncate text-sm">
         {repo.name}
       </span>
-      <span className="text-sm tabular-nums text-foreground/70">
+      <span className="text-foreground/70 text-sm tabular-nums">
         {repo.count}
       </span>
     </>
@@ -537,11 +523,7 @@ const GitHubActivity = ({
     onOpenChange?.(!open);
   };
 
-  const needsFetch = !contributionsProp.length || !reposProp.length;
-  const fetched = useGitHubUser(
-    needsFetch ? username : undefined,
-    reposProp.length > 0,
-  );
+  const fetched = useGitHubUser(username);
   const placeholder = React.useMemo(
     () => (username ? emptyDays(weeksFor(months)) : []),
     [username, months],
@@ -549,8 +531,10 @@ const GitHubActivity = ({
 
   const contributions = contributionsProp.length
     ? contributionsProp
-    : (fetched?.contributions ?? placeholder);
-  const repos = reposProp.length ? reposProp : (fetched?.repos ?? []);
+    : (fetched.data?.calendar?.days ?? placeholder);
+  const repos = reposProp.length
+    ? reposProp
+    : (fetched.data?.repositories?.repos.slice(0, STACK_LIMIT) ?? []);
 
   const scale = React.useMemo(() => toScale(accent), [accent]);
   const transition = reduceMotion ? { duration: 0 } : SPRING;
@@ -569,9 +553,12 @@ const GitHubActivity = ({
     [contributions],
   );
 
-  const parsedYear = Number(contributions.at(-1)?.date.slice(0, 4));
-  const displayYear = year ?? (Number.isFinite(parsedYear) ? parsedYear : null);
-  const heading = `${total} contributions${displayYear ? ` in ${displayYear}` : ""}`;
+  const hasCalendar = contributionsProp.length > 0 || !!fetched.data?.calendar;
+  const heading = hasCalendar
+    ? `${total} contributions${year ? ` in ${year}` : " in the past year"}`
+    : fetched.loading
+      ? "Loading GitHub activity…"
+      : "GitHub calendar is temporarily unavailable";
 
   const gap = gapFor(cellSize);
   const columns = Math.min(
@@ -585,6 +572,7 @@ const GitHubActivity = ({
 
   return (
     <div
+      ref={fetched.element}
       data-slot="github-activity"
       className={cn(
         "relative max-w-full overflow-hidden rounded-[28px] bg-white p-4 dark:bg-black",
@@ -594,7 +582,7 @@ const GitHubActivity = ({
       style={{ width, ...style }}
       {...props}
     >
-      <p className="mb-4 text-base font-medium text-foreground px-1.5">
+      <p className="text-foreground mb-4 px-1.5 text-base font-medium">
         {heading}
       </p>
 
@@ -608,6 +596,20 @@ const GitHubActivity = ({
         reduceMotion={reduceMotion}
       />
 
+      {(fetched.failed ||
+        fetched.data?.errors.calendar ||
+        fetched.data?.errors.repositories) && (
+        <p role="status" className="px-1.5 py-2 text-xs text-neutral-300">
+          Some GitHub data is temporarily unavailable.{" "}
+          <button
+            type="button"
+            onClick={() => void fetched.refresh()}
+            className="underline underline-offset-2"
+          >
+            Try again
+          </button>
+        </p>
+      )}
       {repos.length > 0 && (
         <motion.div
           layout
@@ -615,7 +617,7 @@ const GitHubActivity = ({
           data-slot="github-activity-panel"
           data-state={open ? "open" : "closed"}
           className={cn(
-            "absolute inset-x-3 bottom-3 overflow-hidden bg-card/90 backdrop-blur-xl",
+            "bg-card/90 absolute inset-x-3 bottom-3 overflow-hidden backdrop-blur-xl",
             open && "top-3",
           )}
           style={{ borderRadius: 18 }}
@@ -624,9 +626,9 @@ const GitHubActivity = ({
           <motion.div
             layout="position"
             transition={headerTransition}
-            className="flex items-center justify-between gap-3 py-3 px-4"
+            className="flex items-center justify-between gap-3 px-4 py-3"
           >
-            <span className="truncate text-sm text-foreground">{label}</span>
+            <span className="text-foreground truncate text-sm">{label}</span>
 
             <div className="flex items-center gap-3">
               {!open && (
@@ -651,7 +653,7 @@ const GitHubActivity = ({
                 aria-label={
                   open ? "Hide top repositories" : "Show top repositories"
                 }
-                className="grid size-7 shrink-0 place-items-center rounded-full bg-card"
+                className="bg-card grid size-7 shrink-0 place-items-center rounded-full"
               >
                 <Chevron open={open} transition={transition} />
               </button>
@@ -676,6 +678,19 @@ const GitHubActivity = ({
                     />
                   </li>
                 ))}
+                {fetched.data?.repositories && (
+                  <li className="px-4 pt-2 pb-2 text-[11px] leading-relaxed text-neutral-300">
+                    Public commits · past year.{" "}
+                    <button
+                      type="button"
+                      onClick={() => void fetched.refresh()}
+                      disabled={fetched.loading}
+                      className="underline underline-offset-2"
+                    >
+                      {fetched.loading ? "Updating…" : "Refresh"}
+                    </button>
+                  </li>
+                )}
               </motion.ul>
             )}
           </AnimatePresence>
