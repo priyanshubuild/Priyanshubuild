@@ -1823,11 +1823,11 @@
       },
       {
         "date": "2026-10-15",
-        "count": 1,
+        "count": 3,
         "level": 1
       }
     ],
-    "fetchedAt": "2026-10-15T00:13:57.723Z"
+    "fetchedAt": "2026-10-15T00:37:55.357Z"
   },
   "repositories": {
     "repos": [
@@ -1842,14 +1842,14 @@
         "href": "https://github.com/priyanshubuild/100xDevs"
       },
       {
+        "name": "Priyanshubuild",
+        "count": 38,
+        "href": "https://github.com/priyanshubuild/Priyanshubuild"
+      },
+      {
         "name": "BitForgeXABTalks",
         "count": 36,
         "href": "https://github.com/priyanshubuild/BitForgeXABTalks"
-      },
-      {
-        "name": "Priyanshubuild",
-        "count": 36,
-        "href": "https://github.com/priyanshubuild/Priyanshubuild"
       },
       {
         "name": "FSD-BACKEND",
@@ -1914,6 +1914,18 @@
     ],
     "from": "2025-10-16",
     "to": "2026-10-15",
-    "fetchedAt": "2026-10-15T00:13:58.675Z"
+    "fetchedAt": "2026-10-15T00:37:56.056Z"
+  },
+  "languages": {
+    "bytes": {
+      "CSS": 3955497,
+      "JavaScript": 328024,
+      "TypeScript": 232208,
+      "Jupyter Notebook": 192270,
+      "HTML": 159367,
+      "Python": 95273,
+      "C++": 38222
+    },
+    "fetchedAt": "2026-10-15"
   }
 }

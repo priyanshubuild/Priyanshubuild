@@ -33,38 +33,62 @@ const escape = (text) => String(text).replaceAll("&", "&amp;").replaceAll("<", "
 const total = days.reduce((sum, day) => sum + day.count, 0);
 const commits = repos.reduce((sum, repo) => sum + repo.count, 0);
 const active = days.filter((day) => day.count > 0).length;
-const offset = new Date(`${days[0].date}T00:00:00Z`).getUTCDay();
-const padded = [...Array(offset).fill(null), ...days];
-const colors = ["#26262c", "#383838", "#5c5c5d", "#868689", "#fafafa"];
-const cells = padded.map((day, index) => day ? `<rect x="${69 + Math.floor(index / 7) * 14}" y="${157 + index % 7 * 14}" width="10" height="10" rx="2" fill="${colors[day.level]}"><title>${escape(day.date)}: ${day.count} contributions</title></rect>` : "").join("");
-const months = [];
-let lastMonth = "";
-for (let index = 0; index < padded.length; index += 7) {
-  const day = padded.slice(index, index + 7).find(Boolean);
-  if (!day) continue;
-  const month = day.date.slice(0, 7);
-  if (month !== lastMonth) {
-    const label = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: "UTC" }).format(new Date(day.date));
-    months.push(`<text x="${69 + index / 7 * 14}" y="145" fill="#a1a1aa" font-size="10">${label}</text>`);
-    lastMonth = month;
+async function githubJSON(path) {
+  const headers = { Accept: "application/vnd.github+json", "User-Agent": "priyanshu-readme" };
+  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const result = await fetch(`https://api.github.com${path}`, { headers, signal: AbortSignal.timeout(15000) });
+  if (!result.ok) throw new Error("GitHub language data is unavailable; keeping the previous snapshot.");
+  return result.json();
+}
+const owned = new Map();
+for (let page = 1; page <= 20; page++) {
+  const list = await githubJSON(`/users/priyanshubuild/repos?type=owner&per_page=100&page=${page}`);
+  if (!Array.isArray(list)) throw new Error("Invalid repository response.");
+  for (const repo of list) {
+    if (repo.private !== false || repo.fork !== false) continue;
+    if (typeof repo.full_name !== "string" || !/^priyanshubuild\/[\w.-]+$/i.test(repo.full_name)) throw new Error("Invalid public repository.");
+    owned.set(repo.full_name.toLowerCase(), repo.full_name);
+  }
+  if (list.length < 100) break;
+  if (page === 20) throw new Error("Language pagination cannot be completed.");
+}
+const bytes = new Map();
+const names = [...owned.values()];
+for (let i = 0; i < names.length; i += 3) {
+  const responses = await Promise.all(names.slice(i, i + 3).map((name) => githubJSON(`/repos/${name}/languages`)));
+  for (const languages of responses) {
+    if (!languages || Array.isArray(languages) || typeof languages !== "object") throw new Error("Invalid language data.");
+    for (const [name, count] of Object.entries(languages)) {
+      if (!Number.isSafeInteger(count) || count < 0) throw new Error("Invalid language count.");
+      if (count) bytes.set(name, (bytes.get(name) ?? 0) + count);
+    }
   }
 }
-const metrics = [["CONTRIBUTIONS", total], ["PUBLIC AUTHORED COMMITS", commits], ["ACTIVE DAYS", active]].map(([label, value], index) => `<text x="${56 + index * 268}" y="65" fill="#a1a1aa" font-size="10" letter-spacing="1.1">${label}</text><text x="${56 + index * 268}" y="106" fill="#fafafa" font-size="34" font-weight="700">${value}</text>`).join("");
+const languageRows = [...bytes].sort(([a, ac], [b, bc]) => bc - ac || a.localeCompare(b));
+const sum = languageRows.reduce((value, [, count]) => value + count, 0);
+const shown = languageRows.slice(0, 4);
+const languageDate = new Date().toISOString().slice(0, 10);
+const metrics = [["Contributions", total], ["Authored commits", commits], ["Active days", active]].map(([label, value], index) => `<text x="${24 + index * 138}" y="72" fill="#fafafa" font-size="30" font-weight="700">${value}</text><text x="${24 + index * 138}" y="96" fill="#a1a1aa" font-size="10">${label}</text>`).join("");
 const snapshotDate = fetchedAt.slice(0, 10);
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="880" height="318" viewBox="0 0 880 318" role="img" aria-labelledby="title desc"><title id="title">Priyanshu Gupta's public GitHub activity</title><desc id="desc">${total} contributions, ${commits} public authored commits, and ${active} active days. Calendar covers ${days[0].date} through ${days.at(-1).date}.</desc><rect x=".5" y=".5" width="879" height="317" rx="12" fill="#09090b" stroke="#303036"/><path d="M28 0v318M852 0v318M28 122h824M28 270h824" fill="none" stroke="#242429"/><g font-family="Arial,sans-serif">${metrics}${months.join("")}<text x="38" y="179" fill="#a1a1aa" font-size="9">Mon</text><text x="38" y="207" fill="#a1a1aa" font-size="9">Wed</text><text x="38" y="235" fill="#a1a1aa" font-size="9">Fri</text><text x="56" y="295" fill="#a1a1aa" font-size="11">${days[0].date} → ${days.at(-1).date} · Public snapshot ${snapshotDate}</text></g>${cells}</svg>`;
-const top = repos.slice(0, 3);
+const frame = '<rect x=".5" y=".5" width="439" height="149" rx="10" fill="#09090b" stroke="#303036"/>';
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="440" height="150" role="img" aria-labelledby="title desc"><title id="title">Priyanshu Gupta's GitHub activity totals</title><desc id="desc">${total} contributions, ${commits} public authored commits, and ${active} active days between ${from} and ${to}.</desc>${frame}<g font-family="Arial,sans-serif"><text x="24" y="28" fill="#fafafa" font-size="13" font-weight="600">GitHub activity</text><text x="416" y="28" text-anchor="end" fill="#a1a1aa" font-size="10">Past 365 days</text>${metrics}<text x="24" y="131" fill="#a1a1aa" font-size="10">Updated ${snapshotDate} UTC</text></g></svg>`;
+const shades = ["#fafafa", "#b0b0bb", "#73737b", "#45454d"];
+let left = 24;
+const bar = shown.map(([, count], i) => {
+  const width = sum ? 392 * count / sum : 0;
+  const rect = `<rect x="${left}" y="48" width="${width}" height="8" fill="${shades[i]}"/>`;
+  left += width;
+  return rect;
+}).join("");
+const legend = shown.map(([name, count], i) => `<circle cx="${28 + (i % 2) * 196}" cy="${79 + Math.floor(i / 2) * 23}" r="3" fill="${shades[i]}"/><text x="${38 + (i % 2) * 196}" y="${83 + Math.floor(i / 2) * 23}" fill="#e4e4e7" font-size="11">${escape(name.slice(0, 18))} ${(count / sum * 100).toFixed(1)}%</text>`).join("");
+const languageSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="440" height="150" role="img" aria-labelledby="title desc"><title id="title">Public repository languages</title><desc id="desc">Language proportions measured by code bytes in public non-fork repositories: ${escape(shown.map(([name, count]) => `${name} ${(count / sum * 100).toFixed(1)}%`).join(", "))}.</desc>${frame}<g font-family="Arial,sans-serif"><text x="24" y="28" fill="#fafafa" font-size="13" font-weight="600">Public code languages</text><rect x="24" y="48" width="392" height="8" rx="4" fill="#26262c"/>${bar}${legend}${!sum ? '<text x="24" y="83" fill="#a1a1aa" font-size="11">No public language data available.</text>' : ""}<text x="24" y="131" fill="#a1a1aa" font-size="10">Code bytes · Public non-fork repositories</text></g></svg>`;
 const block = `<!-- activity:start -->
 <p align="center">
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity.svg" width="880" alt="${total} GitHub contributions, ${commits} public authored commits, ${active} active days in the past year" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity.svg" width="49%" alt="${total} GitHub contributions, ${commits} public authored commits, ${active} active days in the past year" /></a>
+  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages.svg" width="49%" alt="Public code languages by bytes: ${escape(shown.map(([name, count]) => `${name} ${(count / sum * 100).toFixed(1)}%`).join(", ")) || "no language data"}" /></a>
 </p>
 
-### Most active public repositories
-
-| Repository | Authored commits |
-| :--- | ---: |
-${top.map((repo) => `| [${repo.name}](${repo.href}) | ${repo.count} |`).join("\n")}
-
-<sub>Snapshot: ${snapshotDate} UTC · Repository window: ${from} to ${to}. Calendar totals include all GitHub contribution types; repository totals count indexed public authored commits. Refreshed daily.</sub>
+<sub>Past 365 days · Updated daily · Snapshot: ${snapshotDate} UTC.</sub>
 <!-- activity:end -->`;
 const readme = await readFile(join(root, "README.md"), "utf8");
 if ((readme.match(/<!-- activity:start -->/g) || []).length !== 1 || (readme.match(/<!-- activity:end -->/g) || []).length !== 1)
@@ -75,7 +99,8 @@ const updated = readme.replace(/<!-- activity:start -->[\s\S]*?<!-- activity:end
 await mkdir(join(root, "assets/readme"), { recursive: true });
 for (const [file, contents] of [
   ["assets/readme/activity.svg", svg],
-  ["assets/readme/activity.json", JSON.stringify({ calendar: data.calendar, repositories: data.repositories }, null, 2) + "\n"],
+  ["assets/readme/languages.svg", languageSVG],
+  ["assets/readme/activity.json", JSON.stringify({ calendar: data.calendar, repositories: data.repositories, languages: { bytes: Object.fromEntries(languageRows), fetchedAt: languageDate } }, null, 2) + "\n"],
   ["README.md", updated],
 ]) {
   const path = join(root, file);

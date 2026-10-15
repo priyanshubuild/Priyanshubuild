@@ -24,12 +24,14 @@ jobs:
         with:
           ref: main
       - name: Refresh verified public activity
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/update-readme-activity.mjs
       - name: Save changes to the activity snapshot
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- README.md assets/readme/activity.svg assets/readme/activity.json
+          git add -- README.md assets/readme/activity.svg assets/readme/languages.svg assets/readme/activity.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh public GitHub activity"
             git push origin HEAD:main

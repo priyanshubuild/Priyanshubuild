@@ -18,24 +18,24 @@ await mkdir(output, { recursive: true });
 await mkdir(frames, { recursive: true });
 const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
 const icon = (component) => renderToStaticMarkup(React.createElement(component, { size: 18, color: "#fafafa" }));
-const rulers = Array.from({ length: 36 }, (_, i) => {
+const rulers = Array.from({ length: 21 }, (_, i) => {
   const length = i % 5 === 0 ? 14 : 6;
   return `<path d="M${28 - length} ${i * 10}h${length}M852 ${i * 10}h${length}"/>`;
 }).join("");
 function header(caption) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360">
-  <rect width="880" height="360" rx="12" fill="#09090b"/>
-  <g stroke="#242429" stroke-width="1"><path d="M28 0v360M852 0v360M28 66h824M28 282h824"/>${rulers}</g>
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="880" height="210" viewBox="0 0 880 210">
+  <rect width="880" height="210" rx="12" fill="#09090b"/>
+  <g stroke="#242429" stroke-width="1"><path d="M28 0v210M852 0v210M28 48h824M28 160h824"/>${rulers}</g>
   <g font-family="Arial,sans-serif">
-    <text x="60" y="42" fill="#ededf0" font-size="16" font-weight="600">@code by PRIYANSHU</text>
-    <circle cx="647" cy="36" r="4" fill="#22c55e"/>
-    <text x="661" y="40" fill="#b0b0bb" font-size="10" letter-spacing="1.1">OPEN TO INTERNSHIPS</text>
-    <text x="60" y="138" fill="#fafafa" font-size="59" font-weight="700" letter-spacing="-2">Priyanshu Gupta</text>
-    <text x="60" y="221" fill="#fafafa" font-size="72" font-weight="700" letter-spacing="-2">I build &amp; solve.</text>
-    <text x="63" y="258" fill="#b0b0bb" font-size="18">Software Developer &amp; Systems Engineer</text>
+    <text x="60" y="31" fill="#ededf0" font-size="13" font-weight="600">@code by PRIYANSHU</text>
+    <circle cx="647" cy="26" r="3" fill="#22c55e"/>
+    <text x="661" y="30" fill="#b0b0bb" font-size="10" letter-spacing="1.1">OPEN TO INTERNSHIPS</text>
+    <text x="60" y="106" fill="#fafafa" font-size="46" font-weight="700" letter-spacing="-1.5">Priyanshu Gupta</text>
+    <text x="60" y="143" fill="#fafafa" font-size="25" font-weight="700" letter-spacing="-.5">I build &amp; solve.</text>
+    <text x="310" y="141" fill="#b0b0bb" font-size="15">Software Developer &amp; Systems Engineer</text>
   </g>
-  <text x="60" y="326" font-family="monospace" font-size="14" fill="#22c55e">$</text>
-  <text x="79" y="326" font-family="monospace" font-size="14" fill="#b0b0bb">${escape(caption)}<tspan fill="#fafafa"> _</tspan></text>
+  <text x="60" y="190" font-family="monospace" font-size="12" fill="#22c55e">$</text>
+  <text x="77" y="190" font-family="monospace" font-size="12" fill="#b0b0bb">${escape(caption)}<tspan fill="#fafafa"> _</tspan></text>
   </svg>`;
 }
 await writeFile(join(output, "header.svg"), header("understand first. build second."));

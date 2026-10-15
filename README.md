@@ -7,64 +7,14 @@
   </a>
 </p>
 
-<p align="center">
-  <strong>C++ &amp; algorithms · Linux &amp; systems · Modern web development</strong><br />
-  <em>Understand first. Build second.</em>
-</p>
-
-## About
-
-I'm **Priyanshu Gupta**, a software developer building strong foundations in computer science and systems engineering. I spend my time solving problems in C++, exploring Linux, and building web interfaces with React and Next.js.
-
-I'm open to **internships, open source contributions, and technical collaboration**. My portfolio brings together what I'm learning, building, and working toward.
-
-## Engineering focus
-
-| Area | What I'm working on |
-| :--- | :--- |
-| **Algorithms & C++** | Data structures, trees, graphs, dynamic programming, and regular practice on LeetCode, Codeforces, and CodeChef. |
-| **Linux & systems** | Operating-system fundamentals, shell scripting, terminal workflows, and developer tools. |
-| **Web engineering** | Responsive interfaces, accessible markup, and full-stack fundamentals with TypeScript, React, and Next.js. |
-
-## Stack & tools
+Focused on **C++ & algorithms**, **Linux systems**, and **React / Next.js** development. Open to **internships and collaboration**.
 
 <p align="center">
-  <img src="assets/readme/stack-cpp.svg" height="32" alt="C++" />
-  <img src="assets/readme/stack-typescript.svg" height="32" alt="TypeScript" />
-  <img src="assets/readme/stack-javascript.svg" height="32" alt="JavaScript" />
-  <img src="assets/readme/stack-react.svg" height="32" alt="React" />
-  <img src="assets/readme/stack-nextjs.svg" height="32" alt="Next.js" />
-  <img src="assets/readme/stack-tailwind.svg" height="32" alt="Tailwind CSS" />
-  <img src="assets/readme/stack-linux.svg" height="32" alt="Linux" />
-  <img src="assets/readme/stack-git.svg" height="32" alt="Git" />
-</p>
-
-## Public GitHub activity
-
-<!-- activity:start -->
-<p align="center">
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity.svg" width="880" alt="390 GitHub contributions, 309 public authored commits, 65 active days in the past year" /></a>
-</p>
-
-### Most active public repositories
-
-| Repository | Authored commits |
-| :--- | ---: |
-| [100xDSA](https://github.com/priyanshubuild/100xDSA) | 64 |
-| [100xDevs](https://github.com/priyanshubuild/100xDevs) | 47 |
-| [BitForgeXABTalks](https://github.com/priyanshubuild/BitForgeXABTalks) | 36 |
-
-<sub>Snapshot: 2026-10-15 UTC · Repository window: 2025-10-16 to 2026-10-15. Calendar totals include all GitHub contribution types; repository totals count indexed public authored commits. Refreshed daily.</sub>
-<!-- activity:end -->
-
-## Connect with me
-
-<p align="center">
-  <a href="https://priyanshugupta.com/"><img src="assets/readme/link-portfolio.svg" height="40" alt="Portfolio — visit priyanshugupta.com" /></a>
-  <a href="https://www.linkedin.com/in/priyanshubuild/"><img src="assets/readme/link-linkedin.svg" height="40" alt="LinkedIn — connect with Priyanshu Gupta" /></a>
-  <a href="mailto:priyanshug1408@gmail.com"><img src="assets/readme/link-email.svg" height="40" alt="Email — priyanshug1408@gmail.com" /></a>
-  <a href="https://leetcode.com/u/Priyanshuguptaleetcode/"><img src="assets/readme/link-leetcode.svg" height="40" alt="LeetCode — view Priyanshu's profile" /></a>
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/link-github.svg" height="40" alt="GitHub — follow priyanshubuild" /></a>
+  <a href="https://priyanshugupta.com/"><img src="assets/readme/link-portfolio.svg" height="32" alt="Portfolio — visit priyanshugupta.com" /></a>
+  <a href="https://www.linkedin.com/in/priyanshubuild/"><img src="assets/readme/link-linkedin.svg" height="32" alt="LinkedIn — connect with Priyanshu Gupta" /></a>
+  <a href="mailto:priyanshug1408@gmail.com"><img src="assets/readme/link-email.svg" height="32" alt="Email — priyanshug1408@gmail.com" /></a>
+  <a href="https://leetcode.com/u/Priyanshuguptaleetcode/"><img src="assets/readme/link-leetcode.svg" height="32" alt="LeetCode — view Priyanshu's profile" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="assets/readme/link-github.svg" height="32" alt="GitHub — follow priyanshubuild" /></a>
 </p>
 
 <p align="center">
@@ -72,6 +22,26 @@ I'm open to **internships, open source contributions, and technical collaboratio
   <a href="https://www.codechef.com/users/priyanshucf">CodeChef</a> ·
   <a href="https://x.com/priyanshustwt">X / Twitter</a>
 </p>
+
+<p align="center">
+  <img src="assets/readme/stack-cpp.svg" height="28" alt="C++" />
+  <img src="assets/readme/stack-typescript.svg" height="28" alt="TypeScript" />
+  <img src="assets/readme/stack-javascript.svg" height="28" alt="JavaScript" />
+  <img src="assets/readme/stack-react.svg" height="28" alt="React" />
+  <img src="assets/readme/stack-nextjs.svg" height="28" alt="Next.js" />
+  <img src="assets/readme/stack-tailwind.svg" height="28" alt="Tailwind CSS" />
+  <img src="assets/readme/stack-linux.svg" height="28" alt="Linux" />
+  <img src="assets/readme/stack-git.svg" height="28" alt="Git" />
+</p>
+
+<!-- activity:start -->
+<p align="center">
+  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity.svg" width="49%" alt="392 GitHub contributions, 311 public authored commits, 65 active days in the past year" /></a>
+  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages.svg" width="49%" alt="Public code languages by bytes: CSS 79.1%, JavaScript 6.6%, TypeScript 4.6%, Jupyter Notebook 3.8%" /></a>
+</p>
+
+<sub>Past 365 days · Updated daily · Snapshot: 2026-10-15 UTC.</sub>
+<!-- activity:end -->
 
 <details>
 <summary><strong>About this repository</strong></summary>
