@@ -1,0 +1,36 @@
+name: Refresh README activity
+
+on:
+  schedule:
+    - cron: '25 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: readme-activity
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the portfolio
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+      - name: Refresh verified public activity
+        run: node scripts/update-readme-activity.mjs
+      - name: Save changes to the activity snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- README.md assets/readme/activity.svg assets/readme/activity.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh public GitHub activity"
+            git push origin HEAD:main
+          fi
