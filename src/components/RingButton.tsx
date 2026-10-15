@@ -1,27 +1,27 @@
-import React from "react"
-import Link from "next/link"
-import { Button } from "./ui/button"
-import { cn } from "@/lib/utils"
+import React from "react";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
-type RingButtonSize = "sm" | "md" | "lg"
+type RingButtonSize = "sm" | "md" | "lg";
 
 type RingButtonProps = {
-  text: string
-  href?: string
-  icon?: React.ElementType | React.ReactNode
-  size?: RingButtonSize
-  className?: string
-  target?: string
-  rel?: string
-}
+  text: string;
+  href?: string;
+  icon?: React.ElementType | React.ReactNode;
+  size?: RingButtonSize;
+  className?: string;
+  target?: string;
+  rel?: string;
+};
 
 const ringButtonSizeStyles: Record<
   RingButtonSize,
   {
-    buttonSize: "sm" | "default" | "lg"
-    buttonPadding: string
-    textSize: string
-    iconSize: string
+    buttonSize: "sm" | "default" | "lg";
+    buttonPadding: string;
+    textSize: string;
+    iconSize: string;
   }
 > = {
   sm: {
@@ -42,31 +42,45 @@ const ringButtonSizeStyles: Record<
     textSize: "text-xs md:text-lg",
     iconSize: "h-4 w-4 sm:h-5 sm:w-5",
   },
-}
+};
 
-const RingButton = ({ text, href, icon: Icon, size = "lg" ,className, target, rel }: RingButtonProps) => {
-  const sizeStyles = ringButtonSizeStyles[size]
+const RingButton = ({
+  text,
+  href,
+  icon: Icon,
+  size = "lg",
+  className,
+  target,
+  rel,
+}: RingButtonProps) => {
+  const sizeStyles = ringButtonSizeStyles[size];
 
   let iconNode = null;
-  if (Icon) {
-    if (typeof Icon === 'function') {
-      iconNode = <Icon className={sizeStyles.iconSize} />;
-    } else {
-      iconNode = React.isValidElement(Icon)
-        ? React.cloneElement(Icon as React.ReactElement<{ className?: string }>, {
-            className: cn((Icon.props as { className?: string })?.className, sizeStyles.iconSize),
-          })
-        : null;
-    }
+  if (React.isValidElement(Icon)) {
+    iconNode = React.cloneElement(
+      Icon as React.ReactElement<{ className?: string }>,
+      {
+        className: cn(
+          (Icon.props as { className?: string }).className,
+          sizeStyles.iconSize,
+        ),
+      },
+    );
+  } else if (
+    typeof Icon === "function" ||
+    (typeof Icon === "object" && Icon !== null && "$$typeof" in Icon)
+  ) {
+    const IconComponent = Icon as React.ElementType;
+    iconNode = (
+      <IconComponent className={sizeStyles.iconSize} aria-hidden="true" />
+    );
   }
 
   const content = (
     <>
       {iconNode}
-      <span className={cn(sizeStyles.textSize)}>
-        {text}
-      </span>
-      <span className="pointer-events-none absolute -inset-[4px] border border-[#1C1C1F] rounded-lg" />
+      <span className={cn(sizeStyles.textSize)}>{text}</span>
+      <span className="pointer-events-none absolute -inset-[4px] rounded-lg border border-[#1C1C1F]" />
     </>
   );
 
@@ -76,28 +90,30 @@ const RingButton = ({ text, href, icon: Icon, size = "lg" ,className, target, re
         asChild
         size={sizeStyles.buttonSize}
         className={cn(
-          "relative flex items-center gap-2 rounded-md border border-[#39393D] transition-colors",
+          "relative flex scale-100 items-center gap-2 rounded-md border border-[#39393D] transition-colors hover:scale-[0.99] hover:bg-[#1C1C1F]/50",
           sizeStyles.buttonPadding,
-          className
+          className,
         )}
       >
-        <Link href={href} target={target} rel={rel}>{content}</Link>
+        <Link href={href} target={target} rel={rel}>
+          {content}
+        </Link>
       </Button>
-    )
+    );
   }
 
   return (
     <Button
       size={sizeStyles.buttonSize}
       className={cn(
-        "relative flex items-center gap-2 rounded-md border border-[#39393D] transition-colors hover:bg-[#1C1C1F]/50 scale-100 hover:scale-[0.99]",
+        "relative flex scale-100 items-center gap-2 rounded-md border border-[#39393D] transition-colors hover:scale-[0.99] hover:bg-[#1C1C1F]/50",
         sizeStyles.buttonPadding,
-        className
+        className,
       )}
     >
       {content}
     </Button>
-  )
-}
+  );
+};
 
-export default RingButton
+export default RingButton;

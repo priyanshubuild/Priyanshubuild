@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, ArrowUpRight } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 const ExperienceSection = () => {
     return (

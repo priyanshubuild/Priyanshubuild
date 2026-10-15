@@ -74,6 +74,7 @@ export function parseCommitPage(raw: unknown) {
       typeof item.sha !== "string" ||
       !/^[a-f0-9]{40}$/i.test(item.sha) ||
       !object(item.repository) ||
+      item.repository.private !== false ||
       typeof item.repository.full_name !== "string" ||
       !/^[\w.-]+\/[\w.-]+$/.test(item.repository.full_name) ||
       !object(item.author) ||

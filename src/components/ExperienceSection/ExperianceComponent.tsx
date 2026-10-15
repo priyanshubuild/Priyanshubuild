@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { ChevronDown } from "lucide-react";
 import React, { useRef, useState, useEffect } from "react";
@@ -63,7 +64,9 @@ const Experience = ({
             <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
               <span className="absolute -inset-[2px] rounded-[14px] border border-white/20" />
               <div className="w-full h-full rounded-[12px] bg-white/5 flex items-center justify-center overflow-hidden border border-white/10 relative">
-                <img
+                <Image
+              width={64}
+              height={64}
                   src={logo}
                   alt={company}
                   className="w-full h-full object-cover"

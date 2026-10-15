@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import GitHubActivity from "@/components/ui/github-activity";
+import dynamic from "next/dynamic";
+const GitHubActivity = dynamic(
+  () => import("@/components/ui/github-activity"),
+  { ssr: false },
+);
 
 const GITHUB_USERNAME = "priyanshubuild";
 
@@ -66,18 +70,71 @@ function useFittedCell() {
 
 export default function GithubActivityCard() {
   const [ref, cellSize] = useFittedCell();
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setNear(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "500px" },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref]);
 
   return (
     <div className="px-[3%] py-10">
-      <div ref={ref} className="flex">
-        <GitHubActivity
-          username={GITHUB_USERNAME}
-          accent={ACCENT}
-          cellSize={cellSize}
-          showMonths
-          style={DARK_TOKENS}
-          className="bg-[#0e0e10]"
-        />
+      <div
+        ref={ref}
+        className="flex"
+        style={{ minHeight: 7 * cellSize + 7 * gapFor(cellSize) + 144 }}
+      >
+        {near ? (
+          <GitHubActivity
+            username={GITHUB_USERNAME}
+            accent={ACCENT}
+            cellSize={cellSize}
+            showMonths
+            style={DARK_TOKENS}
+            className="bg-[#0e0e10]"
+          />
+        ) : (
+          <div
+            aria-busy="true"
+            className="relative w-full max-w-full rounded-[28px] bg-[#0e0e10] p-4"
+            style={{
+              ...DARK_TOKENS,
+              minHeight: 7 * cellSize + 7 * gapFor(cellSize) + 144,
+            }}
+          >
+            <p className="px-1.5 text-base font-medium text-white">
+              Loading GitHub activity…
+            </p>
+            <div
+              aria-hidden="true"
+              className="mt-4 grid grid-flow-col grid-rows-7 gap-1 opacity-50"
+            >
+              {Array.from({ length: 371 }, (_, i) => (
+                <span
+                  key={i}
+                  className="rounded-[3px] bg-[#383838]"
+                  style={{ height: cellSize }}
+                />
+              ))}
+            </div>
+            <noscript>
+              <a
+                className="text-white underline"
+                href="https://github.com/priyanshubuild"
+              >
+                View GitHub contributions
+              </a>
+            </noscript>
+          </div>
+        )}
       </div>
     </div>
   );

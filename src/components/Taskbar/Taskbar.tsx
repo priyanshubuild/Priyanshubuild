@@ -4,6 +4,8 @@ import { taskbarData } from "./constants";
 
 const Taskbar = () => {
   const [hovered, setHovered] = useState(false);
+  const [pinned, setPinned] = useState(false);
+  const expanded = hovered || pinned;
   return (
     <div className="fixed bottom-8 left-1/2 z-50 flex -translate-x-1/2 transform items-center gap-4 rounded-full border border-white/20 bg-transparent p-3 shadow-lg backdrop-blur-sm">
       {taskbarData.map((item) => (
@@ -22,10 +24,11 @@ const Taskbar = () => {
 
       <button
         type="button"
-        onClick={() => setHovered((prev) => !prev)}
+        onClick={() => setPinned((prev) => !prev)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         aria-label="Toggle open to work badge"
+        aria-expanded={expanded}
         className="mr-2 ml-1 flex cursor-pointer items-center gap-2 bg-transparent border-none p-0 outline-none"
       >
         <div className="relative flex items-center justify-center">
@@ -34,8 +37,8 @@ const Taskbar = () => {
         </div>
 
         <span
-          className={`font-sans ml-1 overflow-hidden text-sm font-medium whitespace-nowrap text-white transition-all duration-500 ease-in-out ${
-            hovered ? "max-w-xs opacity-100" : "max-w-0 opacity-0"
+          className={`font-sans absolute right-0 bottom-full mb-3 overflow-hidden rounded-full bg-[#282828] text-sm font-medium whitespace-nowrap text-white transition-all duration-500 ease-in-out sm:static sm:ml-1 sm:mb-0 sm:rounded-none sm:bg-transparent ${
+            expanded ? "max-w-xs px-3 py-1 opacity-100 sm:p-0" : "max-w-0 p-0 opacity-0"
           }`}
         >
           Open to work

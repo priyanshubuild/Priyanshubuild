@@ -1,30 +1,18 @@
-"use client";
-
-import React, { useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import Taskbar from "@/components/Taskbar/Taskbar";
-
-type InitialLoadShellProps = {
+export default function InitialLoadShell({
+  children,
+}: {
   children: React.ReactNode;
-};
-
-let hasShownInitialLoader = false;
-
-const InitialLoadShell = ({ children }: InitialLoadShellProps) => {
-  const [loading, setLoading] = useState(!hasShownInitialLoader);
-
-  const handleLoadingFinish = () => {
-    hasShownInitialLoader = true;
-    setLoading(false);
-  };
-
+}) {
   return (
     <div className="bg-[#09090B]">
-      {loading && <LoadingScreen onFinish={handleLoadingFinish} />}
+      <noscript>
+        <style>{".portfolio-preloader{display:none}"}</style>
+      </noscript>
+      <LoadingScreen />
       {children}
-      {!loading && <Taskbar />}
+      <Taskbar />
     </div>
   );
-};
-
-export default InitialLoadShell;
+}

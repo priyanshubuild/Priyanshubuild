@@ -6,6 +6,7 @@ for (const path of ["/", "/projects", "/projectspage"]) {
   const response = await fetch(base + path);
   assert.equal(response.status, 200);
   const html = await response.text();
+  assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, "One H1 per page");
   const canonical = "https://priyanshugupta.com" + (path === "/" ? "" : path);
   assert.ok(
     html.includes(`rel="canonical" href="${canonical}"`) ||
@@ -49,6 +50,8 @@ for (const path of [
   "/.well-known/ai-catalog.json",
   "/robots.txt",
   "/sitemap.xml",
+  "/fonts/geist-pixel-square-latin-v1.woff2",
+  "/fonts/geist-pixel-square-v1.woff2",
 ])
   assert.equal((await fetch(base + path)).status, 200, path);
 for (const [path, size] of [

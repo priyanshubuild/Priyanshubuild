@@ -1,11 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Search,
-  Folder,
-  LucideIcon,
-  X,
-} from "lucide-react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Search, Folder, LucideIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface Section {
@@ -67,6 +62,19 @@ const CommandMenu: React.FC<CommandMenuProps> = ({ isOpen, onClose }) => {
       section.category.toLowerCase().includes(query.toLowerCase()),
   );
 
+  const handleSelectItem = useCallback(
+    (section: Section): void => {
+      const el = document.getElementById(section.id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        router.push(`/#${section.id}`);
+      }
+      onClose();
+    },
+    [router, onClose],
+  );
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
@@ -107,7 +115,7 @@ const CommandMenu: React.FC<CommandMenuProps> = ({ isOpen, onClose }) => {
         document.removeEventListener("keydown", handleKeyDown);
       }
     };
-  }, [isOpen, selectedIndex, filteredSections, onClose]);
+  }, [isOpen, selectedIndex, filteredSections, onClose, handleSelectItem]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -132,17 +140,6 @@ const CommandMenu: React.FC<CommandMenuProps> = ({ isOpen, onClose }) => {
       }
     }
   }, [selectedIndex]);
-
-  const handleSelectItem = (section: Section): void => {
-    const el = document.getElementById(section.id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      router.push(`/#${section.id}`);
-    }
-    onClose();
-  };
-
 
   if (!isOpen) return null;
 
@@ -177,7 +174,7 @@ const CommandMenu: React.FC<CommandMenuProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
           </div>
-          <div className=" max-h-96 overflow-y-auto">
+          <div className="max-h-96 overflow-y-auto">
             {filteredSections.length === 0 ? (
               <div className="p-12 text-center text-gray-400">
                 <div className="mb-3">

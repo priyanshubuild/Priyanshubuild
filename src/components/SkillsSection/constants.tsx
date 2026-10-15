@@ -1,5 +1,3 @@
-import { Atom, Server } from "lucide-react"
-import StackIcon from "tech-stack-icons";
 
 export const skills = [
   {

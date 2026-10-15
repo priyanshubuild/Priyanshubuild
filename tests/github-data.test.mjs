@@ -70,7 +70,7 @@ test("incomplete searches and API failures cannot be shown as accurate rankings"
 test("commit search verifies ownership and a safe repository link", () => {
   const item = {
     sha: "a".repeat(40),
-    repository: { full_name: "priyanshubuild/actual-repo" },
+    repository: { full_name: "priyanshubuild/actual-repo", private: false },
     author: { login: "Priyanshubuild" },
   };
   assert.equal(
@@ -86,6 +86,13 @@ test("commit search verifies ownership and a safe repository link", () => {
       total_count: 1,
       incomplete_results: false,
       items: [{ ...item, author: { login: "someone-else" } }],
+    }),
+  );
+  assert.throws(() =>
+    parseCommitPage({
+      total_count: 1,
+      incomplete_results: false,
+      items: [{ ...item, repository: { ...item.repository, private: true } }],
     }),
   );
 });

@@ -52,10 +52,8 @@ const SPRING = { type: "spring", bounce: 0.2, duration: 0.62 } as const;
 const HEADER_SPRING = { ...SPRING, bounce: 0.45 } as const;
 const ROW_SPRING = { ...SPRING, bounce: 0.26, delay: 0.08 } as const;
 const ROW_OFFSET = 16;
-const CELL_FADE = { duration: 0.2, ease: EASE_OUT } as const;
 const TOOLTIP_FADE = { duration: 0.14, ease: EASE_OUT } as const;
 const TOOLTIP_EDGE = 8;
-const COLUMN_STAGGER = 0.012;
 const LABEL_REVEAL = { duration: 0.45, ease: EASE_OUT } as const;
 
 const LEVELS = [0, 1, 2, 3, 4] as const;
@@ -308,7 +306,7 @@ const ContributionGrid = ({
 
   const cap = Math.min(weeks.length, weeksFor(months));
   const visible = weeks.slice(-Math.min(cap, columns ?? cap));
-  const sweepEnd = (visible.length - 1) * COLUMN_STAGGER + CELL_FADE.duration;
+  const sweepEnd = 0;
 
   const hover = (day: Contribution) => (event: React.PointerEvent) => {
     const cell = event.currentTarget.getBoundingClientRect();
@@ -357,9 +355,9 @@ const ContributionGrid = ({
       >
         {visible.map((week, weekIndex) => (
           <div key={weekIndex} className="flex flex-col" style={{ gap }}>
-            {week.map((day) => (
-              <motion.div
-                key={`${day.date}-${day.placeholder ? "pad" : "day"}`}
+            {week.map((day, dayIndex) => (
+              <div
+                key={`${day.date}-${day.placeholder ? `pad-${dayIndex}` : "day"}`}
                 aria-hidden={day.placeholder || undefined}
                 onPointerEnter={day.placeholder ? undefined : hover(day)}
                 title={day.placeholder ? undefined : describeDay(day)}
@@ -369,18 +367,12 @@ const ContributionGrid = ({
                   height: cellSize,
                   visibility: day.placeholder ? "hidden" : undefined,
                 }}
-                initial={reduceMotion ? false : { opacity: 0, scale: 0.4 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  ...CELL_FADE,
-                  delay: reduceMotion ? 0 : weekIndex * COLUMN_STAGGER,
-                }}
               >
                 <div
                   className="h-full w-full rounded-[3px]"
                   style={scale[day.level] ?? scale[0]}
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         ))}
@@ -576,7 +568,7 @@ const GitHubActivity = ({
       data-slot="github-activity"
       className={cn(
         "relative max-w-full overflow-hidden rounded-[28px] bg-white p-4 dark:bg-black",
-        repos.length > 0 && "pb-[76px]",
+        (repos.length > 0 || username) && "pb-[76px]",
         className,
       )}
       style={{ width, ...style }}
@@ -598,9 +590,14 @@ const GitHubActivity = ({
 
       {(fetched.failed ||
         fetched.data?.errors.calendar ||
-        fetched.data?.errors.repositories) && (
+        fetched.data?.errors.repositories ||
+        (fetched.data?.calendar &&
+          Date.now() - Date.parse(fetched.data.calendar.fetchedAt) > 1800000) ||
+        (fetched.data?.repositories &&
+          Date.now() - Date.parse(fetched.data.repositories.fetchedAt) >
+            1800000)) && (
         <p role="status" className="px-1.5 py-2 text-xs text-neutral-300">
-          Some GitHub data is temporarily unavailable.{" "}
+          Some GitHub data is unavailable or waiting for a fresh update.{" "}
           <button
             type="button"
             onClick={() => void fetched.refresh()}

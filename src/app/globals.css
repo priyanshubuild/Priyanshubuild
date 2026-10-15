@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "./geist-pixel.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -237,4 +238,25 @@ html { scroll-padding-top: 100px; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #bfbfc8; outline-offset: 4px; }
 .skip-link { position:fixed;top:10px;left:12px;z-index:10000000000;background:#fafafa;color:#09090b;padding:10px 16px;border-radius:6px;transform:translateY(-180%); }
 .skip-link:focus { transform:translateY(0); }
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important; } html {scroll-behavior:auto;} }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important;animation-iteration-count:1 !important;animation-delay:0s !important;transition-duration:.01ms !important; } html {scroll-behavior:auto;} }
+
+.portfolio-ruler { position:absolute;top:0;bottom:0;width:30px;background-color:#09090b;z-index:9999;pointer-events:none;user-select:none; }
+.portfolio-ruler-left { left:0;border-right:2px solid #1c1c1f;background-image:repeating-linear-gradient(to bottom,#1c1c1f 0 2px,transparent 2px 10px),repeating-linear-gradient(to bottom,#1c1c1f 0 2px,transparent 2px 50px),repeating-linear-gradient(to bottom,#1c1c1f 0 2px,transparent 2px 100px);background-position:right,right,right;background-size:6px 100%,10px 100%,18px 100%;background-repeat:no-repeat; }
+.portfolio-ruler-right { right:0;border-left:2px solid #1c1c1f;background-image:repeating-linear-gradient(to bottom,#1c1c1f 0 2px,transparent 2px 10px),repeating-linear-gradient(to bottom,#1c1c1f 0 2px,transparent 2px 50px),repeating-linear-gradient(to bottom,#1c1c1f 0 2px,transparent 2px 100px);background-position:left,left,left;background-size:6px 100%,10px 100%,18px 100%;background-repeat:no-repeat; }
+.skill-icon-first { transition:transform .25s ease,opacity .25s ease; }
+.skill-icon-second { transform:translateY(100%);opacity:0;transition:transform .35s ease,opacity .35s ease; }
+.skill-pill:hover .skill-icon-first { transform:translateY(-100%);opacity:0; }
+.skill-pill:hover .skill-icon-second { transform:translateY(0);opacity:1; }
+.footer-signature::before { content:attr(data-decoration); }
+/* The existing greeting reveals server-rendered content without waiting for hydration. */
+.portfolio-preloader { animation: portfolio-reveal .18s cubic-bezier(.8,0,.2,1) forwards;pointer-events:none; }
+.portfolio-preloader.shutter-panel { animation:none;transform:translateY(-100%); }
+@keyframes portfolio-reveal { from {transform:translateY(0);} to {transform:translateY(-100%);} }
+.portfolio-greeting {opacity:0;animation:portfolio-greeting .02s linear forwards;}
+@keyframes portfolio-greeting {0%,90% {opacity:1;}100% {opacity:0;}}
+.work-note-arrow {animation:work-note-arrow .5s ease-out .5s both;}
+.work-note-text {animation:work-note-text .4s ease-out .85s both;}
+.email-copy-icon {animation:email-copy-icon .18s ease-out;}
+@keyframes work-note-arrow {from{opacity:0;scale:.85;}to{opacity:1;scale:1;}}
+@keyframes work-note-text {from{opacity:0;}to{opacity:1;}}
+@keyframes email-copy-icon {from{opacity:0;translate:0 8px;}to{opacity:1;translate:0 0;}}

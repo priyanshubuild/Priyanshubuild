@@ -1,7 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-
 const LINES = ["psst… i'm", "open to work"];
 const CONTACT = '[data-section-label="Contact section"]';
 
@@ -11,11 +9,11 @@ const HEAD =
   "M315.713 233.668c-17.136 0-34.884 1.224-51.408 5.508-6.731 1.836-3.672 11.016 3.061 9.792 13.464-2.448 27.54-1.836 41.004-1.224-.612 7.955-1.224 16.523-2.448 24.479-1.224 6.12-5.508 15.3-1.836 21.42 1.836 3.061 4.896 3.061 7.956 1.836 7.344-3.06 7.344-15.912 8.568-22.644 1.836-11.017 2.447-21.42 2.447-32.437 0-3.67-3.672-6.73-7.344-6.73";
 
 const OpenToWorkNote = () => {
-  const reduceMotion = useReducedMotion();
-
   const goToContact = () =>
     document.querySelector(CONTACT)?.scrollIntoView({
-      behavior: reduceMotion ? "auto" : "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
       block: "start",
     });
 
@@ -23,35 +21,28 @@ const OpenToWorkNote = () => {
     <button
       type="button"
       onClick={goToContact}
-      aria-label="I'm open to work. Jump to contact."
-      className="flex shrink-0 cursor-pointer items-center gap-0.5 self-center ml-1 mt-2 text-[#27272A] transition-colors duration-300 select-none hover:text-white/40 sm:gap-1 md:-ml-3 md:mt-0"
+      title="Jump to contact"
+      className="mt-2 ml-1 flex shrink-0 cursor-pointer items-center gap-0.5 self-center text-[#9f9fa9] transition-colors duration-300 select-none hover:text-white sm:gap-1 md:mt-0 md:-ml-3"
     >
-      <motion.svg
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 323.057 323.057"
         fill="currentColor"
         aria-hidden="true"
-        className="size-9 shrink-0 rotate-[190deg] sm:size-10 md:size-12"
-        initial={reduceMotion ? false : { opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+        className="work-note-arrow size-9 shrink-0 rotate-[190deg] sm:size-10 md:size-12"
       >
         <path d={CURL} />
         <path d={HEAD} />
-      </motion.svg>
+      </svg>
 
-      <motion.span
-        className="-rotate-[14deg] text-left font-geist-mono text-[8px] leading-[1.5] tracking-wide sm:text-[9px] md:text-[11px]"
-        initial={reduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.85 }}
-      >
+      <span className="work-note-text font-geist-mono -rotate-[14deg] text-left text-[8px] leading-[1.5] tracking-wide sm:text-[9px] md:text-[11px]">
         {LINES.map((line) => (
           <span key={line} className="block">
             {line}
           </span>
         ))}
-      </motion.span>
+      </span>
+      <span className="sr-only">Jump to contact.</span>
     </button>
   );
 };

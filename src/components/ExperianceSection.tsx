@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
@@ -20,7 +21,6 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
   type,
   highlights,
   skills,
-  color,
   link,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -39,7 +39,9 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
       >
         <div className="h-14 w-14 flex-shrink-0 rounded-lg border border-[#2A2A2D] bg-[#18181B] p-1 shadow-sm transition group-hover:border-[#444446]">
           <a href={link} target="_blank" rel="noopener noreferrer">
-            <img
+            <Image
+              width={64}
+              height={64}
               src={logo}
               alt={`${title} Logo`}
               className="pointer-events-none h-full w-full rounded-md object-contain"

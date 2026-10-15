@@ -3,6 +3,58 @@ import React, { useState, useEffect } from "react";
 import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 import { GitHubIcon } from "../icons/Githubicon";
 import Link from "next/link";
+import Image from "next/image";
+
+const projects = [
+  {
+    id: 1,
+    title: "DSA & Algorithms Lab",
+    description:
+      "A comprehensive repository of algorithmic problem solving, core data structures, and competitive programming solutions in modern C++.",
+    category: "systems",
+    technologies: ["C++", "DSA", "Algorithms", "STL"],
+    year: "2025",
+    image: "/Project/ProjectImages/mach.png",
+    github: "priyanshubuild/priyanshubuild",
+    live: "https://github.com/priyanshubuild",
+  },
+  {
+    id: 2,
+    title: "Linux & Systems Workbench",
+    description:
+      "System exploration tools, custom shell scripts, and Linux command-line utilities configured for daily developer workflows.",
+    category: "systems",
+    technologies: ["Linux", "Bash", "Shell", "Git"],
+    year: "2025",
+    image: "/Project/ProjectImages/ghosttype.png",
+    github: "priyanshubuild/priyanshubuild",
+    live: "https://github.com/priyanshubuild",
+  },
+  {
+    id: 3,
+    title: "Interactive Portfolio",
+    description:
+      "Modern developer portfolio built with Next.js 15, React 19, Tailwind CSS v4, and fluid micro-animations.",
+    category: "frontend",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    year: "2025",
+    image: "/Project/ProjectImages/layers.png",
+    github: "priyanshubuild/priyanshubuild",
+    live: "https://priyanshugupta.com",
+  },
+  {
+    id: 4,
+    title: "Web Dev & UI Engineering",
+    description:
+      "Full-stack web explorations and interactive UI components focusing on speed, accessible markup, and smooth user experience.",
+    category: "fullstack",
+    technologies: ["TypeScript", "React", "Node.js", "Tailwind CSS"],
+    year: "2025",
+    image: "/Project/ProjectImages/vidstudio.png",
+    github: "priyanshubuild/priyanshubuild",
+    live: "https://priyanshugupta.com",
+  },
+];
 
 const ProjectsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -15,91 +67,20 @@ const ProjectsPage = () => {
     { id: "frontend", name: "Frontend" },
   ];
 
-  const projects = [
-    {
-      id: 1,
-      title: "DSA & Algorithms Lab",
-      description:
-        "A comprehensive repository of algorithmic problem solving, core data structures, and competitive programming solutions in modern C++.",
-      category: "systems",
-      technologies: ["C++", "DSA", "Algorithms", "STL"],
-      year: "2025",
-      image: "/Project/ProjectImages/mach.png",
-      github: "priyanshubuild/priyanshubuild",
-      live: "https://github.com/priyanshubuild",
-    },
-    {
-      id: 2,
-      title: "Linux & Systems Workbench",
-      description:
-        "System exploration tools, custom shell scripts, and Linux command-line utilities configured for daily developer workflows.",
-      category: "systems",
-      technologies: ["Linux", "Bash", "Shell", "Git"],
-      year: "2025",
-      image: "/Project/ProjectImages/ghosttype.png",
-      github: "priyanshubuild/priyanshubuild",
-      live: "https://github.com/priyanshubuild",
-    },
-    {
-      id: 3,
-      title: "Interactive Portfolio",
-      description:
-        "Modern developer portfolio built with Next.js 15, React 19, Tailwind CSS v4, and fluid micro-animations.",
-      category: "frontend",
-      technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
-      year: "2025",
-      image: "/Project/ProjectImages/layers.png",
-      github: "priyanshubuild/priyanshubuild",
-      live: "https://priyanshugupta.com",
-    },
-    {
-      id: 4,
-      title: "Web Dev & UI Engineering",
-      description:
-        "Full-stack web explorations and interactive UI components focusing on speed, accessible markup, and smooth user experience.",
-      category: "fullstack",
-      technologies: ["TypeScript", "React", "Node.js", "Tailwind CSS"],
-      year: "2025",
-      image: "/Project/ProjectImages/vidstudio.png",
-      github: "priyanshubuild/priyanshubuild",
-      live: "https://priyanshugupta.com",
-    },
-  ];
-
-  const fetchStars = async (repo: string) => {
-    try {
-      const res = await fetch(`https://api.github.com/repos/${repo}`);
-      if (!res.ok) return 0;
-      const data = await res.json();
-      return data.stargazers_count || 0;
-    } catch (err) {
-      console.error("Error fetching stars:", err);
-      return 0;
-    }
-  };
-
   useEffect(() => {
-    let isMounted = true;
-    const loadStars = async () => {
-      const results = await Promise.all(
-        projects.map(async (project) => {
-          if (!project.github) return null;
-          const count = await fetchStars(project.github);
-          return [project.github, count] as const;
-        })
-      );
-      if (isMounted) {
-        const counts: Record<string, number> = {};
-        results.forEach((entry) => {
-          if (entry) counts[entry[0]] = entry[1];
-        });
-        setStars(counts);
-      }
-    };
-    loadStars();
-    return () => {
-      isMounted = false;
-    };
+    const controller = new AbortController();
+    fetch("/api/github-stars", { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (data && typeof data.stars === "number")
+          setStars(
+            Object.fromEntries(
+              projects.map((project) => [project.github, data.stars]),
+            ),
+          );
+      })
+      .catch(() => {});
+    return () => controller.abort();
   }, []);
 
   const filteredProjects =
@@ -108,12 +89,15 @@ const ProjectsPage = () => {
       : projects.filter((project) => project.category === selectedCategory);
 
   return (
-    <div className="font-space-grotesk mx-auto bg-[#09090B] bg-[repeating-linear-gradient(45deg,#000_0px,#000_7px,#1C1C1F_7px,#1C1C1F_8px)]">
+    <main
+      id="main-content"
+      className="font-space-grotesk mx-auto bg-[#09090B] bg-[repeating-linear-gradient(45deg,#000_0px,#000_7px,#1C1C1F_7px,#1C1C1F_8px)]"
+    >
       <div className="mx-auto w-[80%] border-r-2 border-l-2 border-[#1C1C1F] bg-[#09090B] text-white">
         <div className="border-b border-[#1C1C1F]">
           <div className="mx-auto max-w-5xl px-6 py-10">
             <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-              <h1 className=" text-4xl font-bold sm:text-6xl md:text-7xl lg:text-8xl">
+              <h1 className="text-4xl font-bold sm:text-6xl md:text-7xl lg:text-8xl">
                 Projects
               </h1>
               <Link
@@ -123,22 +107,23 @@ const ProjectsPage = () => {
                 <ArrowLeft size={18} /> Back
               </Link>
             </div>
-            <p className=" max-w-2xl text-base text-[#666] sm:text-xl">
+            <p className="max-w-2xl text-base text-[#a3a3a3] sm:text-xl">
               All my Proof of Work at one place
             </p>
           </div>
         </div>
 
         <div className="mx-auto max-w-6xl px-6 py-10 sm:max-w-[80%]">
-          <div className="mb-12 flex w-fit gap-1 rounded-full border border-[#1C1C1F] p-1  mx-auto">
+          <div className="mx-auto mb-12 flex w-fit gap-1 rounded-full border border-[#1C1C1F] p-1">
             {categories.map((category) => (
               <button
                 key={category.id}
+                aria-pressed={selectedCategory === category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={` rounded-full px-2.5 py-1.5 text-xs transition-all duration-300 sm:px-4 sm:py-2 sm:text-sm ${
+                className={`rounded-full px-2.5 py-1.5 text-xs transition-all duration-300 sm:px-4 sm:py-2 sm:text-sm ${
                   selectedCategory === category.id
                     ? "bg-[#1C1C1C] text-white"
-                    : "text-[#666] hover:text-[#999]"
+                    : "text-[#a3a3a3] hover:text-[#999]"
                 }`}
               >
                 {category.name}
@@ -153,7 +138,9 @@ const ProjectsPage = () => {
                 className="group flex flex-col overflow-hidden rounded-xl border border-[#1C1C1F] bg-[#0A0A0A] transition-all duration-500 hover:-translate-y-2 hover:transform hover:border-[#333] hover:shadow-2xl hover:shadow-black/50"
               >
                 <div className="relative aspect-[4/2] overflow-hidden bg-[#111]">
-                  <img
+                  <Image
+                    fill
+                    sizes="(max-width: 768px) 90vw, 40vw"
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
@@ -166,6 +153,7 @@ const ProjectsPage = () => {
                         href={`https://github.com/${project.github}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`View ${project.title} ${project.github ? "source" : "demo"}`}
                         className="rounded-full bg-white/10 p-3 backdrop-blur-sm transition-colors duration-200 hover:bg-white/20"
                       >
                         <Github size={20} className="text-white" />
@@ -174,6 +162,7 @@ const ProjectsPage = () => {
                     {project.live && (
                       <a
                         href={project.live}
+                        aria-label={`Open ${project.title} demo`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="rounded-full bg-white/10 p-3 backdrop-blur-sm transition-colors duration-200 hover:bg-white/20"
@@ -184,17 +173,17 @@ const ProjectsPage = () => {
                   </div>
 
                   <div className="absolute top-4 right-4 rounded-full bg-[#09090B]/70 px-2 py-1 backdrop-blur-sm">
-                    <span className=" text-xs text-[#888]">
+                    <span className="text-xs text-[#a3a3a3]">
                       {project.year}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className=" mb-3 text-xl font-bold transition-colors duration-300 group-hover:text-[#CCC]">
+                  <h2 className="mb-3 text-xl font-bold transition-colors duration-300 group-hover:text-[#CCC]">
                     {project.title}
-                  </h3>
-                  <p className=" mb-4 text-sm leading-relaxed text-[#666]">
+                  </h2>
+                  <p className="mb-4 text-sm leading-relaxed text-[#a3a3a3]">
                     {project.description}
                   </p>
 
@@ -202,7 +191,7 @@ const ProjectsPage = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className=" rounded-full border border-[#1C1C1F] bg-[#111] px-2 py-1 text-xs text-[#888]"
+                        className="rounded-full border border-[#1C1C1F] bg-[#111] px-2 py-1 text-xs text-[#a3a3a3]"
                       >
                         {tech}
                       </span>
@@ -213,9 +202,10 @@ const ProjectsPage = () => {
                     {project.live && (
                       <a
                         href={project.live}
+                        aria-label={`Open ${project.title} demo`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className=" flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#333] bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] px-4 py-2 text-sm text-white transition-all duration-300 hover:border-[#444] hover:from-[#2a2a2a] hover:to-[#3a3a3a]"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#333] bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] px-4 py-2 text-sm text-white transition-all duration-300 hover:border-[#444] hover:from-[#2a2a2a] hover:to-[#3a3a3a]"
                       >
                         <ExternalLink size={16} />
                         View Live
@@ -232,7 +222,7 @@ const ProjectsPage = () => {
                         <p>Github</p>
                         <span className="flex items-center gap-1">
                           <span className="border-l border-gray-500 pl-2">
-                            {stars[project.github] ?? 0}
+                            {stars[project.github] ?? "--"}
                           </span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -262,7 +252,7 @@ const ProjectsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

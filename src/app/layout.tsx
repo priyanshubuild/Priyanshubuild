@@ -4,31 +4,24 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Space_Grotesk } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Syne } from "next/font/google";
-import { GeistPixelSquare } from "geist/font/pixel";
 import AgentTools from "@/components/AgentTools";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  preload: false,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-syne",
   display: "swap",
 });
 
@@ -182,6 +175,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
+          rel="preload"
+          href="/fonts/geist-pixel-square-latin-v1.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
           rel="ai-catalog"
           href="/.well-known/ai-catalog.json"
           type="application/json"
@@ -192,21 +192,6 @@ export default function RootLayout({
           type="application/json"
           title="Priyanshu Gupta — public profile"
         />
-        <link
-          rel="preconnect"
-          href="https://github-contributions-api.jogruber.de"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://github-contributions-api.jogruber.de"
-        />
-        <link
-          rel="preconnect"
-          href="https://api.github.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="dns-prefetch" href="https://api.github.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -216,7 +201,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={` ${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} ${spaceGrotesk.variable} ${syne.variable} antialiased`}
+        className={` ${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
         <a href="#main-content" className="skip-link">
           Skip to content

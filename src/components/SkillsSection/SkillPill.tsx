@@ -1,48 +1,20 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
-
-type SkillPillProps = {
-  skillName: string;
-  icon?: React.ReactNode;
-};
-
-const SkillPill = ({ skillName, icon }: SkillPillProps) => {
+type SkillPillProps = { skillName: string; icon?: React.ReactNode };
+export default function SkillPill({ skillName, icon }: SkillPillProps) {
   return (
-    <motion.div
-      className="bg-grey px-2 md:px-4 py-1 md:py-2 rounded-lg text-sm flex items-center gap-2 w-fit cursor-pointer overflow-hidden"
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
-    >
-      <div className="w-4 h-4 md:w-6 md:h-6 relative flex-shrink-0 overflow-hidden">
-        <motion.span
-          className="absolute inset-0 flex items-center justify-center"
-          variants={{
-            rest: { y: 0, opacity: 1 },
-            hover: { y: "-100%", opacity: 0 },
-          }}
-          transition={{ duration: 0.25, ease: "easeInOut" }}
-        >
+    <div className="skill-pill bg-grey flex w-fit cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-2 py-1 text-sm md:px-4 md:py-2">
+      <div
+        aria-hidden="true"
+        className="relative h-4 w-4 flex-shrink-0 overflow-hidden md:h-6 md:w-6"
+      >
+        <span className="skill-icon-first absolute inset-0 flex items-center justify-center">
           {icon}
-        </motion.span>
-
-        <motion.span
-          className="absolute inset-0 flex items-center justify-center"
-          variants={{
-            rest: { y: "100%", opacity: 0 },
-            hover: { y: 0, opacity: 1 },
-          }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-        >
+        </span>
+        <span className="skill-icon-second absolute inset-0 flex items-center justify-center">
           {icon}
-        </motion.span>
+        </span>
       </div>
-
       <span className="font-medium whitespace-nowrap">{skillName}</span>
-    </motion.div>
+    </div>
   );
-};
-
-export default SkillPill;
+}
