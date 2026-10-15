@@ -10,6 +10,7 @@ type FootLink = {
   href?: string;
   copy?: boolean;
   underline?: boolean;
+  excludeFromSnippet?: boolean;
 };
 type FootColumn = { title: string; links: FootLink[] };
 
@@ -49,6 +50,7 @@ const columns: FootColumn[] = [
       {
         text: "Design credit (Swami Malode)",
         href: "https://github.com/swamimalode07/swamii.me",
+        excludeFromSnippet: true,
       },
       { text: "Deployed on Vercel", href: "https://vercel.com" },
     ],
@@ -112,7 +114,9 @@ const ContactSection = () => {
                         rel="noopener noreferrer"
                         className={`hover:text-secondary truncate text-white transition-colors ${item.underline ? "link-underline" : ""}`}
                       >
-                        {item.text}
+                        <span data-nosnippet={item.excludeFromSnippet ? "" : undefined}>
+                          {item.text}
+                        </span>
                       </a>
                     ) : (
                       <span className="text-white">{item.text}</span>

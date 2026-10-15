@@ -53,4 +53,7 @@ await sharp(
   .toFile(`${output}icon-maskable.png`);
 const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><rect width="1200" height="630" fill="#09090b"/><g stroke="#28282d"><path d="M40 0v630M1160 0v630M40 110h1120M40 550h1120"/>${Array.from({ length: 63 }, (_, i) => `<path d="M${i % 5 ? 32 : 22} ${i * 10}h${i % 5 ? 8 : 18}M1160 ${i * 10}h${i % 5 ? 8 : 18}"/>`).join("")}</g><g font-family="Arial,sans-serif"><text x="88" y="70" fill="#ededf0" font-size="24">@code by PRIYANSHU</text><text x="88" y="213" fill="#fafafa" font-size="65" font-weight="600">Priyanshu Gupta</text><text x="88" y="326" fill="#fafafa" font-size="83" font-weight="600">I build &amp; solve.</text><text x="88" y="410" fill="#b0b0bb" font-size="24">Software Developer &amp; Systems Engineer</text><text x="88" y="458" fill="#b0b0bb" font-size="22">C++ · Algorithms · Linux · Modern web applications</text><text x="88" y="597" fill="#aaaaaf" font-size="20">priyanshugupta.com</text></g></svg>`;
 await sharp(Buffer.from(og)).png().toFile(`${output}opengraph.png`);
+// Keep the historical URL useful for crawlers that still have the old preview cached.
+await sharp(`${output}opengraph.png`).jpeg({ quality: 90 }).toFile(`${output}official/opengraphh.jpg`);
+await sharp(Buffer.from(svg)).resize(400, 400).png().toFile(`${output}official/logo.png`);
 console.log("Generated local favicon, app icon, and social preview assets.");
