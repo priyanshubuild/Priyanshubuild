@@ -36,11 +36,11 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 
 <!-- activity:start -->
 <p align="center">
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity-191168914089.svg" width="49%" alt="393 GitHub contributions, 312 public authored commits, 65 active days in the past year" /></a>
-  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages-03958bdfccce.svg" width="49%" alt="Public code languages by bytes: CSS 79.0%, JavaScript 6.6%, TypeScript 4.7%, Jupyter Notebook 3.8%" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity-6181f9be5293.svg" width="49%" alt="393 GitHub contributions and 65 active days in the past year; 321 all-time commits across public repositories" /></a>
+  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages-755d01c7b1bd.svg" width="49%" alt="Public source lines: JavaScript 7,274 lines, TypeScript 5,857 lines, CSS 5,482 lines, HTML 3,764 lines, C++ 1,897 lines, Python 1,615 lines" /></a>
 </p>
 
-<sub>Past 365 days · Updated daily · Snapshot: 2026-10-16 UTC.</sub>
+<sub>Activity: past year · Repository commits: all time · Updated daily · 2026-10-16 UTC.</sub>
 <!-- activity:end -->
 
 ### What I'm working on
@@ -54,7 +54,9 @@ I value readable code, a strong understanding of the fundamentals, and steady im
 <details>
 <summary>How these numbers are counted</summary>
 
-Activity covers the past year. Contributions include GitHub's contribution types; authored commits count public commits attributed to me. The language card shows the four largest languages by the size of code stored in my public repositories, excluding forks. It isn't a measure of time spent coding or skill: larger files can outweigh many small solutions. Smaller languages are included in the total, so the four shown may not add up to 100%.
+Contributions and active days cover the past year. Repository commits include all authors, bots, and merge commits on the default branches of my public repositories, across their full history.
+
+The language card counts **source lines**, excluding blank lines, comments, generated output, dependencies, and data/configuration files. Notebook code cells count toward their programming language; outputs and notebook formatting are excluded. The six largest languages are shown. These are lines currently stored in public repositories, including collaborative work, rather than a measure of personal typing time or skill.
 
 </details>
 
@@ -74,7 +76,7 @@ Open [localhost:3000](http://localhost:3000/). Optional server settings and veri
 
 ### README visuals
 
-The banner, animation, link badges, and activity card live in this repository. A [daily workflow](.github/workflows/readme-activity.yml) refreshes the activity snapshot from the same verified public data used by the website. A failed refresh keeps the previous snapshot.
+The banner, animation, link badges, and activity cards live in this repository. A [daily workflow](.github/workflows/readme-activity.yml) refreshes activity and counts actual source lines with the checksum-pinned [cloc](https://github.com/AlDanial/cloc) tool. Failed refreshes keep the previous snapshot. Commits by `github-actions[bot]` are these automatic data updates. This public repository uses a standard Ubuntu runner, which [GitHub currently provides free](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
 
 [Asset generation and refresh details](docs/README-ASSETS.md)
 

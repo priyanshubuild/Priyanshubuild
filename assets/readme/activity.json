@@ -59,7 +59,7 @@
       {
         "date": "2025-10-28",
         "count": 6,
-        "level": 1
+        "level": 2
       },
       {
         "date": "2025-10-29",
@@ -334,7 +334,7 @@
       {
         "date": "2025-12-22",
         "count": 12,
-        "level": 2
+        "level": 4
       },
       {
         "date": "2025-12-23",
@@ -1827,219 +1827,233 @@
         "level": 0
       }
     ],
-    "fetchedAt": "2026-10-16T20:12:08.283Z"
+    "from": "2025-10-17",
+    "to": "2026-10-16",
+    "fetchedAt": "2026-10-16T20:50:58.890Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "100xDSA",
-        "count": 64,
-        "href": "https://github.com/priyanshubuild/100xDSA"
-      },
-      {
-        "name": "100xDevs",
-        "count": 47,
-        "href": "https://github.com/priyanshubuild/100xDevs"
+        "href": "https://github.com/priyanshubuild/100xDSA",
+        "count": 64
       },
       {
         "name": "Priyanshubuild",
-        "count": 39,
-        "href": "https://github.com/priyanshubuild/Priyanshubuild"
+        "href": "https://github.com/priyanshubuild/Priyanshubuild",
+        "count": 62
+      },
+      {
+        "name": "100xDevs",
+        "href": "https://github.com/priyanshubuild/100xDevs",
+        "count": 48
       },
       {
         "name": "BitForgeXABTalks",
-        "count": 36,
-        "href": "https://github.com/priyanshubuild/BitForgeXABTalks"
+        "href": "https://github.com/priyanshubuild/BitForgeXABTalks",
+        "count": 38
       },
       {
         "name": "FSD-BACKEND",
-        "count": 33,
-        "href": "https://github.com/priyanshubuild/FSD-BACKEND"
-      },
-      {
-        "name": "create-your-own-resume-using-div-list-and-table-priyanshubuild",
-        "count": 21,
-        "href": "https://github.com/CSE23-classroom/create-your-own-resume-using-div-list-and-table-priyanshubuild"
+        "href": "https://github.com/priyanshubuild/FSD-BACKEND",
+        "count": 33
       },
       {
         "name": "speedflow",
-        "count": 13,
-        "href": "https://github.com/priyanshubuild/speedflow"
+        "href": "https://github.com/priyanshubuild/speedflow",
+        "count": 13
       },
       {
         "name": "Amazon_clone",
-        "count": 11,
-        "href": "https://github.com/priyanshubuild/Amazon_clone"
+        "href": "https://github.com/priyanshubuild/Amazon_clone",
+        "count": 11
       },
       {
         "name": "college-web-dev",
-        "count": 9,
-        "href": "https://github.com/priyanshubuild/college-web-dev"
-      },
-      {
-        "name": "Eventrix",
-        "count": 9,
-        "href": "https://github.com/priyanshubuild/Eventrix"
+        "href": "https://github.com/priyanshubuild/college-web-dev",
+        "count": 11
       },
       {
         "name": "College_cpp",
-        "count": 8,
-        "href": "https://github.com/priyanshubuild/College_cpp"
+        "href": "https://github.com/priyanshubuild/College_cpp",
+        "count": 9
+      },
+      {
+        "name": "Eventrix",
+        "href": "https://github.com/priyanshubuild/Eventrix",
+        "count": 9
       },
       {
         "name": "leetcode-progress",
-        "count": 8,
-        "href": "https://github.com/priyanshubuild/leetcode-progress"
+        "href": "https://github.com/priyanshubuild/leetcode-progress",
+        "count": 8
       },
       {
         "name": "tailwind-projects",
-        "count": 6,
-        "href": "https://github.com/priyanshubuild/tailwind-projects"
+        "href": "https://github.com/priyanshubuild/tailwind-projects",
+        "count": 6
       },
       {
         "name": "CSE24_JS",
-        "count": 4,
-        "href": "https://github.com/priyanshubuild/CSE24_JS"
+        "href": "https://github.com/priyanshubuild/CSE24_JS",
+        "count": 4
       },
       {
         "name": "Data-Visualization-using-python",
-        "count": 3,
-        "href": "https://github.com/priyanshubuild/Data-Visualization-using-python"
+        "href": "https://github.com/priyanshubuild/Data-Visualization-using-python",
+        "count": 4
       },
       {
         "name": "External-assesment-sem2",
-        "count": 1,
-        "href": "https://github.com/priyanshubuild/External-assesment-sem2"
+        "href": "https://github.com/priyanshubuild/External-assesment-sem2",
+        "count": 1
       }
     ],
-    "from": "2025-10-17",
-    "to": "2026-10-16",
-    "fetchedAt": "2026-10-16T20:12:08.994Z"
+    "scope": "all-time",
+    "source": "github-default-branches",
+    "fetchedAt": "2026-10-16T20:50:58.767Z"
   },
   "languages": {
-    "bytes": {
-      "CSS": 3955615,
-      "JavaScript": 331769,
-      "TypeScript": 234011,
-      "Jupyter Notebook": 192270,
-      "HTML": 159367,
-      "Python": 95282,
-      "C++": 38222
+    "lines": {
+      "JavaScript": 7274,
+      "TypeScript": 5857,
+      "CSS": 5482,
+      "HTML": 3764,
+      "C++": 1897,
+      "Python": 1615
     },
     "repositories": [
       {
         "repository": "priyanshubuild/100xDevs",
-        "bytes": {
-          "HTML": 56387,
-          "CSS": 24524,
-          "JavaScript": 17571
+        "commit": "877bff43fa3cfdd747ecc570b56cad0b676e9652",
+        "lines": {
+          "HTML": 1581,
+          "CSS": 1286,
+          "JavaScript": 622
         }
       },
       {
         "repository": "priyanshubuild/100xDSA",
-        "bytes": {
-          "C++": 24050
+        "commit": "0c4a9cf581c1eb91580d05f0a7b6a4ceed3d3d84",
+        "lines": {
+          "C++": 1321
         }
       },
       {
         "repository": "priyanshubuild/Amazon_clone",
-        "bytes": {
-          "JavaScript": 56697,
-          "CSS": 41099,
-          "HTML": 36913
+        "commit": "c5d22277d2883a384d27207e2bfed65e55d6e361",
+        "lines": {
+          "CSS": 1767,
+          "JavaScript": 1292,
+          "HTML": 962
         }
       },
       {
         "repository": "priyanshubuild/BitForgeXABTalks",
-        "bytes": {
-          "JavaScript": 133728,
-          "Python": 89310,
-          "CSS": 32571,
-          "HTML": 1444
+        "commit": "afe2a4567b1235aadcf55b0a5b43b03f624804cb",
+        "lines": {
+          "JavaScript": 2873,
+          "Python": 1436,
+          "CSS": 1177,
+          "HTML": 33
         }
       },
       {
         "repository": "priyanshubuild/college-web-dev",
-        "bytes": {
-          "HTML": 43291,
-          "CSS": 5727
+        "commit": "1476440a57b8909f8225f9b0b134506fd88e8d90",
+        "lines": {
+          "HTML": 759,
+          "CSS": 330
         }
       },
       {
         "repository": "priyanshubuild/College_cpp",
-        "bytes": {
-          "C++": 13318
+        "commit": "f3de1e79fcb190157e6d23175109cd42e3a4f77d",
+        "lines": {
+          "C++": 535
         }
       },
       {
         "repository": "priyanshubuild/CSE24_JS",
-        "bytes": {
-          "JavaScript": 534,
-          "HTML": 252
+        "commit": "cde36024c56d31c517d68b006756245d079d9e6d",
+        "lines": {
+          "JavaScript": 26,
+          "HTML": 11
         }
       },
       {
         "repository": "priyanshubuild/Data-Visualization-using-python",
-        "bytes": {
-          "Jupyter Notebook": 192270
+        "commit": "1edb5059618eda1042f84c6ad8188cef29be5690",
+        "lines": {
+          "Python": 66
         }
       },
       {
         "repository": "priyanshubuild/Eventrix",
-        "bytes": {
-          "JavaScript": 15329,
-          "HTML": 718
+        "commit": "5906ee1f72a2cdb21eeeb7fc4b042c4c4e02f9a7",
+        "lines": {
+          "JavaScript": 71,
+          "CSS": 3,
+          "HTML": 1
         }
       },
       {
         "repository": "priyanshubuild/External-assesment-sem2",
-        "bytes": {
-          "JavaScript": 710,
-          "CSS": 640,
-          "HTML": 468
+        "commit": "7403d0708e41a2da7472d2915b090ec6792c46b6",
+        "lines": {
+          "CSS": 35,
+          "JavaScript": 20,
+          "HTML": 16
         }
       },
       {
         "repository": "priyanshubuild/FSD-BACKEND",
-        "bytes": {
-          "JavaScript": 27491,
-          "HTML": 12064,
-          "CSS": 11679
+        "commit": "88c0f0dd8ddc6ab3b85e0d71e28e80daffa7bf97",
+        "lines": {
+          "JavaScript": 774,
+          "CSS": 531,
+          "HTML": 330
         }
       },
       {
         "repository": "priyanshubuild/leetcode-progress",
-        "bytes": {
-          "C++": 854
+        "commit": "7f17e4fd8507e3313110ad4f28c7699bb05d02e5",
+        "lines": {
+          "C++": 41
         }
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "bytes": {
-          "TypeScript": 234011,
-          "JavaScript": 37306,
-          "CSS": 11885,
-          "Python": 865
+        "commit": "358c8dc744e0ecfdff422100588d1f62be5a4268",
+        "lines": {
+          "TypeScript": 5857,
+          "JavaScript": 799,
+          "CSS": 275,
+          "Python": 16
         }
       },
       {
         "repository": "priyanshubuild/speedflow",
-        "bytes": {
-          "JavaScript": 42161,
-          "HTML": 6466,
-          "Python": 5107,
-          "CSS": 2721
+        "commit": "9c964059f5af9710587191eaecf26cfb88b91c7b",
+        "lines": {
+          "JavaScript": 780,
+          "Python": 97,
+          "CSS": 75,
+          "HTML": 36
         }
       },
       {
         "repository": "priyanshubuild/tailwind-projects",
-        "bytes": {
-          "CSS": 3824769,
-          "HTML": 1364,
-          "JavaScript": 242
+        "commit": "071cd24aa286a202ac6fb55451937722fdbb0d34",
+        "lines": {
+          "HTML": 35,
+          "JavaScript": 17,
+          "CSS": 3
         }
       }
     ],
-    "fetchedAt": "2026-10-16"
+    "fetchedAt": "2026-10-16T20:51:58.310621+00:00",
+    "counter": "cloc 2.10",
+    "scope": "public-non-fork-default-branches"
   }
 }

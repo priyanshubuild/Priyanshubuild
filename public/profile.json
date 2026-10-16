@@ -20,9 +20,9 @@
   },
   "activity": {
     "url": "https://priyanshugupta.com/api/github-activity",
-    "calendar": "Daily GitHub contributions, via GitHub Contributions API",
-    "repositoryRanking": "Public authored commits in the past 365 days, from GitHub commit search",
-    "cacheSeconds": 900
+    "calendar": "Personal daily contributions for the past 365 days, from GitHub's public calendar",
+    "repositoryRanking": "All-time commits by all authors and bots on public repository default branches",
+    "cacheSeconds": 120
   },
   "contact": { "method": "email", "url": "mailto:priyanshug1408@gmail.com" }
 }

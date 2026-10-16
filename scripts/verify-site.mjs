@@ -81,6 +81,9 @@ assert.equal((sitemap.match(/<loc>/g) || []).length, 3);
 assert.ok(!sitemap.includes("<lastmod>"));
 const first = await (await fetch(base + "/api/github-activity")).json();
 assert.ok(first.calendar && first.repositories);
+assert.deepEqual(first.errors, { calendar: false, repositories: false });
+assert.equal(first.repositories.scope, "all-time");
+assert.equal(first.repositories.source, "github-default-branches");
 assert.ok(
   first.repositories.repos.every(
     (repo, i, array) => i === 0 || repo.count <= array[i - 1].count,
