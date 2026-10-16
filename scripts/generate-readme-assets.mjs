@@ -41,7 +41,7 @@ function header(caption) {
   </svg>`;
 }
 await writeFile(join(output, "header.svg"), header("understand first. build second."));
-await sharp(Buffer.from(header("understand first. build second.")), { density: rasterDensity }).png().toFile(join(output, "header-static.png"));
+await sharp(Buffer.from(header("understand first. build second.")), { density: rasterDensity }).png().toFile(join(output, "header-static@3x.png"));
 const captions = ["C++ / data structures / algorithms", "Linux / systems / shell tooling", "Next.js / React / TypeScript"];
 const timeline = [];
 for (const caption of captions) {
