@@ -20,7 +20,10 @@ export default function WordPreloader() {
           <span
             key={word}
             className="portfolio-greeting col-start-1 row-start-1"
-            style={{ animationDelay: `${index * 20}ms` }}
+            style={{
+              animationDelay: `${index * 180}ms`,
+              animationDuration: index === words.length - 1 ? "1200ms" : "180ms",
+            }}
           >
             • {word}
           </span>

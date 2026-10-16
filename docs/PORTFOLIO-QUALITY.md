@@ -28,13 +28,13 @@ These resources help agents interpret and navigate the site. They do not guarant
 
 ## Performance and accessibility
 
-- Static hero and greeting markup render on the server. The same greeting style reveals content promptly through CSS instead of waiting for repeated JavaScript state updates.
+- Static hero and greeting markup render on the server. The greeting retains the original nine words, eight 180 ms intervals, a 200 ms final pause, and a one-second upward shutter with the original easing. CSS starts the sequence without waiting for hydration or repeated JavaScript updates. The social dock appears after the reveal; reduced-motion and JavaScript-disabled visitors can access the page immediately.
 - The existing contribution widget and its animation code load near the viewport, with space reserved to avoid collapse during loading.
 - Simple skill, open-to-work, copy-icon, and ruler effects use lightweight CSS while retaining their styling. Local pixel-font files include a small critical subset and the unchanged complete original for other characters. The 113 retained characters have identical outlines and advance widths; the full file is byte-identical to the original. Its license is included, and unused pixel-font variants are not loaded.
 - Nested link/button controls, missing icon rendering, hidden menu focus, Escape-to-close focus handling, contrast, decorative text semantics, duplicate IDs/keys, and copy-email failure handling were corrected.
 - Project images use Next.js image optimization with explicit sizing and accessible link labels. The 404 animation stops running when idle.
 - Analytics are enabled on Vercel, where their endpoints exist, rather than requesting nonexistent local endpoints.
-- Homepage initial JavaScript fell from roughly 184 kB to 141 kB in the production build report.
+- Homepage initial JavaScript fell from roughly 184 kB to 125 kB in the production build report. The desktop-only star tooltip loads when its control is visible, and its provider no longer loads globally. The decorative activity-loading grid uses a single SVG pattern rather than 371 separate elements. The live contribution calendar is unchanged. Visible fonts are preloaded.
 - The availability badge stays within a narrow mobile screen and supports pinning its label without the previous hover/click conflict.
 
 ## Security review
@@ -60,12 +60,12 @@ Lighthouse reports use version 13.5.0 and Chrome 155, against a local production
 
 | Lighthouse category | Original mobile | Final mobile | Original desktop | Final desktop |
 | --- | ---: | ---: | ---: | ---: |
-| Performance | 68 | 96 | 99 | 100 |
+| Performance | 68 | 97 | 99 | 100 |
 | Accessibility | 96 | 100 | 96 | 100 |
 | Best practices | 96 | 100 | 96 | 100 |
 | SEO | 100 | 100 | 100 | 100 |
 
-Final mobile metrics: FCP 1.4 s, LCP 2.8 s, total blocking time 50 ms, layout shift 0. Mobile performance has not reached 100 under Lighthouse's standard simulated slow network and CPU. The original visual design and typography are retained.
+October 17 mobile metrics with the restored intro: FCP 0.9 s, LCP 2.7 s, total blocking time 40 ms, layout shift 0. Mobile performance has not reached 100 under Lighthouse's standard simulated slow network and CPU. The original visual design and typography are retained. The four standard desktop categories and the applicable agentic checks score 100. These are local production measurements; the deployed host must be measured separately.
 
 The experimental agentic category passes all four applicable checks (accessibility tree, layout stability, `llms.txt`, and ARD schema) on both presets. Native WebMCP checks were marked not applicable in the command-line browser; both actual tools and input rejection were separately tested in the supported in-app browser. This experimental category is a ratio of applicable checks, not evidence of chatbot ranking.
 

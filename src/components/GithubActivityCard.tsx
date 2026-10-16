@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import dynamic from "next/dynamic";
 const GitHubActivity = dynamic(
@@ -69,6 +69,7 @@ function useFittedCell() {
 }
 
 export default function GithubActivityCard() {
+  const gridId = useId();
   const [ref, cellSize] = useFittedCell();
   const [near, setNear] = useState(false);
   useEffect(() => {
@@ -113,18 +114,32 @@ export default function GithubActivityCard() {
             <p className="px-1.5 text-base font-medium text-white">
               Loading GitHub activity…
             </p>
-            <div
+            <svg
               aria-hidden="true"
-              className="mt-4 grid grid-flow-col grid-rows-7 gap-1 opacity-50"
+              className="mt-4 w-full opacity-50"
+              height={7 * cellSize + 24}
             >
-              {Array.from({ length: 371 }, (_, i) => (
-                <span
-                  key={i}
-                  className="rounded-[3px] bg-[#383838]"
-                  style={{ height: cellSize }}
-                />
-              ))}
-            </div>
+              <defs>
+                <pattern
+                  id={gridId}
+                  width={`${100 / WEEKS}%`}
+                  height={cellSize + 4}
+                  patternUnits="userSpaceOnUse"
+                >
+                  <rect
+                    height={cellSize}
+                    rx="3"
+                    fill="#383838"
+                    style={{ width: `calc(${100 / WEEKS}% - 4px)` }}
+                  />
+                </pattern>
+              </defs>
+              <rect
+                width="100%"
+                height="100%"
+                fill={`url(#${gridId})`}
+              />
+            </svg>
             <noscript>
               <a
                 className="text-white underline"

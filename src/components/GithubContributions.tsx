@@ -6,6 +6,7 @@ import {
     GitHubContributionsFallback,
 } from "@/components/github-contributions"
 import { getCachedContributions } from "@/lib/get-cached-contributions"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
 const GITHUB_USERNAME = "priyanshubuild"
 const GITHUB_PROFILE_URL = "https://github.com/priyanshubuild"
@@ -14,6 +15,7 @@ export default function GitHubContributionsDefaultTheme() {
     const contributions = getCachedContributions(GITHUB_USERNAME)
 
     return (
+        <TooltipProvider>
         <Suspense fallback={<GitHubContributionsFallback />}>
             <GitHubContributions
                 contributions={contributions}
@@ -27,5 +29,6 @@ export default function GitHubContributionsDefaultTheme() {
                 )}
             />
         </Suspense>
+        </TooltipProvider>
     )
 }

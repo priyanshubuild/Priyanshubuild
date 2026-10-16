@@ -3,16 +3,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import { GitHubIcon } from "@/app/icons/Githubicon";
 import Link from "next/link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import dynamic from "next/dynamic";
+
+function StarsPlaceholder() {
+  return (
+    <a
+      href="https://github.com/priyanshubuild"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Priyanshu Gupta GitHub profile and repository stars"
+      className="flex items-center gap-2 rounded-md px-3 py-2 transition-colors hover:bg-[#1C1C1F]"
+    >
+      <GitHubIcon className="h-5 w-5 text-white/60 transition-colors hover:text-white" />
+      <span className="text-sm text-white/60 hover:text-white">--</span>
+    </a>
+  );
+}
+
+const NavbarStars = dynamic(() => import("./NavbarStars"), {
+  loading: StarsPlaceholder,
+});
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuButton = useRef<HTMLButtonElement>(null);
-  const [stars, setStars] = useState<number | null>(null);
+  const [showDesktopStars, setShowDesktopStars] = useState(false);
 
   const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);
@@ -30,14 +45,12 @@ const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
-    const controller = new AbortController();
-    fetch("/api/github-stars", { signal: controller.signal })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((data) => {
-        if (data && typeof data.stars === "number") setStars(data.stars);
-      })
-      .catch(() => {});
-    return () => controller.abort();
+    // This control is hidden below md. Load its tooltip and data only when visible.
+    const media = window.matchMedia("(min-width: 768px)");
+    const update = () => setShowDesktopStars(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
   }, []);
 
   return (
@@ -85,26 +98,7 @@ const Navbar: React.FC = () => {
               </a>
 
               <div className="hidden items-center gap-6 md:flex">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <a
-                      href="https://github.com/priyanshubuild"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Priyanshu Gupta GitHub profile and repository stars"
-                      className="flex items-center gap-2 rounded-md px-3 py-2 transition-colors hover:bg-[#1C1C1F]"
-                    >
-                      <GitHubIcon className="h-5 w-5 text-white/60 transition-colors hover:text-white" />
-                      <span className="text-sm text-white/60 hover:text-white">
-                        {stars ?? "--"}
-                      </span>
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent className="rounded-lg bg-[#fafafa] px-[17px] py-[9px] text-[15px] leading-[18px] font-medium text-[#09090b] shadow-lg">
-                    {stars?.toLocaleString() ?? "--"} star
-                    {stars === 1 ? "" : "s"}
-                  </TooltipContent>
-                </Tooltip>
+                {showDesktopStars ? <NavbarStars /> : <StarsPlaceholder />}
               </div>
             </div>
 

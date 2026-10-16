@@ -248,12 +248,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .skill-pill:hover .skill-icon-first { transform:translateY(-100%);opacity:0; }
 .skill-pill:hover .skill-icon-second { transform:translateY(0);opacity:1; }
 .footer-signature::before { content:attr(data-decoration); }
-/* The existing greeting reveals server-rendered content without waiting for hydration. */
-.portfolio-preloader { animation: portfolio-reveal .18s cubic-bezier(.8,0,.2,1) forwards;pointer-events:none; }
-.portfolio-preloader.shutter-panel { animation:none;transform:translateY(-100%); }
-@keyframes portfolio-reveal { from {transform:translateY(0);} to {transform:translateY(-100%);} }
-.portfolio-greeting {opacity:0;animation:portfolio-greeting .02s linear forwards;}
-@keyframes portfolio-greeting {0%,90% {opacity:1;}100% {opacity:0;}}
+/* Original greeting cadence: eight 180 ms words, a 200 ms final word,
+   then the one-second upward shutter. CSS starts before hydration. */
+.portfolio-preloader { animation:portfolio-reveal 1s cubic-bezier(.8,0,.2,1) 1.64s forwards;pointer-events:none; }
+@keyframes portfolio-reveal { from {transform:translateY(0);} to {transform:translateY(-100%);visibility:hidden;} }
+.portfolio-greeting {opacity:0;animation:portfolio-greeting 180ms steps(1,end) forwards;}
+@keyframes portfolio-greeting {0% {opacity:1;}100% {opacity:0;}}
+.portfolio-dock {animation:portfolio-dock-wait 2.64s step-end;}
+@keyframes portfolio-dock-wait {from,to {visibility:hidden;}}
 .work-note-arrow {animation:work-note-arrow .5s ease-out .5s both;}
 .work-note-text {animation:work-note-text .4s ease-out .85s both;}
 .email-copy-icon {animation:email-copy-icon .18s ease-out;}

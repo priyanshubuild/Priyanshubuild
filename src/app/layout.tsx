@@ -3,20 +3,19 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Space_Grotesk } from "next/font/google";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import AgentTools from "@/components/AgentTools";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  preload: false,
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  preload: false,
+  preload: true,
 });
 
 const spaceGrotesk = Space_Grotesk({
@@ -206,7 +205,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <TooltipProvider>{children}</TooltipProvider>
+        {children}
         <AgentTools />
         {process.env.VERCEL === "1" && (
           <>

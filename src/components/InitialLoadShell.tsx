@@ -8,11 +8,13 @@ export default function InitialLoadShell({
   return (
     <div className="bg-[#09090B]">
       <noscript>
-        <style>{".portfolio-preloader{display:none}"}</style>
+        <style>{".portfolio-preloader{display:none}.portfolio-dock{visibility:visible;animation:none}"}</style>
       </noscript>
       <LoadingScreen />
       {children}
-      <Taskbar />
+      <div className="portfolio-dock">
+        <Taskbar />
+      </div>
     </div>
   );
 }
