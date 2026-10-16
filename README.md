@@ -10,17 +10,7 @@
 I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, **Linux systems**, and **React / Next.js** development. I like understanding how things work, solving problems, and turning what I learn into working projects. Open to **internships and collaboration**.
 
 <p align="center">
-  <a href="https://priyanshugupta.com/"><img src="assets/readme/link-portfolio.svg" height="32" alt="Portfolio — visit priyanshugupta.com" /></a>
-  <a href="https://www.linkedin.com/in/priyanshubuild/"><img src="assets/readme/link-linkedin.svg" height="32" alt="LinkedIn — connect with Priyanshu Gupta" /></a>
-  <a href="mailto:priyanshug1408@gmail.com"><img src="assets/readme/link-email.svg" height="32" alt="Email — priyanshug1408@gmail.com" /></a>
-  <a href="https://leetcode.com/u/Priyanshuguptaleetcode/"><img src="assets/readme/link-leetcode.svg" height="32" alt="LeetCode — view Priyanshu's profile" /></a>
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/link-github.svg" height="32" alt="GitHub — follow priyanshubuild" /></a>
-</p>
-
-<p align="center">
-  <a href="https://codeforces.com/profile/priyanshuguptacf"><img src="assets/readme/link-codeforces.svg" height="30" alt="Codeforces — view Priyanshu's profile" /></a>
-  <a href="https://www.codechef.com/users/priyanshucf"><img src="assets/readme/link-codechef.svg" height="30" alt="CodeChef — view Priyanshu's profile" /></a>
-  <a href="https://x.com/priyanshustwt"><img src="assets/readme/link-x.svg" height="30" alt="X / Twitter — connect with Priyanshu" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="https://komarev.com/ghpvc/?username=priyanshubuild&amp;label=PROFILE+VIEWS&amp;color=3f3f46&amp;style=flat" alt="Profile views — page loads since this counter was added" /></a>
 </p>
 
 <p align="center">
@@ -35,12 +25,25 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 </p>
 
 <!-- activity:start -->
+### GitHub Analytics
+
 <p align="center">
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity-45c7971001b8.svg" width="49%" alt="393 GitHub contributions and 65 active days in the past year; 322 all-time commits across public repositories" /></a>
-  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages-17730a9a4c45.svg" width="49%" alt="Public source lines: JavaScript 7,261 lines, TypeScript 5,857 lines, CSS 5,482 lines, HTML 3,764 lines, C++ 1,897 lines, Python 1,760 lines" /></a>
+  <a href="https://github.com/priyanshubuild">
+    <picture>
+      <source media="(max-width: 600px)" srcset="assets/readme/activity-compact-1f54c0f935cf.svg" />
+      <img src="assets/readme/activity-8dde930a97a3.svg" width="880" alt="393 GitHub contributions, 65 active days in the past year, and 324 all-time public repository commits. Monthly contribution chart." />
+    </picture>
+  </a>
 </p>
 
-<sub>Activity: past year · Repository commits: all time · Updated daily · 2026-10-16 UTC.</sub>
+<p align="center">
+  <a href="https://github.com/priyanshubuild?tab=repositories">
+    <picture>
+      <source media="(max-width: 600px)" srcset="assets/readme/languages-compact-1aa261e38b65.svg" />
+      <img src="assets/readme/languages-1d0432c4126f.svg" width="880" alt="Public source lines: JavaScript 7,261 lines, TypeScript 5,857 lines, CSS 5,482 lines, HTML 3,764 lines, C++ 1,897 lines, Python 1,760 lines" />
+    </picture>
+  </a>
+</p>
 <!-- activity:end -->
 
 ### What I'm working on
@@ -51,33 +54,23 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 
 I value readable code, a strong understanding of the fundamentals, and steady improvement. My portfolio brings together my projects, skills, and ways to get in touch.
 
-<details>
-<summary>How these numbers are counted</summary>
+### Connect with me
 
-Contributions and active days cover the past year. Repository commits include all authors, bots, and merge commits on the default branches of my public repositories, across their full history.
+<p align="center">
+  <a href="https://priyanshugupta.com/"><img src="assets/readme/link-portfolio.svg" height="32" alt="Portfolio — visit priyanshugupta.com" /></a>
+  <a href="https://www.linkedin.com/in/priyanshubuild/"><img src="assets/readme/link-linkedin.svg" height="32" alt="LinkedIn — connect with Priyanshu Gupta" /></a>
+  <a href="mailto:priyanshug1408@gmail.com"><img src="assets/readme/link-email.svg" height="32" alt="Email — priyanshug1408@gmail.com" /></a>
+  <a href="https://leetcode.com/u/Priyanshuguptaleetcode/"><img src="assets/readme/link-leetcode.svg" height="32" alt="LeetCode — view Priyanshu's profile" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="assets/readme/link-github.svg" height="32" alt="GitHub — follow priyanshubuild" /></a>
+</p>
 
-The language card counts **source lines**, excluding blank lines, comments, generated output, dependencies, and data/configuration files. Notebook code cells count toward their programming language; outputs and notebook formatting are excluded. The six largest languages are shown. These are lines currently stored in public repositories, including collaborative work, rather than a measure of personal typing time or skill.
+<p align="center">
+  <a href="https://codeforces.com/profile/priyanshuguptacf"><img src="assets/readme/link-codeforces.svg" height="30" alt="Codeforces — view Priyanshu's profile" /></a>
+  <a href="https://www.codechef.com/users/priyanshucf"><img src="assets/readme/link-codechef.svg" height="30" alt="CodeChef — view Priyanshu's profile" /></a>
+  <a href="https://x.com/priyanshustwt"><img src="assets/readme/link-x.svg" height="30" alt="X / Twitter — connect with Priyanshu" /></a>
+</p>
 
-</details>
+---
 
-<details>
-<summary><strong>About this repository</strong></summary>
-
-This repository contains my portfolio website and the assets for this profile README. The website uses **Next.js 15, React 19, TypeScript, and Tailwind CSS 4**.
-
-### Run the portfolio locally
-
-```sh
-npm install
-npm run dev
-```
-
-Open [localhost:3000](http://localhost:3000/). Optional server settings and verification details are documented in [the portfolio notes](docs/PORTFOLIO-QUALITY.md).
-
-### README visuals
-
-The banner, animation, link badges, and activity cards live in this repository. A [daily workflow](.github/workflows/readme-activity.yml) refreshes activity and counts actual source lines with the checksum-pinned [cloc](https://github.com/AlDanial/cloc) tool. Failed refreshes keep the previous snapshot. Commits by `github-actions[bot]` are these automatic data updates. This public repository uses a standard Ubuntu runner, which [GitHub currently provides free](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
-
-[Asset generation and refresh details](docs/README-ASSETS.md)
-
-</details>
+<p align="center"><strong>Thanks for stopping by.</strong><br />
+<sub>Understand first. Build second. Keep going.</sub></p>

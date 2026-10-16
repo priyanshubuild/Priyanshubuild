@@ -1,6 +1,12 @@
 # README visuals and activity
 
-The profile README uses the portfolio's charcoal background, white headings, gray ruler borders, compact chips, and small green availability accent. All displayed images are stored in this repository; none depend on an external badge or profile-stat rendering service.
+The profile README uses the portfolio's charcoal background, white headings, gray ruler borders, compact chips, and green accents. The banner, analytics charts, language cards, link badges, and technology icons are stored in this repository. The live profile-view counter is the single externally served image.
+
+## Profile layout and view counter
+
+The top contains the existing banner, introduction, view counter and technology chips. GitHub Analytics follows, then the current learning focus. All contact, social and coding-profile links are grouped under **Connect with me** near the bottom. The final closing line uses the profile's “Understand first. Build second.” theme. There are no expandable sections or separate snapshot/update lines in the README.
+
+The profile-view badge uses the same [Komarev counter](https://github.com/antonkomarev/github-profile-views-counter) as the supplied reference, with `username=priyanshubuild` and a gray badge. It is free and needs no account token. It counts image/page loads from its installation onward, including repeat visits; GitHub's image proxy prevents it from identifying unique people. No historical views or artificial starting value are added. This live counter requires an external service; downloading it would freeze the number. The portfolio website is unaffected.
 
 ## Static assets and animation
 
@@ -21,7 +27,11 @@ React Icons includes Simple Icons under its respective icon license. The artwork
 node scripts/update-readme-activity.mjs
 ```
 
+For a visual edit, `node scripts/update-readme-activity.mjs --render-only` regenerates cards from the last verified `activity.json` without new network requests or changing its source timestamps. The scheduled workflow uses a full refresh.
+
 This reads the site's verified `/api/github-activity` response. It requires both sources to succeed, validates the continuous 365-day calendar and descending repository totals, and rejects incomplete data before writing. Contributions and active days cover the personal past-year calendar. Repository commits count all contributors and bots on public default branches across their complete histories. The cards label these scopes separately.
+
+`scripts/readme-visuals.mjs` renders a wide analytics panel with a green area chart and a separate compact source-line panel. The chart sums the actual daily contributions into calendar months within the returned 365-day range. Its first and last months may be partial. Straight segments connect the measured monthly totals; values are not smoothed or invented. SVG descriptions contain the date range and each monthly count. The language panel keeps source-line counts. Responsive `<picture>` sources use narrower, taller variants on screens up to 600 px so labels stay readable. All chart variants are sharp vector files generated from the same data. The refresh script updates those variants together and does not restore removed README sections or the old snapshot line.
 
 ### Source lines by language
 
