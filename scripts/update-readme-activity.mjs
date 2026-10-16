@@ -53,15 +53,17 @@ for (let page = 1; page <= 20; page++) {
   if (page === 20) throw new Error("Language pagination cannot be completed.");
 }
 const bytes = new Map();
+const byRepository = [];
 const names = [...owned.values()];
 for (let i = 0; i < names.length; i += 3) {
   const responses = await Promise.all(names.slice(i, i + 3).map((name) => githubJSON(`/repos/${name}/languages`)));
-  for (const languages of responses) {
+  for (const [index, languages] of responses.entries()) {
     if (!languages || Array.isArray(languages) || typeof languages !== "object") throw new Error("Invalid language data.");
     for (const [name, count] of Object.entries(languages)) {
       if (!Number.isSafeInteger(count) || count < 0) throw new Error("Invalid language count.");
       if (count) bytes.set(name, (bytes.get(name) ?? 0) + count);
     }
+    byRepository.push({ repository: names[i + index], bytes: languages });
   }
 }
 const languageRows = [...bytes].sort(([a, ac], [b, bc]) => bc - ac || a.localeCompare(b));
@@ -81,7 +83,7 @@ const bar = shown.map(([, count], i) => {
   return rect;
 }).join("");
 const legend = shown.map(([name, count], i) => `<circle cx="${28 + (i % 2) * 196}" cy="${79 + Math.floor(i / 2) * 23}" r="3" fill="${shades[i]}"/><text x="${38 + (i % 2) * 196}" y="${83 + Math.floor(i / 2) * 23}" fill="#e4e4e7" font-size="11">${escape(name.slice(0, 18))} ${(count / sum * 100).toFixed(1)}%</text>`).join("");
-const languageSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="440" height="150" role="img" aria-labelledby="title desc"><title id="title">Public repository languages</title><desc id="desc">Language proportions measured by code bytes in public non-fork repositories: ${escape(shown.map(([name, count]) => `${name} ${(count / sum * 100).toFixed(1)}%`).join(", "))}.</desc>${frame}<g font-family="Arial,sans-serif"><text x="24" y="28" fill="#fafafa" font-size="13" font-weight="600">Public code languages</text><rect x="24" y="48" width="392" height="8" rx="4" fill="#26262c"/>${bar}${legend}${!sum ? '<text x="24" y="83" fill="#a1a1aa" font-size="11">No public language data available.</text>' : ""}<text x="24" y="131" fill="#a1a1aa" font-size="10">Code bytes · Public non-fork repositories</text></g></svg>`;
+const languageSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="440" height="150" role="img" aria-labelledby="title desc"><title id="title">Public repository languages</title><desc id="desc">Language proportions measured by code bytes in ${names.length} public non-fork repositories, not personal effort or proficiency: ${escape(shown.map(([name, count]) => `${name} ${(count / sum * 100).toFixed(1)}%`).join(", "))}.</desc>${frame}<g font-family="Arial,sans-serif"><text x="24" y="28" fill="#fafafa" font-size="13" font-weight="600">Public code languages</text><rect x="24" y="48" width="392" height="8" rx="4" fill="#26262c"/>${bar}${legend}${!sum ? '<text x="24" y="83" fill="#a1a1aa" font-size="11">No public language data available.</text>' : ""}<text x="24" y="131" fill="#a1a1aa" font-size="10">Updated ${languageDate} UTC</text></g></svg>`;
 const block = `<!-- activity:start -->
 <p align="center">
   <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity.svg" width="49%" alt="${total} GitHub contributions, ${commits} public authored commits, ${active} active days in the past year" /></a>
@@ -100,7 +102,7 @@ await mkdir(join(root, "assets/readme"), { recursive: true });
 for (const [file, contents] of [
   ["assets/readme/activity.svg", svg],
   ["assets/readme/languages.svg", languageSVG],
-  ["assets/readme/activity.json", JSON.stringify({ calendar: data.calendar, repositories: data.repositories, languages: { bytes: Object.fromEntries(languageRows), fetchedAt: languageDate } }, null, 2) + "\n"],
+  ["assets/readme/activity.json", JSON.stringify({ calendar: data.calendar, repositories: data.repositories, languages: { bytes: Object.fromEntries(languageRows), repositories: byRepository, fetchedAt: languageDate } }, null, 2) + "\n"],
   ["README.md", updated],
 ]) {
   const path = join(root, file);

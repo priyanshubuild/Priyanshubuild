@@ -1827,7 +1827,7 @@
         "level": 0
       }
     ],
-    "fetchedAt": "2026-10-16T04:45:25.270Z"
+    "fetchedAt": "2026-10-16T19:55:45.135Z"
   },
   "repositories": {
     "repos": [
@@ -1914,7 +1914,7 @@
     ],
     "from": "2025-10-17",
     "to": "2026-10-16",
-    "fetchedAt": "2026-10-16T04:45:25.629Z"
+    "fetchedAt": "2026-10-16T19:55:46.331Z"
   },
   "languages": {
     "bytes": {
@@ -1926,6 +1926,120 @@
       "Python": 95273,
       "C++": 38222
     },
+    "repositories": [
+      {
+        "repository": "priyanshubuild/100xDevs",
+        "bytes": {
+          "HTML": 56387,
+          "CSS": 24524,
+          "JavaScript": 17571
+        }
+      },
+      {
+        "repository": "priyanshubuild/100xDSA",
+        "bytes": {
+          "C++": 24050
+        }
+      },
+      {
+        "repository": "priyanshubuild/Amazon_clone",
+        "bytes": {
+          "JavaScript": 56697,
+          "CSS": 41099,
+          "HTML": 36913
+        }
+      },
+      {
+        "repository": "priyanshubuild/BitForgeXABTalks",
+        "bytes": {
+          "JavaScript": 133728,
+          "Python": 89310,
+          "CSS": 32571,
+          "HTML": 1444
+        }
+      },
+      {
+        "repository": "priyanshubuild/college-web-dev",
+        "bytes": {
+          "HTML": 43291,
+          "CSS": 5727
+        }
+      },
+      {
+        "repository": "priyanshubuild/College_cpp",
+        "bytes": {
+          "C++": 13318
+        }
+      },
+      {
+        "repository": "priyanshubuild/CSE24_JS",
+        "bytes": {
+          "JavaScript": 534,
+          "HTML": 252
+        }
+      },
+      {
+        "repository": "priyanshubuild/Data-Visualization-using-python",
+        "bytes": {
+          "Jupyter Notebook": 192270
+        }
+      },
+      {
+        "repository": "priyanshubuild/Eventrix",
+        "bytes": {
+          "JavaScript": 15329,
+          "HTML": 718
+        }
+      },
+      {
+        "repository": "priyanshubuild/External-assesment-sem2",
+        "bytes": {
+          "JavaScript": 710,
+          "CSS": 640,
+          "HTML": 468
+        }
+      },
+      {
+        "repository": "priyanshubuild/FSD-BACKEND",
+        "bytes": {
+          "JavaScript": 27491,
+          "HTML": 12064,
+          "CSS": 11679
+        }
+      },
+      {
+        "repository": "priyanshubuild/leetcode-progress",
+        "bytes": {
+          "C++": 854
+        }
+      },
+      {
+        "repository": "priyanshubuild/Priyanshubuild",
+        "bytes": {
+          "TypeScript": 232208,
+          "JavaScript": 35918,
+          "CSS": 11767,
+          "Python": 856
+        }
+      },
+      {
+        "repository": "priyanshubuild/speedflow",
+        "bytes": {
+          "JavaScript": 42161,
+          "HTML": 6466,
+          "Python": 5107,
+          "CSS": 2721
+        }
+      },
+      {
+        "repository": "priyanshubuild/tailwind-projects",
+        "bytes": {
+          "CSS": 3824769,
+          "HTML": 1364,
+          "JavaScript": 242
+        }
+      }
+    ],
     "fetchedAt": "2026-10-16"
   }
 }

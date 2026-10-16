@@ -8,12 +8,14 @@ import { renderToStaticMarkup } from "react-dom/server";
 import {
   SiGithub, SiLinkedin, SiGmail, SiLeetcode, SiCplusplus,
   SiTypescript, SiJavascript, SiReact, SiNextdotjs,
-  SiTailwindcss, SiLinux, SiGit,
+  SiTailwindcss, SiLinux, SiGit, SiCodeforces, SiCodechef, SiX,
 } from "react-icons/si";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = join(root, "assets/readme");
 const frames = join(tmpdir(), "priyanshu-readme-frames");
+// Keep the compact displayed size, with three source pixels per CSS pixel.
+const rasterDensity = 216;
 await mkdir(output, { recursive: true });
 await mkdir(frames, { recursive: true });
 const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
@@ -39,7 +41,7 @@ function header(caption) {
   </svg>`;
 }
 await writeFile(join(output, "header.svg"), header("understand first. build second."));
-await sharp(Buffer.from(header("understand first. build second."))).png().toFile(join(output, "header-static.png"));
+await sharp(Buffer.from(header("understand first. build second.")), { density: rasterDensity }).png().toFile(join(output, "header-static.png"));
 const captions = ["C++ / data structures / algorithms", "Linux / systems / shell tooling", "Next.js / React / TypeScript"];
 const timeline = [];
 for (const caption of captions) {
@@ -47,7 +49,7 @@ for (const caption of captions) {
   for (let i = 0; i < 8; i++) timeline.push(caption);
 }
 for (let i = 0; i < timeline.length; i++) {
-  await sharp(Buffer.from(header(timeline[i]))).png().toFile(join(frames, `${String(i).padStart(3, "0")}.png`));
+  await sharp(Buffer.from(header(timeline[i])), { density: rasterDensity }).png().toFile(join(frames, `${String(i).padStart(3, "0")}.png`));
 }
 await writeFile(join(frames, "manifest.json"), JSON.stringify({ frames: timeline.length, delay: 140 }));
 const links = [
@@ -56,6 +58,9 @@ const links = [
   ["email", "GMAIL", "EMAIL", SiGmail],
   ["leetcode", "LEETCODE", "PROFILE", SiLeetcode],
   ["github", "GITHUB", "FOLLOW", SiGithub],
+  ["codeforces", "CODEFORCES", "PROFILE", SiCodeforces],
+  ["codechef", "CODECHEF", "PROFILE", SiCodechef],
+  ["x", "X / TWITTER", "CONNECT", SiX],
 ];
 for (const [name, label, action, component] of links) {
   const left = 46 + label.length * 8.5;

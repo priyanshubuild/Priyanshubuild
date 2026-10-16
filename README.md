@@ -7,7 +7,7 @@
   </a>
 </p>
 
-Focused on **C++ & algorithms**, **Linux systems**, and **React / Next.js** development. Open to **internships and collaboration**.
+I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, **Linux systems**, and **React / Next.js** development. I like understanding how things work, solving problems, and turning what I learn into working projects. Open to **internships and collaboration**.
 
 <p align="center">
   <a href="https://priyanshugupta.com/"><img src="assets/readme/link-portfolio.svg" height="32" alt="Portfolio — visit priyanshugupta.com" /></a>
@@ -18,9 +18,9 @@ Focused on **C++ & algorithms**, **Linux systems**, and **React / Next.js** deve
 </p>
 
 <p align="center">
-  <a href="https://codeforces.com/profile/priyanshuguptacf">Codeforces</a> ·
-  <a href="https://www.codechef.com/users/priyanshucf">CodeChef</a> ·
-  <a href="https://x.com/priyanshustwt">X / Twitter</a>
+  <a href="https://codeforces.com/profile/priyanshuguptacf"><img src="assets/readme/link-codeforces.svg" height="30" alt="Codeforces — view Priyanshu's profile" /></a>
+  <a href="https://www.codechef.com/users/priyanshucf"><img src="assets/readme/link-codechef.svg" height="30" alt="CodeChef — view Priyanshu's profile" /></a>
+  <a href="https://x.com/priyanshustwt"><img src="assets/readme/link-x.svg" height="30" alt="X / Twitter — connect with Priyanshu" /></a>
 </p>
 
 <p align="center">
@@ -42,6 +42,21 @@ Focused on **C++ & algorithms**, **Linux systems**, and **React / Next.js** deve
 
 <sub>Past 365 days · Updated daily · Snapshot: 2026-10-16 UTC.</sub>
 <!-- activity:end -->
+
+### What I'm working on
+
+- **Problem solving:** practicing data structures and algorithms in C++, with solutions and learning progress on GitHub and coding platforms.
+- **Web development:** building responsive interfaces with React, Next.js, TypeScript, and Tailwind CSS, including this portfolio.
+- **Systems fundamentals:** exploring Linux, the command line, operating systems, and how software works beneath the interface.
+
+I value readable code, a strong understanding of the fundamentals, and steady improvement. My portfolio brings together my projects, skills, and ways to get in touch.
+
+<details>
+<summary>How these numbers are counted</summary>
+
+Activity covers the past year. Contributions include GitHub's contribution types; authored commits count public commits attributed to me. The language card shows the four largest languages by the size of code stored in my public repositories, excluding forks. It isn't a measure of time spent coding or skill: larger files can outweigh many small solutions. Smaller languages are included in the total, so the four shown may not add up to 100%.
+
+</details>
 
 <details>
 <summary><strong>About this repository</strong></summary>
