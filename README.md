@@ -39,8 +39,8 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 <p align="center">
   <a href="https://github.com/priyanshubuild?tab=repositories">
     <picture>
-      <source media="(max-width: 600px)" srcset="assets/readme/languages-compact-1aa261e38b65.svg" />
-      <img src="assets/readme/languages-1d0432c4126f.svg" width="880" alt="Public source lines: JavaScript 7,261 lines, TypeScript 5,857 lines, CSS 5,482 lines, HTML 3,764 lines, C++ 1,897 lines, Python 1,760 lines" />
+      <source media="(max-width: 600px)" srcset="assets/readme/languages-compact-4a5400f7c7e4.svg" />
+      <img src="assets/readme/languages-c464eb71dafd.svg" width="880" alt="Public source lines: JavaScript 7,349 lines, TypeScript 5,857 lines, CSS 5,482 lines, HTML 3,764 lines, C++ 1,897 lines, Python 1,760 lines" />
     </picture>
   </a>
 </p>
