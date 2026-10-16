@@ -18,6 +18,9 @@ const {
   normalizeCalendar,
   mergeSnapshot,
   contributionRange,
+  parseContributionHTML,
+  parseRepositoryCommitCount,
+  sortRepositoryTotals,
 } = await import(
   `data:text/javascript;base64,${Buffer.from(compiled.outputText).toString("base64")}`
 );
@@ -139,3 +142,44 @@ test("year range covers 365 inclusive UTC dates", () =>
     from: "2025-10-15",
     to: "2026-10-14",
   }));
+
+test("repository totals include all authors and all time from GitHub pagination", () => {
+  const body = [{ sha: "a".repeat(40), author: { login: "github-actions[bot]" } }];
+  assert.equal(parseRepositoryCommitCount(body, '<https://api.github.com/repos/priyanshubuild/Priyanshubuild/commits?per_page=1&sha=main&page=62>; rel="last"', "priyanshubuild/Priyanshubuild"), 62);
+  assert.equal(parseRepositoryCommitCount(body, null, "priyanshubuild/Priyanshubuild"), 1);
+  assert.equal(parseRepositoryCommitCount([], null, "priyanshubuild/empty"), 0);
+  assert.equal(parseRepositoryCommitCount(body, '<https://api.github.com/repositories/1335956799/commits?per_page=1&sha=main&page=48>; rel="last"', "priyanshubuild/100xDevs", 1335956799), 48);
+  assert.throws(() => parseRepositoryCommitCount(body, '<https://api.github.com/repositories/123/commits?per_page=1&sha=main&page=48>; rel="last"', "priyanshubuild/100xDevs", 1335956799));
+  for (const url of [
+    "https://example.com/repos/priyanshubuild/repo/commits?per_page=1&page=9",
+    "https://api.github.com/repos/other/repo/commits?per_page=1&page=9",
+    "https://api.github.com/repos/priyanshubuild/repo/commits?per_page=1&page=9&author=priyanshubuild",
+    "https://api.github.com/repos/priyanshubuild/repo/commits?per_page=100&page=9",
+  ]) assert.throws(() => parseRepositoryCommitCount(body, `<${url}>; rel="last"`, "priyanshubuild/repo"));
+  assert.throws(() => parseRepositoryCommitCount({ message: "API unavailable" }, null, "priyanshubuild/repo"));
+});
+
+test("a repository overtakes the leader by its total commits with stable ties", () => {
+  const a = { name: "alpha", count: 64, href: "https://github.com/priyanshubuild/alpha" };
+  const b = { name: "beta", count: 62, href: "https://github.com/priyanshubuild/beta" };
+  assert.equal(sortRepositoryTotals([b, a])[0].name, "alpha");
+  assert.equal(sortRepositoryTotals([a, { ...b, count: 65 }])[0].name, "beta");
+  assert.equal(sortRepositoryTotals([{ ...b, count: 64 }, a])[0].name, "alpha");
+});
+
+test("the official calendar reads singular, zero and comma-separated counts", () => {
+  const html = [1, 0, 1234].map((count, i) => `<td id="day-${i}" data-date="2026-10-${14 + i}" data-level="${i === 1 ? 0 : i + 1}"></td><tool-tip for="day-${i}">${count ? count.toLocaleString("en-US") : "No"} contribution${count === 1 ? "" : "s"} on October.</tool-tip>`).join("");
+  assert.deepEqual(parseContributionHTML(html).map(day => day.count), [1, 0, 1234]);
+  assert.throws(() => parseContributionHTML('<td id="missing" data-date="2026-10-16" data-level="1"></td>'));
+  assert.throws(() => parseContributionHTML("unavailable"));
+});
+
+test("parsing an entire leap year preserves January 1 for rolling ranges", () => {
+  const html = Array.from({ length: 366 }, (_, i) => {
+    const date = new Date(Date.UTC(2024, 0, 1 + i)).toISOString().slice(0, 10);
+    return `<td id="d${i}" data-date="${date}" data-level="0"></td><tool-tip for="d${i}">No contributions on this day.</tool-tip>`;
+  }).join("");
+  const year = parseContributionHTML(html);
+  assert.equal(year.length, 366);
+  assert.equal(year[0].date, "2024-01-01");
+});

@@ -30,7 +30,7 @@ export type RepoContribution = {
 
 const DEFAULT_ACCENT = "#39d353";
 const DEFAULT_CELL_SIZE = 11;
-const DEFAULT_LABEL = "Top contributions in:";
+const DEFAULT_LABEL = "Top repositories by commits:";
 const DEFAULT_MONTHS = 12;
 const WEEKS_PER_MONTH = 365.25 / 12 / 7;
 const STACK_LIMIT = 3;
@@ -163,7 +163,7 @@ function useGitHubUser(login?: string) {
     const visible = () => {
       if (document.visibilityState === "visible") void refresh();
     };
-    const timer = setInterval(visible, 900000);
+    const timer = setInterval(visible, 60000);
     document.addEventListener("visibilitychange", visible);
     return () => {
       clearInterval(timer);
@@ -434,7 +434,7 @@ const RepoRow = ({
         {repo.name}
       </span>
       <span className="text-foreground/70 text-sm tabular-nums">
-        {repo.count}
+        {repo.count.toLocaleString()}
       </span>
     </>
   );
@@ -630,11 +630,11 @@ const GitHubActivity = ({
             <div className="flex items-center gap-3">
               {!open && (
                 <div className="flex items-center">
-                  {repos.slice(0, STACK_LIMIT).map((repo, index) => (
+                  {repos.slice(0, STACK_LIMIT).map((repo) => (
                     <Avatar
-                      key={index}
+                      key={repo.href ?? repo.name}
                       repo={repo}
-                      layoutId={`${uid}-${index}`}
+                      layoutId={`${uid}-${repo.href ?? repo.name}`}
                       transition={transition}
                       className="-ml-2 first:ml-0"
                     />
@@ -666,18 +666,18 @@ const GitHubActivity = ({
                 transition={rowTransition}
                 className="px-0.5 pb-1"
               >
-                {repos.map((repo, index) => (
-                  <li key={index}>
+                {repos.map((repo) => (
+                  <motion.li key={repo.href ?? repo.name} layout="position" transition={rowTransition}>
                     <RepoRow
                       repo={repo}
-                      layoutId={`${uid}-${index}`}
+                      layoutId={`${uid}-${repo.href ?? repo.name}`}
                       transition={transition}
                     />
-                  </li>
+                  </motion.li>
                 ))}
                 {fetched.data?.repositories && (
                   <li className="px-4 pt-2 pb-2 text-[11px] leading-relaxed text-neutral-300">
-                    Public commits · past year.{" "}
+                    All commits · all time.{" "}
                     <button
                       type="button"
                       onClick={() => void fetched.refresh()}

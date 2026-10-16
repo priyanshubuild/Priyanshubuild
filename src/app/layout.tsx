@@ -50,12 +50,12 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
-      { url: "/favicon.png", type: "image/png", sizes: "96x96" },
-      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicon.ico?v=4", sizes: "16x16 32x32 48x48" },
+      { url: "/favicon.png?v=4", type: "image/png", sizes: "96x96" },
+      { url: "/favicon.svg?v=4", type: "image/svg+xml", sizes: "any" },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico?v=4",
+    apple: "/apple-touch-icon.png?v=4",
   },
   keywords: [
     "Priyanshu Gupta",

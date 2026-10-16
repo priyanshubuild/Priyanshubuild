@@ -4,17 +4,17 @@ The existing page layout, content, dark styling, large headings, ruler edges, an
 
 ## GitHub contributions
 
-The old list supplied three fixed repository names, counts, and copied logos. It also treated push events as commit counts. The replacement ranks actual public authored commits in the past 365 UTC dates using GitHub's commit search. All matching pages are collected; incomplete results, changing pagination, and duplicate commits cannot silently produce an inaccurate ranking. Searches above GitHub's 1,000-result limit are split by date range. The displayed top three repositories link to their real sources and use inline Git branch icons.
+The ranking counts **all commits reachable from each owned public repository's default branch**, including all authors, merge commits and bots, across its full history. This scope was explicitly selected by the owner. It matches GitHub's default-branch commit count. With `per_page=1`, the official commits endpoint's last-page number is the total; both named and numeric repository pagination URLs are validated against the requested repository.
 
-The daily calendar remains separate, using the existing GitHub Contributions API provider. It preserves the first dates before Sunday, pads the layout, and totals the actual displayed 365 days. The label accurately describes a rolling year.
+The calendar reads GitHub's public calendar HTML for the required years and selects exactly the rolling 365 UTC dates. Tooltips supply daily counts; missing counts or incomplete dates fail closed. Leap-year parsing retains all 366 dates before filtering. This avoids an intermediary calendar provider's cache. Personal contributions and all-author repository totals have different scopes.
 
-Each successful source is cached independently for 15 minutes. The visible widget checks periodically and when the tab becomes visible. Failures preserve successful data, expose an unavailable/stale message, and support retry. A manual refresh respects the server cache. GitHub indexing and source publication can lag. Private commits do not appear in the public repository ranking; GitHub's publicly visible calendar can include other contribution types.
+Repository metadata and calendar requests use two-minute cache buckets that wait for a fresh result. Commit counts are cached by repository, default branch and push timestamp: a new push invalidates that repository's count. The visible widget polls every minute and on tab visibility, then sorts by total commits. Stable keys and motion layout let rows slide to their new positions; ties are alphabetical. Failed sources retain the browser's last good values or a compatible committed snapshot with explicit error status. Refresh respects the shared cache, and GitHub publication can lag.
 
-No token is required for this account's current data. A server-only `GITHUB_TOKEN` can increase API limits for larger histories; never put it in a `NEXT_PUBLIC_` variable or source control. Search explicitly uses `is:public`, and the parser rejects private repositories even if a token can access them. These API routes require normal Next.js runtime hosting rather than a static export.
+Only public repository metadata is accepted. A server-only `GITHUB_TOKEN` can increase API limits; never put it in a `NEXT_PUBLIC_` variable or source control. Per-push count caching reduces unauthenticated API usage. These routes require Next.js runtime hosting. A breaking change to GitHub's calendar markup is surfaced as unavailable data and requires a parser update.
 
 ## Local branding and search metadata
 
-All favicon assets are in `public/`: SVG, ICO with 16/32/48 pixel layers, 96 pixel PNG, Apple icon, app icons and a maskable icon. The SVG supports light and dark themes. The old faint icon is replaced at its stable URLs. There are no external favicon image dependencies.
+All favicon assets are in `public/`: SVG, ICO with 16/32/48 pixel layers, 96 pixel PNG, Apple icon, app icons and a maskable icon. The larger white P uses a charcoal tile and a small green availability accent in both browser themes. The old faint icon is replaced at its stable URLs. There are no external favicon image dependencies.
 
 The copied social-preview artwork is replaced with a local image bearing Priyanshu's name. Person schema no longer uses a placeholder logo as a portrait. ProfilePage markup belongs to the homepage, project pages retain their own canonical URLs and breadcrumbs, and the sitemap no longer invents a new modification date on every build. A full-name heading, keyboard skip link, and server-rendered content improve clarity for readers and crawlers.
 
@@ -45,7 +45,7 @@ The final production dependency audit reports zero known advisories. Nine upstre
 
 ## Verification and reproduction
 
-Build, ESLint, TypeScript, and eight contribution tests pass. `npm run verify:site` checks canonical URLs, descriptions, schema, social images, favicon dimensions and references, public discovery resources, sitemap/robots, 404/noindex behavior, real repository ordering, and independent cache reuse.
+Build, ESLint, TypeScript, and twelve contribution tests pass. `npm run verify:site` checks canonical URLs, descriptions, schema, social images, favicon dimensions and references, public discovery resources, sitemap/robots, 404/noindex behavior, real repository ordering, and independent cache reuse.
 
 ```sh
 npm run lint

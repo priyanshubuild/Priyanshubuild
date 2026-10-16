@@ -17,7 +17,7 @@ for (const path of ["/", "/projects", "/projectspage"]) {
     html,
     /<meta property="og:image" content="https:\/\/priyanshugupta.com\/opengraph.png"/,
   );
-  assert.match(html, /<link rel="icon" href="\/favicon.png"/);
+  assert.match(html, /<link rel="icon" href="\/favicon.png(?:\?v=4)?"/);
   const schemas = [
     ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs),
   ].map((match) => JSON.parse(match[1]));
