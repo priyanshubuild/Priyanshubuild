@@ -6,7 +6,7 @@ The profile README uses the portfolio's charcoal background, white headings, gra
 
 The top contains the existing banner, introduction, view counter and technology chips. GitHub Analytics follows, then the current learning focus. All contact, social and coding-profile links are grouped under **Connect with me** near the bottom. The final closing line uses the profile's “Understand first. Build second.” theme. There are no expandable sections or separate snapshot/update lines in the README.
 
-The profile-view badge uses the same [Komarev counter](https://github.com/antonkomarev/github-profile-views-counter) as the supplied reference, with `username=priyanshubuild` and a gray badge. It is free and needs no account token. It counts image/page loads from its installation onward, including repeat visits; GitHub's image proxy prevents it from identifying unique people. No historical views or artificial starting value are added. This live counter requires an external service; downloading it would freeze the number. The portfolio website is unaffected.
+The gray profile-view badge uses [Hits](https://github.com/silentsoft/hits), keyed to `github.com/priyanshubuild`, and needs no account token. It counts image/page requests from its installation onward; repeat visits and GitHub's image cache affect this approximate total. It is not an all-time GitHub statistic or a count of unique people. No historical views or artificial starting value are added. This live counter requires an external service; downloading it would freeze the number. The portfolio website is unaffected.
 
 ## Static assets and animation
 

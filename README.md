@@ -10,7 +10,7 @@
 I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, **Linux systems**, and **React / Next.js** development. I like understanding how things work, solving problems, and turning what I learn into working projects. Open to **internships and collaboration**.
 
 <p align="center">
-  <a href="https://github.com/priyanshubuild"><img src="https://komarev.com/ghpvc/?username=priyanshubuild&amp;label=PROFILE+VIEWS&amp;color=3f3f46&amp;style=flat" alt="Profile views — page loads since this counter was added" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="https://hits.sh/github.com/priyanshubuild.svg?label=PROFILE%20VIEWS&amp;color=3f3f46&amp;labelColor=18181b" alt="Profile views — page loads since this counter was added" /></a>
 </p>
 
 <p align="center">
