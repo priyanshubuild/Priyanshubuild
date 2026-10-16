@@ -36,8 +36,8 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 
 <!-- activity:start -->
 <p align="center">
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity-6181f9be5293.svg" width="49%" alt="393 GitHub contributions and 65 active days in the past year; 321 all-time commits across public repositories" /></a>
-  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages-755d01c7b1bd.svg" width="49%" alt="Public source lines: JavaScript 7,274 lines, TypeScript 5,857 lines, CSS 5,482 lines, HTML 3,764 lines, C++ 1,897 lines, Python 1,615 lines" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity-45c7971001b8.svg" width="49%" alt="393 GitHub contributions and 65 active days in the past year; 322 all-time commits across public repositories" /></a>
+  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages-17730a9a4c45.svg" width="49%" alt="Public source lines: JavaScript 7,261 lines, TypeScript 5,857 lines, CSS 5,482 lines, HTML 3,764 lines, C++ 1,897 lines, Python 1,760 lines" /></a>
 </p>
 
 <sub>Activity: past year · Repository commits: all time · Updated daily · 2026-10-16 UTC.</sub>
