@@ -5,6 +5,16 @@ const number = value => value.toLocaleString("en-US");
 const font = 'font-family="Arial,sans-serif"';
 const shades = ["#fafafa", "#b0b0bb", "#84848f", "#63636e", "#4c4c57", "#383843"];
 const frame = (width, height) => `<rect x=".5" y=".5" width="${width - 1}" height="${height - 1}" rx="12" fill="#09090b" stroke="#303036"/>`;
+const percentage = (count, total) => `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(total ? count / total * 100 : 0)}%`;
+
+function languageBreakdown(languages) {
+  const rows = Object.entries(languages.lines).sort(([a, ac], [b, bc]) => bc - ac || a.localeCompare(b));
+  const total = rows.reduce((sum, [, count]) => sum + count, 0);
+  const shown = rows.slice(0, 6);
+  const other = rows.slice(6).reduce((sum, [, count]) => sum + count, 0);
+  if (other) shown.push(["Other languages", other]);
+  return { total, shown };
+}
 
 export function monthlyContributions(days) {
   const months = new Map();
@@ -63,27 +73,25 @@ export function renderActivitySVG(data, compact = false) {
 }
 
 export function renderLanguageSVG(languages, compact = false) {
-  const rows = Object.entries(languages.lines).sort(([a, ac], [b, bc]) => bc - ac || a.localeCompare(b));
-  const sum = rows.reduce((total, [, count]) => total + count, 0);
-  const shown = rows.slice(0, 6);
+  const { total, shown } = languageBreakdown(languages);
   const width = compact ? 440 : 880;
-  const height = compact ? 144 : 124;
+  const columns = compact ? 2 : 3;
+  const height = Math.max(compact ? 144 : 124, 76 + (Math.ceil(shown.length / columns) - 1) * 23 + (compact ? 22 : 25));
   const barWidth = width - 48;
   let left = 24;
   const bar = shown.map(([, count], index) => {
-    const segment = sum ? barWidth * count / sum : 0;
-    const rect = `<rect x="${left}" y="45" width="${segment}" height="6" fill="${shades[index]}"/>`;
+    const segment = total ? barWidth * count / total : 0;
+    const rect = `<rect x="${left}" y="45" width="${segment}" height="6" fill="${shades[index] ?? "#26262c"}"/>`;
     left += segment;
     return rect;
   }).join("");
-  const columns = compact ? 2 : 3;
   const columnWidth = compact ? 196 : 284;
   const legend = shown.map(([name, count], index) => {
     const x = 28 + index % columns * columnWidth;
     const y = 76 + Math.floor(index / columns) * 23;
-    return `<circle cx="${x}" cy="${y - 4}" r="3" fill="${shades[index]}"/><text x="${x + 10}" y="${y}" fill="#e4e4e7" font-size="${compact ? 11 : 13}">${escape(name.slice(0, 18))}</text><text x="${x + columnWidth - 16}" y="${y}" text-anchor="end" fill="#fafafa" font-family="monospace" font-size="${compact ? 11 : 13}">${number(count)}</text>`;
+    return `<circle cx="${x}" cy="${y - 4}" r="3" fill="${shades[index] ?? "#26262c"}"/><text x="${x + 10}" y="${y}" fill="#e4e4e7" font-size="${compact ? 11 : 13}">${escape(name.slice(0, 18))}</text><text x="${x + columnWidth - 16}" y="${y}" text-anchor="end" fill="#fafafa" font-family="monospace" font-size="${compact ? 11 : 13}">${percentage(count, total)}</text>`;
   }).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc"><title id="title">Public source lines by language</title><desc id="desc">Nonblank, noncomment source lines in public non-fork repositories: ${escape(shown.map(([name, count]) => `${name}: ${number(count)} lines`).join(", "))}. Dependencies, generated files and notebook outputs are excluded.</desc>${frame(width, height)}<g ${font}><text x="24" y="27" fill="#fafafa" font-size="13" font-weight="600">Public code · lines</text><text x="${width - 24}" y="27" text-anchor="end" fill="#a1a1aa" font-size="11">${number(sum)} total</text><rect x="24" y="45" width="${barWidth}" height="6" rx="3" fill="#26262c"/>${bar}${legend}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc"><title id="title">Public code languages by source-line percentage</title><desc id="desc">Language shares of all counted source lines combined across public non-fork repositories: ${escape(shown.map(([name, count]) => `${name}: ${percentage(count, total)}`).join(", "))}. Blank lines, comments, dependencies, generated files and notebook outputs are excluded. Percentages are rounded to one decimal place.</desc>${frame(width, height)}<g ${font}><text x="24" y="27" fill="#fafafa" font-size="13" font-weight="600">Public code · languages</text><text x="${width - 24}" y="27" text-anchor="end" fill="#a1a1aa" font-size="11">All repos · by lines</text><rect x="24" y="45" width="${barWidth}" height="6" rx="3" fill="#26262c"/>${bar}${legend}</g></svg>`;
 }
 
 export function activityAssets(data, languages) {
@@ -97,7 +105,8 @@ export function activityBlock(data, languages, assets) {
   const total = data.calendar.days.reduce((sum, day) => sum + day.count, 0);
   const commits = data.repositories.repos.reduce((sum, repo) => sum + repo.count, 0);
   const active = data.calendar.days.filter(day => day.count > 0).length;
-  const languageDescription = Object.entries(languages.lines).sort(([, a], [, b]) => b - a).slice(0, 6).map(([name, count]) => `${name} ${number(count)} lines`).join(", ");
+  const { total: sourceLines, shown: languageRows } = languageBreakdown(languages);
+  const languageDescription = languageRows.map(([name, count]) => `${name} ${percentage(count, sourceLines)}`).join(", ");
   const picture = (name, href, description) => `<p align="center">
   <a href="${href}">
     <picture>
@@ -111,7 +120,7 @@ export function activityBlock(data, languages, assets) {
 
 ${picture("activity", "https://github.com/priyanshubuild", `${total} GitHub contributions, ${active} active days in the past year, and ${commits} all-time public repository commits. Monthly contribution chart.`)}
 
-${picture("languages", "https://github.com/priyanshubuild?tab=repositories", `Public source lines: ${languageDescription}`)}
+${picture("languages", "https://github.com/priyanshubuild?tab=repositories", `Combined public repository language percentages by source lines: ${languageDescription}`)}
 <!-- activity:end -->`;
 }
 
