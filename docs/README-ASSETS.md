@@ -29,6 +29,8 @@ The October 17 review verified that CSS dominates the public code totals: `tailw
 
 The workflow uses a release-pinned official checkout action and GitHub's repository-scoped automatic token. It runs on schedule or manual dispatch, with no pull-request trigger, no personal access token, and no external statistics service. It never force-pushes. Failures preserve the last committed image and counts; check the Actions tab to inspect or retry a failed run.
 
+README images use local paths with version query strings so GitHub's image cache does not keep showing an older banner or stale statistics. The updater derives each card's version from a SHA-256 content hash; a changed image receives a changed URL without creating duplicate asset files. The banner's version is increased when its artwork or resolution changes.
+
 ## Search identity correction
 
 The old `/official/opengraphh.jpg` contained Swami Malode's name and artwork and was originally referenced by social metadata. The current metadata points to Priyanshu's own `/opengraph.png`. The legacy JPEG URL now also serves Priyanshu's preview, and the legacy placeholder logo is replaced by his local P mark. This prevents cached image URLs from continuing to return someone else's identity.

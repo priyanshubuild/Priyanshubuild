@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, rename } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
+import { createHash } from "node:crypto";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const response = await fetch("https://priyanshugupta.com/api/github-activity", {
@@ -86,8 +87,8 @@ const legend = shown.map(([name, count], i) => `<circle cx="${28 + (i % 2) * 196
 const languageSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="440" height="150" role="img" aria-labelledby="title desc"><title id="title">Public repository languages</title><desc id="desc">Language proportions measured by code bytes in ${names.length} public non-fork repositories, not personal effort or proficiency: ${escape(shown.map(([name, count]) => `${name} ${(count / sum * 100).toFixed(1)}%`).join(", "))}.</desc>${frame}<g font-family="Arial,sans-serif"><text x="24" y="28" fill="#fafafa" font-size="13" font-weight="600">Public code languages</text><rect x="24" y="48" width="392" height="8" rx="4" fill="#26262c"/>${bar}${legend}${!sum ? '<text x="24" y="83" fill="#a1a1aa" font-size="11">No public language data available.</text>' : ""}<text x="24" y="131" fill="#a1a1aa" font-size="10">Updated ${languageDate} UTC</text></g></svg>`;
 const block = `<!-- activity:start -->
 <p align="center">
-  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity.svg" width="49%" alt="${total} GitHub contributions, ${commits} public authored commits, ${active} active days in the past year" /></a>
-  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages.svg" width="49%" alt="Public code languages by bytes: ${escape(shown.map(([name, count]) => `${name} ${(count / sum * 100).toFixed(1)}%`).join(", ")) || "no language data"}" /></a>
+  <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity.svg?v=${createHash("sha256").update(svg).digest("hex").slice(0, 12)}" width="49%" alt="${total} GitHub contributions, ${commits} public authored commits, ${active} active days in the past year" /></a>
+  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages.svg?v=${createHash("sha256").update(languageSVG).digest("hex").slice(0, 12)}" width="49%" alt="Public code languages by bytes: ${escape(shown.map(([name, count]) => `${name} ${(count / sum * 100).toFixed(1)}%`).join(", ")) || "no language data"}" /></a>
 </p>
 
 <sub>Past 365 days · Updated daily · Snapshot: ${snapshotDate} UTC.</sub>
