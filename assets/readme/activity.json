@@ -1919,11 +1919,11 @@
   "languages": {
     "bytes": {
       "CSS": 3955615,
-      "JavaScript": 331083,
+      "JavaScript": 331769,
       "TypeScript": 234011,
       "Jupyter Notebook": 192270,
       "HTML": 159367,
-      "Python": 95279,
+      "Python": 95282,
       "C++": 38222
     },
     "repositories": [
@@ -2017,9 +2017,9 @@
         "repository": "priyanshubuild/Priyanshubuild",
         "bytes": {
           "TypeScript": 234011,
-          "JavaScript": 36620,
+          "JavaScript": 37306,
           "CSS": 11885,
-          "Python": 862
+          "Python": 865
         }
       },
       {

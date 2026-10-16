@@ -37,7 +37,7 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 <!-- activity:start -->
 <p align="center">
   <a href="https://github.com/priyanshubuild"><img src="assets/readme/activity-191168914089.svg" width="49%" alt="393 GitHub contributions, 312 public authored commits, 65 active days in the past year" /></a>
-  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages-cf965cf17648.svg" width="49%" alt="Public code languages by bytes: CSS 79.0%, JavaScript 6.6%, TypeScript 4.7%, Jupyter Notebook 3.8%" /></a>
+  <a href="https://github.com/priyanshubuild?tab=repositories"><img src="assets/readme/languages-03958bdfccce.svg" width="49%" alt="Public code languages by bytes: CSS 79.0%, JavaScript 6.6%, TypeScript 4.7%, Jupyter Notebook 3.8%" /></a>
 </p>
 
 <sub>Past 365 days · Updated daily · Snapshot: 2026-10-16 UTC.</sub>
