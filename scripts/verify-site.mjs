@@ -81,6 +81,7 @@ assert.match(await missing.text(), /name="robots" content="noindex"/);
 const robots = await (await fetch(base + "/robots.txt")).text();
 assert.ok(robots.includes("Allow: /"));
 assert.ok(robots.includes("https://priyanshugupta.com/sitemap.xml"));
+assert.doesNotMatch(robots, /^Host:/im, "Google ignores the unsupported Host directive");
 const sitemap = await (await fetch(base + "/sitemap.xml")).text();
 assert.equal((sitemap.match(/<loc>/g) || []).length, 3);
 assert.ok(!sitemap.includes("<lastmod>"));
