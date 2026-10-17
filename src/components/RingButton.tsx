@@ -13,6 +13,7 @@ type RingButtonProps = {
   className?: string;
   target?: string;
   rel?: string;
+  ariaLabel?: string;
 };
 
 const ringButtonSizeStyles: Record<
@@ -52,6 +53,7 @@ const RingButton = ({
   className,
   target,
   rel,
+  ariaLabel,
 }: RingButtonProps) => {
   const sizeStyles = ringButtonSizeStyles[size];
 
@@ -95,7 +97,7 @@ const RingButton = ({
           className,
         )}
       >
-        <Link href={href} target={target} rel={rel}>
+        <Link href={href} target={target} rel={rel} aria-label={ariaLabel}>
           {content}
         </Link>
       </Button>
@@ -104,6 +106,7 @@ const RingButton = ({
 
   return (
     <Button
+      aria-label={ariaLabel}
       size={sizeStyles.buttonSize}
       className={cn(
         "relative flex scale-100 items-center gap-2 rounded-md border border-[#39393D] transition-colors hover:scale-[0.99] hover:bg-[#1C1C1F]/50",
