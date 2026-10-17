@@ -5,6 +5,10 @@ const base = process.env.PORTFOLIO_CHECK_URL || "http://127.0.0.1:3100";
 for (const path of ["/", "/projects", "/projectspage"]) {
   const response = await fetch(base + path);
   assert.equal(response.status, 200);
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
+  assert.equal(response.headers.get("content-security-policy"), "frame-ancestors 'none'; object-src 'none'; base-uri 'self'");
   const html = await response.text();
   assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, "One H1 per page");
   const canonical = "https://priyanshugupta.com" + (path === "/" ? "" : path);
@@ -17,7 +21,8 @@ for (const path of ["/", "/projects", "/projectspage"]) {
     html,
     /<meta property="og:image" content="https:\/\/priyanshugupta.com\/opengraph.png"/,
   );
-  assert.match(html, /<link rel="icon" href="\/favicon.png(?:\?v=4)?"/);
+  assert.match(html, /<link rel="icon" href="\/favicon.png" type="image\/png" sizes="96x96"/);
+  assert.equal((html.match(/<link rel="icon" /g) || []).length, 1, "One stable primary favicon");
   const schemas = [
     ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs),
   ].map((match) => JSON.parse(match[1]));
@@ -82,6 +87,10 @@ assert.ok(!sitemap.includes("<lastmod>"));
 const first = await (await fetch(base + "/api/github-activity")).json();
 assert.ok(first.calendar && first.repositories);
 assert.deepEqual(first.errors, { calendar: false, repositories: false });
+assert.equal(first.calendar.timeZone, "Asia/Kolkata");
+assert.equal(first.calendar.to, new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit",
+}).format(new Date()));
 assert.equal(first.repositories.scope, "all-time");
 assert.equal(first.repositories.source, "github-default-branches");
 assert.ok(

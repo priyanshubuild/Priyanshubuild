@@ -6,7 +6,7 @@ The existing page layout, content, dark styling, large headings, ruler edges, an
 
 The ranking counts **all commits reachable from each owned public repository's default branch**, including all authors, merge commits and bots, across its full history. This scope was explicitly selected by the owner. It matches GitHub's default-branch commit count. With `per_page=1`, the official commits endpoint's last-page number is the total; both named and numeric repository pagination URLs are validated against the requested repository.
 
-The calendar reads GitHub's public calendar HTML for the required years and selects exactly the rolling 365 UTC dates. Tooltips supply daily counts; missing counts or incomplete dates fail closed. Leap-year parsing retains all 366 dates before filtering. This avoids an intermediary calendar provider's cache. Personal contributions and all-author repository totals have different scopes.
+The calendar reads GitHub's public calendar HTML for the required years and selects exactly the rolling 365 calendar dates through today in Asia/Kolkata. This includes the owner's new day before the UTC server reaches midnight. Tooltips supply daily counts; missing counts or incomplete dates fail closed. Leap-year parsing retains all 366 dates before filtering. This avoids an intermediary calendar provider's cache. Personal profile contributions include work outside owned repositories and multiple contribution types; owned-repository totals instead describe current default-branch histories across all authors.
 
 Repository metadata and calendar requests use two-minute cache buckets that wait for a fresh result. Commit counts are cached by repository, default branch and push timestamp: a new push invalidates that repository's count. The visible widget polls every minute and on tab visibility, then sorts by total commits. Stable keys and motion layout let rows slide to their new positions; ties are alphabetical. Failed sources retain the browser's last good values or a compatible committed snapshot with explicit error status. Refresh respects the shared cache, and GitHub publication can lag.
 
@@ -14,7 +14,7 @@ Only public repository metadata is accepted. A server-only `GITHUB_TOKEN` can in
 
 ## Local branding and search metadata
 
-All favicon assets are in `public/`: SVG, ICO with 16/32/48 pixel layers, 96 pixel PNG, Apple icon, app icons and a maskable icon. The larger white P uses a charcoal tile and a small green availability accent in both browser themes. The old faint icon is replaced at its stable URLs. There are no external favicon image dependencies.
+All favicon assets are in `public/`: SVG, ICO with 16/32/48 pixel layers, 96 pixel PNG, Apple icon, app icons and a maskable icon. The larger white P uses a charcoal tile and a small green availability accent in both browser themes. The homepage advertises one primary square 96-pixel PNG at the stable `/favicon.png` URL, plus separate shortcut and Apple icons. There are no external favicon image dependencies. Googlebot and Googlebot-Image can fetch the homepage and image; search display still requires Google's recrawl and selection.
 
 The copied social-preview artwork is replaced with a local image bearing Priyanshu's name. Person schema no longer uses a placeholder logo as a portrait. ProfilePage markup belongs to the homepage, project pages retain their own canonical URLs and breadcrumbs, and the sitemap no longer invents a new modification date on every build. A full-name heading, keyboard skip link, and server-rendered content improve clarity for readers and crawlers.
 
@@ -39,13 +39,19 @@ These resources help agents interpret and navigate the site. They do not guarant
 
 ## Security review
 
-Next.js was patched within the existing version 15 series to 15.5.28. Vulnerable transitive packages were updated without forced major upgrades. The unused sitemap package was removed, and the unused blur helper uses native math instead of its vulnerable dependency. A targeted PostCSS 8.5.30 override fixes the vulnerable version pinned by Next.js; the installed dependency tree was verified.
+Next.js was patched within the existing version 15 series to 15.5.28. Vulnerable transitive packages were updated without forced major upgrades. A targeted PostCSS 8.5.30 override fixes the vulnerable version pinned by Next.js; the installed dependency tree was verified. Standard response headers prevent framing, MIME sniffing, plugins and base-URL injection, and disable unused camera, microphone and location permissions. They do not restrict the existing greeting or application scripts.
 
-The final production dependency audit reports zero known advisories. Nine upstream development-tool advisories remain in the globbing stack used by ESLint/shadcn; they are not production dependencies. A forced downgrade or major framework migration was not used to mask them.
+The production dependency audit reports zero known advisories. Five development-tool advisory entries remain in one dependency chain: Next's ESLint plugin → fast-glob → micromatch → braces. The underlying braces stack-exhaustion advisory has no published patch as of October 17, 2026. These packages are used for linting local source, not shipped as production dependencies or exposed to visitors' patterns. A forced downgrade or major framework migration was not used to mask the finding. See [the upstream advisory](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm).
+
+## Codebase cleanup
+
+The active Next.js routes and their import graph were traced before deletion. Removed 25 unused source files, one associated stylesheet, 15 unused images, the unused component-generator configuration and obsolete commit-search functions/tests. Removed unused direct packages, including the old cursor/calendar/animation helpers and shadcn CLI. The critical-font generator now uses the committed original font, so it no longer needs the entire Geist package; the font and license remain. Sharp is declared directly because the asset scripts import it. Active project images, legacy identity-image URLs, generated README cache variants, maintenance scripts and licenses remain intentional.
+
+Only the single visible footer design credit retains the template author's name and original repository link. Public documentation describes data sources, asset regeneration, operational limits and verification; it contains no credentials and is appropriate to keep in a public portfolio repository. Unrelated untracked résumé work in `output/` and `tmp/` is excluded from this cleanup.
 
 ## Verification and reproduction
 
-Build, ESLint, TypeScript, and twelve contribution tests pass. `npm run verify:site` checks canonical URLs, descriptions, schema, social images, favicon dimensions and references, public discovery resources, sitemap/robots, 404/noindex behavior, real repository ordering, and independent cache reuse.
+Build, ESLint, TypeScript, and eight contribution tests pass for this change. `npm run verify:site` passes checks for security headers, canonical URLs, descriptions, schema, social images, stable favicon dimensions and references, public discovery resources, sitemap/robots, 404/noindex behavior, the current India calendar date, real repository ordering, and independent cache reuse. The preview shows ten contributions on October 17 and 403 in the rolling year at verification time. The font subset was regenerated from the committed original with the documented fontTools dependency and remained byte-identical.
 
 ```sh
 npm run lint
