@@ -1,87 +1,20 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 import { GitHubIcon } from "../icons/Githubicon";
 import Link from "next/link";
 import Image from "next/image";
-
-const projects = [
-  {
-    id: 1,
-    title: "DSA & Algorithms Lab",
-    description:
-      "A comprehensive repository of algorithmic problem solving, core data structures, and competitive programming solutions in modern C++.",
-    category: "systems",
-    technologies: ["C++", "DSA", "Algorithms", "STL"],
-    year: "2025",
-    image: "/Project/ProjectImages/mach.png",
-    github: "priyanshubuild/priyanshubuild",
-    live: "https://github.com/priyanshubuild",
-  },
-  {
-    id: 2,
-    title: "Linux & Systems Workbench",
-    description:
-      "System exploration tools, custom shell scripts, and Linux command-line utilities configured for daily developer workflows.",
-    category: "systems",
-    technologies: ["Linux", "Bash", "Shell", "Git"],
-    year: "2025",
-    image: "/Project/ProjectImages/ghosttype.png",
-    github: "priyanshubuild/priyanshubuild",
-    live: "https://github.com/priyanshubuild",
-  },
-  {
-    id: 3,
-    title: "Interactive Portfolio",
-    description:
-      "Modern developer portfolio built with Next.js 15, React 19, Tailwind CSS v4, and fluid micro-animations.",
-    category: "frontend",
-    technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
-    year: "2025",
-    image: "/Project/ProjectImages/layers.png",
-    github: "priyanshubuild/priyanshubuild",
-    live: "https://priyanshugupta.com",
-  },
-  {
-    id: 4,
-    title: "Web Dev & UI Engineering",
-    description:
-      "Full-stack web explorations and interactive UI components focusing on speed, accessible markup, and smooth user experience.",
-    category: "fullstack",
-    technologies: ["TypeScript", "React", "Node.js", "Tailwind CSS"],
-    year: "2025",
-    image: "/Project/ProjectImages/vidstudio.png",
-    github: "priyanshubuild/priyanshubuild",
-    live: "https://priyanshugupta.com",
-  },
-];
+import projects from "@/data/projects.json";
 
 const ProjectsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [stars, setStars] = useState<Record<string, number>>({});
 
   const categories = [
     { id: "all", name: "All" },
-    { id: "systems", name: "Systems & C++" },
+    { id: "algorithms", name: "C++ & DSA" },
     { id: "fullstack", name: "Full Stack" },
     { id: "frontend", name: "Frontend" },
   ];
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch("/api/github-stars", { signal: controller.signal })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((data) => {
-        if (data && typeof data.stars === "number")
-          setStars(
-            Object.fromEntries(
-              projects.map((project) => [project.github, data.stars]),
-            ),
-          );
-      })
-      .catch(() => {});
-    return () => controller.abort();
-  }, []);
 
   const filteredProjects =
     selectedCategory === "all"
@@ -93,7 +26,7 @@ const ProjectsPage = () => {
       id="main-content"
       className="font-space-grotesk mx-auto bg-[#09090B] bg-[repeating-linear-gradient(45deg,#000_0px,#000_7px,#1C1C1F_7px,#1C1C1F_8px)]"
     >
-      <div className="mx-auto w-[80%] border-r-2 border-l-2 border-[#1C1C1F] bg-[#09090B] text-white">
+      <div className="mx-auto w-[92%] border-r-2 border-l-2 border-[#1C1C1F] bg-[#09090B] text-white sm:w-[90%] lg:w-[80%]">
         <div className="border-b border-[#1C1C1F]">
           <div className="mx-auto max-w-5xl px-6 py-10">
             <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
@@ -108,13 +41,14 @@ const ProjectsPage = () => {
               </Link>
             </div>
             <p className="max-w-2xl text-base text-[#a3a3a3] sm:text-xl">
-              All my Proof of Work at one place
+              Public projects, coursework and ongoing practice by Priyanshu
+              Gupta.
             </p>
           </div>
         </div>
 
-        <div className="mx-auto max-w-6xl px-6 py-10 sm:max-w-[80%]">
-          <div className="mx-auto mb-12 flex w-fit gap-1 rounded-full border border-[#1C1C1F] p-1">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+          <div className="mx-auto mb-12 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-full border border-[#1C1C1F] p-1">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -135,6 +69,7 @@ const ProjectsPage = () => {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
+                id={project.id}
                 className="group flex flex-col overflow-hidden rounded-xl border border-[#1C1C1F] bg-[#0A0A0A] transition-all duration-500 hover:-translate-y-2 hover:transform hover:border-[#333] hover:shadow-2xl hover:shadow-black/50"
               >
                 <div className="relative aspect-[4/2] overflow-hidden bg-[#111]">
@@ -147,7 +82,7 @@ const ProjectsPage = () => {
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
 
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 bg-[#09090B]/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 bg-[#09090B]/60 opacity-0 transition-opacity duration-300 focus-within:opacity-100 group-hover:opacity-100">
                     {project.github && (
                       <a
                         href={`https://github.com/${project.github}`}
@@ -162,7 +97,7 @@ const ProjectsPage = () => {
                     {project.live && (
                       <a
                         href={project.live}
-                        aria-label={`Open ${project.title} demo`}
+                        aria-label={`Open ${project.title} website`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="rounded-full bg-white/10 p-3 backdrop-blur-sm transition-colors duration-200 hover:bg-white/20"
@@ -186,6 +121,9 @@ const ProjectsPage = () => {
                   <p className="mb-4 text-sm leading-relaxed text-[#a3a3a3]">
                     {project.description}
                   </p>
+                  <p className="mb-4 text-xs text-[#a3a3a3]">
+                    {project.credit}
+                  </p>
 
                   <div className="mb-4 flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
@@ -202,41 +140,25 @@ const ProjectsPage = () => {
                     {project.live && (
                       <a
                         href={project.live}
-                        aria-label={`Open ${project.title} demo`}
+                        aria-label={`Open ${project.title} website`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#333] bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] px-4 py-2 text-sm text-white transition-all duration-300 hover:border-[#444] hover:from-[#2a2a2a] hover:to-[#3a3a3a]"
                       >
                         <ExternalLink size={16} />
-                        View Live
+                        View Site
                       </a>
                     )}
                     {project.github && (
                       <a
                         href={`https://github.com/${project.github}`}
+                        aria-label={`View ${project.title} source on GitHub`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#333] bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] px-4 py-2 text-sm text-white transition-all duration-300 hover:border-[#444] hover:from-[#2a2a2a] hover:to-[#2a2a2a]"
                       >
                         <GitHubIcon width={16} />
-                        <p>Github</p>
-                        <span className="flex items-center gap-1">
-                          <span className="border-l border-gray-500 pl-2">
-                            {stars[project.github] ?? "--"}
-                          </span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                          >
-                            <polygon
-                              points="12,2 15,8.5 22,9.3 17,14 18.5,21 12,17.8 5.5,21 7,14 2,9.3 9,8.5"
-                              fill="#888" // gray color
-                            />
-                          </svg>
-                        </span>
+                        <span>Source Code</span>
                       </a>
                     )}
                   </div>

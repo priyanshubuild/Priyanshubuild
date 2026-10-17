@@ -1,5 +1,6 @@
 import React from "react";
 import { FolderGit2, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const ProjectsSection = () => {
   return (
@@ -21,23 +22,21 @@ const ProjectsSection = () => {
             </p>
           </div>
 
-          <a
-            href="https://github.com/priyanshubuild"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/projects"
             className="inline-flex w-fit items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
           >
             <FolderGit2 className="h-4 w-4 text-neutral-300" />
-            <span>GitHub Profile</span>
+            <span>View projects</span>
             <ArrowUpRight className="h-4 w-4 text-neutral-400" />
-          </a>
+          </Link>
         </div>
 
         <div className="space-y-4 pt-6 text-sm leading-relaxed text-neutral-300 sm:text-base">
           <p>
-            I am currently focusing on building core competence and do not have
-            featured production deployments to display yet. Here is what I am
-            actively working on:
+            I learn by building: C++ practice, web projects, and team
+            experiments. My public repositories document that work as it
+            develops. Here are the areas I am actively exploring:
           </p>
           <div className="grid grid-cols-1 gap-4 pt-2 sm:grid-cols-3">
             <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
@@ -78,8 +77,9 @@ const ProjectsSection = () => {
             </div>
           </div>
           <p className="pt-2 text-xs text-neutral-400 italic sm:text-sm">
-            Completed projects with live demos and source repositories will be
-            showcased here as they ship.
+            The project collection includes personal practice, college
+            coursework and a team hackathon submission, with links to the source
+            code.
           </p>
         </div>
       </div>

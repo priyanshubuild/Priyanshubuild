@@ -15,8 +15,7 @@
   },
   "pages": {
     "home": "https://priyanshugupta.com/",
-    "projects": "https://priyanshugupta.com/projects",
-    "projectUpdates": "https://priyanshugupta.com/projectspage"
+    "projects": "https://priyanshugupta.com/projects"
   },
   "activity": {
     "url": "https://priyanshugupta.com/api/github-activity",
@@ -24,5 +23,8 @@
     "repositoryRanking": "All-time commits by all authors and bots on public repository default branches",
     "cacheSeconds": 120
   },
-  "contact": { "method": "email", "url": "mailto:priyanshug1408@gmail.com" }
+  "contact": {
+    "method": "email",
+    "url": "mailto:priyanshug1408@gmail.com"
+  }
 }

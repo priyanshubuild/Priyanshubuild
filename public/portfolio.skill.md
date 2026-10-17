@@ -10,7 +10,7 @@ Use this resource to locate public facts and navigate the existing portfolio. It
 1. Read `https://priyanshugupta.com/profile.json` for the public name, role, contact address, and exact professional profile links.
 2. Read `https://priyanshugupta.com/` for the introduction, skills, learning experience, about section, and contact links. These sections are present in the server-rendered HTML.
 3. Read `https://priyanshugupta.com/api/github-activity` for all-time commit totals on each public repository's default branch and the separate personal contribution calendar. Repository metadata and the calendar refresh in two-minute windows. Counts for unchanged repositories are reused until a new push or default branch changes their cache key. Respect partial/unavailable responses and fetch timestamps; do not interpret a failure as zero activity.
-4. The homepage anchors are `#projects`, `#experience`, `#skills`, `#github`, `#about`, and `#contact`. Project pages are `/projects` and `/projectspage`.
+4. The homepage anchors are `#projects`, `#experience`, `#skills`, `#github`, `#about`, and `#contact`. The project collection is `/projects`; the legacy `/projectspage` address permanently redirects there. Project descriptions distinguish personal practice, college coursework and team work.
 5. In browsers with WebMCP, the read-only `get_portfolio_profile` and `get_github_activity` tools expose the same public resources. Each accepts an empty object.
 6. Contact is a mailto link that opens a draft in the visitor's email application. Reading the site or its resources does not send a message.
 

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cpp-practice",
+    "title": "C++ & Data Structures Practice",
+    "description": "An ongoing C++ practice repository with loops, functions, arrays, pattern problems and course assignments. It records my learning and algorithmic problem-solving practice.",
+    "category": "algorithms",
+    "technologies": ["C++", "Data Structures", "Algorithms"],
+    "programmingLanguages": ["C++"],
+    "year": "2026",
+    "image": "/projects/cpp-practice.svg",
+    "coverLines": ["C++ & Data", "Structures Practice"],
+    "coverLabel": "100xDSA / ONGOING PRACTICE",
+    "github": "priyanshubuild/100xDSA",
+    "live": null,
+    "credit": "Personal practice and coursework"
+  },
+  {
+    "id": "ai-interview-agent",
+    "title": "AI Interview Agent",
+    "description": "A Team BitForge hackathon project for curriculum-based technical interview practice. The repository contains a React interface, a Python/FastAPI backend and interview evaluation logic.",
+    "category": "fullstack",
+    "technologies": ["React", "Python", "FastAPI", "Gemini"],
+    "programmingLanguages": ["JavaScript", "Python"],
+    "year": "2026",
+    "image": "/projects/ai-interview-agent.svg",
+    "coverLines": ["AI Interview", "Agent"],
+    "coverLabel": "TEAM BITFORGE / HACKATHON PROJECT",
+    "github": "priyanshubuild/BitForgeXABTalks",
+    "live": "https://vicodathon.vercel.app/",
+    "credit": "Team BitForge · team project"
+  },
+  {
+    "id": "portfolio",
+    "title": "Developer Portfolio",
+    "description": "This portfolio brings together my projects, skills, GitHub activity and contact links. Built with Next.js, React, TypeScript and Tailwind CSS, with local branding and accessible navigation.",
+    "category": "frontend",
+    "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    "programmingLanguages": ["TypeScript", "CSS"],
+    "year": "2026",
+    "image": "/projects/portfolio.svg",
+    "coverLines": ["Developer", "Portfolio"],
+    "coverLabel": "PRIYANSHUGUPTA.COM / NEXT.JS",
+    "github": "priyanshubuild/Priyanshubuild",
+    "live": "https://priyanshugupta.com/",
+    "credit": "Personal portfolio · design attribution in the site footer"
+  },
+  {
+    "id": "storefront-practice",
+    "title": "Storefront Frontend Practice",
+    "description": "A college frontend project recreating an online-store interface with HTML, CSS and JavaScript. The source includes product, cart, orders and account pages.",
+    "category": "frontend",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "programmingLanguages": ["HTML", "CSS", "JavaScript"],
+    "year": "2026",
+    "image": "/projects/storefront-practice.svg",
+    "coverLines": ["Storefront", "Frontend Practice"],
+    "coverLabel": "AMAZON_CLONE / COLLEGE PROJECT",
+    "github": "priyanshubuild/Amazon_clone",
+    "live": null,
+    "credit": "College practice project · not affiliated with Amazon"
+  }
+]

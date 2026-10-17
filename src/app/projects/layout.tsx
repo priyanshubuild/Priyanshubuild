@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
+import projects from "@/data/projects.json";
+import {
+  SITE_URL,
+  SITE_NAME,
+  PERSON_ID,
+  WEBSITE_ID,
+  serializeJSONLD,
+} from "@/lib/site";
+
+const title = "Projects & C++ Practice";
+const description =
+  "Explore Priyanshu Gupta's public work: C++ practice, a team AI interview agent, a Next.js portfolio and a college frontend project. Source code and project links.";
 
 export const metadata: Metadata = {
-  title: "Projects",
-  description:
-    "Showcase of engineering projects, algorithms lab in C++, Linux systems workbench, and web applications built by Priyanshu Gupta.",
+  title,
+  description,
   alternates: {
     canonical: "/projects",
   },
   openGraph: {
-    title: "Projects | Priyanshu Gupta",
-    description:
-      "Showcase of engineering projects, algorithms lab in C++, Linux systems workbench, and web applications built by Priyanshu Gupta.",
-    url: "https://priyanshugupta.com/projects",
+    title: `${title} | ${SITE_NAME}`,
+    description,
+    url: `${SITE_URL}/projects`,
+    siteName: SITE_NAME,
+    locale: "en_US",
     type: "website",
     images: [
       {
@@ -25,27 +37,59 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     images: ["/opengraph.png"],
-    title: "Projects | Priyanshu Gupta",
-    description:
-      "Showcase of engineering projects, algorithms lab in C++, Linux systems workbench, and web applications built by Priyanshu Gupta.",
+    title: `${title} | ${SITE_NAME}`,
+    description,
+    creator: "@priyanshustwt",
   },
 };
 
-const breadcrumbsJsonLd = {
+const projectsJsonLd = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
+  "@graph": [
     {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://priyanshugupta.com",
+      "@type": "CollectionPage",
+      "@id": `${SITE_URL}/projects#webpage`,
+      url: `${SITE_URL}/projects`,
+      name: `${title} | ${SITE_NAME}`,
+      description,
+      inLanguage: "en",
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": PERSON_ID },
+      breadcrumb: { "@id": `${SITE_URL}/projects#breadcrumbs` },
+      mainEntity: { "@id": `${SITE_URL}/projects#project-list` },
     },
     {
-      "@type": "ListItem",
-      position: 2,
-      name: "Projects",
-      item: "https://priyanshugupta.com/projects",
+      "@type": "BreadcrumbList",
+      "@id": `${SITE_URL}/projects#breadcrumbs`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projects",
+          item: `${SITE_URL}/projects`,
+        },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${SITE_URL}/projects#project-list`,
+      numberOfItems: projects.length,
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SoftwareSourceCode",
+          "@id": `${SITE_URL}/projects#${project.id}`,
+          url: `${SITE_URL}/projects#${project.id}`,
+          name: project.title,
+          description: project.description,
+          codeRepository: `https://github.com/${project.github}`,
+          programmingLanguage: project.programmingLanguages,
+          image: `${SITE_URL}${project.image}`,
+          creditText: project.credit,
+        },
+      })),
     },
   ],
 };
@@ -60,7 +104,7 @@ export default function ProjectsLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbsJsonLd),
+          __html: serializeJSONLD(projectsJsonLd),
         }}
       />
       {children}

@@ -5,8 +5,7 @@
 ## Main pages
 
 - [Portfolio](https://priyanshugupta.com/): Introduction, skills, learning experience, GitHub activity, about, and contact.
-- [Projects](https://priyanshugupta.com/projects): Current project and practice descriptions.
-- [Project updates](https://priyanshugupta.com/projectspage): Development status and practice repositories.
+- [Projects](https://priyanshugupta.com/projects): Verified public repositories: C++ practice, the Team BitForge AI Interview Agent, this Next.js portfolio and a college storefront frontend project. Includes source links and team/coursework attribution.
 
 ## Public structured data
 
