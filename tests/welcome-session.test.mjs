@@ -17,12 +17,18 @@ const compiled = ts.transpileModule(source, {
 const { WELCOME_BOOTSTRAP, WELCOME_STORAGE_KEY } = await import(
   `data:text/javascript;base64,${Buffer.from(compiled.outputText).toString("base64")}`
 );
-function visit(storage, pathname = "/", reduced = false) {
+function visit(
+  storage,
+  pathname = "/",
+  reduced = false,
+  navigationType = "navigate",
+) {
   const document = { documentElement: { dataset: {} } };
   runInNewContext(WELCOME_BOOTSTRAP, {
     document,
     location: { pathname },
     window: { matchMedia: () => ({ matches: reduced }) },
+    performance: { getEntriesByType: () => [{ type: navigationType }] },
     sessionStorage: storage,
   });
   return document.documentElement.dataset.portfolioWelcome;
@@ -35,13 +41,23 @@ const tab = () => {
   };
 };
 
-test("first Home visit plays once; reload and return visits skip before paint", () => {
+test("first Home visit plays once; return visits skip before paint", () => {
   const storage = tab();
   assert.equal(visit(storage), "play");
   assert.equal(storage.getItem(WELCOME_STORAGE_KEY), "1");
   assert.equal(visit(storage), "skip");
   assert.equal(visit(storage, "/projects"), "skip");
   assert.equal(visit(storage), "skip");
+});
+test("an explicit Home reload replays; internal navigation and Back still skip", () => {
+  const storage = tab();
+  assert.equal(visit(storage), "play");
+  assert.equal(visit(storage), "skip");
+  assert.equal(visit(storage, "/", false, "reload"), "play");
+  assert.equal(visit(storage), "skip");
+  assert.equal(visit(storage, "/", false, "back_forward"), "skip");
+  assert.equal(visit(storage, "/projects", false, "reload"), "skip");
+  assert.equal(visit(storage, "/", true, "reload"), "skip");
 });
 test("a fresh tab gets its own welcome without resetting another tab", () => {
   const first = tab();

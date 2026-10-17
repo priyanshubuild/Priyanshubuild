@@ -8,7 +8,8 @@ export const WELCOME_BOOTSTRAP = `(() => {
     seen = sessionStorage.getItem(${JSON.stringify(WELCOME_STORAGE_KEY)}) === "1";
     sessionStorage.setItem(${JSON.stringify(WELCOME_STORAGE_KEY)}, "1");
   } catch { seen = true; }
+  const reloaded = performance.getEntriesByType("navigation")[0]?.type === "reload";
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.documentElement.dataset.portfolioWelcome =
-    !seen && location.pathname === "/" && !reduced ? "play" : "skip";
+    (!seen || reloaded) && location.pathname === "/" && !reduced ? "play" : "skip";
 })();`;
