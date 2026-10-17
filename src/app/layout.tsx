@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Space_Grotesk } from "next/font/google";
 import AgentTools from "@/components/AgentTools";
+import WelcomeSession from "@/components/WelcomeSession";
+import { WELCOME_BOOTSTRAP } from "@/lib/welcome-session";
 import {
   SITE_URL,
   SITE_NAME,
@@ -155,8 +157,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* The bootstrap owns one HTML data attribute before hydration. */}
+        <script dangerouslySetInnerHTML={{ __html: WELCOME_BOOTSTRAP }} />
         <link
           rel="preload"
           href="/fonts/geist-pixel-square-latin-v1.woff2"
@@ -194,6 +198,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
+        <WelcomeSession />
         {children}
         <AgentTools />
         {process.env.VERCEL === "1" && (

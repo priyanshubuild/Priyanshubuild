@@ -1,4 +1,3 @@
-import LoadingScreen from "@/components/LoadingScreen";
 import Taskbar from "@/components/Taskbar/Taskbar";
 export default function InitialLoadShell({
   children,
@@ -10,7 +9,6 @@ export default function InitialLoadShell({
       <noscript>
         <style>{".portfolio-preloader{display:none}.portfolio-dock{visibility:visible;animation:none}"}</style>
       </noscript>
-      <LoadingScreen />
       {children}
       <div className="portfolio-dock">
         <Taskbar />

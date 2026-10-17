@@ -249,11 +249,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .footer-signature::before { content:attr(data-decoration); }
 /* Original greeting cadence: eight 180 ms words, a 200 ms final word,
    then the one-second upward shutter. CSS starts before hydration. */
-.portfolio-preloader { animation:portfolio-reveal 1s cubic-bezier(.8,0,.2,1) 1.64s forwards; }
+.portfolio-preloader { display:none; }
+html[data-portfolio-welcome="play"] .portfolio-preloader { display:flex;animation:portfolio-reveal 1s cubic-bezier(.8,0,.2,1) 1.64s forwards; }
 @keyframes portfolio-reveal { from {transform:translateY(0);} to {transform:translateY(-100%);visibility:hidden;} }
 .portfolio-greeting {opacity:0;animation:portfolio-greeting 180ms steps(1,end) forwards;}
 @keyframes portfolio-greeting {0% {opacity:1;}100% {opacity:0;}}
-.portfolio-dock {animation:portfolio-dock-wait 2.64s step-end;}
+html[data-portfolio-welcome="play"] .portfolio-dock {animation:portfolio-dock-wait 2.64s step-end;}
 @keyframes portfolio-dock-wait {from,to {visibility:hidden;}}
 .work-note-arrow {animation:work-note-arrow .5s ease-out .5s both;}
 .work-note-text {animation:work-note-text .4s ease-out .85s both;}
