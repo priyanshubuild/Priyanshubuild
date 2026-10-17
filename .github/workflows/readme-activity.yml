@@ -2,8 +2,8 @@ name: Refresh README activity
 
 on:
   schedule:
+    # Once daily at 05:55 Asia/Kolkata. GitHub may delay scheduled jobs.
     - cron: '25 0 * * *'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -26,7 +26,7 @@ jobs:
       - name: Refresh verified public activity
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/update-readme-activity.mjs
+        run: node scripts/update-readme-activity.mjs --daily
       - name: Save changes to the activity snapshot
         run: |
           git config user.name "github-actions[bot]"

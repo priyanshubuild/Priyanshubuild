@@ -6,10 +6,23 @@ import { promisify } from "node:util";
 import { tmpdir } from "node:os";
 import { mkdtemp, rm } from "node:fs/promises";
 import { activityAssets, activityBlock, snapshotImagePattern } from "./readme-visuals.mjs";
+import { refreshedToday } from "./readme-refresh-policy.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 // Layout-only edits can reuse the last verified snapshot without recounting code.
 const renderOnly = process.argv.includes("--render-only");
+if (process.argv.includes("--daily") && !renderOnly) {
+  let previous;
+  try {
+    previous = JSON.parse(await readFile(join(root, "assets/readme/activity.json"), "utf8"));
+  } catch {
+    // A missing or unreadable snapshot needs a complete refresh.
+  }
+  if (refreshedToday(previous)) {
+    console.log("The README already has today's verified snapshot; skipping a duplicate daily refresh.");
+    process.exit(0);
+  }
+}
 let data;
 if (renderOnly) {
   data = JSON.parse(await readFile(join(root, "assets/readme/activity.json"), "utf8"));
