@@ -1823,21 +1823,20 @@
       },
       {
         "date": "2026-10-17",
-        "count": 10,
+        "count": 12,
         "level": 2
       }
     ],
     "from": "2025-10-18",
     "to": "2026-10-17",
-    "timeZone": "Asia/Kolkata",
-    "fetchedAt": "2026-10-17T09:46:58.134Z"
+    "fetchedAt": "2026-10-17T09:48:37.167Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "Priyanshubuild",
         "href": "https://github.com/priyanshubuild/Priyanshubuild",
-        "count": 70
+        "count": 72
       },
       {
         "name": "100xDSA",
@@ -1912,14 +1911,14 @@
     ],
     "scope": "all-time",
     "source": "github-default-branches",
-    "fetchedAt": "2026-10-17T09:46:58.096Z"
+    "fetchedAt": "2026-10-17T09:48:37.042Z"
   },
   "languages": {
     "lines": {
-      "JavaScript": 7357,
-      "TypeScript": 5857,
-      "CSS": 5482,
+      "JavaScript": 7075,
+      "CSS": 5454,
       "HTML": 3764,
+      "TypeScript": 3328,
       "C++": 1897,
       "Python": 1760
     },
@@ -2025,11 +2024,11 @@
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "commit": "d7dc7d4f246bd36e1d0da323703fe31c1dcd7c36",
+        "commit": "1bd2523d4728c07a960ddd0f6f39f6f628b5a336",
         "lines": {
-          "TypeScript": 5857,
-          "JavaScript": 882,
-          "CSS": 275,
+          "TypeScript": 3328,
+          "JavaScript": 600,
+          "CSS": 247,
           "Python": 161
         }
       },
@@ -2053,7 +2052,7 @@
         }
       }
     ],
-    "fetchedAt": "2026-10-17T04:43:06.053153+00:00",
+    "fetchedAt": "2026-10-17T09:48:59.688813+00:00",
     "counter": "cloc 2.10",
     "scope": "public-non-fork-default-branches"
   }
