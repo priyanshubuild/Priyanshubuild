@@ -16,7 +16,7 @@ Only public repository metadata is accepted. A server-only `GITHUB_TOKEN` can in
 
 All favicon assets are in `public/`: SVG, ICO with 16/32/48 pixel layers, 96 pixel PNG, Apple icon, app icons and a maskable icon. The larger white P uses a charcoal tile and a small green availability accent in both browser themes. The homepage advertises one primary square 96-pixel PNG at the stable `/favicon.png` URL, plus separate shortcut and Apple icons. There are no external favicon image dependencies. Googlebot and Googlebot-Image can fetch the homepage and image; search display still requires Google's recrawl and selection.
 
-The copied social-preview artwork is replaced with a local image bearing Priyanshu's name. Person schema no longer uses a placeholder logo as a portrait. ProfilePage markup belongs to the homepage, project pages retain their own canonical URLs and breadcrumbs, and the sitemap no longer invents a new modification date on every build. A full-name heading, keyboard skip link, and server-rendered content improve clarity for readers and crawlers.
+The copied social-preview artwork is replaced with a local image bearing Priyanshu's name. Person schema no longer uses a placeholder logo as a portrait. ProfilePage markup belongs to the homepage; the verified project collection has its own canonical URL and breadcrumbs. The old project-placeholder URL permanently redirects to that collection. The sitemap lists the two canonical pages and does not invent a new modification date on every build. A full-name heading, keyboard skip link, and server-rendered content improve clarity for readers and crawlers. See [the search review](SEARCH-OPTIMIZATION.md) for the later content, metadata and discovery corrections.
 
 ## Agent browsing
 

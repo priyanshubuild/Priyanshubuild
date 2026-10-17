@@ -4,6 +4,16 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Space_Grotesk } from "next/font/google";
 import AgentTools from "@/components/AgentTools";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  PERSON_ID,
+  WEBSITE_ID,
+  PROFILE_LINKS,
+  serializeJSONLD,
+} from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,13 +42,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://priyanshugupta.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Priyanshu Gupta — Software Developer & Systems Engineer",
+    default: SITE_TITLE,
     template: "%s | Priyanshu Gupta",
   },
-  description:
-    "Portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+  description: SITE_DESCRIPTION,
   applicationName: "Priyanshu Gupta Portfolio",
   authors: [{ name: "Priyanshu Gupta", url: "https://priyanshugupta.com" }],
   creator: "Priyanshu Gupta",
@@ -49,35 +58,19 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "96x96" },
-    ],
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "96x96" }],
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  keywords: [
-    "Priyanshu Gupta",
-    "priyanshubuild",
-    "Software Developer",
-    "Systems Engineer",
-    "Data Structures & Algorithms",
-    "DSA",
-    "C++",
-    "C++20",
-    "Linux Systems",
-    "Competitive Programming",
-    "LeetCode",
-    "Codeforces",
-    "CodeChef",
-    "Next.js Portfolio",
-    "React Developer",
-    "Tailwind CSS",
-    "TypeScript",
-    "Full Stack Engineer",
-    "Vercel Deployment",
-  ],
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? {
+          other: {
+            "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+          },
+        }
+      : {}),
   },
   robots: {
     index: true,
@@ -91,11 +84,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Priyanshu Gupta — Software Developer & Systems Engineer",
-    description:
-      "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
-    url: "https://priyanshugupta.com",
-    siteName: "Priyanshu Gupta",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
         url: "/opengraph.png",
@@ -109,9 +101,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Priyanshu Gupta — Software Developer & Systems Engineer",
-    description:
-      "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ["/opengraph.png"],
     creator: "@priyanshustwt",
     site: "@priyanshustwt",
@@ -123,21 +114,14 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://priyanshugupta.com/#person",
-      name: "Priyanshu Gupta",
+      "@id": PERSON_ID,
+      name: SITE_NAME,
       alternateName: "priyanshubuild",
-      url: "https://priyanshugupta.com",
+      url: SITE_URL,
       jobTitle: "Software Developer & Systems Engineer",
       description:
         "Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
-      sameAs: [
-        "https://github.com/priyanshubuild",
-        "https://leetcode.com/u/Priyanshuguptaleetcode/",
-        "https://codeforces.com/profile/priyanshuguptacf",
-        "https://www.codechef.com/users/priyanshucf",
-        "https://www.linkedin.com/in/priyanshubuild/",
-        "https://x.com/priyanshustwt",
-      ],
+      sameAs: PROFILE_LINKS,
       knowsAbout: [
         "C++",
         "Data Structures and Algorithms",
@@ -151,13 +135,14 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://priyanshugupta.com/#website",
-      url: "https://priyanshugupta.com",
-      name: "Priyanshu Gupta",
-      description:
-        "Portfolio of Priyanshu Gupta. Software Developer focused on Data Structures & Algorithms, C++, Linux systems, and modern web applications.",
+      "@id": WEBSITE_ID,
+      url: SITE_URL,
+      name: SITE_NAME,
+      alternateName: ["priyanshubuild", "priyanshugupta.com"],
+      inLanguage: "en",
+      description: SITE_DESCRIPTION,
       publisher: {
-        "@id": "https://priyanshugupta.com/#person",
+        "@id": PERSON_ID,
       },
     },
   ],
@@ -192,7 +177,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd),
+            __html: serializeJSONLD(jsonLd),
           }}
         />
       </head>

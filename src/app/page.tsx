@@ -9,6 +9,15 @@ import SkillSection from "@/components/SkillsSection/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection/Experience";
 import LoadingScreen from "@/components/InitialLoadShell";
 import GithubActivityCard from "@/components/GithubActivityCard";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  PERSON_ID,
+  WEBSITE_ID,
+  serializeJSONLD,
+} from "@/lib/site";
 
 const page = () => {
   return (
@@ -21,12 +30,20 @@ const page = () => {
               <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                  __html: JSON.stringify({
+                  __html: serializeJSONLD({
                     "@context": "https://schema.org",
                     "@type": "ProfilePage",
-                    url: "https://priyanshugupta.com",
-                    name: "Priyanshu Gupta — Software Developer & Systems Engineer",
-                    mainEntity: { "@id": "https://priyanshugupta.com/#person" },
+                    "@id": `${SITE_URL}/#profile`,
+                    url: SITE_URL,
+                    name: SITE_TITLE,
+                    description: SITE_DESCRIPTION,
+                    inLanguage: "en",
+                    isPartOf: { "@id": WEBSITE_ID },
+                    mainEntity: {
+                      "@type": "Person",
+                      "@id": PERSON_ID,
+                      name: SITE_NAME,
+                    },
                   }),
                 }}
               />
