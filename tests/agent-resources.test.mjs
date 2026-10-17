@@ -22,9 +22,9 @@ test("public agent documents match the shared profile and project sources", asyn
     assert.ok(guide.includes(href));
   for (const [i, project] of publicProjects.projects.entries()) {
     assert.equal(project.description, originals[i].description);
-    assert.equal(project.attribution, originals[i].credit);
+    assert.equal(project.attribution || "", originals[i].credit);
     assert.ok(guide.includes(project.repository));
-    assert.ok(guide.includes(project.attribution));
+    if (project.attribution) assert.ok(guide.includes(project.attribution));
   }
   const home = await read("src/app/page.tsx");
   for (const section of Object.values(profile.sections))

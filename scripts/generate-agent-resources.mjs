@@ -80,7 +80,7 @@ ${project.description}
 ${project.live ? `- Website or demo: ${project.live}\n` : ""}- Category: ${project.category}
 - Technologies: ${project.technologies.join(", ")}
 - Programming languages: ${project.programmingLanguages.join(", ")}
-- Attribution: ${project.credit}
+${project.credit ? `- Attribution: ${project.credit}\n` : ""}
 `,
   )
   .join("\n")}
@@ -196,7 +196,7 @@ const projectData = {
     category: project.category,
     technologies: project.technologies,
     programmingLanguages: project.programmingLanguages,
-    attribution: project.credit,
+    ...(project.credit ? { attribution: project.credit } : {}),
   })),
 };
 

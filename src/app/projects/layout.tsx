@@ -91,7 +91,7 @@ const projectsJsonLd = {
           codeRepository: `https://github.com/${project.github}`,
           programmingLanguage: project.programmingLanguages,
           image: `${SITE_URL}${project.image}`,
-          creditText: project.credit,
+          ...(project.credit ? { creditText: project.credit } : {}),
         },
       })),
     },

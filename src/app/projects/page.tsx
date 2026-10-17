@@ -120,7 +120,9 @@ export default function ProjectsPage() {
                   </div>
                   <h2 id={`${project.id}-title`}>{project.title}</h2>
                   <p className={styles.description}>{project.description}</p>
-                  <p className={styles.credit}>{project.credit}</p>
+                  {project.credit && (
+                    <p className={styles.credit}>{project.credit}</p>
+                  )}
                   <ul
                     className={styles.technologies}
                     aria-label={`${project.title} technologies`}

@@ -63,8 +63,7 @@
       "programmingLanguages": [
         "TypeScript",
         "CSS"
-      ],
-      "attribution": "Personal portfolio · design attribution in the site footer"
+      ]
     },
     {
       "id": "storefront-practice",
@@ -83,8 +82,7 @@
         "HTML",
         "CSS",
         "JavaScript"
-      ],
-      "attribution": "College practice project · not affiliated with Amazon"
+      ]
     }
   ]
 }
