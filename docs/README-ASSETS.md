@@ -51,6 +51,8 @@ Updates commit as `github-actions[bot]` with the message `Refresh public GitHub 
 
 The updater changes only the marked statistics section of the README and generated files in `assets/readme`. Cards use content hashes in local filenames to bypass GitHub's image caches; query versions were dropped by GitHub's image redirects during verification. Current and preceding linked card versions are retained for cached README pages. The high-resolution banner has its own `@3x` filename. Generated charts, banner images, and link badges are stored in this repository.
 
+The generators emit only the chart filenames linked by the README and its responsive sources, plus the current and preceding snapshots. Unlinked chart aliases and the unused standalone header SVG have been removed; the banner source remains in `generate-readme-assets.mjs` for regeneration. Icon and font license files are retained with their assets.
+
 ## Search identity correction
 
 The old `/official/opengraphh.jpg` contained the template author's name and artwork and was originally referenced by social metadata. The current metadata points to Priyanshu's own `/opengraph.png`. The legacy JPEG URL now also serves Priyanshu's preview, and the legacy placeholder logo is replaced by his local P mark. This prevents cached image URLs from continuing to return someone else's identity.

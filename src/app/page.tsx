@@ -7,7 +7,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SectionHeading from "@/components/SectionHeading";
 import SkillSection from "@/components/SkillsSection/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection/Experience";
-import LoadingScreen from "@/components/InitialLoadShell";
+import InitialLoadShell from "@/components/InitialLoadShell";
 import GithubActivityCard from "@/components/GithubActivityCard";
 import {
   SITE_URL,
@@ -21,7 +21,7 @@ import {
 
 const page = () => {
   return (
-    <LoadingScreen>
+    <InitialLoadShell>
       <Container>
         <div className="w-full md:px-8">
           <div className="bg-[#09090B] text-white">
@@ -77,7 +77,7 @@ const page = () => {
           </div>
         </div>
       </Container>
-    </LoadingScreen>
+    </InitialLoadShell>
   );
 };
 

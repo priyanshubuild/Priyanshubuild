@@ -1,10 +1,9 @@
-import { readFile, writeFile, mkdir, rename, readdir, unlink } from "node:fs/promises";
+import { readFile, writeFile, mkdir, rename, readdir, unlink, mkdtemp, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { tmpdir } from "node:os";
-import { mkdtemp, rm } from "node:fs/promises";
 import { activityAssets, activityBlock, snapshotImagePattern } from "./readme-visuals.mjs";
 import { refreshedToday } from "./readme-refresh-policy.mjs";
 
@@ -86,7 +85,7 @@ const retainedImages = new Set([...assets.values()].map(asset => asset.file));
 for (const [, file] of readme.matchAll(/assets\/readme\/((?:activity|languages)(?:-compact)?-[a-f0-9]{12}\.svg)/g)) retainedImages.add(file);
 await mkdir(join(root, "assets/readme"), { recursive: true });
 for (const [file, contents] of [
-  ...[...assets].flatMap(([name, asset]) => [[`assets/readme/${name}.svg`, asset.contents], [`assets/readme/${asset.file}`, asset.contents]]),
+  ...[...assets.values()].map(asset => [`assets/readme/${asset.file}`, asset.contents]),
   ["assets/readme/activity.json", JSON.stringify({ calendar: data.calendar, repositories: data.repositories, languages }, null, 2) + "\n"],
   ["README.md", updated],
 ]) {

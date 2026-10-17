@@ -40,7 +40,6 @@ function header(caption) {
   <text x="77" y="190" font-family="monospace" font-size="12" fill="#b0b0bb">${escape(caption)}<tspan fill="#fafafa"> _</tspan></text>
   </svg>`;
 }
-await writeFile(join(output, "header.svg"), header("understand first. build second."));
 await sharp(Buffer.from(header("understand first. build second.")), { density: rasterDensity }).png().toFile(join(output, "header-static@3x.png"));
 const captions = ["C++ / data structures / algorithms", "Linux / systems / shell tooling", "Next.js / React / TypeScript"];
 const timeline = [];

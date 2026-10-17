@@ -95,6 +95,14 @@ The production build, lint, types and all 21 tests pass. Browser checks cover in
 
 References: [tab-scoped session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), [persistent Next.js layouts](https://nextjs.org/docs/app/getting-started/layouts-and-pages), [React layout effects](https://react.dev/reference/react/useLayoutEffect).
 
+## Cleanup and dependency review — October 17, 2026
+
+The reference review found every site component in use. Five unlinked README images were removed, and their generators no longer emit the duplicate chart aliases or standalone header SVG. Current and previous content-hashed charts, icon/font licenses, legacy preview URLs, favicon variants and regeneration tools remain intentional. Unused sidebar/chart theme tokens, an undefined font token, a shadowed color mapping and a nonexistent TypeScript include were removed. The homepage shell import now uses its actual name. The obsolete local `out/` export was also removed; it is ignored generated output, separate from the current Next.js build.
+
+Lint, type checking (including unused-local/parameter checks), script syntax checks and the production build pass after cleanup. All 22 local README image references resolve, and the four current chart variants match their saved source data. Browser inspection confirmed the homepage presentation and four project cards with no broken covers or warning/error logs.
+
+The production dependency audit reports zero known vulnerabilities. The full audit reports one underlying high-severity advisory, [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm), through the development-only chain `eslint-config-next → @next/eslint-plugin-next → fast-glob → micromatch → braces@3.0.3`. npm reports five affected packages along that one chain. The advisory concerns deeply nested glob patterns and has no published patched braces release as of this review. The lint configuration uses fixed project patterns; the public request handlers do not expose this development dependency. A clean production audit does not establish that all application code is free of security flaws.
+
 ## Remaining external steps
 
 1. Verify the domain property in Google Search Console, or use the existing `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` setting with your own verification value.
