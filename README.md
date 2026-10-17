@@ -30,8 +30,8 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 <p align="center">
   <a href="https://github.com/priyanshubuild">
     <picture>
-      <source media="(max-width: 600px)" srcset="assets/readme/activity-compact-1f54c0f935cf.svg" />
-      <img src="assets/readme/activity-8dde930a97a3.svg" width="880" alt="393 GitHub contributions, 65 active days in the past year, and 324 all-time public repository commits. Monthly contribution chart." />
+      <source media="(max-width: 600px)" srcset="assets/readme/activity-compact-bccd0e010a59.svg" />
+      <img src="assets/readme/activity-dd2834f8527d.svg" width="880" alt="403 GitHub contributions, 66 active days in the past year, and 328 all-time public repository commits. Monthly contribution chart." />
     </picture>
   </a>
 </p>
@@ -39,8 +39,8 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 <p align="center">
   <a href="https://github.com/priyanshubuild?tab=repositories">
     <picture>
-      <source media="(max-width: 600px)" srcset="assets/readme/languages-compact-b497e3204f11.svg" />
-      <img src="assets/readme/languages-c7d7fc0c47f8.svg" width="880" alt="Combined public repository language percentages by source lines: JavaScript 28.1%, TypeScript 22.4%, CSS 21%, HTML 14.4%, C++ 7.3%, Python 6.7%" />
+      <source media="(max-width: 600px)" srcset="assets/readme/languages-compact-4a0aa9f28239.svg" />
+      <img src="assets/readme/languages-13b94f9677f0.svg" width="880" alt="Combined public repository language percentages by source lines: JavaScript 28.2%, TypeScript 22.4%, CSS 21%, HTML 14.4%, C++ 7.3%, Python 6.7%" />
     </picture>
   </a>
 </p>
