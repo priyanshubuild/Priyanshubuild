@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0",
+  "owner": {
+    "name": "Priyanshu Gupta",
+    "id": "https://priyanshugupta.com/#person",
+    "url": "https://priyanshugupta.com"
+  },
+  "source": "https://priyanshugupta.com/projects",
+  "scope": "Featured public projects displayed on the portfolio; not every GitHub repository or sole-authorship claims",
+  "projects": [
+    {
+      "id": "cpp-practice",
+      "title": "C++ & Data Structures Practice",
+      "description": "An ongoing C++ practice repository with loops, functions, arrays, pattern problems and course assignments. It records my learning and algorithmic problem-solving practice.",
+      "url": "https://priyanshugupta.com/projects#cpp-practice",
+      "repository": "https://github.com/priyanshubuild/100xDSA",
+      "demo": null,
+      "category": "algorithms",
+      "technologies": [
+        "C++",
+        "Data Structures",
+        "Algorithms"
+      ],
+      "programmingLanguages": [
+        "C++"
+      ],
+      "attribution": "Personal practice and coursework"
+    },
+    {
+      "id": "ai-interview-agent",
+      "title": "AI Interview Agent",
+      "description": "A Team BitForge hackathon project for curriculum-based technical interview practice. The repository contains a React interface, a Python/FastAPI backend and interview evaluation logic.",
+      "url": "https://priyanshugupta.com/projects#ai-interview-agent",
+      "repository": "https://github.com/priyanshubuild/BitForgeXABTalks",
+      "demo": "https://vicodathon.vercel.app/",
+      "category": "fullstack",
+      "technologies": [
+        "React",
+        "Python",
+        "FastAPI",
+        "Gemini"
+      ],
+      "programmingLanguages": [
+        "JavaScript",
+        "Python"
+      ],
+      "attribution": "Team BitForge · team project"
+    },
+    {
+      "id": "portfolio",
+      "title": "Developer Portfolio",
+      "description": "This portfolio brings together my projects, skills, GitHub activity and contact links. Built with Next.js, React, TypeScript and Tailwind CSS, with local branding and accessible navigation.",
+      "url": "https://priyanshugupta.com/projects#portfolio",
+      "repository": "https://github.com/priyanshubuild/Priyanshubuild",
+      "demo": "https://priyanshugupta.com/",
+      "category": "frontend",
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "programmingLanguages": [
+        "TypeScript",
+        "CSS"
+      ],
+      "attribution": "Personal portfolio · design attribution in the site footer"
+    },
+    {
+      "id": "storefront-practice",
+      "title": "Storefront Frontend Practice",
+      "description": "A college frontend project recreating an online-store interface with HTML, CSS and JavaScript. The source includes product, cart, orders and account pages.",
+      "url": "https://priyanshugupta.com/projects#storefront-practice",
+      "repository": "https://github.com/priyanshubuild/Amazon_clone",
+      "demo": null,
+      "category": "frontend",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "programmingLanguages": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "attribution": "College practice project · not affiliated with Amazon"
+    }
+  ]
+}

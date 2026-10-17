@@ -55,6 +55,7 @@ export const metadata: Metadata = {
   category: "technology",
   alternates: {
     canonical: "/",
+    types: { "text/markdown": "/index.md" },
   },
   manifest: "/site.webmanifest",
   icons: {
@@ -167,6 +168,11 @@ export default function RootLayout({
           rel="ai-catalog"
           href="/.well-known/ai-catalog.json"
           type="application/json"
+        />
+        <link
+          rel="describedby"
+          href="/llms.txt"
+          type="text/plain"
         />
         <link
           rel="alternate"

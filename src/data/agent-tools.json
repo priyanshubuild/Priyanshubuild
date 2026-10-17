@@ -1,0 +1,26 @@
+[
+  {
+    "name": "get_portfolio_profile",
+    "description": "Read Priyanshu Gupta's public identity, priyanshubuild username, learning focus, experience context, availability, exact social/coding profiles and email contact. Includes canonical navigation and source links; contains no private account data.",
+    "path": "/profile.json",
+    "format": "json"
+  },
+  {
+    "name": "get_portfolio_projects",
+    "description": "Read the portfolio's four featured public projects, descriptions, technologies, source repositories, available demos and personal/coursework/team attribution. This is the same project data displayed on /projects, not a list of every repository or an independent authorship assessment.",
+    "path": "/projects.json",
+    "format": "json"
+  },
+  {
+    "name": "get_portfolio_guide",
+    "description": "Read the complete public portfolio guide: identity, learning/experience, projects, exact profile links, contact, section navigation, data sources, activity-count definitions and tool usage. Use for broad questions or navigation without reading dynamic counters as fixed facts.",
+    "path": "/llms-full.txt",
+    "format": "text"
+  },
+  {
+    "name": "get_github_activity",
+    "description": "Read the website's current cached GitHub activity. The personal 365-date calendar through today in Asia/Kolkata and all-time owned public default-branch commit rankings have different scopes. Rankings include all authors and bots, sorted descending. Inspect errors and each source's fetchedAt; partial/stale/unavailable data must not be reported as a fresh zero. Refresh windows are 120 seconds; no GitHub commit is created by this read.",
+    "path": "/api/github-activity",
+    "format": "json"
+  }
+]

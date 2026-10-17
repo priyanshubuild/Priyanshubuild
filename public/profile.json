@@ -1,10 +1,27 @@
 {
+  "schemaVersion": "1.0",
+  "id": "https://priyanshugupta.com/#person",
   "name": "Priyanshu Gupta",
   "url": "https://priyanshugupta.com",
   "githubUsername": "priyanshubuild",
   "role": "Software Developer & Systems Engineer",
   "description": "Learning and building with C++, data structures and algorithms, Linux systems, and modern web applications. Open to internships and collaboration.",
   "email": "priyanshug1408@gmail.com",
+  "topics": [
+    "C++",
+    "Data Structures and Algorithms",
+    "Linux",
+    "Git",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js"
+  ],
+  "availability": "Open to internships, collaboration, open-source contributions and technical discussions.",
+  "experience": "Building technical foundations through learning and deliberate practice. No formal corporate work experience is listed on the portfolio.",
+  "philosophy": "Understand first. Build second.",
   "profiles": {
     "github": "https://github.com/priyanshubuild",
     "linkedin": "https://www.linkedin.com/in/priyanshubuild/",
@@ -17,14 +34,35 @@
     "home": "https://priyanshugupta.com/",
     "projects": "https://priyanshugupta.com/projects"
   },
+  "sections": {
+    "introduction": "https://priyanshugupta.com/#hero",
+    "projects": "https://priyanshugupta.com/#projects",
+    "experience": "https://priyanshugupta.com/#experience",
+    "skills": "https://priyanshugupta.com/#skills",
+    "github": "https://priyanshugupta.com/#github",
+    "about": "https://priyanshugupta.com/#about",
+    "contact": "https://priyanshugupta.com/#contact"
+  },
+  "resources": {
+    "index": "https://priyanshugupta.com/llms.txt",
+    "fullGuide": "https://priyanshugupta.com/llms-full.txt",
+    "homeMarkdown": "https://priyanshugupta.com/index.md",
+    "projectsMarkdown": "https://priyanshugupta.com/projects.md",
+    "projectsJSON": "https://priyanshugupta.com/projects.json",
+    "agentSkill": "https://priyanshugupta.com/portfolio.skill.md",
+    "agentCatalog": "https://priyanshugupta.com/.well-known/ai-catalog.json",
+    "sitemap": "https://priyanshugupta.com/sitemap.xml"
+  },
   "activity": {
     "url": "https://priyanshugupta.com/api/github-activity",
     "calendar": "Personal daily contributions for the past 365 dates through today in Asia/Kolkata, from GitHub's public calendar",
-    "repositoryRanking": "All-time commits by all authors and bots on public repository default branches",
-    "cacheSeconds": 120
+    "repositoryRanking": "All-time commits by all authors and bots on owned public repository default branches, sorted by commit count descending",
+    "cacheSeconds": 120,
+    "interpretation": "Profile contributions and repository commit totals have different scopes. Check source timestamps and error flags; unavailable data is not zero activity. Private repository histories are not published by this endpoint."
   },
   "contact": {
     "method": "email",
-    "url": "mailto:priyanshug1408@gmail.com"
+    "url": "mailto:priyanshug1408@gmail.com",
+    "behavior": "Opens a draft in the visitor's mail application. No site tool sends a message."
   }
 }

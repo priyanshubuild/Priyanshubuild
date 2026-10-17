@@ -4,12 +4,14 @@
     {
       "identifier": "urn:air:priyanshugupta.com:portfolio:read-profile",
       "displayName": "Read Priyanshu Gupta's portfolio",
-      "description": "Read public profile facts, navigate portfolio sections, and interpret verified GitHub activity from Priyanshu Gupta's official website.",
+      "description": "Read public identity, learning and experience context, verified project sources and attribution, exact profile/contact links, section navigation and GitHub activity definitions. Uses public text/JSON resources and read-only WebMCP tools when supported.",
       "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://priyanshugupta.com/portfolio.skill.md",
       "representativeQueries": [
-        "Where can I find Priyanshu Gupta's developer profile and contact information?",
-        "How can I read priyanshubuild's current public GitHub contributions?"
+        "Who is Priyanshu Gupta, the developer known as priyanshubuild?",
+        "Which public projects has priyanshubuild worked on, and where is their source code?",
+        "How can I contact Priyanshu Gupta about internships or collaboration?",
+        "How should I interpret Priyanshu's current GitHub activity and repository rankings?"
       ]
     }
   ]

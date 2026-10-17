@@ -1,28 +1,24 @@
 # Priyanshu Gupta
 
-> Personal developer portfolio of Priyanshu Gupta, known as priyanshubuild. Focus: C++, data structures and algorithms, Linux systems, and modern web applications. Open to internships and collaboration.
+> Official personal developer portfolio of Priyanshu Gupta (@priyanshubuild). Learning and building with C++, data structures and algorithms, Linux systems, and modern web applications. Open to internships and collaboration.
 
-## Main pages
+The canonical identity is https://priyanshugupta.com/#person. Exact linked accounts distinguish this person from others with the same name. Public, read-only resources; no sign-in or JavaScript is needed to read the text versions. Dynamic GitHub totals must be read with timestamps and error flags.
 
-- [Portfolio](https://priyanshugupta.com/): Introduction, skills, learning experience, GitHub activity, about, and contact.
-- [Projects](https://priyanshugupta.com/projects): Verified public repositories: C++ practice, the Team BitForge AI Interview Agent, this Next.js portfolio and a college storefront frontend project. Includes source links and team/coursework attribution.
+## Portfolio and project content
 
-## Public structured data
+- [Portfolio in Markdown](https://priyanshugupta.com/index.md): Identity, learning focus, experience context, section links, exact social/coding profiles and email contact. Human page: https://priyanshugupta.com/
+- [Featured projects in Markdown](https://priyanshugupta.com/projects.md): C++ practice, Team BitForge AI Interview Agent, this Next.js portfolio and college storefront practice, including sources and attribution. Human page: https://priyanshugupta.com/projects
+- [Complete public guide](https://priyanshugupta.com/llms-full.txt): Self-contained portfolio and project content, activity definitions, freshness, contact behavior and browsing tool reference.
 
-- [Public profile](https://priyanshugupta.com/profile.json): Identity, professional profiles, interests, and contact details.
-- [GitHub activity](https://priyanshugupta.com/api/github-activity): Personal daily contributions for the past 365 calendar dates through today in Asia/Kolkata, and all-time owned public repository commit rankings. Repository totals include all authors and bots on each default branch. Sources refresh in two-minute windows; unchanged repository totals are reused until the next push. Private repositories are excluded from repository totals. Profile contributions include other repositories and contribution types, so they must not be equated with current owned-repository commit totals. Error flags identify partial or saved fallback data.
-- [Agent resource catalog](https://priyanshugupta.com/.well-known/ai-catalog.json): Public resources available for discovery.
-- [Sitemap](https://priyanshugupta.com/sitemap.xml): Crawlable pages.
+## Structured resources and browsing
 
-## Professional profiles
+- [Public profile JSON](https://priyanshugupta.com/profile.json): Public identity, topics, availability, exact account links, page anchors and resource map.
+- [Featured projects JSON](https://priyanshugupta.com/projects.json): Same featured projects as the website, with technologies, repository/demo links and team/coursework attribution.
+- [Live GitHub activity JSON](https://priyanshugupta.com/api/github-activity): Personal 365-date calendar and separate all-time public default-branch commit rankings. Check per-source fetchedAt and errors; failed data is not zero. Cache windows: 120 seconds.
+- [Browsing task guide](https://priyanshugupta.com/portfolio.skill.md): How to answer common portfolio questions, navigate, interpret activity and use supported read-only tools.
+- [Agent resource catalog](https://priyanshugupta.com/.well-known/ai-catalog.json): Discover the public browsing skill.
 
-- [GitHub](https://github.com/priyanshubuild)
-- [LinkedIn](https://www.linkedin.com/in/priyanshubuild/)
-- [LeetCode](https://leetcode.com/u/Priyanshuguptaleetcode/)
-- [Codeforces](https://codeforces.com/profile/priyanshuguptacf)
-- [CodeChef](https://www.codechef.com/users/priyanshucf)
-- [X / Twitter](https://x.com/priyanshustwt)
+## Optional
 
-## Contact
-
-Public email: priyanshug1408@gmail.com. Use mailto:priyanshug1408@gmail.com to compose a message.
+- [Search sitemap](https://priyanshugupta.com/sitemap.xml): Canonical indexable HTML pages.
+- [Crawl rules](https://priyanshugupta.com/robots.txt): Wildcard access to public content.

@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/projects",
+    types: {
+      "text/markdown": "/projects.md",
+      "application/json": "/projects.json",
+    },
   },
   openGraph: {
     title: `${title} | ${SITE_NAME}`,

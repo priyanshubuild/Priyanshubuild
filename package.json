@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-agent-resources.mjs",
+    "generate:agents": "node scripts/generate-agent-resources.mjs",
+    "check:agents": "node scripts/generate-agent-resources.mjs --check",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
-    "verify:site": "node scripts/verify-site.mjs"
+    "verify:site": "node scripts/verify-site.mjs",
+    "verify:agents": "node scripts/verify-agent-access.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",

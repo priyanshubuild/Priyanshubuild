@@ -8,6 +8,21 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      ...["/index.md", "/projects.md", "/portfolio.skill.md"].map((source) => ({
+        source,
+        headers: [
+          { key: "Content-Type", value: "text/markdown; charset=utf-8" },
+          {
+            key: "Link",
+            value:
+              (source === "/index.md"
+                ? '<https://priyanshugupta.com/>; rel="canonical", '
+                : source === "/projects.md"
+                  ? '<https://priyanshugupta.com/projects>; rel="canonical", '
+                  : "") + '</llms.txt>; rel="describedby"',
+          },
+        ],
+      })),
       {
         source: "/:path*",
         headers: [
