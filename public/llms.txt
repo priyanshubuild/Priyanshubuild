@@ -11,7 +11,7 @@
 ## Public structured data
 
 - [Public profile](https://priyanshugupta.com/profile.json): Identity, professional profiles, interests, and contact details.
-- [GitHub activity](https://priyanshugupta.com/api/github-activity): Personal daily contributions for the past 365 days and all-time public repository commit rankings. Repository totals include all authors and bots on each default branch. Sources refresh in two-minute windows; unchanged repository totals are reused until the next push. Private repositories are excluded. The calendar and repository ranking measure different things. Error flags identify partial or saved fallback data.
+- [GitHub activity](https://priyanshugupta.com/api/github-activity): Personal daily contributions for the past 365 calendar dates through today in Asia/Kolkata, and all-time owned public repository commit rankings. Repository totals include all authors and bots on each default branch. Sources refresh in two-minute windows; unchanged repository totals are reused until the next push. Private repositories are excluded from repository totals. Profile contributions include other repositories and contribution types, so they must not be equated with current owned-repository commit totals. Error flags identify partial or saved fallback data.
 - [Agent resource catalog](https://priyanshugupta.com/.well-known/ai-catalog.json): Public resources available for discovery.
 - [Sitemap](https://priyanshugupta.com/sitemap.xml): Crawlable pages.
 

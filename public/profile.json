@@ -20,7 +20,7 @@
   },
   "activity": {
     "url": "https://priyanshugupta.com/api/github-activity",
-    "calendar": "Personal daily contributions for the past 365 days, from GitHub's public calendar",
+    "calendar": "Personal daily contributions for the past 365 dates through today in Asia/Kolkata, from GitHub's public calendar",
     "repositoryRanking": "All-time commits by all authors and bots on public repository default branches",
     "cacheSeconds": 120
   },

@@ -62,13 +62,13 @@ export function renderActivitySVG(data, compact = false) {
   const active = days.filter(day => day.count > 0).length;
   const width = compact ? 440 : 880;
   const height = compact ? 318 : 232;
-  const metrics = [[total, "Contributions · past year"], [commits, "Repository commits · all time"], [active, "Active days · past year"]];
+  const metrics = [[total, "Profile contributions · year"], [commits, "Owned repo commits · all time"], [active, "Active days · year"]];
   const labelX = 28 + Math.max(48, ...metrics.map(([value]) => number(value).length * 14)) + 14;
   const rows = metrics.map(([value, label], index) => compact
-    ? `<text x="${24 + index * 137}" y="99" fill="#fafafa" font-size="25" font-weight="700">${number(value)}</text><text x="${24 + index * 137}" y="119" fill="#b0b0bb" font-size="10">${["Contributions · year", "Commits · all time", "Active days · year"][index]}</text>`
+    ? `<text x="${24 + index * 137}" y="99" fill="#fafafa" font-size="25" font-weight="700">${number(value)}</text><text x="${24 + index * 137}" y="119" fill="#b0b0bb" font-size="10">${["Profile activity · year", "Owned commits · all time", "Active days · year"][index]}</text>`
     : `<text x="28" y="${101 + index * 43}" fill="#fafafa" font-size="23" font-weight="700">${number(value)}</text><text x="${labelX}" y="${99 + index * 43}" fill="#b0b0bb" font-size="12">${label}</text>`).join("");
   const plot = compact ? { x: 24, y: 169, width: 355, height: 104, compact } : { x: 365, y: 72, width: 447, height: 113, compact };
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc"><title id="title">Priyanshu Gupta's GitHub Analytics</title><desc id="desc">${total} contributions and ${active} active days between ${data.calendar.from} and ${data.calendar.to}. ${commits} all-time commits by all authors on public repository default branches. Monthly contributions: ${escape(months.map(month => `${month.month}: ${month.count}`).join(", "))}. First and last months may be partial.</desc>
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc"><title id="title">Priyanshu Gupta's GitHub Analytics</title><desc id="desc">${total} profile contributions of all types and ${active} active days between ${data.calendar.from} and ${data.calendar.to}. This includes activity outside owned repositories. Separately, ${commits} all-time commits by all authors in the current default-branch histories of owned public repositories. These are different scopes. Monthly contributions: ${escape(months.map(month => `${month.month}: ${month.count}`).join(", "))}. First and last months may be partial.</desc>
     ${frame(width, height)}<g ${font}><text x="${compact ? 24 : 28}" y="34" fill="#fafafa" font-size="${compact ? 21 : 22}" font-weight="700">Priyanshu Gupta</text><text x="${compact ? 24 : 28}" y="55" fill="#a1a1aa" font-size="12">@priyanshubuild</text>${rows}${contributionChart(months, plot)}</g></svg>`;
 }
 
@@ -118,7 +118,7 @@ export function activityBlock(data, languages, assets) {
   return `<!-- activity:start -->
 ### GitHub Analytics
 
-${picture("activity", "https://github.com/priyanshubuild", `${total} GitHub contributions, ${active} active days in the past year, and ${commits} all-time public repository commits. Monthly contribution chart.`)}
+${picture("activity", "https://github.com/priyanshubuild", `${total} profile contributions of all types and ${active} active days in the past year. Separately, ${commits} all-time commits in owned public repositories. Monthly contribution chart.`)}
 
 ${picture("languages", "https://github.com/priyanshubuild?tab=repositories", `Combined public repository language percentages by source lines: ${languageDescription}`)}
 <!-- activity:end -->`;

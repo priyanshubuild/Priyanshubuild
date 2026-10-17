@@ -13,8 +13,6 @@ const compiled = ts.transpileModule(source, {
   },
 });
 const {
-  rankRepositories,
-  parseCommitPage,
   normalizeCalendar,
   mergeSnapshot,
   contributionRange,
@@ -24,81 +22,6 @@ const {
 } = await import(
   `data:text/javascript;base64,${Buffer.from(compiled.outputText).toString("base64")}`
 );
-const commit = (sha, repo) => ({ sha: String(sha).padStart(40, "0"), repo });
-test("repository order changes with real commit totals", () => {
-  const a = commit(1, "priyanshubuild/alpha"),
-    b = commit(2, "priyanshubuild/beta"),
-    c = commit(3, "priyanshubuild/beta");
-  assert.equal(rankRepositories([a, b, c])[0].name, "beta");
-  const data = rankRepositories([
-    a,
-    b,
-    c,
-    commit(4, a.repo),
-    commit(5, a.repo),
-  ]);
-  assert.equal(data[0].name, "alpha");
-  assert.equal(data[0].count, 3);
-  assert.equal(data[0].href, "https://github.com/priyanshubuild/alpha");
-});
-test("duplicate commits never inflate repository counts", () =>
-  assert.equal(
-    rankRepositories([
-      commit(1, "priyanshubuild/repo"),
-      commit(1, "priyanshubuild/repo"),
-    ])[0].count,
-    1,
-  ));
-test("ties are stable and a valid empty commit result is accepted", () => {
-  assert.equal(
-    rankRepositories([
-      commit(1, "priyanshubuild/z"),
-      commit(2, "priyanshubuild/a"),
-    ])[0].name,
-    "a",
-  );
-  assert.deepEqual(
-    parseCommitPage({ total_count: 0, incomplete_results: false, items: [] }),
-    { total: 0, items: [] },
-  );
-});
-test("incomplete searches and API failures cannot be shown as accurate rankings", () => {
-  for (const x of [
-    { message: "API rate limit exceeded" },
-    { total_count: 2, incomplete_results: true, items: [] },
-    { total_count: 1, incomplete_results: false, items: [{}] },
-  ])
-    assert.throws(() => parseCommitPage(x));
-});
-test("commit search verifies ownership and a safe repository link", () => {
-  const item = {
-    sha: "a".repeat(40),
-    repository: { full_name: "priyanshubuild/actual-repo", private: false },
-    author: { login: "Priyanshubuild" },
-  };
-  assert.equal(
-    parseCommitPage({
-      total_count: 1,
-      incomplete_results: false,
-      items: [item],
-    }).items[0].repo,
-    "priyanshubuild/actual-repo",
-  );
-  assert.throws(() =>
-    parseCommitPage({
-      total_count: 1,
-      incomplete_results: false,
-      items: [{ ...item, author: { login: "someone-else" } }],
-    }),
-  );
-  assert.throws(() =>
-    parseCommitPage({
-      total_count: 1,
-      incomplete_results: false,
-      items: [{ ...item, repository: { ...item.repository, private: true } }],
-    }),
-  );
-});
 test("calendar retains non-Sunday dates and computes exactly the displayed days", () => {
   const days = normalizeCalendar({
     contributions: [
@@ -137,11 +60,19 @@ test("failed refresh keeps last successful data and exposes the error", () => {
   assert.equal(merged.repositories, previous.repositories);
   assert.equal(merged.errors.repositories, true);
 });
-test("year range covers 365 inclusive UTC dates", () =>
+test("year range covers 365 inclusive calendar dates", () =>
   assert.deepEqual(contributionRange(new Date("2026-10-14T18:00:00Z")), {
     from: "2025-10-15",
     to: "2026-10-14",
   }));
+
+test("the calendar includes today in India before the UTC date changes", () => {
+  assert.deepEqual(contributionRange(new Date("2026-10-16T21:20:52Z")), {
+    from: "2025-10-18", to: "2026-10-17",
+  });
+  assert.equal(contributionRange(new Date("2026-10-16T18:29:59Z")).to, "2026-10-16");
+  assert.equal(contributionRange(new Date("2026-10-16T18:30:00Z")).to, "2026-10-17");
+});
 
 test("repository totals include all authors and all time from GitHub pagination", () => {
   const body = [{ sha: "a".repeat(40), author: { login: "github-actions[bot]" } }];

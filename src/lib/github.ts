@@ -2,7 +2,7 @@ import "server-only";
 import { unstable_cache } from "next/cache";
 import savedActivity from "../../assets/readme/activity.json";
 import {
-  GITHUB_USERNAME, contributionRange, normalizeCalendar, parseContributionHTML,
+  GITHUB_USERNAME, GITHUB_CALENDAR_TIME_ZONE, contributionRange, normalizeCalendar, parseContributionHTML,
   parseRepositoryCommitCount, sortRepositoryTotals, type GitHubSnapshot,
 } from "./github-data";
 
@@ -32,8 +32,8 @@ const calendar = unstable_cache(async (from: string, to: string, _bucket: number
   const days = normalizeCalendar({ contributions: pages.flat().filter(day => day.date >= from && day.date <= to) });
   if (days.length !== 365 || days[0].date !== from || days.at(-1)?.date !== to)
     throw new Error("Incomplete GitHub calendar range");
-  return { days, from, to, fetchedAt: new Date().toISOString() };
-}, ["github-direct-calendar-v2", GITHUB_USERNAME], { revalidate: 120 });
+  return { days, from, to, timeZone: GITHUB_CALENDAR_TIME_ZONE, fetchedAt: new Date().toISOString() };
+}, ["github-direct-calendar-v3", GITHUB_USERNAME], { revalidate: 120 });
 
 type PublicRepo = { id: number; name: string; fullName: string; branch: string; pushedAt: string };
 const ownedRepositories = unstable_cache(async (_bucket: number) => {
