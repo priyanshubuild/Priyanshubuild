@@ -31,7 +31,7 @@ const About = () => {
             GitHub <ArrowUpRight size={16} />
           </a>
           <a
-            href="https://leetcode.com/u/Priyanshuguptaleetcode/"
+            href="https://leetcode.com/u/Priyanshubuild/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-white hover:text-neutral-400 transition-colors text-sm sm:text-base"

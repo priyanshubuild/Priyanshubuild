@@ -32,7 +32,7 @@ const columns: FootColumn[] = [
       { text: "GitHub", href: "https://github.com/priyanshubuild" },
       {
         text: "LeetCode",
-        href: "https://leetcode.com/u/Priyanshuguptaleetcode/",
+        href: "https://leetcode.com/u/Priyanshubuild/",
       },
       {
         text: "Codeforces",

@@ -60,7 +60,7 @@ I value readable code, a strong understanding of the fundamentals, and steady im
   <a href="https://priyanshugupta.com/"><img src="assets/readme/link-portfolio.svg" height="32" alt="Portfolio — visit priyanshugupta.com" /></a>
   <a href="https://www.linkedin.com/in/priyanshubuild/"><img src="assets/readme/link-linkedin.svg" height="32" alt="LinkedIn — connect with Priyanshu Gupta" /></a>
   <a href="mailto:priyanshug1408@gmail.com"><img src="assets/readme/link-email.svg" height="32" alt="Email — priyanshug1408@gmail.com" /></a>
-  <a href="https://leetcode.com/u/Priyanshuguptaleetcode/"><img src="assets/readme/link-leetcode.svg" height="32" alt="LeetCode — view Priyanshu's profile" /></a>
+  <a href="https://leetcode.com/u/Priyanshubuild/"><img src="assets/readme/link-leetcode.svg" height="32" alt="LeetCode — view Priyanshu's profile" /></a>
   <a href="https://github.com/priyanshubuild"><img src="assets/readme/link-github.svg" height="32" alt="GitHub — follow priyanshubuild" /></a>
 </p>
 

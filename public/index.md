@@ -31,7 +31,7 @@ These are ordinary links. The main content and project descriptions are present 
 
 - [GitHub](https://github.com/priyanshubuild)
 - [LinkedIn](https://www.linkedin.com/in/priyanshubuild/)
-- [LeetCode](https://leetcode.com/u/Priyanshuguptaleetcode/)
+- [LeetCode](https://leetcode.com/u/Priyanshubuild/)
 - [Codeforces](https://codeforces.com/profile/priyanshuguptacf)
 - [CodeChef](https://www.codechef.com/users/priyanshucf)
 - [X / Twitter](https://x.com/priyanshustwt)
