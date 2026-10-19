@@ -2,12 +2,24 @@ import sharp from "sharp";
 import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 const output = fileURLToPath(new URL("../public/", import.meta.url));
-const mark = `<path d="M6 4h12c5.5 0 9 3.5 9 9s-3.5 9-9 9h-6v6H6V4zm6 6v6h6c2 0 3-1 3-3s-1-3-3-3h-6z" fill="#fafafa" fill-rule="evenodd"/>`;
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x=".5" y=".5" width="31" height="31" rx="8" fill="#09090b" stroke="#3f3f46"/>${mark}<circle cx="25" cy="26" r="2" fill="#22c55e"/></svg>`;
-await writeFile(
-  `${output}favicon.svg`,
-  svg,
-);
+// Draw the mark as paths so its shape never depends on an installed font.
+const mark = `<path d="M8 6h10c5 0 8 3 8 8s-3 8-8 8h-5v6H8V6zm5 5v6h5c2 0 3-1 3-3s-1-3-3-3h-5z" fill="#fafafa" fill-rule="evenodd"/>`;
+const accent = `<circle cx="25" cy="26" r="2" fill="#22c55e"/>`;
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#09090b"/>${mark}${accent}</svg>`;
+
+// At 16 pixels, align the stem and counter to whole pixels instead of
+// shrinking the larger mark onto half-pixel edges.
+const smallSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="4" fill="#09090b"/><path d="M4 3h5c2.5 0 4 1.5 4 4s-1.5 4-4 4H7v3H4V3zm3 2v4h2c1.3 0 2-.7 2-2s-.7-2-2-2H7z" fill="#fafafa" fill-rule="evenodd"/><circle cx="12.5" cy="13" r="1" fill="#22c55e"/></svg>`;
+const appleSvg = svg.replace('rx="8"', 'rx="0"');
+
+function renderIcon(size, source = size === 16 ? smallSvg : svg) {
+  const sourceSize = source === smallSvg ? 16 : 32;
+  return sharp(Buffer.from(source), { density: 72 * size / sourceSize })
+    .resize(size, size)
+    .png();
+}
+
+await writeFile(`${output}favicon.svg`, svg);
 for (const [name, size] of [
   ["favicon-16.png", 16],
   ["favicon-32.png", 32],
@@ -16,15 +28,11 @@ for (const [name, size] of [
   ["icon-192.png", 192],
   ["icon.png", 512],
 ])
-  await sharp(Buffer.from(svg), { density: 72 * size / 32 })
-    .resize(size, size)
-    .png()
+  await renderIcon(size, name === "apple-touch-icon.png" ? appleSvg : undefined)
     .toFile(`${output}${name}`);
 const sizes = [16, 32, 48];
 const pngs = await Promise.all(
-  sizes.map((size) =>
-    sharp(Buffer.from(svg), { density: 72 * size / 32 }).resize(size, size).png().toBuffer(),
-  ),
+  sizes.map((size) => renderIcon(size).toBuffer()),
 );
 const header = Buffer.alloc(6 + 16 * sizes.length);
 header.writeUInt16LE(1, 2);
@@ -43,7 +51,7 @@ for (let i = 0; i < sizes.length; i++) {
 await writeFile(`${output}favicon.ico`, Buffer.concat([header, ...pngs]));
 await sharp(
   Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 32 32"><rect width="32" height="32" fill="#18181b"/><g transform="translate(5 5) scale(.6875)">${mark}</g></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 32 32"><rect width="32" height="32" fill="#09090b"/><g transform="translate(4 4) scale(.75)">${mark}${accent}</g></svg>`,
   ),
 )
   .png()
@@ -54,5 +62,7 @@ await sharp(Buffer.from(og)).png().toFile(`${output}opengraph.png`);
 // Keep the historical URL useful for crawlers that still have the old preview cached.
 await sharp(`${output}opengraph.png`).jpeg({ quality: 90 }).toFile(`${output}official/opengraphh.jpg`);
 }
-await sharp(Buffer.from(svg), { density: 900 }).resize(400, 400).png().toFile(`${output}official/logo.png`);
-console.log("Generated local favicon, app icon, and social preview assets.");
+await renderIcon(400).toFile(`${output}official/logo.png`);
+console.log(process.argv.includes("--icons-only")
+  ? "Generated local favicon and app icon assets."
+  : "Generated local favicon, app icon, and social preview assets.");

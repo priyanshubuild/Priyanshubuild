@@ -58,9 +58,12 @@ for (const path of ["/", "/projects"]) {
   );
   assert.equal(
     (html.match(/<link rel="icon" /g) || []).length,
-    1,
-    "One stable primary favicon",
+    3,
+    "Size-specific browser icons and one stable search favicon",
   );
+  for (const size of [16, 32]) {
+    assert.ok(html.includes(`href="/favicon-${size}.png" type="image/png" sizes="${size}x${size}"`));
+  }
   const schemas = [
     ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs),
   ].map((match) => JSON.parse(match[1]));
