@@ -2,11 +2,6 @@
   "calendar": {
     "days": [
       {
-        "date": "2025-10-22",
-        "count": 0,
-        "level": 0
-      },
-      {
         "date": "2025-10-23",
         "count": 0,
         "level": 0
@@ -1493,7 +1488,7 @@
       },
       {
         "date": "2026-08-16",
-        "count": 14,
+        "count": 13,
         "level": 2
       },
       {
@@ -1823,26 +1818,31 @@
       },
       {
         "date": "2026-10-21",
+        "count": 3,
+        "level": 1
+      },
+      {
+        "date": "2026-10-22",
         "count": 0,
         "level": 0
       }
     ],
-    "from": "2025-10-22",
-    "to": "2026-10-21",
+    "from": "2025-10-23",
+    "to": "2026-10-22",
     "timeZone": "Asia/Kolkata",
-    "fetchedAt": "2026-10-21T05:03:14.394Z"
+    "fetchedAt": "2026-10-22T05:05:10.306Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "Priyanshubuild",
         "href": "https://github.com/priyanshubuild/Priyanshubuild",
-        "count": 89
+        "count": 90
       },
       {
-        "name": "100xDSA",
-        "href": "https://github.com/priyanshubuild/100xDSA",
-        "count": 64
+        "name": "DSA-Grind",
+        "href": "https://github.com/priyanshubuild/DSA-Grind",
+        "count": 75
       },
       {
         "name": "100xDevs",
@@ -1870,6 +1870,11 @@
         "count": 13
       },
       {
+        "name": "leetcode-progress",
+        "href": "https://github.com/priyanshubuild/leetcode-progress",
+        "count": 12
+      },
+      {
         "name": "Amazon_clone",
         "href": "https://github.com/priyanshubuild/Amazon_clone",
         "count": 11
@@ -1880,19 +1885,9 @@
         "count": 11
       },
       {
-        "name": "College_cpp",
-        "href": "https://github.com/priyanshubuild/College_cpp",
-        "count": 9
-      },
-      {
         "name": "Eventrix",
         "href": "https://github.com/priyanshubuild/Eventrix",
         "count": 9
-      },
-      {
-        "name": "leetcode-progress",
-        "href": "https://github.com/priyanshubuild/leetcode-progress",
-        "count": 8
       },
       {
         "name": "tailwind-projects",
@@ -1917,7 +1912,7 @@
     ],
     "scope": "all-time",
     "source": "github-default-branches",
-    "fetchedAt": "2026-10-21T05:03:14.307Z"
+    "fetchedAt": "2026-10-22T05:05:10.170Z"
   },
   "languages": {
     "lines": {
@@ -1925,7 +1920,7 @@
       "CSS": 5548,
       "HTML": 3764,
       "TypeScript": 3403,
-      "C++": 1897,
+      "C++": 2041,
       "Python": 1760
     },
     "repositories": [
@@ -1936,13 +1931,6 @@
           "HTML": 1581,
           "CSS": 1286,
           "JavaScript": 622
-        }
-      },
-      {
-        "repository": "priyanshubuild/100xDSA",
-        "commit": "0c4a9cf581c1eb91580d05f0a7b6a4ceed3d3d84",
-        "lines": {
-          "C++": 1321
         }
       },
       {
@@ -1973,13 +1961,6 @@
         }
       },
       {
-        "repository": "priyanshubuild/College_cpp",
-        "commit": "f3de1e79fcb190157e6d23175109cd42e3a4f77d",
-        "lines": {
-          "C++": 535
-        }
-      },
-      {
         "repository": "priyanshubuild/CSE24_JS",
         "commit": "cde36024c56d31c517d68b006756245d079d9e6d",
         "lines": {
@@ -1992,6 +1973,13 @@
         "commit": "1edb5059618eda1042f84c6ad8188cef29be5690",
         "lines": {
           "Python": 66
+        }
+      },
+      {
+        "repository": "priyanshubuild/DSA-Grind",
+        "commit": "9ba2a02ef0890ea619381d76da748be89cc43252",
+        "lines": {
+          "C++": 1981
         }
       },
       {
@@ -2023,14 +2011,14 @@
       },
       {
         "repository": "priyanshubuild/leetcode-progress",
-        "commit": "7f17e4fd8507e3313110ad4f28c7699bb05d02e5",
+        "commit": "cf55c3b40e963ebd6d52d6c12afd46030076e02c",
         "lines": {
-          "C++": 41
+          "C++": 60
         }
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "commit": "9fd224397bf2b3447aa56bf0762266bf87b02932",
+        "commit": "0ab8b302ec0290d02682d504612798b94292a249",
         "lines": {
           "TypeScript": 3403,
           "JavaScript": 1410,
@@ -2058,7 +2046,7 @@
         }
       }
     ],
-    "fetchedAt": "2026-10-21T05:03:38.579072+00:00",
+    "fetchedAt": "2026-10-22T05:05:46.621623+00:00",
     "counter": "cloc 2.10",
     "scope": "public-non-fork-default-branches"
   }
