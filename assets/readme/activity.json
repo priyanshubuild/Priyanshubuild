@@ -2,11 +2,6 @@
   "calendar": {
     "days": [
       {
-        "date": "2025-10-23",
-        "count": 0,
-        "level": 0
-      },
-      {
         "date": "2025-10-24",
         "count": 0,
         "level": 0
@@ -1823,21 +1818,26 @@
       },
       {
         "date": "2026-10-22",
+        "count": 1,
+        "level": 1
+      },
+      {
+        "date": "2026-10-23",
         "count": 0,
         "level": 0
       }
     ],
-    "from": "2025-10-23",
-    "to": "2026-10-22",
+    "from": "2025-10-24",
+    "to": "2026-10-23",
     "timeZone": "Asia/Kolkata",
-    "fetchedAt": "2026-10-22T05:05:10.306Z"
+    "fetchedAt": "2026-10-23T05:04:57.797Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "Priyanshubuild",
         "href": "https://github.com/priyanshubuild/Priyanshubuild",
-        "count": 90
+        "count": 91
       },
       {
         "name": "DSA-Grind",
@@ -1860,6 +1860,11 @@
         "count": 33
       },
       {
+        "name": "leetcode-progress",
+        "href": "https://github.com/priyanshubuild/leetcode-progress",
+        "count": 18
+      },
+      {
         "name": "sujal-portfolio-contribution",
         "href": "https://github.com/priyanshubuild/sujal-portfolio-contribution",
         "count": 17
@@ -1868,11 +1873,6 @@
         "name": "speedflow",
         "href": "https://github.com/priyanshubuild/speedflow",
         "count": 13
-      },
-      {
-        "name": "leetcode-progress",
-        "href": "https://github.com/priyanshubuild/leetcode-progress",
-        "count": 12
       },
       {
         "name": "Amazon_clone",
@@ -1912,7 +1912,7 @@
     ],
     "scope": "all-time",
     "source": "github-default-branches",
-    "fetchedAt": "2026-10-22T05:05:10.170Z"
+    "fetchedAt": "2026-10-23T05:04:57.843Z"
   },
   "languages": {
     "lines": {
@@ -1920,7 +1920,7 @@
       "CSS": 5548,
       "HTML": 3764,
       "TypeScript": 3403,
-      "C++": 2041,
+      "C++": 2071,
       "Python": 1760
     },
     "repositories": [
@@ -2011,14 +2011,14 @@
       },
       {
         "repository": "priyanshubuild/leetcode-progress",
-        "commit": "cf55c3b40e963ebd6d52d6c12afd46030076e02c",
+        "commit": "17dcbecff237a9d8134ddeb3634bf371eddabe7c",
         "lines": {
-          "C++": 60
+          "C++": 90
         }
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "commit": "0ab8b302ec0290d02682d504612798b94292a249",
+        "commit": "c1e9edaeccd07528eed01c051ed496a0ecc9969e",
         "lines": {
           "TypeScript": 3403,
           "JavaScript": 1410,
@@ -2046,7 +2046,7 @@
         }
       }
     ],
-    "fetchedAt": "2026-10-22T05:05:46.621623+00:00",
+    "fetchedAt": "2026-10-23T05:05:35.670397+00:00",
     "counter": "cloc 2.10",
     "scope": "public-non-fork-default-branches"
   }
