@@ -2,11 +2,6 @@
   "calendar": {
     "days": [
       {
-        "date": "2025-10-28",
-        "count": 6,
-        "level": 2
-      },
-      {
         "date": "2025-10-29",
         "count": 0,
         "level": 0
@@ -1825,24 +1820,29 @@
         "date": "2026-10-27",
         "count": 0,
         "level": 0
+      },
+      {
+        "date": "2026-10-28",
+        "count": 1,
+        "level": 1
       }
     ],
-    "from": "2025-10-28",
-    "to": "2026-10-27",
+    "from": "2025-10-29",
+    "to": "2026-10-28",
     "timeZone": "Asia/Kolkata",
-    "fetchedAt": "2026-10-27T05:18:43.508Z"
+    "fetchedAt": "2026-10-28T05:57:43.811Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "Priyanshubuild",
         "href": "https://github.com/priyanshubuild/Priyanshubuild",
-        "count": 95
+        "count": 96
       },
       {
         "name": "DSA-Grind",
         "href": "https://github.com/priyanshubuild/DSA-Grind",
-        "count": 75
+        "count": 76
       },
       {
         "name": "100xDevs",
@@ -1912,7 +1912,7 @@
     ],
     "scope": "all-time",
     "source": "github-default-branches",
-    "fetchedAt": "2026-10-27T05:18:43.367Z"
+    "fetchedAt": "2026-10-28T05:57:43.660Z"
   },
   "languages": {
     "lines": {
@@ -1920,7 +1920,7 @@
       "CSS": 5548,
       "HTML": 3764,
       "TypeScript": 3403,
-      "C++": 2106,
+      "C++": 2150,
       "Python": 1760
     },
     "repositories": [
@@ -1977,9 +1977,9 @@
       },
       {
         "repository": "priyanshubuild/DSA-Grind",
-        "commit": "9ba2a02ef0890ea619381d76da748be89cc43252",
+        "commit": "3b6b2c32152c64859ad738b21169e7913071dec0",
         "lines": {
-          "C++": 1981
+          "C++": 2025
         }
       },
       {
@@ -2018,7 +2018,7 @@
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "commit": "144bec44f563b9481874e50766c136a915f8a0ce",
+        "commit": "e37f23ca51ce8e48d2048534d59af0cafc9caae7",
         "lines": {
           "TypeScript": 3403,
           "JavaScript": 1410,
@@ -2046,7 +2046,7 @@
         }
       }
     ],
-    "fetchedAt": "2026-10-27T05:19:10.865149+00:00",
+    "fetchedAt": "2026-10-28T05:58:14.512678+00:00",
     "counter": "cloc 2.10",
     "scope": "public-non-fork-default-branches"
   }
