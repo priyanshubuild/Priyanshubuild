@@ -2,11 +2,6 @@
   "calendar": {
     "days": [
       {
-        "date": "2025-10-31",
-        "count": 0,
-        "level": 0
-      },
-      {
         "date": "2025-11-01",
         "count": 0,
         "level": 0
@@ -1825,19 +1820,24 @@
         "date": "2026-10-30",
         "count": 0,
         "level": 0
+      },
+      {
+        "date": "2026-10-31",
+        "count": 0,
+        "level": 0
       }
     ],
-    "from": "2025-10-31",
-    "to": "2026-10-30",
+    "from": "2025-11-01",
+    "to": "2026-10-31",
     "timeZone": "Asia/Kolkata",
-    "fetchedAt": "2026-10-30T06:05:04.945Z"
+    "fetchedAt": "2026-10-31T05:58:57.469Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "Priyanshubuild",
         "href": "https://github.com/priyanshubuild/Priyanshubuild",
-        "count": 98
+        "count": 99
       },
       {
         "name": "DSA-Grind",
@@ -1912,7 +1912,7 @@
     ],
     "scope": "all-time",
     "source": "github-default-branches",
-    "fetchedAt": "2026-10-30T06:05:04.712Z"
+    "fetchedAt": "2026-10-31T05:58:57.441Z"
   },
   "languages": {
     "lines": {
@@ -2018,7 +2018,7 @@
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "commit": "e5431280ef74f9171379955a76adacffe8f5ea82",
+        "commit": "e10045b44415b9a7413654e275c68a34c33a345b",
         "lines": {
           "TypeScript": 3403,
           "JavaScript": 1410,
@@ -2046,7 +2046,7 @@
         }
       }
     ],
-    "fetchedAt": "2026-10-30T06:05:21.839865+00:00",
+    "fetchedAt": "2026-10-31T05:59:19.336743+00:00",
     "counter": "cloc 2.10",
     "scope": "public-non-fork-default-branches"
   }
