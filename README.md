@@ -30,8 +30,8 @@ I'm **Priyanshu Gupta**, a software developer focused on **C++ & algorithms**, *
 <p align="center">
   <a href="https://github.com/priyanshubuild">
     <picture>
-      <source media="(max-width: 600px)" srcset="assets/readme/activity-compact-396a164a6485.svg" />
-      <img src="assets/readme/activity-cfab4a8cbe95.svg" width="880" alt="433 profile contributions of all types and 73 active days in the past year. Separately, 409 all-time commits in owned public repositories. Monthly contribution chart." />
+      <source media="(max-width: 600px)" srcset="assets/readme/activity-compact-4a13adbd0e7b.svg" />
+      <img src="assets/readme/activity-ce6bcb6556bb.svg" width="880" alt="433 profile contributions of all types and 73 active days in the past year. Separately, 410 all-time commits in owned public repositories. Monthly contribution chart." />
     </picture>
   </a>
 </p>
