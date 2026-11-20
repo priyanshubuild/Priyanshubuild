@@ -2,11 +2,6 @@
   "calendar": {
     "days": [
       {
-        "date": "2025-11-20",
-        "count": 0,
-        "level": 0
-      },
-      {
         "date": "2025-11-21",
         "count": 0,
         "level": 0
@@ -1823,21 +1818,26 @@
       },
       {
         "date": "2026-11-19",
+        "count": 2,
+        "level": 1
+      },
+      {
+        "date": "2026-11-20",
         "count": 0,
         "level": 0
       }
     ],
-    "from": "2025-11-20",
-    "to": "2026-11-19",
+    "from": "2025-11-21",
+    "to": "2026-11-20",
     "timeZone": "Asia/Kolkata",
-    "fetchedAt": "2026-11-19T07:41:18.182Z"
+    "fetchedAt": "2026-11-20T07:32:09.021Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "Priyanshubuild",
         "href": "https://github.com/priyanshubuild/Priyanshubuild",
-        "count": 118
+        "count": 119
       },
       {
         "name": "DSA-Grind",
@@ -1908,11 +1908,16 @@
         "name": "External-assesment-sem2",
         "href": "https://github.com/priyanshubuild/External-assesment-sem2",
         "count": 1
+      },
+      {
+        "name": "TypeRave",
+        "href": "https://github.com/priyanshubuild/TypeRave",
+        "count": 1
       }
     ],
     "scope": "all-time",
     "source": "github-default-branches",
-    "fetchedAt": "2026-11-19T07:41:18.046Z"
+    "fetchedAt": "2026-11-20T07:32:08.971Z"
   },
   "languages": {
     "lines": {
@@ -2018,7 +2023,7 @@
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "commit": "f91d4d5959e8ba9cbd0b7fdbc8f505eeee0d305a",
+        "commit": "19a35939df03accd321623a9e07605fddcae9202",
         "lines": {
           "TypeScript": 3403,
           "JavaScript": 1410,
@@ -2044,9 +2049,14 @@
           "JavaScript": 17,
           "CSS": 3
         }
+      },
+      {
+        "repository": "priyanshubuild/TypeRave",
+        "commit": "6a13bb82d154386f73d8c86269fe3d669528fab9",
+        "lines": {}
       }
     ],
-    "fetchedAt": "2026-11-19T07:41:34.453466+00:00",
+    "fetchedAt": "2026-11-20T07:32:33.102391+00:00",
     "counter": "cloc 2.10",
     "scope": "public-non-fork-default-branches"
   }
