@@ -2,11 +2,6 @@
   "calendar": {
     "days": [
       {
-        "date": "2025-11-23",
-        "count": 0,
-        "level": 0
-      },
-      {
         "date": "2025-11-24",
         "count": 0,
         "level": 0
@@ -1825,19 +1820,24 @@
         "date": "2026-11-22",
         "count": 0,
         "level": 0
+      },
+      {
+        "date": "2026-11-23",
+        "count": 1,
+        "level": 1
       }
     ],
-    "from": "2025-11-23",
-    "to": "2026-11-22",
+    "from": "2025-11-24",
+    "to": "2026-11-23",
     "timeZone": "Asia/Kolkata",
-    "fetchedAt": "2026-11-22T07:09:26.509Z"
+    "fetchedAt": "2026-11-23T07:55:46.420Z"
   },
   "repositories": {
     "repos": [
       {
         "name": "Priyanshubuild",
         "href": "https://github.com/priyanshubuild/Priyanshubuild",
-        "count": 121
+        "count": 122
       },
       {
         "name": "DSA-Grind",
@@ -1857,7 +1857,7 @@
       {
         "name": "FSD-BACKEND",
         "href": "https://github.com/priyanshubuild/FSD-BACKEND",
-        "count": 33
+        "count": 34
       },
       {
         "name": "leetcode-progress",
@@ -1917,11 +1917,11 @@
     ],
     "scope": "all-time",
     "source": "github-default-branches",
-    "fetchedAt": "2026-11-22T07:09:26.342Z"
+    "fetchedAt": "2026-11-23T07:55:46.523Z"
   },
   "languages": {
     "lines": {
-      "JavaScript": 7885,
+      "JavaScript": 7868,
       "CSS": 5548,
       "HTML": 3764,
       "TypeScript": 3403,
@@ -2007,9 +2007,9 @@
       },
       {
         "repository": "priyanshubuild/FSD-BACKEND",
-        "commit": "88c0f0dd8ddc6ab3b85e0d71e28e80daffa7bf97",
+        "commit": "ffb2090ac0472beaf475b8cd9ae1a154b0440ac5",
         "lines": {
-          "JavaScript": 774,
+          "JavaScript": 757,
           "CSS": 531,
           "HTML": 330
         }
@@ -2023,7 +2023,7 @@
       },
       {
         "repository": "priyanshubuild/Priyanshubuild",
-        "commit": "3c8b64a7955b1c7adbd6807b1cf36aae8e62e21e",
+        "commit": "176293f66578268afd6a90338ea71f03b1ecc3a2",
         "lines": {
           "TypeScript": 3403,
           "JavaScript": 1410,
@@ -2056,7 +2056,7 @@
         "lines": {}
       }
     ],
-    "fetchedAt": "2026-11-22T07:09:53.095238+00:00",
+    "fetchedAt": "2026-11-23T07:56:07.703025+00:00",
     "counter": "cloc 2.10",
     "scope": "public-non-fork-default-branches"
   }
